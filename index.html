@@ -11,7 +11,61 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+
+    <style>
+      .about-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        max-width: 1100px;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      /* NOUVEAU : Style des boutons réseaux sociaux */
+      .social-group {
+        margin-top: 25px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .social-btn {
+        display: inline-block;
+        border: 1px solid #333;
+        background-color: #111;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        color: #ccc;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .social-btn:hover {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+        transform: translateY(-2px);
+      }
+
+      .about-image img {
+        width: 380px;
+        height: auto;
+        opacity: 0.9;
+        display: block;
+        border-radius: 10px;
+      }
+
+      @media (max-width: 900px) {
+        .about-image {
+          display: none;
+        }
+      }
+    </style>
   </head>
+
   <body>
     <nav>
       <div class="logo-container">
@@ -26,7 +80,11 @@
 
       <div class="nav-links">
         <a href="reports.html">Rapports</a>
-        <a href="https://www.youtube.com/@lbrd_leo" target="_blank">YouTube</a>
+        <a
+          href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7"
+          target="_blank"
+          >YouTube</a
+        >
       </div>
     </nav>
 
@@ -44,20 +102,45 @@
     <main>
       <section id="about" class="about-section">
         <h2>Présentation</h2>
-        <div style="max-width: 800px">
-          <p>
-            <strong>Je suis Léo Lombardini</strong>, fondateur d'Horacle
-            Capital. Actuellement étudiant et trader algorithmique je partage
-            mes pensées macroéconomiques sous le forme de rapport hebdomadaires.
-            Je tiens aussi une chaîne youtube axée sur la finance quantitative.
-          </p>
-          <br />
-          <p>
-            Tu trouvera ici des points de vu structurés, relatifs à des sources
-            concrètes. Evidement tout ce qui est écrit n'est en aucun cas un
-            conseil en investissement, la bourse comporte des risques, soyez en
-            conscient.
-          </p>
+
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              <strong>Je suis Léo Lombardini</strong>, fondateur d'Horacle
+              Capital. Actuellement étudiant et trader algorithmique, je partage
+              mes pensées macroéconomiques sous forme de rapports hebdomadaires.
+              Je tiens également une chaîne YouTube axée sur la finance
+              quantitative.
+            </p>
+            <br />
+            <p>
+              Vous trouverez ici des points de vue structurés, appuyés par des
+              sources concrètes. Évidemment, tout ce qui est écrit ne constitue
+              en aucun cas un conseil en investissement. La bourse comporte des
+              risques, soyez-en conscients.
+            </p>
+
+            <div class="social-group">
+              <a
+                href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/"
+                target="_blank"
+                class="social-btn"
+              >
+                LinkedIn : Léo Lombardini
+              </a>
+              <a
+                href="https://www.instagram.com/leo.lbdr"
+                target="_blank"
+                class="social-btn"
+              >
+                Instagram : @leo.lbdr
+              </a>
+            </div>
+          </div>
+
+          <div class="about-image">
+            <img src="assets/img/logo.png" alt="Logo Horacle Capital" />
+          </div>
         </div>
       </section>
 

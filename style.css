@@ -311,3 +311,30 @@ details[open] summary {
   margin-top: 50px;
   text-align: justify;
 }
+
+.about-content {
+  display: flex;
+  align-items: center; /* Centre verticalement */
+  justify-content: space-between;
+  gap: 50px; /* Espace entre le texte et l'image */
+  max-width: 1000px; /* Largeur max augmentée pour accueillir l'image */
+}
+
+.about-text {
+  flex: 1; /* Le texte prend l'espace disponible */
+}
+
+.about-image img {
+  width: 380px;
+
+  height: auto;
+  opacity: 0.9; /* Légère transparence pour le style */
+  display: block;
+}
+
+/* RÈGLE RESPONSIVE : Cacher l'image sur Mobile (< 768px) */
+@media (max-width: 768px) {
+  .about-image {
+    display: none;
+  }
+}
