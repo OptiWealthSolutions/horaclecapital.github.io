@@ -1,0 +1,313 @@
+/* style.css - Mix Minimaliste & Accents Orange */
+
+:root {
+  --bg-color: #000000; /* Fond Noir pur */
+  --text-color: #f5f5f5; /* Texte Blanc cassé */
+  --accent-color: #ff6b00; /* ORANGE Bloomberg pour les interactions */
+  --card-bg: #111111; /* Fond des cartes */
+  --border-color: #333333; /* Bordures grises subtiles */
+  --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Police propre */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* --- NAVIGATION (Logo à gauche, menu à droite) --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: rgba(0, 0, 0, 0.9); /* Légèrement transparent */
+  position: sticky; /* Le menu reste en haut quand on scrolle */
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo-container img {
+  height: 50px; /* Ajuste selon la taille de ton logo */
+  display: block;
+}
+
+.nav-links a {
+  color: #888;
+  margin-left: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* L'effet Orange demandé */
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* --- HEADER / BANNIÈRE HERO --- */
+header {
+  height: 500px; /* Bannière imposante */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* L'image de fond */
+.header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5; /* Assombrit l'image pour lire le texte */
+  z-index: 1;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2; /* Au-dessus de l'image */
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.header-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 800;
+}
+
+.header-content p {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+/* BOUTON CALL TO ACTION (CTA) */
+.btn-cta {
+  display: inline-block;
+  padding: 15px 35px;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: #000;
+}
+
+.btn-cta:hover {
+  background-color: var(--accent-color);
+  color: #000; /* Texte devient noir sur fond orange */
+  transform: translateY(-3px); /* Petit effet de saut */
+  box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2);
+}
+
+/* --- MAIN CONTENT --- */
+main {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  border-left: 5px solid var(--accent-color); /* Barre orange à gauche du titre */
+  padding-left: 20px;
+}
+
+/* Section Présentation */
+.about-section {
+  margin-bottom: 80px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Grille des Rapports */
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive */
+  gap: 30px;
+}
+
+.report-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 30px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.report-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-5px);
+}
+
+.report-date {
+  display: block;
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.report-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.4rem;
+}
+
+.report-card h3 a {
+  color: #fff;
+}
+
+.report-card h3 a:hover {
+  color: var(--accent-color);
+}
+
+/* --- FOOTER --- */
+footer {
+  text-align: center;
+  padding: 50px 20px;
+  border-top: 1px solid var(--border-color);
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.article-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-size: 1.1rem; /* Texte un peu plus grand pour la lecture */
+  color: #ddd;
+}
+
+/* Encadré Résumé (Executive Summary) */
+.exec-summary {
+  background-color: #1a1a1a;
+  border-left: 4px solid var(--accent-color);
+  padding: 20px;
+  margin-bottom: 40px;
+  font-style: italic;
+  color: #fff;
+}
+
+.exec-summary strong {
+  color: var(--accent-color);
+  text-transform: uppercase;
+  font-style: normal;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+/* Images et Graphiques */
+figure {
+  margin: 40px 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+figcaption {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 10px;
+  font-family: monospace; /* Style "Donnée brute" */
+}
+
+/* Citations importantes */
+blockquote {
+  font-size: 1.4rem;
+  color: #fff;
+  margin: 40px 0;
+  padding-left: 20px;
+  border-left: 2px solid #555;
+  line-height: 1.4;
+}
+
+/* SECTION SOURCES INTERACTIVE (<details>) */
+details.sources-box {
+  background-color: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+summary {
+  padding: 15px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #888;
+  list-style: none; /* Cache la flèche par défaut */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+summary:hover {
+  background-color: #111;
+  color: var(--accent-color);
+}
+
+summary::after {
+  content: "+";
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+details[open] summary::after {
+  content: "-";
+}
+
+details[open] summary {
+  border-bottom: 1px solid #333;
+  color: var(--accent-color);
+}
+
+.sources-content {
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+.sources-content ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.sources-content li {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+/* Disclaimer en bas d'article */
+.disclaimer {
+  font-size: 0.75rem;
+  color: #444;
+  border-top: 1px solid #222;
+  padding-top: 20px;
+  margin-top: 50px;
+  text-align: justify;
+}
