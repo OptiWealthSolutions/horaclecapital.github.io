@@ -5,172 +5,198 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HORACLE CAPITAL - Journal</title>
     <link rel="icon" type="image/png" href="assets/img/logo.png" />
-    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <style>
-      .about-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 40px;
-        max-width: 1100px;
-      }
-
-      .about-text {
-        flex: 1;
-      }
-
-      /* NOUVEAU : Style des boutons réseaux sociaux */
-      .social-group {
-        margin-top: 25px;
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-      }
-
-      .social-btn {
-        display: inline-block;
-        border: 1px solid #333;
-        background-color: #111;
-        padding: 8px 16px;
-        font-size: 0.9rem;
-        color: #ccc;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-      }
-
-      .social-btn:hover {
-        border-color: var(--accent-color);
-        color: var(--accent-color);
-        transform: translateY(-2px);
-      }
-
-      .about-image img {
-        width: 380px;
-        height: auto;
-        opacity: 0.9;
-        display: block;
-        border-radius: 10px;
-      }
-
-      @media (max-width: 900px) {
-        .about-image {
-          display: none;
-        }
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2de0cd59-a747-4d4a-898e-5b2ff8cee015"></script>
   </head>
-
   <body>
+
     <nav>
       <div class="logo-container">
         <a href="index.html">
-          <img
-            src="assets/img/biglogo.png"
-            alt="HORACLE CAPITAL"
-            style="max-height: 40px"
-          />
+          <img src="assets/img/biglogo.png" alt="HORACLE CAPITAL" />
         </a>
       </div>
-
-      <div class="nav-links">
+      <div class="nav-links" id="nav-links">
+        <button class="menu-close" id="menu-close" aria-label="Fermer le menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
         <a href="reports.html">Rapports</a>
-        <a
-          href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7"
-          target="_blank"
-          >YouTube</a
-        >
+        <a href="research.html">Recherches</a>
+        <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
       </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
 
-    <header>
-      <img src="assets/img/banner.jpg" alt="Background" class="header-bg" />
-
-      <div class="header-content">
-        <h1>Horacle Capital</h1>
-        <p>Discipline. Transparence. Performance.</p>
-        <br />
-        <a href="reports.html" class="btn-cta">Voir les rapports</a>
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <div class="t-item"><b>MACRO</b> · Rapport N°7 disponible</div>
+        <div class="t-item"><b>FED</b> · Taux inchangés</div>
+        <div class="t-item"><b>BRENT</b> <span class="dn">▼</span> Sous pression</div>
+        <div class="t-item"><b>USD/JPY</b> · BoJ pivot 160</div>
+        <div class="t-item"><b>S&P 500</b> <span class="up">▲</span> Résistances clés</div>
+        <div class="t-item"><b>QUANT</b> · Recherches bientôt disponibles</div>
+        <div class="t-item"><b>HORACLE CAPITAL</b> · Discipline · Transparence · Performance</div>
+        <div class="t-item"><b>10Y-2Y</b> · Courbe sous surveillance</div>
+        <div class="t-item"><b>MACRO</b> · Rapport N°7 disponible</div>
+        <div class="t-item"><b>FED</b> · Taux inchangés</div>
+        <div class="t-item"><b>BRENT</b> <span class="dn">▼</span> Sous pression</div>
+        <div class="t-item"><b>USD/JPY</b> · BoJ pivot 160</div>
+        <div class="t-item"><b>S&P 500</b> <span class="up">▲</span> Résistances clés</div>
+        <div class="t-item"><b>QUANT</b> · Recherches bientôt disponibles</div>
+        <div class="t-item"><b>HORACLE CAPITAL</b> · Discipline · Transparence · Performance</div>
+        <div class="t-item"><b>10Y-2Y</b> · Courbe sous surveillance</div>
       </div>
+    </div>
+
+    <header class="hero">
+      <img src="assets/img/banner.jpg" alt="" class="hero-bg" aria-hidden="true" />
+      <div class="hero-inner">
+        <div class="hero-tag">Horacle Capital — Journal Macro</div>
+        <h1>
+          L'ANALYSE<br>
+          <span class="o">SANS</span><br>
+          COMPROMIS
+        </h1>
+        <p class="hero-sub">
+          Discipline<span class="dot">·</span>Transparence<span class="dot">·</span>Performance
+        </p>
+        <div class="hero-actions">
+          <a href="reports.html" class="btn-primary">
+            Voir les rapports
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#about" class="btn-ghost">
+            À propos
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-num" aria-hidden="true">N°7</div>
     </header>
 
     <main>
       <section id="about" class="about-section">
-        <h2>Présentation</h2>
-
-        <div class="about-content">
-          <div class="about-text">
-            <p>
-              Trader, investisseur ou passionné de finance : chez
-              <strong>Horacle Capital</strong>, nous vous offrons un rapport
-              macroéconomique dense, précis et <strong>sans futilité</strong>.
-              Nous déconstruisons l'actualité pour vous donner une longueur
-              d'avance. Retrouvez l'essentiel de nos analyses sur notre page
-              <a
-                href="../reports.html"
-                style="color: var(--accent-color); text-decoration: none"
-                >Reports</a
-              >.
-            </p>
-            <br />
-            <p>
-              Vous trouverez ici des points de vue structurés, appuyés par des
-              sources concrètes. Évidemment, tout ce qui est écrit ne constitue
-              en aucun cas un conseil en investissement. La bourse comporte des
-              risques, soyez-en conscients.
-            </p>
-
-            <div class="social-group">
-              <a
-                href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/"
-                target="_blank"
-                class="social-btn"
-              >
-                LinkedIn : Léo Lombardini
-              </a>
-              <a
-                href="https://www.instagram.com/horacle_capital"
-                target="_blank"
-                class="social-btn"
-              >
-                Instagram : @horacle_capital
-              </a>
-            </div>
+        <div class="container container-wide">
+          <div class="section-rule">
+            <span class="section-label">Présentation</span>
+            <div class="rule-line"></div>
           </div>
+          <div class="about-grid">
+            <div class="about-body">
+              <h2 class="section-title">QUI SOMMES-<br>NOUS ?</h2>
+              <p>
+                Trader, investisseur ou passionné de finance&nbsp;: chez
+                <strong>Horacle Capital</strong>, nous vous offrons un rapport macroéconomique dense, précis et
+                <strong>sans futilité</strong>. Nous déconstruisons l'actualité pour vous donner une longueur d'avance.
+              </p>
+              <p>
+                Retrouvez l'essentiel de nos analyses sur la page <a href="reports.html">Reports →</a>.
+                Des points de vue structurés, appuyés par des sources concrètes.
+              </p>
+              <div class="disclaimer">
+                ⚠ Rien de ce qui est publié ici ne constitue un conseil en investissement.
+                La bourse comporte des risques, soyez-en conscients.
+              </div>
+              <div class="socials">
+                <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank" class="social-pill">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  LinkedIn — Léo Lombardini
+                  <svg class="sp-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6 2.5l3.5 3.5L6 9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="https://www.instagram.com/horacle_capital" target="_blank" class="social-pill">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  Instagram — @horacle_capital
+                  <svg class="sp-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6 2.5l3.5 3.5L6 9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank" class="social-pill">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#111"/></svg>
+                  YouTube — @lbrd_leo
+                  <svg class="sp-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6 2.5l3.5 3.5L6 9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
 
-          <div class="about-image">
-            <img src="assets/img/biglogo.png" alt="Logo Horacle Capital" />
+            <div class="about-panel">
+              <div class="panel-header">
+                <div class="panel-dot"></div>
+                <span>Horacle Capital — Live</span>
+              </div>
+          <div class="panel-graph">
+            <svg viewBox="0 0 200 50" class="sparkline" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="spark-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--orange)" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="var(--orange)" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- Forme avec dégradé -->
+              <path d="M0,40 L20,38 L40,45 L60,30 L80,35 L100,20 L120,25 L140,10 L160,15 L180,5 L200,8 L200,50 L0,50 Z" fill="url(#spark-grad)" stroke="none" />
+              <!-- Ligne du graphique -->
+              <path d="M0,40 L20,38 L40,45 L60,30 L80,35 L100,20 L120,25 L140,10 L160,15 L180,5 L200,8" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="panel-status">
+            <span class="status-text">[ SYSTEM STATUS: SCANNING MARKET... ]</span>
+              </div>
+              <div class="panel-footer">
+                <span class="panel-badge">Macro · Quant · Finance</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="reports">
-        <h2>Dernier Rapport Hebdomadaire</h2>
+      <section class="reports-section">
+        <div class="container">
+          <div class="section-rule">
+            <span class="section-label">Publications</span>
+            <div class="rule-line"></div>
+            <a href="reports.html" class="rule-link">Tous les rapports <span>→</span></a>
+          </div>
 
-        <div class="reports-grid">
-          <article class="report-card">
-            <span class="report-date">04 Avril 2026</span>
-            <h3>
-              <a href="reports/rapport_04_04_26.html">
-                L'étau se resserre
-              </a>
-            </h3>
-            <p>
-              Prevision de la semaine à venir, et debrief de la semaine passée
+          <a href="reports/rapport_04_04_26.html" class="report-card-featured">
+            <div class="rcf-body">
+              <div class="rcf-meta">
+                <span class="rcf-tag">Hebdomadaire</span>
+                <span class="rcf-issue">N°7</span>
+                <span class="rcf-date">04 AVRIL 2026</span>
+              </div>
+              <h3 class="rcf-title">L'ÉTAU SE<br>RESSERRE</h3>
+              <p class="rcf-desc">
+                L'impasse géopolitique dans le détroit d'Hormuz maintient une prime de risque élevée, avec un baril stabilisé au-dessus de 100 USD pénalisant les importateurs nets comme l'Europe et le Japon. Le dollar domine grâce à son statut de refuge et à la résilience de l'emploi US, forçant la BoJ à une défense agressive du pivot des 160 sur le yen. Face à ce choc d'offre, les pays du Golfe réévaluent des pipelines massifs pour contourner Hormuz et sécuriser leurs flux hors de l'influence iranienne. Cette dynamique de stagflation, couplant coûts énergétiques et taux réels élevés, comprime mécaniquement la production mondiale à court terme.
+              </p>
+              <span class="rcf-cta">
+                Lire le rapport complet
+                <svg class="rcf-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <div class="coming-strip">
+            <div class="cs-pulse"></div>
+            <p class="cs-text">
+              <strong>Finance Quantitative</strong> — Recherches et modèles quantitatifs disponibles prochainement.
             </p>
-          </article>
+          </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <p>&copy; 2026 HORACLE CAPITAL. Tous droits réservés.</p>
+      <p>&copy; 2026 HORACLE CAPITAL</p>
+      <div class="footer-links">
+        <a href="reports.html">Rapports</a>
+        <a href="https://www.instagram.com/horacle_capital" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank">LinkedIn</a>
+        <a href="https://youtube.com/@lbrd_leo" target="_blank">YouTube</a>
+      </div>
     </footer>
+
+    <script src="main.js"></script>
   </body>
 </html>
