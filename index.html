@@ -25,6 +25,10 @@
         <a href="reports.html">Rapports</a>
         <a href="research.html">Recherches</a>
         <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
+        <form class="nav-search" id="global-search-form" action="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" placeholder="Rechercher..." aria-label="Rechercher sur le site" />
+        </form>
       </div>
       <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -177,12 +181,30 @@
             </div>
           </a>
 
-          <div class="coming-strip">
-            <div class="cs-pulse"></div>
-            <p class="cs-text">
-              <strong>Finance Quantitative</strong> — Recherches et modèles quantitatifs disponibles prochainement.
-            </p>
+          <!-- Section Finance Quantitative -->
+          <div class="section-rule" style="margin-top: 80px;">
+            <span class="section-label">Finance Quantitative</span>
+            <div class="rule-line"></div>
+            <a href="research.html" class="rule-link">Toutes les recherches <span>→</span></a>
           </div>
+
+          <a href="research_ressources/notebooks/HMM_engine.ipynb" target="_blank" class="report-card-featured">
+            <div class="rcf-body">
+              <div class="rcf-meta">
+                <span class="rcf-tag">Notebook</span>
+                <span class="rcf-issue">Modèle Quant</span>
+                <span class="rcf-date">AVRIL 2026</span>
+              </div>
+              <h3 class="rcf-title">HMM ENGINE &<br>RÉGIMES DE MARCHÉ</h3>
+              <p class="rcf-desc">
+                Moteur d'inférence basé sur les modèles de Markov cachés (Hidden Markov Models) pour identifier et modéliser les différents régimes de volatilité et de tendance sur les marchés financiers. Une approche quantitative rigoureuse appliquée au CAC 40.
+              </p>
+              <span class="rcf-cta">
+                Découvrir la recherche
+                <svg class="rcf-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
         </div>
       </section>
     </main>

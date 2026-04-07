@@ -25,6 +25,10 @@
         <a href="reports.html">Rapports</a>
         <a href="research.html">Recherches</a>
         <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
+        <form class="nav-search" id="global-search-form" action="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" placeholder="Rechercher..." aria-label="Rechercher sur le site" />
+        </form>
       </div>
       <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -39,24 +43,58 @@
       <p>Le laboratoire d'analyses d'Horacle Capital</p>
     </header>
 
-    <main class="container" style="padding-top: 80px; padding-bottom: 120px; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 40vh;">
+    <main class="container" style="padding-top: 60px; padding-bottom: 120px; min-height: 60vh;">
       
-      <div class="coming-strip" style="justify-content: center; margin-bottom: 30px;">
-        <div class="cs-pulse"></div>
-        <p class="cs-text">
-          <strong>EN CONSTRUCTION</strong>
-        </p>
+      <!-- Barre d'outils : Recherche et Filtres -->
+      <div class="research-toolbar">
+        <div class="rt-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="research-search" placeholder="Rechercher un modèle, une vidéo, un mot-clé..." />
+        </div>
+        <div class="rt-filters" id="research-filters">
+          <button class="rt-filter active" data-filter="all">Tout</button>
+          <button class="rt-filter" data-filter="pdf">PDFs & Modèles</button>
+          <button class="rt-filter" data-filter="notebook">Notebooks</button>
+          <button class="rt-filter" data-filter="code">Code Snippets</button>
+          <button class="rt-filter" data-filter="video">Vidéos</button>
+          <button class="rt-filter" data-filter="link">Liens Externes</button>
+        </div>
       </div>
 
-      <h2 class="section-title">Bientôt disponible</h2>
-      <p style="color: var(--off); max-width: 600px; margin-top: 20px; font-size: 1.05rem; line-height: 1.8;">
-        Cette section accueillera prochainement l'ensemble de nos travaux approfondis. Vous y retrouverez nos <strong>supports de recherches</strong>, nos <strong>papers académiques</strong> appliqués aux marchés, ainsi que nos <strong>modèles quantitatifs</strong> exclusifs.
-      </p>
+      <!-- Grille des publications -->
+      <div class="research-grid" id="research-grid">
+        
+        <!-- Polymarket Paper -->
+        <div class="research-card" data-category="pdf">
+          <div class="rc-content">
+            <div class="rc-meta-top"><span class="rc-tag tag-pdf">PDF</span> <span class="rc-date">Avril 2026</span></div>
+            <h3><a href="research_ressources/pdf/polymarket_paper.pdf" target="_blank">Microstructure, Market Making, and Algorithmic Arbitrage on Decentralised Prediction Markets</a></h3>
+            <p class="rc-desc">Ce document développe un cadre quantitatif rigoureux pour la participation algorithmique sur les marchés de prédiction décentralisés, en utilisant Polymarket comme environnement empirique principal.</p>
+            <div class="rc-footer">
+              <span class="rc-file-info">17 Pages</span>
+              <a href="research_ressources/pdf/polymarket_paper.pdf" target="_blank" download class="rc-action">Télécharger <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></a>
+            </div>
+          </div>
+        </div>
 
-      <div style="margin-top: 40px;">
-        <a href="index.html" class="btn-ghost">
-          Retour à l'accueil
-        </a>
+        <!-- HMM Engine Notebook -->
+        <div class="research-card" data-category="notebook">
+          <div class="rc-content">
+            <div class="rc-meta-top"><span class="rc-tag tag-notebook">Notebook</span> <span class="rc-date">Avril 2026</span></div>
+            <h3><a href="research_ressources/notebooks/HMM_engine.ipynb" target="_blank">HMM Engine - Détection de Régimes de Marché</a></h3>
+            <p class="rc-desc">Moteur d'inférence basé sur les modèles de Markov cachés (Hidden Markov Models) pour identifier et modéliser les différents régimes de volatilité et de tendance sur les marchés financiers.</p>
+            <div class="rc-footer">
+              <span class="rc-file-info">Jupyter Notebook (.ipynb)</span>
+              <a href="research_ressources/notebooks/HMM_engine.ipynb" target="_blank" download class="rc-action">Télécharger <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message si aucune recherche trouvée -->
+        <div class="no-results" id="no-results" style="display: none; grid-column: 1 / -1; text-align: center; padding: 40px; border: 1px dashed var(--border); color: var(--dim);">
+          <p style="font-family: var(--ff-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;">Aucun résultat trouvé pour votre recherche.</p>
+        </div>
+
       </div>
     </main>
 
