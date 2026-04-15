@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TERMINAL CAPITALIS - HORACLE CAPITAL</title>
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="2de0cd59-a747-4d4a-898e-5b2ff8cee015"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="assets/img/biglogo.png" alt="HORACLE CAPITAL" />
+        </a>
+      </div>
+      <div class="nav-links" id="nav-links">
+        <button class="menu-close" id="menu-close" aria-label="Fermer le menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <a href="index.html">Home</a>
+        <a href="reports.html">Rapports</a>
+        <a href="research.html">Recherches</a>
+        <a href="terminal.html">Terminal</a>
+        <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
+        <form class="nav-search" id="global-search-form" action="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" placeholder="Rechercher..." aria-label="Rechercher sur le site" />
+        </form>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <header class="hero" style="min-height: 80vh; border-bottom: 1px solid var(--border);">
+      <img src="assets/img/screen_1_terminal.jpeg" alt="" class="hero-bg" aria-hidden="true" style="opacity: 0.15; filter: grayscale(50%); object-position: top;" />
+      <div class="hero-inner">
+        <div class="hero-tag">Accès Anticipé</div>
+        <h1>
+          TERMINAL<br>
+          <span class="o">CAPITALIS</span>
+        </h1>
+        <p class="hero-sub" style="font-family: var(--ff-body); text-transform: none; letter-spacing: normal; font-size: 1.15rem; max-width: 650px; color: var(--off); margin-bottom: 40px; line-height: 1.6;">
+          La nouvelle génération d'analyse financière. Fusionnant données de marché en temps réel et outils professionnels dans une interface intuitive.
+        </p>
+        <div class="hero-actions">
+          <a href="#beta-section" class="btn-primary">
+            Rejoindre la Bêta
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#features" class="btn-ghost">
+            Fonctionnalités
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-num" aria-hidden="true" style="font-size: 8rem; right: 20px; bottom: 20px;">v0.1</div>
+    </header>
+
+    <main class="container" style="padding-top: 80px; padding-bottom: 120px;">
+        <div class="manifesto" style="padding: 0 0 80px 0; text-align: center;">
+
+        </div>
+
+        <div id="beta-section" style="max-width: 600px; margin: 0 auto 100px auto; scroll-margin-top: 100px;">
+            <div class="about-body" style="text-align: center;">
+                <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 20px;">Accès Anticipé</h2>
+                <p style="color: var(--off); margin-bottom: 30px;">Nous ouvrons un nombre limité de places pour notre programme de bêta-test. Aidez-nous à façonner l'outil ultime de la finance quantitative.</p>
+                
+                <form id="beta-form" action="https://api.web3forms.com/submit" method="POST">
+                    
+                    <input type="hidden" name="access_key" value="c455f599-cf43-4be4-9835-019ffa3330db">
+                    
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <input type="text" name="Nom" placeholder="Nom Complet" required style="padding: 16px; background: var(--bg-2); border: 1px solid var(--border); color: var(--white); font-family: var(--ff-body); outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+                        <input type="email" name="Email" placeholder="Adresse E-mail" required style="padding: 16px; background: var(--bg-2); border: 1px solid var(--border); color: var(--white); font-family: var(--ff-body); outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+                        <textarea name="Motivation" rows="4" placeholder="Pourquoi souhaitez-vous rejoindre la bêta ?" required style="padding: 16px; background: var(--bg-2); border: 1px solid var(--border); color: var(--white); font-family: var(--ff-body); resize: vertical; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+                        <textarea name="Fonctionnalites_souhaitees" rows="2" placeholder="Fonctionnalités ou données souhaitées ?" style="padding: 16px; background: var(--bg-2); border: 1px solid var(--border); color: var(--white); font-family: var(--ff-body); resize: vertical; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+                        <button type="submit" class="btn-primary" style="border: none; cursor: pointer; justify-content: center; width: 100%;">Soumettre ma candidature</button>
+                    </div>
+                </form>
+                <p id="form-status" style="margin-top: 20px; font-family: var(--ff-mono); text-align: center; min-height: 1.2em;"></p>
+                <p class="disclaimer" style="margin-top: 16px; text-align: center; border-top: none; padding-top: 0;">
+                    Note : Ce formulaire nécessite une configuration pour fonctionner.
+                </p>
+            </div>
+        </div>
+
+        <div id="features" class="section-rule" style="scroll-margin-top: 100px;">
+            <span class="section-label">Fonctionnalités Clés</span>
+            <div class="rule-line"></div>
+        </div>
+
+        <div class="feature-showcase">
+            <div class="feature-item">
+                <div class="feature-text">
+                    <h3>Dashboard Unifié</h3>
+                    <p>Visualisez en un clin d'œil l'état des marchés, la performance de votre portefeuille et les dernières nouvelles macroéconomiques. Le dashboard est entièrement personnalisable pour s'adapter à votre style d'investissement.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="assets/img/screen_1_terminal.jpeg" alt="Dashboard du Terminal Capitalis">
+                </div>
+            </div>
+            <div class="feature-item reverse">
+                <div class="feature-text">
+                    <h3>Moteurs d'Analyse</h3>
+                    <p>Accédez directement à nos modèles quantitatifs, comme le moteur HMM pour la détection de régimes de marché ou notre système de scoring d'actifs. Appliquez des analyses rigoureuses sans écrire une ligne de code.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="assets/img/screen_2_terminal.jpeg" alt="Outils d'analyse quantitative">
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+      <p>&copy; 2026 HORACLE CAPITAL</p>
+      <div class="footer-links">
+        <a href="reports.html">Rapports</a>
+        <a href="https://www.instagram.com/horacle_capital" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank">LinkedIn</a>
+        <a href="https://youtube.com/@lbrd_leo" target="_blank">YouTube</a>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+      var form = document.getElementById("beta-form");
+      
+      async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("form-status");
+        var button = form.querySelector("button");
+        var data = new FormData(event.target);
+    
+        button.disabled = true;
+        button.textContent = "Envoi en cours...";
+        status.innerHTML = "";
+    
+        fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          button.disabled = false;
+          button.textContent = "Soumettre ma candidature";
+          if (response.ok) {
+            status.style.color = "var(--white)";
+            status.innerHTML = "Merci ! Votre candidature a bien été envoyée.";
+            form.reset();
+          } else {
+            response.json().then(data => {
+              status.style.color = "var(--orange)";
+              // AJUSTEMENT POUR WEB3FORMS (data.message au lieu de data.errors)
+              if (Object.hasOwn(data, 'message')) {
+                status.innerHTML = data.message;
+              } else if (Object.hasOwn(data, 'errors')) {
+                status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+              } else {
+                status.innerHTML = "Oops! Erreur de configuration. Le formulaire n'a pas pu être envoyé.";
+              }
+            })
+          }
+        }).catch(error => {
+          button.disabled = false;
+          button.textContent = "Soumettre ma candidature";
+          status.style.color = "var(--orange)";
+          status.innerHTML = "Oops! Problème de connexion. Veuillez réessayer.";
+        });
+      }
+      form.addEventListener("submit", handleSubmit)
+    </script>
+  </body>
+</html>

@@ -509,6 +509,44 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--ora
 .disclaimer strong { color: var(--orange); }
 
 /* =========================================================================
+   FEATURE SHOWCASE (TERMINAL PAGE)
+   ========================================================================= */
+
+.feature-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+.feature-item {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  align-items: center;
+}
+.feature-item.reverse .feature-image {
+  order: -1;
+}
+.feature-text h3 {
+  font-family: var(--ff-mono);
+  font-size: 1.8rem;
+  color: var(--white);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.feature-text p {
+  color: var(--off);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.feature-image img {
+  width: 100%;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border-radius: 2px;
+}
+
+
+/* =========================================================================
    RECHERCHES (RESEARCH.HTML)
    ========================================================================= */
    
@@ -593,6 +631,14 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--ora
   .rcf-body { padding: 28px 24px; }
   .manifesto { padding: 80px 20px; }
   .mb-body { padding: 24px 20px; }
+  .feature-showcase { gap: 60px; }
+  .feature-item, .feature-item.reverse {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .feature-item.reverse .feature-image {
+    order: 0;
+  }
   footer { height: auto; padding: 20px; flex-direction: column; gap: 12px; }
   .footer-links a { border: none; height: auto; padding: 8px 12px; }
   .footer-links a:last-child { border: none; }
