@@ -68,25 +68,68 @@
 
     <header class="hero">
       <img src="assets/img/banner.png" alt="" class="hero-bg" aria-hidden="true" />
-      <div class="hero-inner">
-        <div class="hero-tag">Horacle Capital — Journal Macro</div>
-        <h1>
-          L'ANALYSE<br>
-          <span class="o">SANS</span><br>
-          COMPROMIS
-        </h1>
-        <p class="hero-sub">
-          Discipline<span class="dot">·</span>Transparence<span class="dot">·</span>Performance
-        </p>
-        <div class="hero-actions">
-          <a href="reports.html" class="btn-primary">
-            Voir les rapports
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#about" class="btn-ghost">
-            À propos
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+      <div class="hero-inner hero-split">
+        <div class="hero-content">
+          <div class="hero-tag">Horacle Capital — Journal Macro</div>
+          <h1>
+            L'ANALYSE<br>
+            <span class="o">SANS</span><br>
+            COMPROMIS
+          </h1>
+          <p class="hero-sub">
+            Discipline<span class="dot">·</span>Transparence<span class="dot">·</span>Performance
+          </p>
+          <div class="hero-actions">
+            <a href="reports.html" class="btn-primary">
+              Voir les rapports
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#about" class="btn-ghost">
+              À propos
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-visual-card">
+            <div class="hero-visual-glow"></div>
+            <div class="hvc-header">
+              <span class="hvc-title">[ MACRO DASHBOARD ]</span>
+              <div class="panel-dot"></div>
+            </div>
+            <div style="margin-bottom: 24px;">
+              <div class="hvc-row">
+                <span class="hvc-label">S&P 500</span>
+                <span class="hvc-val up">+1.24%</span>
+              </div>
+              <div class="hvc-row">
+                <span class="hvc-label">US 10Y YIELD</span>
+                <span class="hvc-val neu">4.32%</span>
+              </div>
+              <div class="hvc-row">
+                <span class="hvc-label">EUR/USD</span>
+                <span class="hvc-val dn">-0.45%</span>
+              </div>
+              <div class="hvc-row">
+                <span class="hvc-label">BRENT CRUDE</span>
+                <span class="hvc-val up">+0.89%</span>
+              </div>
+            </div>
+            <div style="border-top: 1px solid var(--border); padding-top: 20px;">
+              <span class="hvc-title" style="display: block; margin-bottom: 12px; font-size: 0.55rem;">VOLATILITY INDEX (VIX)</span>
+              <svg viewBox="0 0 200 40" class="sparkline" preserveAspectRatio="none" style="height: 50px; width: 100%; filter: drop-shadow(0 2px 4px rgba(255,69,0,0.2));">
+                <defs>
+                  <linearGradient id="hero-spark" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--orange)" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="var(--orange)" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,35 L20,30 L40,32 L60,15 L80,18 L100,25 L120,10 L140,15 L160,5 L180,12 L200,2 L200,40 L0,40 Z" fill="url(#hero-spark)" stroke="none" />
+                <path d="M0,35 L20,30 L40,32 L60,15 L80,18 L100,25 L120,10 L140,15 L160,5 L180,12 L200,2" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
       <div class="hero-num" aria-hidden="true">N°8</div>
@@ -103,13 +146,13 @@
             <div class="about-body">
               <h2 class="section-title">QUI SOMMES-<br>NOUS ?</h2>
               <p>
-                Trader, investisseur ou passionné de finance&nbsp;: chez
-                <strong>Horacle Capital</strong>, nous vous offrons un rapport macroéconomique dense, précis et
-                <strong>sans futilité</strong>. Nous déconstruisons l'actualité pour vous donner une longueur d'avance.
+                Trader, investisseur ou passionné de finance&nbsp;: <strong>Horacle Capital</strong> est votre écosystème analytique de référence. Nous publions des <strong>rapports macroéconomiques hebdomadaires</strong> pour déconstruire l'actualité, ainsi que des <strong>papiers de recherche quantitatifs et fondamentaux</strong> approfondis.
               </p>
               <p>
-                Retrouvez l'essentiel de nos analyses sur la page <a href="reports.html">Reports →</a>.
-                Des points de vue structurés, appuyés par des sources concrètes.
+                Pour transformer ces analyses en actes, nous avons créé <strong>Capitalis</strong> : une application d'investissement complète et intuitive couvrant tout le spectre de la gestion de portefeuille (Screening, Scoring, Allocation, Reporting).
+              </p>
+              <p style="margin-top: 16px;">
+                Explorez nos <a href="reports.html">Rapports</a>, nos <a href="research.html">Recherches</a>, ou découvrez l'application <a href="capitalis_beta.html">Capitalis →</a>.
               </p>
               <div class="disclaimer">
                 ⚠ Rien de ce qui est publié ici ne constitue un conseil en investissement.
@@ -182,7 +225,7 @@
                 </a>
               </div>
             </div>
-            <div style="flex: 1 1 50%; min-width: 300px; min-height: 400px; background: url('assets/img/capitalis_view/screening.png') center/cover no-repeat; border-left: 1px solid var(--border);">
+            <div style="flex: 1 1 50%; min-width: 300px; min-height: 400px; background: url('assets/img/capitalis_view/allocation.png') center/cover no-repeat; border-left: 1px solid var(--border);">
             </div>
           </div>
         </div>
