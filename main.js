@@ -273,4 +273,39 @@ document.addEventListener('DOMContentLoaded', () => {
       filterCards();
     }));
   }
+
+  // --- NEWSLETTER FORM ---
+  const newsletterForm = document.getElementById('api-newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const statusText = document.getElementById('subscription-status');
+      const btn = document.getElementById('submit-btn');
+      
+      btn.disabled = true;
+      btn.textContent = "[ TRAITEMENT... ]";
+      statusText.textContent = "";
+      
+      const formData = new FormData(form);
+      
+      try {
+          await fetch(form.action, {
+              method: 'POST',
+              body: formData,
+              mode: 'no-cors' 
+          });
+          
+          statusText.style.color = "var(--white)";
+          statusText.textContent = "> Inscription validée. Vérifiez votre boîte de réception.";
+          form.reset();
+      } catch (err) {
+          statusText.style.color = "var(--orange)";
+          statusText.textContent = "> Problème de connexion au serveur. Veuillez réessayer.";
+      } finally {
+          btn.disabled = false;
+          btn.textContent = "S'abonner";
+      }
+    });
+  }
 });
