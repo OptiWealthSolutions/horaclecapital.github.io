@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAPITALIS APP - HORACLE CAPITAL</title>
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="2de0cd59-a747-4d4a-898e-5b2ff8cee015"></script>
+    
+    <meta property="og:title" content="CAPITALIS APP - L'investissement pour tous" />
+    <meta property="og:description" content="Découvrez Capitalis : une application conçue pour vous accompagner à chaque étape de votre investissement. Screening, Scoring, Allocation, Reporting." />
+    <meta name="description" content="Découvrez Capitalis : une application conçue pour vous accompagner à chaque étape de votre investissement. Screening, Scoring, Allocation, Reporting." />
+    <meta property="og:image" content="https://horaclecapital.com/assets/img/capitalis_view/screening.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="assets/img/biglogo.png" alt="HORACLE CAPITAL" />
+        </a>
+      </div>
+      <div class="nav-links" id="nav-links">
+        <button class="menu-close" id="menu-close" aria-label="Fermer le menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <a href="index.html">Home</a>
+        <a href="reports.html">Rapports</a>
+        <a href="research.html">Recherches</a>
+        <a href="about.html">À Propos</a>
+        <a href="capitalis_beta.html" class="active">Capitalis</a>
+        <a href="academy.html">Academy</a>
+        <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
+        <form class="nav-search" id="global-search-form" action="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" placeholder="Rechercher..." aria-label="Rechercher sur le site" />
+        </form>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <header class="hero min-h-[40vh] md:min-h-[80vh] border-b border-border">
+      <img src="assets/img/capitalis_view/screening.png" alt="" class="hero-bg opacity-15 grayscale-[50%] object-top" aria-hidden="true" />
+      <div class="hero-inner">
+        <div class="hero-tag">Capitalis Bêta</div>
+        <h1>
+          L'INVESTISSEMENT<br>
+          <span class="o">POUR TOUS</span>
+        </h1>
+        <p class="hero-sub font-sans normal-case tracking-normal text-[1.15rem] max-w-[650px] text-off mb-10 leading-relaxed">
+          La nouvelle application conçue pour vous accompagner à chaque étape : du screening au reporting. Prenez le contrôle de votre patrimoine avec méthode et clarté.
+        </p>
+        <div class="hero-actions">
+          <a href="#beta-section" class="btn-primary">
+            Rejoindre la Bêta
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#workflow" class="btn-ghost">
+            Le Workflow
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-num text-[8rem] right-5 bottom-5" aria-hidden="true">v0.1</div>
+    </header>
+
+    <main class="container pt-[80px] pb-[120px]">
+
+        <div id="workflow" class="section-rule scroll-mt-[100px]">
+            <span class="section-label">Le Workflow Capitalis</span>
+            <div class="rule-line"></div>
+        </div>
+
+        <div class="feature-showcase mb-[120px]">
+            <!-- Etape 1 : Screening -->
+            <div class="feature-item">
+                <div class="feature-text">
+                    <h3 class="text-orange text-base tracking-widest mb-2 font-mono uppercase">1. SCREENING</h3>
+                    <h3 class="text-3xl font-bold font-sans text-white mb-5 uppercase tracking-tight">Identifiez les opportunités</h3>
+                    <p>Filtrez des milliers d'actifs en quelques clics grâce à nos critères avancés. Que vous cherchiez des actions sous-évaluées ou des valeurs de croissance à fort potentiel, notre outil de screening fait ressortir le signal du bruit et vous fait gagner un temps précieux.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="assets/img/capitalis_view/screener.png" alt="Screening Capitalis">
+                </div>
+            </div>
+            <!-- Etape 2 : Scoring -->
+            <div class="feature-item reverse">
+                <div class="feature-text">
+                    <h3 class="text-orange text-base tracking-widest mb-2 font-mono uppercase">2. SCORING</h3>
+                    <h3 class="text-3xl font-bold font-sans text-white mb-5 uppercase tracking-tight">Évaluez avec précision</h3>
+                    <p>Ne laissez plus de place au doute. Notre système de scoring exclusif note chaque actif sélectionné selon une grille rigoureuse (fondamentaux, momentum, volatilité). Obtenez une vue d'ensemble claire pour chaque investissement potentiel.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="assets/img/capitalis_view/scorer.png" alt="Scoring Capitalis">
+                </div>
+            </div>
+            <!-- Etape 3 : Allocation -->
+            <div class="feature-item">
+                <div class="feature-text">
+                    <h3 class="text-orange text-base tracking-widest mb-2 font-mono uppercase">3. ALLOCATION</h3>
+                    <h3 class="text-3xl font-bold font-sans text-white mb-5 uppercase tracking-tight">Construisez votre portefeuille</h3>
+                    <p>Passez de l'idée à l'action. Le module d'allocation vous assiste pour répartir intelligemment votre capital, diversifier vos risques de manière optimale et concevoir un portefeuille robuste et équilibré, prêt à affronter les marchés.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="assets/img/capitalis_view/allocation.png" alt="Allocation Capitalis">
+                </div>
+            </div>
+            <!-- Etape 4 : Reporting -->
+            <div class="feature-item reverse">
+                <div class="feature-text">
+                    <h3 class="text-orange text-base tracking-widest mb-2 font-mono uppercase">4. REPORTING</h3>
+                    <h3 class="text-3xl font-bold font-sans text-white mb-5 uppercase tracking-tight">Suivez vos performances</h3>
+                    <p>Gardez le cap sur vos objectifs. Un tableau de bord interactif centralise toutes vos données, analyse l'évolution de vos rendements et mesure vos performances en temps réel de façon claire, transparente et professionnelle.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="assets/img/capitalis_view/reporting.png" alt="Reporting Capitalis">
+                </div>
+            </div>
+        </div>
+
+        <!-- Inscription Bêta -->
+        <div id="beta-section" class="max-w-[600px] mx-auto scroll-mt-[100px]">
+            <div class="about-body text-center">
+                <h2 class="section-title text-[2.2rem] mb-5">Accès Anticipé</h2>
+                <p class="text-off mb-8">Capitalis est actuellement en développement. Inscrivez-vous sur liste d'attente pour participer à la bêta privée et transformer votre façon d'investir.</p>
+                
+                <form id="beta-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="c455f599-cf43-4be4-9835-019ffa3330db">
+                    
+                    <div class="flex flex-col gap-4">
+                        <input type="text" name="Nom" placeholder="Nom Complet" required class="p-4 bg-bg-2 border border-border text-white font-sans outline-none transition-colors duration-200 focus:border-orange">
+                        <input type="email" name="Email" placeholder="Adresse E-mail" required class="p-4 bg-bg-2 border border-border text-white font-sans outline-none transition-colors duration-200 focus:border-orange">
+                        <textarea name="Profil_Investisseur" rows="3" placeholder="Quel est votre profil d'investisseur ?" required class="p-4 bg-bg-2 border border-border text-white font-sans resize-y outline-none transition-colors duration-200 focus:border-orange"></textarea>
+                        <button type="submit" class="btn-primary border-none cursor-pointer justify-center w-full">Rejoindre la liste d'attente</button>
+                    </div>
+                </form>
+                <p id="form-status" class="mt-5 font-mono text-center min-h-[1.2em]"></p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Section Newsletter -->
+    <section class="newsletter-section py-20 px-5 border-t border-border bg-bg-2">
+      <div class="container max-w-[600px] text-center px-0">
+        <h2 class="section-title text-2xl mb-4">NEWSLETTER</h2>
+        <p class="text-off mb-8 text-[0.95rem]">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
+        
+        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
+            <div class="flex w-full flex-row">
+                <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail professionnelle" required 
+                       class="flex-1 p-4 bg-bg border border-border border-r-0 text-white font-sans outline-none transition-colors duration-200 rounded-none focus:border-orange">
+                
+                <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap">
+                    S'abonner
+                </button>
+            </div>
+            <p id="subscription-status" class="mt-4 font-mono text-xs uppercase tracking-widest min-h-[1.2em]"></p>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-top">
+        <p>&copy; 2026 HORACLE CAPITAL</p>
+        <div class="footer-links">
+          <a href="about.html">À Propos</a>
+          <a href="mentions_legales.html">Mentions Légales</a>
+          <a href="reports.html">Rapports</a>
+          <a href="https://www.instagram.com/horacle_capital" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank">LinkedIn</a>
+          <a href="https://youtube.com/@lbrd_leo" target="_blank">YouTube</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-disclaimer">Avertissement sur les risques : Le trading et l'investissement sur les marchés financiers (actions, devises, cryptomonnaies, matières premières) comportent un niveau de risque élevé et peuvent ne pas convenir à tous les investisseurs. Les performances passées ne préjugent pas des performances futures. Le contenu de ce site est fourni à titre exclusivement informatif et pédagogique et ne constitue en aucun cas un conseil en investissement. Horacle Capital ne saurait être tenu responsable de toute perte ou dommage découlant de la confiance accordée aux informations contenues sur ce site.</p>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+      var form = document.getElementById("beta-form");
+      
+      async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("form-status");
+        var button = form.querySelector("button");
+        var data = new FormData(event.target);
+    
+        button.disabled = true;
+        button.textContent = "Envoi en cours...";
+        status.innerHTML = "";
+    
+        fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          button.disabled = false;
+          button.textContent = "Rejoindre la liste d'attente";
+          if (response.ok) {
+            status.style.color = "var(--white)";
+            status.innerHTML = "Merci ! Votre candidature a bien été envoyée.";
+            form.reset();
+          } else {
+            response.json().then(data => {
+              status.style.color = "var(--orange)";
+              if (Object.hasOwn(data, 'message')) {
+                status.innerHTML = data.message;
+              } else if (Object.hasOwn(data, 'errors')) {
+                status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+              } else {
+                status.innerHTML = "Oops! Erreur de configuration. Le formulaire n'a pas pu être envoyé.";
+              }
+            })
+          }
+        }).catch(error => {
+          button.disabled = false;
+          button.textContent = "Rejoindre la liste d'attente";
+          status.style.color = "var(--orange)";
+          status.innerHTML = "Oops! Problème de connexion. Veuillez réessayer.";
+        });
+      }
+      form.addEventListener("submit", handleSubmit)
+    </script>
+  </body>
+</html>

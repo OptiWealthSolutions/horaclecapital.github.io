@@ -12,6 +12,7 @@
     
     <meta property="og:title" content="HORACLE CAPITAL - Journal" />
     <meta property="og:description" content="L'analyse macroéconomique sans compromis. Discipline, Transparence, Performance." />
+    <meta name="description" content="L'analyse macroéconomique sans compromis. Discipline, Transparence, Performance." />
     <meta property="og:image" content="https://horaclecapital.com/assets/img/banner.jpg" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -30,7 +31,7 @@
         <button class="menu-close" id="menu-close" aria-label="Fermer le menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="reports.html">Rapports</a>
         <a href="research.html">Recherches</a>
         <a href="about.html">À Propos</a>
@@ -149,7 +150,7 @@
           
           <div class="grid lg:grid-cols-2 gap-6">
             <!-- Capitalis Card -->
-            <div class="group relative overflow-hidden bg-bg-2 border border-border hover:border-orange transition-all duration-300 flex flex-col p-10">
+            <a href="pages/capitalis.html" class="group relative overflow-hidden bg-bg-2 border border-border hover:border-orange transition-all duration-300 flex flex-col p-10">
               <div class="absolute -top-32 -right-32 w-64 h-64 bg-orange opacity-5 rounded-full blur-3xl group-hover:opacity-10 transition-opacity duration-500"></div>
               
               <div class="flex justify-between items-start mb-16 relative z-10">
@@ -164,10 +165,10 @@
                 L'application d'investissement pour tous. Un workflow complet et intuitif pour vous accompagner : Screening, Scoring, Allocation et Reporting.
               </p>
               
-              <a href="capitalis_beta.html" class="relative z-10 inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-orange group-hover:text-white transition-colors mt-auto pt-6 border-t border-border">
+              <div class="relative z-10 inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-orange group-hover:text-white transition-colors mt-auto pt-6 border-t border-border">
                 Découvrir l'application <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
-            </div>
+              </div>
+            </a>
 
             <!-- Academy Card -->
             <div class="group relative overflow-hidden bg-bg-2 border border-border hover:border-orange transition-all duration-300 flex flex-col p-10">
@@ -295,7 +296,7 @@
             </a>
 
             <!-- Research Card (Quant) -->
-            <a href="research_ressources/notebooks/HMM_engine.ipynb" target="_blank" class="group flex flex-col bg-bg-2 border border-border hover:border-orange transition-all duration-300">
+            <a href="assets/notebooks/HMM_engine.ipynb" target="_blank" class="group flex flex-col bg-bg-2 border border-border hover:border-orange transition-all duration-300">
               <div class="h-56 overflow-hidden relative border-b border-border">
                 <img src="assets/img/report_banner.jpg" alt="Research" class="w-full h-full object-cover opacity-30 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700 grayscale">
                 <div class="absolute top-4 left-4 flex gap-2">

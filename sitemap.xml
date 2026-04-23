@@ -18,7 +18,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://horaclecapital.com/capitalis_beta.html</loc>
+    <loc>https://horaclecapital.com/pages/capitalis.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -26,6 +26,11 @@
     <loc>https://horaclecapital.com/academy.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://horaclecapital.com/pages/fondamentaux-macro.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://horaclecapital.com/about.html</loc>
@@ -65,14 +70,14 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://horaclecapital.com/reports/reports_17_01_26.html</loc>
+    <loc>https://horaclecapital.com/reports/rapport_17_01_26.html</loc>
     <changefreq>never</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Recherche Quantitative -->
   <url>
-    <loc>https://horaclecapital.com/research_pages/scoring.html</loc>
+    <loc>https://horaclecapital.com/pages/scoring-report.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>

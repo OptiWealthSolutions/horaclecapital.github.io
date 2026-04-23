@@ -759,52 +759,6 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--ora
   z-index: 100; transition: width 0.15s ease;
 }
 
-/* Table of Contents */
-.toc-container {
-  position: fixed; top: 128px; right: 32px;
-  width: 224px; display: flex; flex-direction: column; gap: 8px;
-  z-index: 40; max-height: 70vh; overflow-y: auto;
-}
-@media (max-width: 1024px) { .toc-container { display: none; } }
-.toc-title {
-  font-family: var(--ff-mono); font-size: 0.6rem; color: var(--dim);
-  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;
-  border-bottom: 1px solid var(--border); padding-bottom: 8px;
-}
-.toc-list { display: flex; flex-direction: column; gap: 12px; border-left: 1px solid var(--border); padding-left: 16px; list-style: none; }
-.toc-link { font-family: var(--ff-body); font-size: 0.8rem; color: var(--off); transition: color 0.2s; display: block; line-height: 1.2; }
-.toc-link:hover { color: var(--orange); }
-.toc-link.active { color: var(--orange); font-weight: 700; }
-.toc-link.sub { margin-left: 16px; font-size: 0.75rem; color: var(--dim); }
-
-/* Floating Share Bar */
-.floating-share {
-  position: fixed; left: 24px; top: 50%; transform: translateY(-50%);
-  display: flex; flex-direction: column; gap: 12px; z-index: 40;
-}
-@media (max-width: 1024px) {
-  .floating-share { left: 0; transform: translateY(-50%) scale(0.8); transform-origin: left center; }
-}
-.share-label {
-  font-family: var(--ff-mono); font-size: 0.55rem; color: var(--dim);
-  text-transform: uppercase; letter-spacing: 0.1em;
-  writing-mode: vertical-rl; transform: rotate(180deg); margin-bottom: 8px;
-}
-.share-btn {
-  width: 40px; height: 40px; background: var(--bg-2); border: 1px solid var(--border);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  color: var(--off); transition: all 0.2s; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5);
-  position: relative; cursor: pointer; text-decoration: none;
-}
-.share-btn:hover { color: var(--orange); border-color: var(--orange); }
-.share-tooltip {
-  position: absolute; left: 56px; background: var(--bg-2); border: 1px solid var(--border);
-  font-size: 0.65rem; color: var(--white); font-family: var(--ff-mono);
-  padding: 4px 8px; border-radius: 4px; opacity: 0; pointer-events: none;
-  transition: opacity 0.2s; white-space: nowrap;
-}
-.share-tooltip.visible { opacity: 1; }
-
 /* Cookie Banner */
 .cookie-banner {
   position: fixed; bottom: 0; left: 0; right: 0;
