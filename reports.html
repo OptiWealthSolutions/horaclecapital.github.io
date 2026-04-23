@@ -12,9 +12,11 @@
     
     <meta property="og:title" content="Archives - HORACLE CAPITAL" />
     <meta property="og:description" content="Retrouvez une vision macroéconomique simple et efficace. Archives de tous nos rapports." />
-    <meta property="og:image" content="https://horaclecapital.com/assets/img/banner_2.png" />
+    <meta property="og:image" content="https://horaclecapital.com/assets/img/banner.jpg" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
   </head>
   <body>
     <nav>
@@ -33,6 +35,7 @@
         <a href="research.html">Recherches</a>
         <a href="about.html">À Propos</a>
         <a href="capitalis_beta.html">Capitalis</a>
+        <a href="academy.html">Academy</a>
         <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
         <form class="nav-search" id="global-search-form" action="#">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -46,13 +49,13 @@
     <div class="nav-overlay" id="nav-overlay"></div>
 
     <header class="page-header">
-      <img src="assets/img/banner_2.png" alt="" class="header-bg" aria-hidden="true" />
+      <img src="assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
       <span>Archives</span>
       <h1>Rapports Macro</h1>
       <p>Retrouvez une vision macroéconomique simple et efficace</p>
     </header>
 
-    <main class="container" style="padding-top: 40px;">
+    <main class="container pt-10">
 
       <div class="month-group">
         <h3 class="month-separator">Année 2026</h3>
@@ -154,21 +157,21 @@
     </main>
 
     <!-- Section Newsletter -->
-    <section class="newsletter-section" style="padding: 80px 20px; border-top: 1px solid var(--border); background: var(--bg-2);">
-      <div class="container" style="max-width: 600px; text-align: center; padding: 0;">
-        <h2 class="section-title" style="font-size: 2rem; margin-bottom: 16px;">NEWSLETTER</h2>
-        <p style="color: var(--off); margin-bottom: 32px; font-size: 0.95rem;">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
+    <section class="newsletter-section py-20 px-5 border-t border-border bg-bg-2">
+      <div class="container max-w-[600px] text-center px-0">
+        <h2 class="section-title text-2xl mb-4">NEWSLETTER</h2>
+        <p class="text-off mb-8 text-[0.95rem]">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
         
-        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" style="display: flex; flex-direction: column; width: 100%;">
-            <div style="display: flex; width: 100%; flex-direction: row;">
+        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
+            <div class="flex w-full flex-row">
                 <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail professionnelle" required 
-                       style="flex: 1; padding: 16px; background: var(--bg); border: 1px solid var(--border); border-right: none; color: var(--white); font-family: var(--ff-body); outline: none; transition: border-color 0.2s; border-radius: 0;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+                       class="flex-1 p-4 bg-bg border border-border border-r-0 text-white font-sans outline-none transition-colors duration-200 rounded-none focus:border-orange">
                 
-                <button type="submit" id="submit-btn" class="btn-primary" style="border: none; cursor: pointer; justify-content: center; white-space: nowrap;">
+                <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap">
                     S'abonner
                 </button>
             </div>
-            <p id="subscription-status" style="margin-top: 16px; font-family: var(--ff-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; min-height: 1.2em;"></p>
+            <p id="subscription-status" class="mt-4 font-mono text-xs uppercase tracking-widest min-h-[1.2em]"></p>
         </form>
       </div>
     </section>

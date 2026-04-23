@@ -9,7 +9,7 @@
   --dim:      #555555;
   --border:   #222222;
   --border-2: #333333;
-  --orange:   #FF4500;
+  --orange:   #ff9100;
   --orange-d: rgba(255,69,0,0.10);
   --ff-mono:  'Space Mono', monospace;
   --ff-body:  'Space Grotesk', sans-serif;
@@ -680,7 +680,8 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--ora
   .nav-search { width: 100%; height: auto; padding: 20px 40px; border-left: none; border-bottom: 1px solid var(--border); }
   .nav-search input { width: 100%; }
   .nav-search input:focus { width: 100%; }
-  .hero { padding: 60px 20px; }
+  .hero { padding: 80px 20px 40px 20px; min-height: 40vh; }
+  .page-header { padding: 90px 20px 40px 20px; }
   .hero-num { display: none; }
   .hero-inner.hero-split {
     flex-direction: column;

@@ -12,9 +12,11 @@
       
       <meta property="og:title" content="Volatilité, Davos et Alerte sur les Yields Japonais | Horacle Capital" />
       <meta property="og:description" content="Cette semaine a été émaillée de données économiques et d'annonces en tout genre, ne laissant que peu de repos à la majorité des investisseurs." />
-      <meta property="og:image" content="https://horaclecapital.com/assets/img/report_banner.png" />
+      <meta property="og:image" content="https://horaclecapital.com/assets/img/banner.jpg" />
       <meta property="og:type" content="article" />
       <meta name="twitter:card" content="summary_large_image" />
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script src="../tailwind-config.js"></script>
   </head>
   <body>
     <nav>
@@ -30,12 +32,13 @@
         <a href="../research.html">Recherches</a>
         <a href="../about.html">À Propos</a>
         <a href="../terminal.html">Terminal</a>
+        <a href="../academy.html">Academy</a>
         <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
       </div>
     </nav>
 
     <header class="page-header">
-      <img src="../assets/img/report_banner.png" alt="" class="header-bg" aria-hidden="true" />
+      <img src="../assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
       <span>Analyse Fondamentale Hebdomadaire</span>
       <h1>Volatilité, Davos et Alerte sur les Yields Japonais</h1>
       <p>Semaine du 19/01 au 25/01 (2026) • Par Léo Lombardini</p>
@@ -53,7 +56,7 @@
           dollar et de données macroéconomiques rassurantes pour la majorité des
           zones monétaires.
         </p>
-        <p style="margin-top: 10px">
+        <p class="mt-2.5">
           L'indice de volatilité VIX, véritable "baromètre de la peur", a
           atteint les 20 points mardi pour la première fois depuis novembre. Par
           ailleurs, les tensions relatives au Groenland semblent s'être
@@ -114,13 +117,7 @@
 
       <h3>3. Analyse par Zones Monétaires : Déflation, Croissance et BCE</h3>
 
-      <div
-        style="
-          margin-left: 20px;
-          border-left: 2px solid var(--accent-color);
-          padding-left: 15px;
-        "
-      >
+      <div class="ml-5 border-l-2 border-orange pl-4 mb-5">
         <p>
           <strong>Canada (CAD) :</strong> Le pays fait face à une forme de
           déflation avec des données CPI négatives. Le ralentissement des prix
@@ -179,46 +176,35 @@
       </p>
 
       <table
-        class="report-table"
-        style="
-          width: 100%;
-          border-collapse: collapse;
-          margin: 20px 0;
-          background: #111;
-        "
+        class="report-table w-full border-collapse my-5 bg-[#111] text-sm"
       >
         <thead>
-          <tr
-            style="
-              border-bottom: 2px solid var(--accent-color);
-              text-align: left;
-            "
-          >
-            <th style="padding: 12px">Actif</th>
-            <th style="padding: 12px">Niveau Atteint</th>
-            <th style="padding: 12px">Observation</th>
+          <tr class="border-b-2 border-orange text-left">
+            <th class="p-3 font-mono uppercase text-orange">Actif</th>
+            <th class="p-3 font-mono uppercase text-orange">Niveau Atteint</th>
+            <th class="p-3 font-mono uppercase text-orange">Observation</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding: 12px">Or (Gold)</td>
-            <td style="padding: 12px; color: var(--accent-color)">4 990 $</td>
-            <td style="padding: 12px">
+            <td class="p-3 border-b border-border-2">Or (Gold)</td>
+            <td class="p-3 border-b border-border-2 text-orange">4 990 $</td>
+            <td class="p-3 border-b border-border-2">
               Record historique absolu, valeur refuge ultime face au désordre.
             </td>
           </tr>
           <tr>
-            <td style="padding: 12px">Argent (Silver)</td>
-            <td style="padding: 12px; color: var(--accent-color)">103 $</td>
-            <td style="padding: 12px">
+            <td class="p-3 border-b border-border-2">Argent (Silver)</td>
+            <td class="p-3 border-b border-border-2 text-orange">103 $</td>
+            <td class="p-3 border-b border-border-2">
               Explosion du cours, au-delà de tous les plafonds techniques
               connus.
             </td>
           </tr>
           <tr>
-            <td style="padding: 12px">Pétrole (WTI)</td>
-            <td style="padding: 12px">~60 $</td>
-            <td style="padding: 12px">
+            <td class="p-3">Pétrole (WTI)</td>
+            <td class="p-3">~60 $</td>
+            <td class="p-3">
               Maintien d'un range stable malgré les fortes tensions au
               Venezuela.
             </td>
@@ -241,22 +227,11 @@
         financière dans d'autres zones, notamment en Asie.
       </p>
 
-      <div
-        class="strategy-box"
-        style="
-          background: #0a0a0a;
-          border: 1px solid var(--accent-color);
-          padding: 25px;
-          margin: 40px 0;
-          border-radius: 8px;
-        "
-      >
-        <h4
-          style="margin-top: 0; color: var(--accent-color); letter-spacing: 1px"
-        >
+      <div class="strategy-box bg-[#0a0a0a] border border-orange p-6 my-10 rounded-lg">
+        <h4 class="mt-0 text-orange tracking-[1px]">
           🎯 IDÉES DE TRADES & OPPORTUNITÉS
         </h4>
-        <div style="color: #e0e0e0; line-height: 1.6">
+        <div class="text-[#e0e0e0] leading-relaxed">
           <p>
             <strong>EUR/USD :</strong> La paire a fini la semaine autour des
             1.18 (dépassant notre target de 1.17). Cependant, une prudence
@@ -266,10 +241,10 @@
             être tenues éternellement.
           </p>
 
-          <p style="margin-top: 15px">
+          <p class="mt-4">
             <strong>Rapport COT (Sentiment des Spéculateurs) :</strong>
           </p>
-          <ul style="padding-left: 20px">
+          <ul class="pl-5">
             <li>
               <strong>Euro :</strong> Les "Large Specs" restent longs mais on
               observe une réduction des achats au profit des shorts. La
@@ -289,7 +264,7 @@
         </div>
       </div>
 
-      <hr style="border: 0; border-top: 1px solid #333; margin: 40px 0" />
+      <hr class="border-0 border-t border-[#333] my-10" />
 
       <details class="sources-box">
         <summary>Sources & Données</summary>
@@ -317,21 +292,21 @@
       </div>
     </main>
     <!-- Section Newsletter -->
-    <section class="newsletter-section" style="padding: 80px 20px; border-top: 1px solid var(--border); background: var(--bg-2);">
-      <div class="container" style="max-width: 600px; text-align: center; padding: 0;">
-        <h2 class="section-title" style="font-size: 2rem; margin-bottom: 16px;">NEWSLETTER</h2>
-        <p style="color: var(--off); margin-bottom: 32px; font-size: 0.95rem;">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
+    <section class="newsletter-section py-20 px-5 border-t border-border bg-bg-2">
+      <div class="container max-w-[600px] text-center px-0">
+        <h2 class="section-title text-2xl mb-4">NEWSLETTER</h2>
+        <p class="text-off mb-8 text-[0.95rem]">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
         
-        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" style="display: flex; flex-direction: column; width: 100%;">
-            <div style="display: flex; width: 100%; flex-direction: row;">
+        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
+            <div class="flex w-full flex-row">
                 <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail professionnelle" required 
-                       style="flex: 1; padding: 16px; background: var(--bg); border: 1px solid var(--border); border-right: none; color: var(--white); font-family: var(--ff-body); outline: none; transition: border-color 0.2s; border-radius: 0;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+                       class="flex-1 p-4 bg-bg border border-border border-r-0 text-white font-sans outline-none transition-colors duration-200 rounded-none focus:border-orange">
                 
-                <button type="submit" id="submit-btn" class="btn-primary" style="border: none; cursor: pointer; justify-content: center; white-space: nowrap;">
+                <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap">
                     S'abonner
                 </button>
             </div>
-            <p id="subscription-status" style="margin-top: 16px; font-family: var(--ff-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; min-height: 1.2em;"></p>
+            <p id="subscription-status" class="mt-4 font-mono text-xs uppercase tracking-widest min-h-[1.2em]"></p>
         </form>
       </div>
     </section>

@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2de0cd59-a747-4d4a-898e-5b2ff8cee015"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
   </head>
   <body>
     <nav>
@@ -26,6 +28,7 @@
         <a href="research.html">Recherches</a>
         <a href="about.html">À Propos</a>
         <a href="capitalis_beta.html">Capitalis</a>
+        <a href="academy.html">Academy</a>
         <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
         <form class="nav-search" id="global-search-form" action="#">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -38,20 +41,20 @@
     </nav>
     <div class="nav-overlay" id="nav-overlay"></div>
 
-    <header class="hero" style="min-height: 80vh; border-bottom: none; justify-content: center;">
+    <header class="hero min-h-[40vh] md:min-h-[80vh] border-b-0 justify-center">
       <!-- Background Image (Optionnel, on met une très faible opacité) -->
-      <img src="assets/img/banner.png" alt="" class="hero-bg" aria-hidden="true" style="opacity: 0.05;" />
+      <img src="assets/img/banner.jpg" alt="" class="hero-bg opacity-5" aria-hidden="true" />
       
       <div class="hero-inner">
         <div class="hero-tag">Erreur 404</div>
-        <h1 style="font-size: clamp(3rem, 8vw, 6rem);">
+        <h1 class="text-[clamp(3rem,8vw,6rem)]">
           PAGE<br>
           <span class="o">INTROUVABLE</span>
         </h1>
-        <p class="hero-sub" style="font-family: var(--ff-body); text-transform: none; letter-spacing: normal; font-size: 1.15rem; max-width: 650px; color: var(--off); margin-bottom: 40px; line-height: 1.6;">
+        <p class="hero-sub font-sans normal-case tracking-normal text-[1.15rem] max-w-[650px] text-off mb-10 leading-relaxed">
           La page que vous recherchez semble avoir disparu dans les limbes des marchés financiers. Elle a peut-être été renommée ou n'a jamais existé.
         </p>
-        <div class="hero-actions" style="justify-content: center;">
+        <div class="hero-actions justify-center">
           <a href="index.html" class="btn-primary">
             Retourner à l'accueil
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -60,25 +63,25 @@
       </div>
       
       <!-- Numéro de fond géant 404 -->
-      <div class="hero-num" aria-hidden="true" style="font-size: clamp(8rem, 20vw, 15rem); right: 20px; bottom: 0px; opacity: 0.03;">404</div>
+      <div class="hero-num text-[clamp(8rem,20vw,15rem)] right-5 bottom-0 opacity-[0.03]" aria-hidden="true">404</div>
     </header>
 
     <!-- Section Newsletter -->
-    <section class="newsletter-section" style="padding: 80px 20px; border-top: 1px solid var(--border); background: var(--bg-2);">
-      <div class="container" style="max-width: 600px; text-align: center; padding: 0;">
-        <h2 class="section-title" style="font-size: 2rem; margin-bottom: 16px;">NEWSLETTER</h2>
-        <p style="color: var(--off); margin-bottom: 32px; font-size: 0.95rem;">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
+    <section class="newsletter-section py-20 px-5 border-t border-border bg-bg-2">
+      <div class="container max-w-[600px] text-center px-0">
+        <h2 class="section-title text-2xl mb-4">NEWSLETTER</h2>
+        <p class="text-off mb-8 text-[0.95rem]">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
         
-        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" style="display: flex; flex-direction: column; width: 100%;">
-            <div style="display: flex; width: 100%; flex-direction: row;">
+        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
+            <div class="flex w-full flex-row">
                 <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail professionnelle" required 
-                       style="flex: 1; padding: 16px; background: var(--bg); border: 1px solid var(--border); border-right: none; color: var(--white); font-family: var(--ff-body); outline: none; transition: border-color 0.2s; border-radius: 0;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+                       class="flex-1 p-4 bg-bg border border-border border-r-0 text-white font-sans outline-none transition-colors duration-200 rounded-none focus:border-orange">
                 
-                <button type="submit" id="submit-btn" class="btn-primary" style="border: none; cursor: pointer; justify-content: center; white-space: nowrap;">
+                <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap">
                     S'abonner
                 </button>
             </div>
-            <p id="subscription-status" style="margin-top: 16px; font-family: var(--ff-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; min-height: 1.2em;"></p>
+            <p id="subscription-status" class="mt-4 font-mono text-xs uppercase tracking-widest min-h-[1.2em]"></p>
         </form>
       </div>
     </section>

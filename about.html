@@ -12,9 +12,11 @@
     
     <meta property="og:title" content="À Propos - HORACLE CAPITAL" />
     <meta property="og:description" content="La genèse d'Horacle Capital, la philosophie de recherche et les informations de contact." />
-    <meta property="og:image" content="https://horaclecapital.com/assets/img/banner_2.png" />
+    <meta property="og:image" content="https://horaclecapital.com/assets/img/banner.jpg" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
   </head>
   <body>
     <nav>
@@ -32,6 +34,7 @@
         <a href="research.html">Recherches</a>
         <a href="about.html" class="active">À Propos</a>
         <a href="capitalis_beta.html">Capitalis</a>
+        <a href="academy.html">Academy</a>
         <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
         <form class="nav-search" id="global-search-form" action="#">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -45,61 +48,61 @@
     <div class="nav-overlay" id="nav-overlay"></div>
 
     <header class="page-header">
-      <img src="assets/img/banner_2.png" alt="" class="header-bg" aria-hidden="true" />
+      <img src="assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
       <span>SYS.INFO // HORACLE</span>
       <h1>À Propos & Contact</h1>
       <p>La genèse du projet, notre méthodologie et les canaux de communication directs.</p>
     </header>
 
-    <main class="container" style="padding-top: 80px; padding-bottom: 120px;">
-        <div class="about-grid" style="align-items: flex-start; gap: 80px;">
+    <main class="container pt-[80px] pb-[120px]">
+        <div class="about-grid items-start gap-20">
             <div class="about-body">
-                <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 20px;">Léo Lombardini</h2>
-                <p style="color: var(--off); line-height: 1.6;">
+                <h2 class="section-title text-[2.2rem] mb-5">Léo Lombardini</h2>
+                <p class="text-off leading-relaxed">
                     Les marchés financiers captivent mon attention depuis l'âge de mes 16 ans. Ce qui a débuté comme une fascination s'est structuré à travers un parcours académique exigeant : après une classe préparatoire en économie et gestion, j'ai intégré l'EDHEC Business School. En fondant Horacle Capital, j'ai voulu appliquer cette rigueur intellectuelle à l'analyse de marché. Ma conviction est claire : dans un environnement saturé de bruit, l'avantage concurrentiel s'obtient en fusionnant la vision macroéconomique discrétionnaire avec la précision mathématique.
                 </p>
                 
-                <h3 style="font-family: var(--ff-mono); color: var(--white); margin-top: 40px; margin-bottom: 16px; font-size: 1.3rem; text-transform: uppercase;">L'ADN Horacle</h3>
-                <p style="color: var(--off); line-height: 1.6;">
+                <h3 class="font-mono text-white mt-10 mb-4 text-[1.3rem] uppercase">L'ADN Horacle</h3>
+                <p class="text-off leading-relaxed">
                     Horacle Capital est né de la volonté d'appliquer une méthode institutionnelle à la recherche indépendante. Nous ne cherchons pas à prédire l'avenir, nous modélisons des probabilités asymétriques. L'analyse fondamentale (politiques monétaires, géopolitique) fixe le cap directionnel, tandis que la data science et nos modèles quantitatifs gèrent le timing et l'exposition au risque. Pas de futilité, uniquement du signal.
                 </p>
             </div>
 
             <div class="about-body">
-                <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 20px;">Contact</h2>
-                <p style="color: var(--off); margin-bottom: 30px;">Pour toute question relative à nos recherches, propositions de collaboration ou accès à nos modèles, utilisez ce canal sécurisé.</p>
+                <h2 class="section-title text-[2.2rem] mb-5">Contact</h2>
+                <p class="text-off mb-8">Pour toute question relative à nos recherches, propositions de collaboration ou accès à nos modèles, utilisez ce canal sécurisé.</p>
                 
                 <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
                     <input type="hidden" name="access_key" value="REMPLACER_PAR_VOTRE_CLE_CONTACT">
                     
-                    <div style="display: flex; flex-direction: column; gap: 16px;">
-                        <input type="text" name="Nom" placeholder="ID / Nom Complet" required style="padding: 16px; background: var(--bg-2); border: 1px solid var(--border); color: var(--white); font-family: var(--ff-mono); outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
-                        <input type="email" name="Email" placeholder="Adresse E-mail" required style="padding: 16px; background: var(--bg-2); border: 1px solid var(--border); color: var(--white); font-family: var(--ff-mono); outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
-                        <textarea name="Message" rows="5" placeholder="Saisissez votre message..." required style="padding: 16px; background: var(--bg-2); border: 1px solid var(--border); color: var(--white); font-family: var(--ff-body); resize: vertical; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"></textarea>
-                        <button type="submit" class="btn-primary" style="border: none; cursor: pointer; justify-content: center; width: 100%; font-family: var(--ff-mono); text-transform: uppercase; letter-spacing: 1px;">[ Transmettre ]</button>
+                    <div class="flex flex-col gap-4">
+                        <input type="text" name="Nom" placeholder="ID / Nom Complet" required class="p-4 bg-bg-2 border border-border text-white font-mono outline-none transition-colors duration-200 focus:border-orange">
+                        <input type="email" name="Email" placeholder="Adresse E-mail" required class="p-4 bg-bg-2 border border-border text-white font-mono outline-none transition-colors duration-200 focus:border-orange">
+                        <textarea name="Message" rows="5" placeholder="Saisissez votre message..." required class="p-4 bg-bg-2 border border-border text-white font-sans resize-y outline-none transition-colors duration-200 focus:border-orange"></textarea>
+                        <button type="submit" class="btn-primary border-none cursor-pointer justify-center w-full font-mono uppercase tracking-[1px]">[ Transmettre ]</button>
                     </div>
                 </form>
-                <p id="form-status" style="margin-top: 20px; font-family: var(--ff-mono); text-align: center; min-height: 1.2em; font-size: 0.9rem;"></p>
+                <p id="form-status" class="mt-5 font-mono text-center min-h-[1.2em] text-[0.9rem]"></p>
             </div>
         </div>
     </main>
 
     <!-- Section Newsletter -->
-    <section class="newsletter-section" style="padding: 80px 20px; border-top: 1px solid var(--border); background: var(--bg-2);">
-      <div class="container" style="max-width: 600px; text-align: center; padding: 0;">
-        <h2 class="section-title" style="font-size: 2rem; margin-bottom: 16px;">NEWSLETTER</h2>
-        <p style="color: var(--off); margin-bottom: 32px; font-size: 0.95rem;">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
+    <section class="newsletter-section py-20 px-5 border-t border-border bg-bg-2">
+      <div class="container max-w-[600px] text-center px-0">
+        <h2 class="section-title text-2xl mb-4">NEWSLETTER</h2>
+        <p class="text-off mb-8 text-[0.95rem]">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
         
-        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" style="display: flex; flex-direction: column; width: 100%;">
-            <div style="display: flex; width: 100%; flex-direction: row;">
+        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
+            <div class="flex w-full flex-row">
                 <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail professionnelle" required 
-                       style="flex: 1; padding: 16px; background: var(--bg); border: 1px solid var(--border); border-right: none; color: var(--white); font-family: var(--ff-body); outline: none; transition: border-color 0.2s; border-radius: 0;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+                       class="flex-1 p-4 bg-bg border border-border border-r-0 text-white font-sans outline-none transition-colors duration-200 rounded-none focus:border-orange">
                 
-                <button type="submit" id="submit-btn" class="btn-primary" style="border: none; cursor: pointer; justify-content: center; white-space: nowrap;">
+                <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap">
                     S'abonner
                 </button>
             </div>
-            <p id="subscription-status" style="margin-top: 16px; font-family: var(--ff-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; min-height: 1.2em;"></p>
+            <p id="subscription-status" class="mt-4 font-mono text-xs uppercase tracking-widest min-h-[1.2em]"></p>
         </form>
       </div>
     </section>

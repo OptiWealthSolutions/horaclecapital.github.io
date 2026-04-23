@@ -12,9 +12,11 @@
       
       <meta property="og:title" content="Super-Cycle des Banques Centrales et Choc Énergétique | Horacle Capital" />
       <meta property="og:description" content="La troisième semaine de mars 2026 s'est imposée comme un tournant historique dans l'ère économique mondiale post-pandémique." />
-      <meta property="og:image" content="https://horaclecapital.com/assets/img/report_banner.png" />
+      <meta property="og:image" content="https://horaclecapital.com/assets/img/banner.jpg" />
       <meta property="og:type" content="article" />
       <meta name="twitter:card" content="summary_large_image" />
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script src="../tailwind-config.js"></script>
   </head>
   <body>
     <nav>
@@ -30,12 +32,13 @@
         <a href="../research.html">Recherches</a>
         <a href="../about.html">À Propos</a>
         <a href="../terminal.html">Terminal</a>
+        <a href="../academy.html">Academy</a>
         <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
       </div>
     </nav>
 
     <header class="page-header">
-      <img src="../assets/img/report_banner.png" alt="" class="header-bg" aria-hidden="true" />
+      <img src="../assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
       <span>Analyse Fondamentale Hebdomadaire</span>
       <h1>Super-Cycle des Banques Centrales et Choc Énergétique</h1>
       <p>Semaine du 15/03 au 22/03 (2026) • Par Léo Lombardini</p>
@@ -63,14 +66,7 @@
         La santé immobilière aux US demeure assez stable avec des chiffres sur les ventes qui explosent les anticipations du marché : -0,6 % (consensus) -> 1,8 % (chiffres réels).
       </p>
 
-      <div
-        style="
-          margin-left: 20px;
-          border-left: 2px solid var(--accent-color);
-          padding-left: 15px;
-          margin-bottom: 20px;
-        "
-      >
+      <div class="ml-5 border-l-2 border-orange pl-4 mb-5">
         <p><strong>Résumé FOMC 18 Mars :</strong></p>
         <ul>
           <li><strong>Maintien des taux :</strong> La Fed a décidé de maintenir le taux des fonds fédéraux dans la fourchette de 3,50 % à 3,75 %.</li>
@@ -108,14 +104,7 @@
       </p>
       <p>Dans le cadre des marchés énergétiques et des rapports pour la période de mars 2026, voici ce qu'il faut retenir :</p>
       
-      <div
-        style="
-          margin-left: 20px;
-          border-left: 2px solid var(--accent-color);
-          padding-left: 15px;
-          margin-bottom: 20px;
-        "
-      >
+      <div class="ml-5 border-l-2 border-orange pl-4 mb-5">
         <p><strong>Définition du terme CIF dans le trading pétrolier :</strong></p>
         <ul>
           <li><strong>Le vendeur :</strong> Il est responsable de la fourniture du produit, du chargement sur le navire, ainsi que du paiement du transport (fret) et de l'assurance maritime jusqu'au port de destination désigné par l'acheteur.</li>
@@ -179,7 +168,7 @@
         </figcaption>
       </figure>
 
-      <hr style="border: 0; border-top: 1px solid #333; margin: 40px 0" />
+      <hr class="border-0 border-t border-[#333] my-10" />
 
       <div class="disclaimer">
         <strong>AVERTISSEMENT :</strong> Ce rapport est une synthèse
@@ -190,21 +179,21 @@
       </div>
     </main>
     <!-- Section Newsletter -->
-    <section class="newsletter-section" style="padding: 80px 20px; border-top: 1px solid var(--border); background: var(--bg-2);">
-      <div class="container" style="max-width: 600px; text-align: center; padding: 0;">
-        <h2 class="section-title" style="font-size: 2rem; margin-bottom: 16px;">NEWSLETTER</h2>
-        <p style="color: var(--off); margin-bottom: 32px; font-size: 0.95rem;">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
+    <section class="newsletter-section py-20 px-5 border-t border-border bg-bg-2">
+      <div class="container max-w-[600px] text-center px-0">
+        <h2 class="section-title text-2xl mb-4">NEWSLETTER</h2>
+        <p class="text-off mb-8 text-[0.95rem]">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
         
-        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" style="display: flex; flex-direction: column; width: 100%;">
-            <div style="display: flex; width: 100%; flex-direction: row;">
+        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
+            <div class="flex w-full flex-row">
                 <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail professionnelle" required 
-                       style="flex: 1; padding: 16px; background: var(--bg); border: 1px solid var(--border); border-right: none; color: var(--white); font-family: var(--ff-body); outline: none; transition: border-color 0.2s; border-radius: 0;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'">
+                       class="flex-1 p-4 bg-bg border border-border border-r-0 text-white font-sans outline-none transition-colors duration-200 rounded-none focus:border-orange">
                 
-                <button type="submit" id="submit-btn" class="btn-primary" style="border: none; cursor: pointer; justify-content: center; white-space: nowrap;">
+                <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap">
                     S'abonner
                 </button>
             </div>
-            <p id="subscription-status" style="margin-top: 16px; font-family: var(--ff-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; min-height: 1.2em;"></p>
+            <p id="subscription-status" class="mt-4 font-mono text-xs uppercase tracking-widest min-h-[1.2em]"></p>
         </form>
       </div>
     </section>
