@@ -783,3 +783,71 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--ora
   padding: 12px 24px; cursor: pointer; transition: all 0.2s;
 }
 .cookie-btn-accept:hover { background: #ff5a1f; border-color: #ff5a1f; }
+
+/* =========================================================================
+   PRINT STYLES (PDF & IMPRESSION PAPIER)
+   ========================================================================= */
+@media print {
+  /* 1. Reset Global : Fond blanc et texte noir */
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  body::before, .header-bg, .hero-bg, .absolute { 
+    display: none !important; 
+  }
+  
+  /* 2. Masquer la navigation, le footer et les outils interactifs */
+  nav, footer, .newsletter-section, .cookie-banner, .scroll-top-btn, 
+  #reading-progress, .nav-overlay, .hero-actions, .socials, .nav-search,
+  button, #copy-link-btn, #share-li, #share-tw, .mb-8 .flex.items-center.gap-2 {
+    display: none !important;
+  }
+
+  /* 3. Forcer le nettoyage des classes Tailwind (Fonds, Couleurs, Ombres) */
+  * {
+    background-color: transparent !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* 4. Restructurer les encarts (Citations, Synthèses, Stratégies) */
+  .exec-summary, .strategy-box, blockquote, .report-table, .disclaimer, 
+  .m-block, .bg-bg-2, .border-border, .border-orange {
+    border: 1px solid #999999 !important;
+  }
+
+  /* 5. Optimisation de la largeur pour le format A4 */
+  .container, .article-container, .page-header {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .page-header {
+    border-bottom: 2px solid #000000 !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 30px !important;
+  }
+  .article-container { margin-top: 30px !important; }
+
+  /* 6. Gestion propre des sauts de page */
+  h1, h2, h3, h4 {
+    page-break-after: avoid;
+    break-after: avoid;
+    margin-top: 24px !important;
+  }
+  p, figure, img, table, .strategy-box, .exec-summary, blockquote, ul, li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* 7. Optimisation des images (N&B pour économie d'encre) */
+  img {
+    filter: grayscale(100%) !important;
+    max-width: 100% !important;
+  }
+  
+  a { text-decoration: underline !important; }
+}

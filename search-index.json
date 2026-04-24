@@ -1,0 +1,90 @@
+[
+  {
+    "title": "Trêve Annoncée et Résistance de l'Inflation",
+    "desc": "Une trêve a été annoncée ce mercredi 8 avril entre les États-Unis et l’Iran, permettant aux différents marchés de respirer en fin de semaine. La dynamique de l'inflation et la réaction des banques centrales restent au cœur des préoccupations.",
+    "shortDesc": "Prévision de la semaine à venir, et debrief de la semaine passée",
+    "url": "reports/rapport_12_04_26.html",
+    "category": "Rapport",
+    "date": "12 Avril 2026"
+  },
+  {
+    "title": "L'étau se resserre",
+    "desc": "L'impasse géopolitique dans le détroit d'Hormuz maintient une prime de risque élevée, avec un baril stabilisé au-dessus de 100 USD pénalisant les importateurs nets. Le dollar domine grâce à son statut de refuge.",
+    "shortDesc": "L'impasse géopolitique dans le détroit d'Hormuz maintient une prime de risque élevée.",
+    "url": "reports/rapport_04_04_26.html",
+    "category": "Rapport",
+    "date": "04 Avril 2026"
+  },
+  {
+    "title": "Super-Cycle des Banques Centrales et Choc Énergétique",
+    "desc": "La troisième semaine de mars 2026 s'est imposée comme un tournant historique dans l'ère économique mondiale post-pandémique. Choc énergétique et réaction des marchés actions face à la politique monétaire.",
+    "shortDesc": "Super-cycle crucial de réunions des banques centrales du G10 et choc énergétique prolongé.",
+    "url": "reports/report_22_03_26.html",
+    "category": "Rapport",
+    "date": "22 Mars 2026"
+  },
+  {
+    "title": "Choc Énergétique et le Dilemme des Banques Centrales",
+    "desc": "Le conflit militaire en Iran et la paralysie du détroit d'Ormuz ont plongé les marchés dans une phase d'incertitude critique. La FED et la BCE face à l'inflation importée et au ralentissement économique.",
+    "shortDesc": "Le conflit en Iran paralyse le détroit d'Ormuz, plongeant les marchés dans l'incertitude.",
+    "url": "reports/report_15_03_26.html",
+    "category": "Rapport",
+    "date": "15 Mars 2026"
+  },
+  {
+    "title": "Le Pivot Warsh et le Paradoxe de l'Emploi",
+    "desc": "Le momentum actuel semble dirigé par le nouveau visage de la FED, Kevin Warsh, dont la nomination a poussé le marché à intégrer une posture accommodante. Analyse des yields japonais et des actions.",
+    "shortDesc": "Le momentum actuel semble dirigé par le nouveau visage de la FED, Kevin Warsh.",
+    "url": "reports/report_09_02_26.html",
+    "category": "Rapport",
+    "date": "09 Février 2026"
+  },
+  {
+    "title": "Volatilité, Davos et Alerte sur les Yields Japonais",
+    "desc": "Cette semaine a été émaillée de données économiques et d'annonces en tout genre, ne laissant que peu de repos à la majorité des investisseurs. L'indice VIX augmente, et les taux japonais posent un risque systémique.",
+    "shortDesc": "Données économiques et annonces majeures. Alerte sur la poussée des taux japonais.",
+    "url": "reports/report_25_01_26.html",
+    "category": "Rapport",
+    "date": "25 Janvier 2026"
+  },
+  {
+    "title": "Choc Institutionnel : Trump, la Fed & Liquidités",
+    "desc": "Semaine marquée par une volatilité institutionnelle rare. Le Dollar a été secoué par des attaques politiques inédites contre l'indépendance de la Fed. Les liquidités maintiennent le marché action à flot.",
+    "shortDesc": "Volatilité institutionnelle rare et attaque politique contre l'indépendance de la Fed.",
+    "url": "reports/rapport_17_01_26.html",
+    "category": "Rapport",
+    "date": "17 Janvier 2026"
+  },
+  {
+    "title": "Inflation US & Sentiment Risk-On",
+    "desc": "Semaine décisive dominée par les chiffres de l'inflation US (CPI/PPI). Malgré des fondamentaux mitigés sur l'emploi, les marchés actions affichent un appétit pour le risque.",
+    "shortDesc": "Semaine décisive dominée par les chiffres de l'inflation US (CPI/PPI).",
+    "url": "reports/report_10_01_26.html",
+    "category": "Rapport",
+    "date": "10 Janvier 2026"
+  },
+  {
+    "title": "Scoring Report : Modèle Quantitatif",
+    "desc": "Ce document détaille l'architecture et la méthodologie de notre système de scoring quantitatif. L'objectif est de proposer une grille d'évaluation multifactorielle, permettant de classer et d'analyser systématiquement les actifs pour l'optimisation des portefeuilles.",
+    "shortDesc": "Présentation détaillée de la méthodologie de notre modèle de scoring quantitatif multifactoriel.",
+    "url": "pages/scoring-report.html",
+    "category": "PDF",
+    "date": "Avril 2026"
+  },
+  {
+    "title": "Microstructure, Market Making, and Algorithmic Arbitrage on Decentralised Prediction Markets",
+    "desc": "Ce document développe un cadre quantitatif rigoureux pour la participation algorithmique sur les marchés de prédiction décentralisés, en utilisant Polymarket comme environnement empirique principal.",
+    "shortDesc": "Cadre quantitatif rigoureux pour la participation algorithmique sur les marchés de prédiction décentralisés.",
+    "url": "assets/pdf/polymarket_paper.pdf",
+    "category": "PDF",
+    "date": "Avril 2026"
+  },
+  {
+    "title": "HMM Engine - Détection de Régimes de Marché",
+    "desc": "Moteur d'inférence basé sur les modèles de Markov cachés (Hidden Markov Models) pour identifier et modéliser les différents régimes de volatilité et de tendance sur les marchés financiers.",
+    "shortDesc": "Moteur d'inférence basé sur les modèles de Markov cachés pour modéliser les régimes de marché.",
+    "url": "assets/notebooks/HMM_engine.ipynb",
+    "category": "Notebook",
+    "date": "Avril 2026"
+  }
+]

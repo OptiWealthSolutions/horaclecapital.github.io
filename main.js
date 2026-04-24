@@ -79,68 +79,18 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    isFetching = true;
-    try {
-      // Récupération simultanée du contenu des deux pages via leur URL relative
-      const [reportsRes, researchRes] = await Promise.all([
-        fetch(rootUrl + 'reports.html'),
-        fetch(rootUrl + 'research.html')
-      ]);
-      
-      const reportsText = await reportsRes.text();
-      const researchText = await researchRes.text();
-      
-      const parser = new DOMParser();
-      const reportsDoc = parser.parseFromString(reportsText, 'text/html');
-      const researchDoc = parser.parseFromString(researchText, 'text/html');
-      
-      // Extraire les Rapports
-      const reportPromises = Array.from(reportsDoc.querySelectorAll('.report-card, .report-card-featured')).map(async card => {
-        const isFeatured = card.classList.contains('report-card-featured');
-        const titleNode = isFeatured ? card.querySelector('.rcf-title') : card.querySelector('h3');
-        const descNode = isFeatured ? card.querySelector('.rcf-desc') : card.querySelector('p');
-        const linkNode = isFeatured ? card : card.querySelector('h3 a');
-        const dateNode = isFeatured ? card.querySelector('.rcf-date') : card.querySelector('.report-date');
-        
-        if (titleNode && linkNode) {
-          const url = linkNode.getAttribute('href');
-          const shortDesc = descNode ? descNode.textContent.trim() : '';
-          let fullText = shortDesc;
-          
-          // Fetch profond : On va chercher le texte complet à l'intérieur du rapport
-          try {
-            const articleRes = await fetch(rootUrl + url);
-            if (articleRes.ok) {
-              const articleHtml = await articleRes.text();
-              const articleDoc = parser.parseFromString(articleHtml, 'text/html');
-              const mainContainer = articleDoc.querySelector('.article-container');
-              if (mainContainer) {
-                fullText = mainContainer.textContent.replace(/\s+/g, ' ').trim();
-              }
-            }
-          } catch (e) { console.warn("Impossible de scanner l'article", url); }
-
-          siteData.push({ title: titleNode.textContent.trim(), desc: fullText, shortDesc: shortDesc, url: url, category: 'Rapport', date: dateNode ? dateNode.textContent.trim() : '' });
-        }
-      });
-      
-      // On attend que tous les rapports soient scannés en profondeur
-      await Promise.all(reportPromises);
-
-      // Extraire les Recherches & Vidéos
-      researchDoc.querySelectorAll('.research-card').forEach(card => {
-        const titleNode = card.querySelector('h3');
-        const descNode = card.querySelector('.rc-desc');
-        const linkNode = card.querySelector('h3 a');
-        const tagNode = card.querySelector('.rc-tag');
-        const dateNode = card.querySelector('.rc-date');
-
-        if (titleNode && linkNode) {
-          siteData.push({ title: titleNode.textContent.trim(), desc: descNode ? descNode.textContent.trim() : '', shortDesc: descNode ? descNode.textContent.trim() : '', url: linkNode.getAttribute('href'), category: tagNode ? tagNode.textContent.trim() : 'Recherche', date: dateNode ? dateNode.textContent.trim() : '' });
-        }
-      });
-    } catch (error) { console.error('Erreur lors du fetch des données:', error); }
-    isFetching = false;
+  isFetching = true;
+  try {
+    const response = await fetch(rootUrl + 'search-index.json');
+    if (response.ok) {
+      siteData = await response.json();
+    } else {
+      console.error("Erreur HTTP lors du chargement de l'index de recherche :", response.status);
+    }
+  } catch (error) { 
+    console.error('Erreur réseau lors du fetch des données:', error); 
+  }
+  isFetching = false;
   }
 
   function renderResults(query) {
@@ -290,18 +240,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = new FormData(form);
       
       try {
-          await fetch(form.action, {
-              method: 'POST',
-              body: formData,
-              mode: 'no-cors' 
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
           });
           
-          statusText.style.color = "var(--white)";
-          statusText.textContent = "> Inscription validée. Vérifiez votre boîte de réception.";
-          form.reset();
+          if (response.ok) {
+            statusText.style.color = "var(--white)";
+            statusText.textContent = "> Inscription validée. Vérifiez votre boîte de réception.";
+            form.reset();
+          } else {
+            const data = await response.json().catch(() => ({}));
+            statusText.style.color = "var(--orange)";
+            statusText.textContent = data.message ? "> " + data.message : "> Erreur : l'email est invalide ou déjà inscrit.";
+          }
       } catch (err) {
           statusText.style.color = "var(--orange)";
-          statusText.textContent = "> Problème de connexion au serveur. Veuillez réessayer.";
+          statusText.textContent = "> Requête bloquée ou problème de réseau. Veuillez réessayer.";
       } finally {
           btn.disabled = false;
           btn.textContent = "S'abonner";
