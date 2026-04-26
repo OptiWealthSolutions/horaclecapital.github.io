@@ -30,7 +30,7 @@
         <a href="../research.html">Recherches</a>
         <a href="../about.html">À Propos</a>
         <a href="capitalis.html" class="active">Capitalis <span class="nav-badge">APP</span></a>
-        <a href="../academy.html">Academy</a>
+        <a href="../academy.html" class="flex items-center gap-1">Academy <span class="nav-badge-new">NEW</span></a>
         <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
         <form class="nav-search" id="global-search-form" action="#">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -57,11 +57,11 @@
             <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span> Bêta Privée - Accès Limité
           </span>
           <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mt-2 mb-8 tracking-tight leading-[1.1]" style="font-family: var(--ff-body)">
-            L'investissement intelligent, <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">centralisé en une seule App.</span>
+            L'infrastructure institutionnelle, <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">pour les investisseurs indépendants.</span>
           </h1>
           <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-sans">
-            Capitalis fusionne l'analyse de données macroéconomiques et la gestion de portefeuille. Passez du Screening au Reporting dans un environnement fluide, moderne et redoutablement efficace.
+            Capitalis centralise la donnée macroéconomique, quantitative et fondamentale. De la génération d'idées à l'audit de performance, pilotez votre portefeuille avec une rigueur absolue.
           </p>
           
           <div class="flex justify-center gap-4 mb-16">
@@ -71,16 +71,30 @@
             </a>
           </div>
           
-          <!-- Aperçu Interface avec Animation -->
+          <!-- Aperçu Interface avec Animation (Carousel Tech) -->
           <div class="relative rounded-2xl shadow-2xl border border-gray-700 bg-[#111] p-2 md:p-3 mx-auto max-w-5xl transform transition-all duration-700 hover:scale-[1.02] hover:shadow-blue-900/30 group">
-            <div class="w-full h-6 bg-gray-800/50 rounded-t-lg mb-2 flex items-center px-3 gap-1.5 backdrop-blur-md border-b border-gray-700">
-               <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-               <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-               <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+            <div class="w-full h-8 bg-gray-800/80 rounded-t-lg mb-2 flex items-center px-4 gap-2 backdrop-blur-md border-b border-gray-700 relative overflow-hidden">
+               <div class="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_8px_rgba(239,68,68,0.6)]"></div>
+               <div class="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_8px_rgba(234,179,8,0.6)]"></div>
+               <div class="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+               <div class="ml-4 font-mono text-[0.65rem] text-blue-400 tracking-[0.2em] flex items-center gap-2">
+                  <span class="animate-pulse">●</span> SYS.MONITORING // <span id="carousel-label" class="text-white">DASHBOARD</span>
+               </div>
             </div>
-            <div class="overflow-hidden rounded-b-xl relative">
-                <div class="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10 mix-blend-overlay"></div>
-                <img src="../assets/img/capitalis_view/dashboard.png" alt="Aperçu de l'interface Capitalis" class="w-full h-auto object-cover relative z-0" onerror="this.src='../assets/img/banner.jpg'; this.classList.add('grayscale', 'opacity-30');">
+            <div class="overflow-hidden rounded-b-xl relative aspect-[16/10] bg-[#0A0A0A] border border-gray-800" id="tech-carousel">
+                <div class="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20 mix-blend-overlay"></div>
+                <!-- Scanline effect overlay -->
+                <div class="absolute inset-0 pointer-events-none z-10 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100%_4px] opacity-30"></div>
+                <!-- Carousel Images -->
+                <img src="../assets/img/capitalis_view/dashboard.png" data-label="DASHBOARD" alt="Dashboard" class="carousel-img absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out opacity-100 scale-100 z-0">
+                <img src="../assets/img/capitalis_view/screener.png" data-label="SCREENER" alt="Screener" class="carousel-img absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out opacity-0 scale-105 z-0">
+                <img src="../assets/img/capitalis_view/scorer.png" data-label="SCORING" alt="Scorer" class="carousel-img absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out opacity-0 scale-105 z-0">
+                <img src="../assets/img/capitalis_view/market_map_light.png" data-label="MARKET MAPPING" alt="Market Mapping" class="carousel-img absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out opacity-0 scale-105 z-0">
+                <img src="../assets/img/capitalis_view/allocation.png" data-label="ALLOCATION" alt="Allocation" class="carousel-img absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out opacity-0 scale-105 z-0">
+                <img src="../assets/img/capitalis_view/equity_review_light.png" data-label="EQUITY REVIEW" alt="Equity Review" class="carousel-img absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out opacity-0 scale-105 z-0">
+                <img src="../assets/img/capitalis_view/reporting.png" data-label="REPORTING" alt="Reporting" class="carousel-img absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out opacity-0 scale-105 z-0">
+                <!-- Progress Bar -->
+                <div class="absolute bottom-0 left-0 h-1 bg-blue-500 z-30 shadow-[0_0_10px_rgba(59,130,246,0.8)]" id="carousel-progress" style="width: 0%"></div>
             </div>
           </div>
         </div>
@@ -90,60 +104,86 @@
       <section class="py-32 px-5 bg-white overflow-hidden">
         <div class="max-w-6xl mx-auto">
           <div class="text-center mb-24">
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight" style="font-family: var(--ff-body)">Un Workflow Complet</h2>
-            <p class="text-gray-500 mt-6 text-xl max-w-2xl mx-auto">Maîtrisez votre portefeuille de A à Z grâce à un processus analytique rigoureux et une interface épurée.</p>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight" style="font-family: var(--ff-body)">Un Workflow Sans Faille</h2>
+            <p class="text-gray-500 mt-6 text-xl max-w-2xl mx-auto">Chaque étape de votre processus d'investissement a été déconstruite et optimisée. Ne laissez plus de place au hasard.</p>
           </div>
           
           <div class="space-y-32">
-            <!-- Etape 1 -->
+            <!-- Etape 1 : Screener -->
             <div class="flex flex-col md:flex-row items-center gap-12 group">
               <div class="flex-1 space-y-6 md:pr-10">
                 <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">1</div>
-                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Screening de pointe</h3>
-                <p class="text-lg text-gray-600 leading-relaxed">Identifiez les meilleures opportunités en filtrant l'univers d'investissement avec des critères fondamentaux et techniques exclusifs. Fini les recherches manuelles interminables.</p>
+                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Screener Multicritère</h3>
+                <p class="text-lg text-gray-600 leading-relaxed">Filtrez l'univers d'investissement mondial en quelques secondes. Croisez les données macroéconomiques, fondamentales et techniques pour isoler instantanément les actifs qui respectent strictement vos paramètres.</p>
               </div>
               <div class="flex-1 relative w-full">
                 <div class="absolute inset-0 bg-blue-400/5 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
-                <img src="../assets/img/capitalis_view/screening.png" alt="Screening Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover" onerror="this.src='../assets/img/banner.jpg';">
+                <img src="../assets/img/capitalis_view/screener.png" alt="Screener Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
               </div>
             </div>
             
-            <!-- Etape 2 -->
+            <!-- Etape 2 : Scorer -->
             <div class="flex flex-col md:flex-row-reverse items-center gap-12 group">
               <div class="flex-1 space-y-6 md:pl-10">
                 <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">2</div>
                 <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Scoring Quantitatif</h3>
-                <p class="text-lg text-gray-600 leading-relaxed">Évaluez objectivement chaque actif via notre modèle quantitatif multifactoriel. Éliminez les biais émotionnels et basez vos décisions sur la data pure.</p>
+                <p class="text-lg text-gray-600 leading-relaxed">Éliminez le biais émotionnel. Notre moteur quantitatif évalue et classe chaque opportunité selon une matrice multifactorielle stricte. Concentrez votre capital uniquement sur ce que la data valide.</p>
               </div>
               <div class="flex-1 relative w-full">
                 <div class="absolute inset-0 bg-gray-400/10 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
-                <img src="../assets/img/capitalis_view/scorer.png" alt="Scoring Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover" onerror="this.src='../assets/img/banner.jpg';">
+                <img src="../assets/img/capitalis_view/scorer.png" alt="Scoring Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
               </div>
             </div>
 
-            <!-- Etape 3 -->
+            <!-- Etape 3 : Market Mapping -->
             <div class="flex flex-col md:flex-row items-center gap-12 group">
               <div class="flex-1 space-y-6 md:pr-10">
                 <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">3</div>
-                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Allocation Optimisée</h3>
-                <p class="text-lg text-gray-600 leading-relaxed">Construisez et équilibrez votre portefeuille en optimisant le couple rendement/risque. Ajustez vos pondérations en temps réel selon vos objectifs de marché.</p>
+                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Market Mapping</h3>
+                <p class="text-lg text-gray-600 leading-relaxed">Visualisez la dynamique globale des marchés en un coup d'œil. Identifiez les rotations sectorielles, les flux de capitaux et les anomalies de valorisation avant qu'elles ne deviennent évidentes pour le consensus.</p>
               </div>
               <div class="flex-1 relative w-full">
                 <div class="absolute inset-0 bg-blue-400/5 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
-                <img src="../assets/img/capitalis_view/allocation.png" alt="Allocation Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover" onerror="this.src='../assets/img/banner.jpg';">
+                <img src="../assets/img/capitalis_view/market_map_light.png" alt="Market Mapping Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
               </div>
             </div>
 
-            <!-- Etape 4 -->
+            <!-- Etape 4 : Allocation -->
             <div class="flex flex-col md:flex-row-reverse items-center gap-12 group">
               <div class="flex-1 space-y-6 md:pl-10">
                 <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">4</div>
-                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Reporting en Direct</h3>
-                <p class="text-lg text-gray-600 leading-relaxed">Suivez vos performances en temps réel avec des dashboards clairs, précis et professionnels. Générez des rapports détaillés en un clic.</p>
+                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Allocation & Pondération</h3>
+                <p class="text-lg text-gray-600 leading-relaxed">Construisez un portefeuille résilient. Optimisez le couple rendement/risque de vos positions en ajustant dynamiquement vos pondérations selon les corrélations historiques et votre tolérance au drawdown maximal.</p>
               </div>
               <div class="flex-1 relative w-full">
                 <div class="absolute inset-0 bg-gray-400/10 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
-                <img src="../assets/img/capitalis_view/reporting.png" alt="Reporting Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover" onerror="this.src='../assets/img/banner.jpg';">
+                <img src="../assets/img/capitalis_view/allocation.png" alt="Allocation Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
+              </div>
+            </div>
+
+            <!-- Etape 5 : Equity Review -->
+            <div class="flex flex-col md:flex-row items-center gap-12 group">
+              <div class="flex-1 space-y-6 md:pr-10">
+                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">5</div>
+                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Equity Review</h3>
+                <p class="text-lg text-gray-600 leading-relaxed">Passez chaque actif au microscope. Accédez aux états financiers agrégés, à la structure de la dette, aux ratios de valorisation et aux signaux techniques dans une interface de due diligence unifiée.</p>
+              </div>
+              <div class="flex-1 relative w-full">
+                <div class="absolute inset-0 bg-blue-400/5 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
+                <img src="../assets/img/capitalis_view/equity_review_light.png" alt="Equity Review Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
+              </div>
+            </div>
+
+            <!-- Etape 6 : Reporting -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12 group">
+              <div class="flex-1 space-y-6 md:pl-10">
+                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">6</div>
+                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Reporting & Audit</h3>
+                <p class="text-lg text-gray-600 leading-relaxed">Confrontez vos stratégies à la réalité. Auditez l'efficacité de vos choix d'allocation, analysez l'attribution de vos gains et générez des rapports de performance de grade institutionnel en un clic.</p>
+              </div>
+              <div class="flex-1 relative w-full">
+                <div class="absolute inset-0 bg-gray-400/10 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
+                <img src="../assets/img/capitalis_view/reporting.png" alt="Reporting Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
               </div>
             </div>
           </div>
@@ -154,22 +194,22 @@
       <section class="py-32 px-5 bg-gray-50 border-t border-b border-gray-200">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 group">
           <div class="flex-1 space-y-6">
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight" style="font-family: var(--ff-body)">Pensée pour la <br><span class="text-blue-600">productivité</span>.</h2>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight" style="font-family: var(--ff-body)">Arrêtez de naviguer entre <br><span class="text-blue-600">10 outils différents</span>.</h2>
             <p class="text-gray-600 text-lg leading-relaxed">
-              Fini les tableurs complexes et les données éparpillées. L'interface de Capitalis est conçue autour de la clarté avec des accents bleus pour guider votre prise de décision efficacement, sans fatigue visuelle.
+              Votre temps doit être alloué à la prise de décision, pas à l'extraction de données ou à la maintenance de fichiers Excel. Capitalis unifie la chaîne de valeur d'un gérant de fonds dans un environnement unique.
             </p>
             <ul class="space-y-5 pt-4">
               <li class="flex items-start gap-3">
                 <div class="p-1 rounded bg-blue-100 mt-1"><svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
-                <span class="text-gray-700 text-lg">Données macro et micro intégrées en direct.</span>
+                <span class="text-gray-700 text-lg font-medium">Flux de données premium en temps réel (Macro & Equities).</span>
               </li>
               <li class="flex items-start gap-3">
                 <div class="p-1 rounded bg-blue-100 mt-1"><svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
-                <span class="text-gray-700 text-lg">Vue centralisée de vos positions et exposition au risque.</span>
+                <span class="text-gray-700 text-lg font-medium">Modèles de scoring pré-calibrés prêts à l'emploi.</span>
               </li>
               <li class="flex items-start gap-3">
                 <div class="p-1 rounded bg-blue-100 mt-1"><svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
-                <span class="text-gray-700 text-lg">Modèles de scoring quantitatifs prêts à l'emploi.</span>
+                <span class="text-gray-700 text-lg font-medium">Gestion du risque et calcul des expositions automatisés.</span>
               </li>
             </ul>
           </div>
@@ -227,5 +267,49 @@
     </footer>
 
     <script src="../main.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const images = document.querySelectorAll('.carousel-img');
+        const label = document.getElementById('carousel-label');
+        const progress = document.getElementById('carousel-progress');
+        if(images.length === 0) return;
+
+        let currentIndex = 0;
+        const duration = 3500; // 3.5s par image
+        let startTime = Date.now();
+
+        function updateCarousel() {
+          images.forEach((img, idx) => {
+            if (idx === currentIndex) {
+              img.classList.remove('opacity-0', 'scale-105');
+              img.classList.add('opacity-100', 'scale-100');
+              if(label) label.textContent = img.getAttribute('data-label');
+            } else {
+              img.classList.remove('opacity-100', 'scale-100');
+              img.classList.add('opacity-0', 'scale-105');
+            }
+          });
+        }
+
+        function animate() {
+          const now = Date.now();
+          const elapsed = now - startTime;
+          let percent = (elapsed / duration) * 100;
+          
+          if (percent >= 100) {
+            currentIndex = (currentIndex + 1) % images.length;
+            startTime = now;
+            percent = 0;
+            updateCarousel();
+          }
+          
+          if(progress) progress.style.width = `${percent}%`;
+          requestAnimationFrame(animate);
+        }
+
+        updateCarousel();
+        requestAnimationFrame(animate);
+      });
+    </script>
   </body>
 </html>
