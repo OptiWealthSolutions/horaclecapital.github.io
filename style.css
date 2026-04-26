@@ -88,6 +88,20 @@ nav {
 .nav-links a:hover::after, .nav-links a.active::after { width: calc(100% - 32px); }
 .nav-links a.active { color: var(--white); }
 
+.nav-badge {
+  display: inline-block;
+  background: #0070f3;
+  color: #ffffff;
+  font-family: var(--ff-body);
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 4px;
+  margin-left: 6px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
 .nav-search { 
   display: flex; align-items: center; padding: 0 16px; height: 36px; 
   background: var(--bg-2); border: 1px solid var(--border); border-radius: 100px;
