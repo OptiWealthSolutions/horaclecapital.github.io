@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="assets/img/logo.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2de0cd59-a747-4d4a-898e-5b2ff8cee015"></script>
     
     <meta name="description" content="Découvrez la genèse d'Horacle Capital, notre philosophie d'investissement liant analyse fondamentale et modélisation quantitative, par Léo Lombardini." />
@@ -67,7 +67,7 @@
                     Les marchés financiers captivent mon attention depuis l'âge de mes 16 ans. Ce qui a débuté comme une fascination s'est structuré à travers un parcours académique exigeant : après une classe préparatoire en économie et gestion, j'ai intégré l'EDHEC Business School. En fondant Horacle Capital, j'ai voulu appliquer cette rigueur intellectuelle à l'analyse de marché. Ma conviction est claire : dans un environnement saturé de bruit, l'avantage concurrentiel s'obtient en fusionnant la vision macroéconomique discrétionnaire avec la précision mathématique.
                 </p>
                 
-                <h3 class="font-mono text-white mt-10 mb-4 text-[1.3rem] uppercase">L'ADN Horacle</h3>
+                <h3 class="font-head text-text mt-10 mb-4 text-[1.6rem]">L'ADN Horacle</h3>
                 <p class="text-off leading-relaxed">
                     Horacle Capital est né de la volonté d'appliquer une méthode institutionnelle à la recherche indépendante. Nous ne cherchons pas à prédire l'avenir, nous modélisons des probabilités asymétriques. L'analyse fondamentale (politiques monétaires, géopolitique) fixe le cap directionnel, tandis que la data science et nos modèles quantitatifs gèrent le timing et l'exposition au risque. Pas de futilité, uniquement du signal.
                 </p>
@@ -81,10 +81,10 @@
                     <input type="hidden" name="access_key" value="c455f599-cf43-4be4-9835-019ffa3330db">
                     
                     <div class="flex flex-col gap-4">
-                        <input type="text" name="Nom" placeholder="ID / Nom Complet" required class="p-4 bg-bg-2 border border-border text-white font-mono outline-none transition-colors duration-200 focus:border-orange">
-                        <input type="email" name="Email" placeholder="Adresse E-mail" required class="p-4 bg-bg-2 border border-border text-white font-mono outline-none transition-colors duration-200 focus:border-orange">
-                        <textarea name="Message" rows="5" placeholder="Saisissez votre message..." required class="p-4 bg-bg-2 border border-border text-white font-sans resize-y outline-none transition-colors duration-200 focus:border-orange"></textarea>
-                        <button type="submit" class="btn-primary border-none cursor-pointer justify-center w-full font-mono uppercase tracking-[1px]">[ Transmettre ]</button>
+                        <input type="text" name="Nom" placeholder="Nom Complet" required class="p-4 bg-white border border-border text-text font-sans outline-none transition-colors duration-200 focus:border-orange rounded-lg">
+                        <input type="email" name="Email" placeholder="Adresse E-mail" required class="p-4 bg-white border border-border text-text font-sans outline-none transition-colors duration-200 focus:border-orange rounded-lg">
+                        <textarea name="Message" rows="5" placeholder="Votre message..." required class="p-4 bg-white border border-border text-text font-sans resize-y outline-none transition-colors duration-200 focus:border-orange rounded-lg"></textarea>
+                        <button type="submit" class="btn-primary border-none cursor-pointer justify-center w-full">Envoyer le message</button>
                     </div>
                 </form>
                 <p id="form-status" class="mt-5 font-mono text-center min-h-[1.2em] text-[0.9rem]"></p>
@@ -93,21 +93,17 @@
     </main>
 
     <!-- Section Newsletter -->
-    <section class="newsletter-section py-20 px-5 border-t border-border bg-bg-2">
+    <section class="newsletter-section py-20 px-5 border-t border-border-dk">
       <div class="container max-w-[600px] text-center px-0">
-        <h2 class="section-title text-2xl mb-4">NEWSLETTER</h2>
-        <p class="text-off mb-8 text-[0.95rem]">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
-        
+        <h2 class="font-head text-3xl font-normal text-white mb-4 tracking-tight">Newsletter</h2>
+        <p class="mb-8 text-[0.95rem]" style="color:rgba(255,255,255,0.55)">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
         <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
             <div class="flex w-full flex-row">
-                <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail professionnelle" required 
-                       class="flex-1 p-4 bg-bg border border-border border-r-0 text-white font-sans outline-none transition-colors duration-200 rounded-none focus:border-orange">
-                
-                <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap">
-                    S'abonner
-                </button>
+                <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail professionnelle" required
+                       style="flex:1;padding:14px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-right:none;color:#fff;font-family:var(--ff-body);outline:none;border-radius:7px 0 0 7px;">
+                <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap" style="border-radius:0 7px 7px 0;">S'abonner</button>
             </div>
-            <p id="subscription-status" class="mt-4 font-mono text-xs uppercase tracking-widest min-h-[1.2em]"></p>
+            <p id="subscription-status" class="mt-4 font-mono text-xs uppercase tracking-widest min-h-[1.2em]" style="color:rgba(255,255,255,0.5)"></p>
         </form>
       </div>
     </section>

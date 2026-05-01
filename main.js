@@ -357,4 +357,34 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-accept-cookies').addEventListener('click', () => closeBanner('accepted'));
     document.getElementById('btn-refuse-cookies').addEventListener('click', () => closeBanner('refused'));
   }
+
+  // --- REVEAL ANIMATIONS (Intersection Observer) ---
+  const revealElements = document.querySelectorAll('.reveal');
+  if (revealElements.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(el => observer.observe(el));
+  }
+
+  // --- HERO VISUAL CARD PARALLAX ON MOUSE MOVE ---
+  const heroCard = document.querySelector('.hero-visual-card');
+  const heroVisual = document.querySelector('.hero-visual');
+  if (heroCard && heroVisual) {
+    heroVisual.addEventListener('mousemove', (e) => {
+      const rect = heroVisual.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * -8;
+      heroCard.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    });
+    heroVisual.addEventListener('mouseleave', () => {
+      heroCard.style.transform = 'rotateY(-6deg) rotateX(3deg)';
+    });
+  }
 });
