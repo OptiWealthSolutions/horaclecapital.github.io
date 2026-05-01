@@ -10,6 +10,7 @@ const rapports = defineCollection({
     category: z.string().default('Macro Economics'),
     issue: z.string().optional(),              // ex: "N°9"
     ogImage: z.string().optional(),
+    thumbnail: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
   }),
