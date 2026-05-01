@@ -54,9 +54,9 @@
 
     <header class="page-header">
       <img src="assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
-      <span>SYS.INFO // HORACLE</span>
-      <h1>À Propos & Contact</h1>
-      <p>La genèse du projet, notre méthodologie et les canaux de communication directs.</p>
+      <span>Horacle Capital</span>
+      <h1>À Propos &amp; Contact</h1>
+      <p>Le projet, la méthode, le contact.</p>
     </header>
 
     <main class="container pt-[80px] pb-[120px]">
@@ -64,12 +64,12 @@
             <div class="about-body">
                 <h2 class="section-title text-[2.2rem] mb-5">Léo Lombardini</h2>
                 <p class="text-off leading-relaxed">
-                    Les marchés financiers captivent mon attention depuis l'âge de mes 16 ans. Ce qui a débuté comme une fascination s'est structuré à travers un parcours académique exigeant : après une classe préparatoire en économie et gestion, j'ai intégré l'EDHEC Business School. En fondant Horacle Capital, j'ai voulu appliquer cette rigueur intellectuelle à l'analyse de marché. Ma conviction est claire : dans un environnement saturé de bruit, l'avantage concurrentiel s'obtient en fusionnant la vision macroéconomique discrétionnaire avec la précision mathématique.
+                    Les marchés financiers me captent depuis mes 16 ans. Ce qui a commencé comme une fascination s'est structuré via un parcours académique en économie et gestion, puis à l'EDHEC Business School. Horacle Capital est le prolongement naturel de cette rigueur : appliquer une méthode analytique sérieuse à la recherche indépendante.
                 </p>
-                
-                <h3 class="font-head text-text mt-10 mb-4 text-[1.6rem]">L'ADN Horacle</h3>
+
+                <h3 class="font-head text-text mt-10 mb-4 text-[1.6rem]">La Méthode</h3>
                 <p class="text-off leading-relaxed">
-                    Horacle Capital est né de la volonté d'appliquer une méthode institutionnelle à la recherche indépendante. Nous ne cherchons pas à prédire l'avenir, nous modélisons des probabilités asymétriques. L'analyse fondamentale (politiques monétaires, géopolitique) fixe le cap directionnel, tandis que la data science et nos modèles quantitatifs gèrent le timing et l'exposition au risque. Pas de futilité, uniquement du signal.
+                    Horacle Capital est une structure spécialisée dans l'analyse macroéconomique et la modélisation statistique des marchés financiers. L'analyse fondamentale — politiques monétaires, cycles, géopolitique — fixe le cadre directionnel. La quantification — HMM, scoring multifactoriel, backtesting — gère la précision. Pas de futilité : uniquement du signal.
                 </p>
             </div>
 
@@ -137,7 +137,7 @@
         var data = new FormData(event.target);
     
         button.disabled = true;
-        button.textContent = "[ TRAITEMENT EN COURS... ]";
+        button.textContent = "Envoi en cours...";
         status.innerHTML = "";
     
         fetch(event.target.action, {
@@ -146,26 +146,26 @@
           headers: { 'Accept': 'application/json' }
         }).then(response => {
           button.disabled = false;
-          button.textContent = "[ TRANSMETTRE ]";
+          button.textContent = "Envoyer le message";
           if (response.ok) {
-            status.style.color = "var(--white)";
-            status.innerHTML = "> TRANSMISSION RÉUSSIE. NOUS VOUS RÉPONDRONS SOUS PEU.";
+            status.style.color = "var(--blue-2)";
+            status.innerHTML = "Message envoyé. Nous vous répondrons sous peu.";
             form.reset();
           } else {
             response.json().then(data => {
-              status.style.color = "var(--orange)";
+              status.style.color = "#DC2626";
               if (Object.hasOwn(data, 'message')) {
-                status.innerHTML = "> ERREUR : " + data.message;
+                status.innerHTML = "Erreur : " + data.message;
               } else {
-                status.innerHTML = "> ERREUR SYSTÈME. VEUILLEZ RÉESSAYER.";
+                status.innerHTML = "Une erreur est survenue. Veuillez réessayer.";
               }
             })
           }
         }).catch(error => {
           button.disabled = false;
-          button.textContent = "[ TRANSMETTRE ]";
-          status.style.color = "var(--orange)";
-          status.innerHTML = "> ÉCHEC DE CONNEXION AU SERVEUR.";
+          button.textContent = "Envoyer le message";
+          status.style.color = "#DC2626";
+          status.innerHTML = "Échec de connexion. Veuillez réessayer.";
         });
       }
       form.addEventListener("submit", handleSubmit);

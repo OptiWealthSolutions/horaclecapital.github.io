@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HORACLE CAPITAL | L'analyse macroéconomique sans compromis</title>
+    <title>HORACLE CAPITAL | Analyse Macro & Finance Quantitative</title>
     <link rel="icon" type="image/png" href="assets/img/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2de0cd59-a747-4d4a-898e-5b2ff8cee015"></script>
-    
-    <meta name="description" content="Horacle Capital est un écosystème analytique de référence : rapports macroéconomiques hebdomadaires, recherche quantitative et développement de modèles d'allocation." />
-    <meta property="og:title" content="HORACLE CAPITAL | L'analyse macroéconomique sans compromis" />
-    <meta property="og:description" content="Rapports macroéconomiques, recherche quantitative et développement de modèles d'allocation." />
+
+    <meta name="description" content="Horacle Capital est une structure de recherche spécialisée dans l'analyse macroéconomique et la modélisation quantitative des marchés financiers." />
+    <meta property="og:title" content="HORACLE CAPITAL | Analyse Macro & Finance Quantitative" />
+    <meta property="og:description" content="Rapports hebdomadaires, modèles statistiques et cours privés en finance de marché." />
     <meta property="og:image" content="https://horaclecapital.com/assets/img/banner.jpg" />
     <meta property="og:url" content="https://horaclecapital.com/" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="HORACLE CAPITAL | Macro & Quant" />
-    <meta name="twitter:description" content="L'analyse macroéconomique sans compromis. Discipline, Transparence, Performance." />
+    <meta name="twitter:description" content="Analyse macroéconomique et modélisation quantitative des marchés financiers." />
     <meta name="twitter:image" content="https://horaclecapital.com/assets/img/banner.jpg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind-config.js"></script>
@@ -53,28 +53,26 @@
     </nav>
     <div class="nav-overlay" id="nav-overlay"></div>
 
-
-    <header class="hero">
+    <header class="hero hero-index">
       <img src="assets/img/banner.jpg" alt="" class="hero-bg" aria-hidden="true" />
       <div class="hero-inner hero-split">
         <div class="hero-content">
-          <div class="hero-tag">Horacle Capital — Journal Macro</div>
           <h1>
-            L'ANALYSE<br>
-            <span class="o">SANS</span><br>
-            COMPROMIS
+            ANALYSE<br>
+            <span class="o">MACRO</span><br>
+            &amp; QUANT
           </h1>
           <p class="hero-sub">
-            Discipline<span class="dot">·</span>Transparence<span class="dot">·</span>Performance
+            Rapports hebdomadaires<span class="dot">·</span>Modèles statistiques<span class="dot">·</span>Cours privés
           </p>
           <div class="hero-actions">
             <a href="reports.html" class="btn-primary">
               Voir les rapports
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="#about" class="btn-ghost">
-              À propos
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <a href="research.html" class="btn-ghost">
+              Recherches
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
         </div>
@@ -83,39 +81,37 @@
           <div class="hero-visual-card">
             <div class="hero-visual-glow"></div>
             <div class="hvc-header">
-              <span class="hvc-title">[ MACRO DASHBOARD ]</span>
+              <span class="hvc-title">[ CHAMPS D'ANALYSE ]</span>
               <div class="panel-dot"></div>
             </div>
-            <div class="mb-6">
-              <div class="hvc-row">
-                <span class="hvc-label">S&P 500</span>
-                <span class="hvc-val up">+1.24%</span>
-              </div>
-              <div class="hvc-row">
-                <span class="hvc-label">US 10Y YIELD</span>
-                <span class="hvc-val neu">4.32%</span>
-              </div>
-              <div class="hvc-row">
-                <span class="hvc-label">EUR/USD</span>
-                <span class="hvc-val dn">-0.45%</span>
-              </div>
-              <div class="hvc-row">
-                <span class="hvc-label">BRENT CRUDE</span>
-                <span class="hvc-val up">+0.89%</span>
-              </div>
-            </div>
-            <div class="border-t border-border pt-5">
-              <span class="hvc-title block mb-3 text-[0.55rem]">VOLATILITY INDEX (VIX)</span>
-              <svg viewBox="0 0 200 40" class="sparkline h-[50px] w-full drop-shadow-[0_2px_4px_rgba(255,69,0,0.2)]" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="hero-spark" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="var(--orange)" stop-opacity="0.3"/>
-                    <stop offset="100%" stop-color="var(--orange)" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-                <path d="M0,35 L20,30 L40,32 L60,15 L80,18 L100,25 L120,10 L140,15 L160,5 L180,12 L200,2 L200,40 L0,40 Z" fill="url(#hero-spark)" stroke="none" />
-                <path d="M0,35 L20,30 L40,32 L60,15 L80,18 L100,25 L120,10 L140,15 L160,5 L180,12 L200,2" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+            <ul class="hep-list">
+              <li class="hep-item">
+                <span class="hep-num">01</span>
+                <span class="hep-text">Politique monétaire</span>
+              </li>
+              <li class="hep-item">
+                <span class="hep-num">02</span>
+                <span class="hep-text">Cycles macro-financiers</span>
+              </li>
+              <li class="hep-item">
+                <span class="hep-num">03</span>
+                <span class="hep-text">Marchés &amp; géopolitique</span>
+              </li>
+              <li class="hep-item">
+                <span class="hep-num">04</span>
+                <span class="hep-text">Modélisation statistique</span>
+              </li>
+              <li class="hep-item">
+                <span class="hep-num">05</span>
+                <span class="hep-text">Allocation quantitative</span>
+              </li>
+            </ul>
+            <div class="hep-footer">
+              <span class="hvc-title" style="display:block;margin-bottom:12px;">PUBLICATION HEBDOMADAIRE</span>
+              <a href="reports.html" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-body);font-size:0.8rem;font-weight:600;color:var(--blue-3);text-decoration:none;">
+                Accéder aux rapports
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
             </div>
           </div>
         </div>
@@ -124,60 +120,56 @@
     </header>
 
     <main>
-      <!-- NOUVELLE SECTION ÉCOSYSTÈME (CAPITALIS + ACADEMY) -->
-      <section class="py-[100px]">
+
+      <!-- ÉCOSYSTÈME — en premier -->
+      <section class="py-[100px] border-t border-border" style="background:var(--bg-2);">
         <div class="container">
           <div class="section-rule mb-12">
             <span class="section-label">L'Écosystème Horacle</span>
             <div class="rule-line"></div>
           </div>
-          
-          <div class="grid lg:grid-cols-2 gap-6">
-            <!-- Capitalis Card -->
-            <a href="pages/capitalis.html" class="reveal group relative overflow-hidden bg-bg-2 border border-border hover:border-orange transition-all duration-300 flex flex-col p-10 rounded-lg">
-              <div class="absolute -top-32 -right-32 w-64 h-64 bg-orange opacity-5 rounded-full blur-3xl group-hover:opacity-10 transition-opacity duration-500"></div>
 
-              <div class="flex justify-between items-start mb-16 relative z-10">
-                <div class="w-12 h-12 border border-border flex items-center justify-center rounded-lg bg-white shadow-sm">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                </div>
+          <div class="grid lg:grid-cols-3 gap-6 items-stretch">
+
+            <!-- Capitalis : 2/3 width -->
+            <a href="pages/capitalis.html" class="reveal group relative overflow-hidden lg:col-span-2 flex flex-col p-10 rounded-lg min-h-[320px]" style="background:var(--dark-2);border:1px solid var(--border-dk);">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+                onerror="this.src='assets/img/banner.jpg'"
+                alt=""
+                aria-hidden="true"
+                class="absolute inset-0 w-full h-full object-cover opacity-10 grayscale group-hover:opacity-18 transition-opacity duration-500">
+              <div class="relative z-10 flex justify-between items-start">
                 <span class="font-sans text-[0.6rem] uppercase tracking-[0.12em] bg-orange text-white px-3 py-1 font-bold rounded-full">SaaS Bêta</span>
               </div>
-
-              <h3 class="font-head text-3xl font-normal text-text mb-4 tracking-tight relative z-10">Capitalis App</h3>
-              <p class="text-off mb-8 leading-relaxed text-[0.95rem] flex-1 relative z-10">
-                L'application d'investissement pour tous. Un workflow complet et intuitif pour vous accompagner : Screening, Scoring, Allocation et Reporting.
-              </p>
-
-              <div class="relative z-10 inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange group-hover:text-blue transition-colors mt-auto pt-6 border-t border-border">
-                Découvrir l'application <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              <div class="relative z-10 mt-auto pt-16">
+                <h3 class="font-head text-4xl font-normal text-white mb-3 tracking-tight">Capitalis</h3>
+                <p class="text-[0.95rem] leading-relaxed mb-8" style="color:rgba(255,255,255,0.5);">Application d'investissement : Screening, Scoring, Allocation et Reporting en un workflow intégré.</p>
+                <span class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold group-hover:text-white transition-colors" style="color:var(--blue-3);">
+                  Découvrir l'application
+                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </span>
               </div>
             </a>
 
-            <!-- Academy Card -->
-            <div class="reveal reveal-delay-1 group relative overflow-hidden bg-bg-2 border border-border hover:border-orange transition-all duration-300 flex flex-col p-10 rounded-lg">
-              <div class="absolute -top-32 -left-32 w-64 h-64 bg-orange opacity-5 rounded-full blur-3xl group-hover:opacity-10 transition-opacity duration-500"></div>
-
-              <div class="flex justify-between items-start mb-16 relative z-10">
-                <div class="w-12 h-12 border border-border flex items-center justify-center rounded-lg bg-white shadow-sm">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-                </div>
-                <span class="font-sans text-[0.6rem] uppercase tracking-[0.12em] bg-orange text-white px-3 py-1 font-bold rounded-full">Mentoring</span>
+            <!-- Academy : 1/3 width -->
+            <a href="academy.html" class="reveal reveal-delay-1 group flex flex-col p-10 rounded-lg" style="background:var(--bg);border:1px solid var(--border);">
+              <span class="font-sans text-[0.6rem] uppercase tracking-[0.12em] px-3 py-1 font-bold rounded-full self-start" style="border:1px solid var(--blue-2);color:var(--blue-2);">Cours privés</span>
+              <div class="mt-auto pt-16">
+                <h3 class="font-head text-3xl font-normal text-text mb-3 tracking-tight">Horacle Academy</h3>
+                <p class="text-[0.9rem] text-off leading-relaxed mb-8">Cours particuliers en Macroéconomie, Statistiques et Finance Quantitative. Sessions 1-on-1 adaptées à votre niveau.</p>
+                <span class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange group-hover:text-blue transition-colors">
+                  Voir les programmes
+                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </span>
               </div>
+            </a>
 
-              <h3 class="font-head text-3xl font-normal text-text mb-4 tracking-tight relative z-10">Horacle Academy</h3>
-              <p class="text-off mb-8 leading-relaxed text-[0.95rem] flex-1 relative z-10">
-                Cours particuliers en Macroéconomie, Statistiques et Analyse Financière. Apprenez à maîtriser les marchés par l'analyse et la donnée.
-              </p>
-
-              <a href="academy.html" class="relative z-10 inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange group-hover:text-blue transition-colors mt-auto pt-6 border-t border-border">
-                Voir les programmes <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
+      <!-- PRÉSENTATION -->
       <section id="about" class="about-section">
         <div class="container container-wide">
           <div class="section-rule">
@@ -188,17 +180,17 @@
             <div class="about-body reveal">
               <h2 class="section-title">QUI SOMMES-<br>NOUS ?</h2>
               <p>
-                Trader, investisseur ou passionné de finance&nbsp;: <strong>Horacle Capital</strong> est votre écosystème analytique de référence. Nous publions des <strong>rapports macroéconomiques hebdomadaires</strong> pour déconstruire l'actualité, ainsi que des <strong>papiers de recherche quantitatifs et fondamentaux</strong> approfondis.
+                <strong>Horacle Capital</strong> est une structure de recherche indépendante spécialisée dans l'analyse macroéconomique et la modélisation quantitative des marchés financiers.
               </p>
               <p>
-                Pour transformer ces analyses en actes, nous avons créé <strong>Capitalis</strong> : une application d'investissement complète et intuitive couvrant tout le spectre de la gestion de portefeuille (Screening, Scoring, Allocation, Reporting).
+                Nous publions des <strong>rapports hebdomadaires</strong> sur l'environnement macro-financier mondial, des <strong>travaux quantitatifs</strong> (HMM, scoring multifactoriel, études statistiques), et proposons des <strong>cours privés</strong> en macroéconomie, statistiques et finance de marché.
               </p>
-              <p class="mt-4">
-                Explorez nos <a href="reports.html">Rapports</a>, nos <a href="research.html">Recherches</a>, ou découvrez l'application <a href="pages/capitalis.html">Capitalis →</a>.
+              <p>
+                Explorez nos <a href="reports.html">Rapports</a>, nos <a href="research.html">Recherches</a>, ou découvrez <a href="pages/capitalis.html">Capitalis →</a>
               </p>
               <div class="disclaimer">
                 ⚠ Rien de ce qui est publié ici ne constitue un conseil en investissement.
-                La bourse comporte des risques, soyez-en conscients.
+                Les marchés financiers comportent des risques.
               </div>
               <div class="socials">
                 <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank" class="social-pill">
@@ -222,34 +214,37 @@
             <div class="about-panel reveal reveal-delay-1">
               <div class="panel-header">
                 <div class="panel-dot"></div>
-                <span>Horacle Capital — Live</span>
+                <span>Notre Approche</span>
               </div>
-          <div class="panel-graph">
-            <svg viewBox="0 0 200 50" class="sparkline" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="spark-grad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="var(--orange)" stop-opacity="0.3"/>
-                  <stop offset="100%" stop-color="var(--orange)" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <!-- Forme avec dégradé -->
-              <path d="M0,40 L20,38 L40,45 L60,30 L80,35 L100,20 L120,25 L140,10 L160,15 L180,5 L200,8 L200,50 L0,50 Z" fill="url(#spark-grad)" stroke="none" />
-              <!-- Ligne du graphique -->
-              <path d="M0,40 L20,38 L40,45 L60,30 L80,35 L100,20 L120,25 L140,10 L160,15 L180,5 L200,8" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <div class="panel-status">
-            <span class="status-text">[ SYSTEM STATUS: SCANNING MARKET... ]</span>
-              </div>
-              <div class="panel-footer">
-                <span class="panel-badge">Macro · Quant · Finance</span>
+              <div class="approach-method">
+                <div class="am-item">
+                  <span class="am-num">01</span>
+                  <div>
+                    <strong class="am-title">Analyse fondamentale</strong>
+                    <p class="am-desc">Politique monétaire, cycles économiques, géopolitique : le cadre directionnel de chaque publication.</p>
+                  </div>
+                </div>
+                <div class="am-item">
+                  <span class="am-num">02</span>
+                  <div>
+                    <strong class="am-title">Modélisation quantitative</strong>
+                    <p class="am-desc">HMM, scoring multifactoriel, backtesting systématique. La rigueur mathématique comme filtre.</p>
+                  </div>
+                </div>
+                <div class="am-item">
+                  <span class="am-num">03</span>
+                  <div>
+                    <strong class="am-title">Signal, pas bruit</strong>
+                    <p class="am-desc">Pas de futilité. Chaque rapport vise la clarté analytique, pas le volume.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- NOUVELLE SECTION PUBLICATIONS (MACRO & QUANT) -->
+      <!-- DERNIÈRES PUBLICATIONS -->
       <section class="py-[100px]">
         <div class="container">
           <div class="section-rule mb-12">
@@ -259,39 +254,45 @@
           </div>
 
           <div class="grid lg:grid-cols-2 gap-6">
-            
-            <!-- Report Card (Macro) -->
+
             <a href="reports/rapport_24_04_26.html" class="reveal group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 rounded-lg shadow-sm hover:shadow-md">
               <div class="h-56 overflow-hidden relative border-b border-border rounded-t-lg">
-                <img src="assets/img/banner.jpg" alt="Report" class="w-full h-full object-cover opacity-40 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700 grayscale">
+                <img
+                  src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80"
+                  onerror="this.src='assets/img/banner.jpg'"
+                  alt="Rapport macro"
+                  class="w-full h-full object-cover opacity-35 group-hover:opacity-55 group-hover:scale-105 transition-all duration-700 grayscale">
                 <div class="absolute top-4 left-4 flex gap-2">
                   <span class="bg-orange text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-full">Macro</span>
-                  <span class="bg-white text-text border border-border font-mono text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1 rounded">Hebdo N°9</span>
+                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1 rounded">Hebdo N°9</span>
                 </div>
               </div>
               <div class="p-8 flex-1 flex flex-col">
-                <div class="font-mono text-[0.6rem] text-dim mb-3 uppercase tracking-widest">24 Avril 2026</div>
-                <h3 class="font-head text-2xl font-normal text-text mb-4 leading-tight group-hover:text-orange transition-colors">Climat Tendu &<br>Equities au Top</h3>
-                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Cette semaine a été rythmée par des nouvelles en dents de scie. En effet, au début de semaine, nous avons eu une lueur d’espoir d’un accord Iran–USA, mais les deux parties en ont décidé autrement...</p>
+                <div class="font-sans text-[0.6rem] text-dim mb-3 uppercase tracking-widest">24 Avril 2026</div>
+                <h3 class="font-head text-2xl font-normal text-text mb-4 leading-tight group-hover:text-orange transition-colors">Climat Tendu &amp;<br>Equities au Top</h3>
+                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Revue macro du 20 au 24 avril 2026 : tensions diplomatiques Iran–USA, résistance des marchés actions et lecture des données macroéconomiques clés.</p>
                 <div class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange mt-auto pt-6 border-t border-border">
                   Lire le rapport <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </div>
               </div>
             </a>
 
-            <!-- Research Card (Quant) -->
             <a href="assets/notebooks/HMM_engine.ipynb" target="_blank" class="reveal reveal-delay-1 group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 rounded-lg shadow-sm hover:shadow-md">
               <div class="h-56 overflow-hidden relative border-b border-border rounded-t-lg">
-                <img src="assets/img/report_banner.jpg" alt="Research" class="w-full h-full object-cover opacity-40 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700 grayscale">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+                  onerror="this.src='assets/img/banner.jpg'"
+                  alt="Recherche quantitative"
+                  class="w-full h-full object-cover opacity-35 group-hover:opacity-55 group-hover:scale-105 transition-all duration-700 grayscale">
                 <div class="absolute top-4 left-4 flex gap-2">
                   <span class="bg-dark text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-full">Quant</span>
-                  <span class="bg-white text-text border border-border font-mono text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1 rounded">Notebook</span>
+                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1 rounded">Notebook</span>
                 </div>
               </div>
               <div class="p-8 flex-1 flex flex-col">
-                <div class="font-mono text-[0.6rem] text-dim mb-3 uppercase tracking-widest">Avril 2026</div>
-                <h3 class="font-head text-2xl font-normal text-text mb-4 leading-tight group-hover:text-orange transition-colors">HMM Engine &<br>Régimes de Marché</h3>
-                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Moteur d’inférence basé sur les modèles de Markov cachés (HMM) pour identifier et modéliser systématiquement les différents régimes de volatilité sur les marchés.</p>
+                <div class="font-sans text-[0.6rem] text-dim mb-3 uppercase tracking-widest">Avril 2026</div>
+                <h3 class="font-head text-2xl font-normal text-text mb-4 leading-tight group-hover:text-orange transition-colors">HMM Engine &amp;<br>Régimes de Marché</h3>
+                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Moteur d'inférence basé sur les Hidden Markov Models pour identifier et modéliser les régimes de volatilité et de tendance sur les marchés financiers.</p>
                 <div class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange mt-auto pt-6 border-t border-border">
                   Découvrir la recherche <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </div>
@@ -301,24 +302,23 @@
           </div>
         </div>
       </section>
+
     </main>
 
-    <!-- Section Newsletter -->
     <section class="newsletter-section py-20 px-5 border-t border-border-dk">
       <div class="container max-w-[600px] text-center px-0">
         <h2 class="font-head text-3xl font-normal text-white mb-4 tracking-tight">Newsletter</h2>
-        <p class="text-off mb-8 text-[0.95rem]">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
-        
+        <p class="mb-8 text-[0.95rem]" style="color:rgba(255,255,255,0.55);">Soyez notifié de nos dernières analyses et publications quantitatives directement dans votre boîte de réception.</p>
         <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
-            <div class="flex w-full flex-row">
-                <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail professionnelle" required
-                       style="flex:1;padding:14px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-right:none;color:#fff;font-family:var(--ff-body);outline:none;transition:border-color .2s;border-radius:7px 0 0 7px;"
-                       onfocus="this.style.borderColor='rgba(96,165,250,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-                <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap" style="border-radius:0 7px 7px 0;">
-                    S'abonner
-                </button>
-            </div>
-            <p id="subscription-status" class="mt-4 font-mono text-xs uppercase tracking-widest min-h-[1.2em]" style="color:rgba(255,255,255,0.5)"></p>
+          <div class="flex w-full flex-row">
+            <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail" required
+                   style="flex:1;padding:14px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-right:none;color:#fff;font-family:var(--ff-body);outline:none;transition:border-color .2s;border-radius:7px 0 0 7px;"
+                   onfocus="this.style.borderColor='rgba(96,165,250,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap" style="border-radius:0 7px 7px 0;">
+              S'abonner
+            </button>
+          </div>
+          <p id="subscription-status" class="mt-4 font-sans text-xs uppercase tracking-widest min-h-[1.2em]" style="color:rgba(255,255,255,0.5)"></p>
         </form>
       </div>
     </section>
@@ -336,7 +336,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-disclaimer">Avertissement sur les risques : Le trading et l'investissement sur les marchés financiers (actions, devises, cryptomonnaies, matières premières) comportent un niveau de risque élevé et peuvent ne pas convenir à tous les investisseurs. Les performances passées ne préjugent pas des performances futures. Le contenu de ce site est fourni à titre exclusivement informatif et pédagogique et ne constitue en aucun cas un conseil en investissement. Horacle Capital ne saurait être tenu responsable de toute perte ou dommage découlant de la confiance accordée aux informations contenues sur ce site.</p>
+        <p class="footer-disclaimer">Avertissement sur les risques : Le trading et l'investissement sur les marchés financiers comportent un niveau de risque élevé et peuvent ne pas convenir à tous les investisseurs. Les performances passées ne préjugent pas des performances futures. Le contenu de ce site est fourni à titre exclusivement informatif et ne constitue en aucun cas un conseil en investissement. Horacle Capital ne saurait être tenu responsable de toute perte ou dommage découlant de la confiance accordée aux informations contenues sur ce site.</p>
       </div>
     </footer>
 

@@ -660,8 +660,8 @@ nav {
 
 .coming-strip {
   margin-top: 12px; padding: 16px 22px;
-  border: 1px solid var(--border); border-left: 3px solid var(--blue-2);
-  background: var(--bg-2); border-radius: 0 6px 6px 0;
+  border: 1px solid var(--border-2);
+  background: var(--bg-2); border-radius: 6px;
   display: flex; align-items: center; gap: 14px;
 }
 .cs-pulse {
@@ -835,9 +835,10 @@ footer {
 
 /* Article elements */
 .exec-summary {
-  background: var(--blue-d); border-left: 3px solid var(--blue-2);
+  background: var(--blue-d);
+  border: 1px solid rgba(37, 99, 235, 0.25);
   padding: 24px 28px; margin-bottom: 52px; color: var(--text);
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px;
 }
 .exec-summary strong {
   font-family: var(--ff-mono); color: var(--blue-2); text-transform: uppercase;
@@ -857,8 +858,8 @@ figcaption {
 blockquote {
   font-size: 1.1rem; font-style: italic; color: var(--text);
   margin: 48px 0; padding: 24px 28px;
-  background: var(--bg-2); border-left: 3px solid var(--blue-2);
-  border-radius: 0 8px 8px 0;
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 8px;
 }
 
 .report-table {
@@ -1127,4 +1128,25 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
   p, figure, img, table, .strategy-box, .exec-summary, blockquote, ul, li { page-break-inside: avoid; break-inside: avoid; }
   img { filter: grayscale(100%) !important; max-width: 100% !important; }
   a { text-decoration: underline !important; }
+}
+
+/* ─── HERO EDITORIAL PANEL ──────────────────────────────────────── */
+.hep-list { list-style: none; padding: 0; margin: 0 0 28px 0; display: flex; flex-direction: column; }
+.hep-item { display: flex; align-items: center; gap: 16px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.hep-item:last-child { border-bottom: none; }
+.hep-num { font-family: var(--ff-body); font-size: 0.52rem; font-weight: 600; color: var(--blue-3); letter-spacing: 0.12em; flex-shrink: 0; min-width: 20px; }
+.hep-text { font-family: var(--ff-body); font-size: 0.9rem; color: rgba(255,255,255,0.72); font-weight: 400; }
+.hep-footer { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 20px; }
+
+/* ─── ABOUT METHODOLOGY PANEL ───────────────────────────────────── */
+.approach-method { display: flex; flex-direction: column; }
+.am-item { display: flex; gap: 18px; padding: 20px 24px; border-bottom: 1px solid var(--border); }
+.am-item:last-child { border-bottom: none; }
+.am-num { font-family: var(--ff-body); font-size: 0.52rem; font-weight: 600; color: var(--blue-2); letter-spacing: 0.1em; padding-top: 2px; flex-shrink: 0; }
+.am-title { font-family: var(--ff-body); font-size: 0.9rem; font-weight: 600; color: var(--text); display: block; margin-bottom: 6px; }
+.am-desc { font-family: var(--ff-body); font-size: 0.82rem; color: var(--off); line-height: 1.65; margin: 0; }
+
+/* ─── INDEX-ONLY HERO MOBILE OVERRIDE ──────────────────────────── */
+@media (max-width: 960px) {
+  .hero-index { min-height: 75vh !important; }
 }
