@@ -101,91 +101,103 @@
       </header>
 
       <!-- SECTION WORKFLOW AVEC IMAGES ALTERNÉES -->
-      <section class="py-32 px-5 bg-white overflow-hidden">
+      <section class="py-32 px-5 bg-[var(--bg)] overflow-hidden">
         <div class="max-w-6xl mx-auto">
           <div class="text-center mb-24">
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight" style="font-family: var(--ff-body)">Un Workflow Sans Faille</h2>
-            <p class="text-gray-500 mt-6 text-xl max-w-2xl mx-auto">Chaque étape de votre processus d'investissement a été déconstruite et optimisée. Ne laissez plus de place au hasard.</p>
+            <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight" style="font-family: var(--ff-body)">Un Workflow Sans Faille</h2>
+            <p class="text-[var(--dim)] mt-6 text-xl max-w-2xl mx-auto">Chaque étape de votre processus d'investissement a été déconstruite et optimisée. Ne laissez plus de place au hasard.</p>
           </div>
           
-          <div class="space-y-32">
-            <!-- Etape 1 : Screener -->
-            <div class="flex flex-col md:flex-row items-center gap-12 group">
-              <div class="flex-1 space-y-6 md:pr-10">
-                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">1</div>
-                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Screener Multicritère</h3>
-                <p class="text-lg text-gray-600 leading-relaxed">Filtrez l'univers d'investissement mondial en quelques secondes. Croisez les données macroéconomiques, fondamentales et techniques pour isoler instantanément les actifs qui respectent strictement vos paramètres.</p>
-              </div>
-              <div class="flex-1 relative w-full">
-                <div class="absolute inset-0 bg-blue-400/5 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
-                <img src="../assets/img/capitalis_view/screener.png" alt="Screener Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
-              </div>
-            </div>
-            
-            <!-- Etape 2 : Scorer -->
-            <div class="flex flex-col md:flex-row-reverse items-center gap-12 group">
-              <div class="flex-1 space-y-6 md:pl-10">
-                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">2</div>
-                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Scoring Quantitatif</h3>
-                <p class="text-lg text-gray-600 leading-relaxed">Éliminez le biais émotionnel. Notre moteur quantitatif évalue et classe chaque opportunité selon une matrice multifactorielle stricte. Concentrez votre capital uniquement sur ce que la data valide.</p>
-              </div>
-              <div class="flex-1 relative w-full">
-                <div class="absolute inset-0 bg-gray-400/10 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
-                <img src="../assets/img/capitalis_view/scorer.png" alt="Scoring Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
-              </div>
-            </div>
+          <div class="relative mt-20 max-w-4xl mx-auto">
+            <!-- Ligne verticale centrale -->
+            <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-[var(--border)] -translate-x-1/2"></div>
 
-            <!-- Etape 3 : Market Mapping -->
-            <div class="flex flex-col md:flex-row items-center gap-12 group">
-              <div class="flex-1 space-y-6 md:pr-10">
-                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">3</div>
-                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Market Mapping</h3>
-                <p class="text-lg text-gray-600 leading-relaxed">Visualisez la dynamique globale des marchés en un coup d'œil. Identifiez les rotations sectorielles, les flux de capitaux et les anomalies de valorisation avant qu'elles ne deviennent évidentes pour le consensus.</p>
+            <div class="space-y-12 md:space-y-24">
+              
+              <!-- Etape 1 -->
+              <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                <div class="md:w-5/12 w-full pl-20 md:pl-0 md:text-right md:pr-12">
+                  <h3 class="text-2xl font-bold text-white mb-3 transition-colors group-hover:text-[var(--orange)]">Screener Multicritère</h3>
+                  <p class="text-[var(--off)] leading-relaxed">Filtrez l'univers d'investissement mondial en quelques secondes. Croisez les données macroéconomiques, fondamentales et techniques pour isoler instantanément les actifs qui respectent strictement vos paramètres.</p>
+                </div>
+                <div class="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-[var(--bg-2)] border-2 border-[var(--border)] group-hover:border-[var(--orange)] text-[var(--dim)] group-hover:text-[var(--orange)] flex items-center justify-center font-mono font-bold text-xl -translate-x-1/2 transition-all duration-300 z-10 group-hover:shadow-[0_0_20px_rgba(255,69,0,0.4)]">1</div>
+                <div class="md:w-5/12 hidden md:block md:pl-12">
+                  <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-[var(--border)] opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-8 group-hover:translate-x-0 shadow-[0_0_30px_rgba(255,69,0,0.15)]">
+                    <img src="../assets/img/capitalis_view/screener.png" class="w-full h-full object-cover" alt="Screener" onerror="this.src='../assets/img/banner.jpg';">
+                  </div>
+                </div>
               </div>
-              <div class="flex-1 relative w-full">
-                <div class="absolute inset-0 bg-blue-400/5 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
-                <img src="../assets/img/capitalis_view/market_map_light.png" alt="Market Mapping Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
-              </div>
-            </div>
 
-            <!-- Etape 4 : Allocation -->
-            <div class="flex flex-col md:flex-row-reverse items-center gap-12 group">
-              <div class="flex-1 space-y-6 md:pl-10">
-                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">4</div>
-                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Allocation & Pondération</h3>
-                <p class="text-lg text-gray-600 leading-relaxed">Construisez un portefeuille résilient. Optimisez le couple rendement/risque de vos positions en ajustant dynamiquement vos pondérations selon les corrélations historiques et votre tolérance au drawdown maximal.</p>
+              <!-- Etape 2 -->
+              <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                <div class="md:w-5/12 hidden md:block md:pr-12">
+                  <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-[var(--border)] opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-x-8 group-hover:translate-x-0 shadow-[0_0_30px_rgba(255,69,0,0.15)]">
+                    <img src="../assets/img/capitalis_view/scorer.png" class="w-full h-full object-cover" alt="Scoring" onerror="this.src='../assets/img/banner.jpg';">
+                  </div>
+                </div>
+                <div class="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-[var(--bg-2)] border-2 border-[var(--border)] group-hover:border-[var(--orange)] text-[var(--dim)] group-hover:text-[var(--orange)] flex items-center justify-center font-mono font-bold text-xl -translate-x-1/2 transition-all duration-300 z-10 group-hover:shadow-[0_0_20px_rgba(255,69,0,0.4)]">2</div>
+                <div class="md:w-5/12 w-full pl-20 md:pl-12 text-left">
+                  <h3 class="text-2xl font-bold text-white mb-3 transition-colors group-hover:text-[var(--orange)]">Scoring Quantitatif</h3>
+                  <p class="text-[var(--off)] leading-relaxed">Éliminez le biais émotionnel. Notre moteur quantitatif évalue et classe chaque opportunité selon une matrice multifactorielle stricte. Concentrez votre capital uniquement sur ce que la data valide.</p>
+                </div>
               </div>
-              <div class="flex-1 relative w-full">
-                <div class="absolute inset-0 bg-gray-400/10 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
-                <img src="../assets/img/capitalis_view/allocation.png" alt="Allocation Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
-              </div>
-            </div>
 
-            <!-- Etape 5 : Equity Review -->
-            <div class="flex flex-col md:flex-row items-center gap-12 group">
-              <div class="flex-1 space-y-6 md:pr-10">
-                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">5</div>
-                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Equity Review</h3>
-                <p class="text-lg text-gray-600 leading-relaxed">Passez chaque actif au microscope. Accédez aux états financiers agrégés, à la structure de la dette, aux ratios de valorisation et aux signaux techniques dans une interface de due diligence unifiée.</p>
+              <!-- Etape 3 -->
+              <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                <div class="md:w-5/12 w-full pl-20 md:pl-0 md:text-right md:pr-12">
+                  <h3 class="text-2xl font-bold text-white mb-3 transition-colors group-hover:text-[var(--orange)]">Market Mapping</h3>
+                  <p class="text-[var(--off)] leading-relaxed">Visualisez la dynamique globale des marchés en un coup d'œil. Identifiez les rotations sectorielles, les flux de capitaux et les anomalies de valorisation avant qu'elles ne deviennent évidentes pour le consensus.</p>
+                </div>
+                <div class="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-[var(--bg-2)] border-2 border-[var(--border)] group-hover:border-[var(--orange)] text-[var(--dim)] group-hover:text-[var(--orange)] flex items-center justify-center font-mono font-bold text-xl -translate-x-1/2 transition-all duration-300 z-10 group-hover:shadow-[0_0_20px_rgba(255,69,0,0.4)]">3</div>
+                <div class="md:w-5/12 hidden md:block md:pl-12">
+                  <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-[var(--border)] opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-8 group-hover:translate-x-0 shadow-[0_0_30px_rgba(255,69,0,0.15)]">
+                    <img src="../assets/img/capitalis_view/market_map_light.png" class="w-full h-full object-cover" alt="Market Mapping" onerror="this.src='../assets/img/banner.jpg';">
+                  </div>
+                </div>
               </div>
-              <div class="flex-1 relative w-full">
-                <div class="absolute inset-0 bg-blue-400/5 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
-                <img src="../assets/img/capitalis_view/equity_review_light.png" alt="Equity Review Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
-              </div>
-            </div>
 
-            <!-- Etape 6 : Reporting -->
-            <div class="flex flex-col md:flex-row-reverse items-center gap-12 group">
-              <div class="flex-1 space-y-6 md:pl-10">
-                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-inner border border-blue-100" style="font-family: var(--ff-mono)">6</div>
-                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">Reporting & Audit</h3>
-                <p class="text-lg text-gray-600 leading-relaxed">Confrontez vos stratégies à la réalité. Auditez l'efficacité de vos choix d'allocation, analysez l'attribution de vos gains et générez des rapports de performance de grade institutionnel en un clic.</p>
+              <!-- Etape 4 -->
+              <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                <div class="md:w-5/12 hidden md:block md:pr-12">
+                  <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-[var(--border)] opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-x-8 group-hover:translate-x-0 shadow-[0_0_30px_rgba(255,69,0,0.15)]">
+                    <img src="../assets/img/capitalis_view/allocation.png" class="w-full h-full object-cover" alt="Allocation" onerror="this.src='../assets/img/banner.jpg';">
+                  </div>
+                </div>
+                <div class="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-[var(--bg-2)] border-2 border-[var(--border)] group-hover:border-[var(--orange)] text-[var(--dim)] group-hover:text-[var(--orange)] flex items-center justify-center font-mono font-bold text-xl -translate-x-1/2 transition-all duration-300 z-10 group-hover:shadow-[0_0_20px_rgba(255,69,0,0.4)]">4</div>
+                <div class="md:w-5/12 w-full pl-20 md:pl-12 text-left">
+                  <h3 class="text-2xl font-bold text-white mb-3 transition-colors group-hover:text-[var(--orange)]">Allocation & Pondération</h3>
+                  <p class="text-[var(--off)] leading-relaxed">Construisez un portefeuille résilient. Optimisez le couple rendement/risque de vos positions en ajustant dynamiquement vos pondérations selon les corrélations historiques et votre tolérance au drawdown maximal.</p>
+                </div>
               </div>
-              <div class="flex-1 relative w-full">
-                <div class="absolute inset-0 bg-gray-400/10 blur-3xl rounded-[3rem] transform group-hover:scale-110 transition-transform duration-700"></div>
-                <img src="../assets/img/capitalis_view/reporting.png" alt="Reporting Capitalis" class="relative z-10 w-full rounded-2xl shadow-xl border border-gray-100 transform group-hover:-translate-y-2 transition-all duration-500 object-cover bg-white" onerror="this.src='../assets/img/banner.jpg';">
+
+              <!-- Etape 5 -->
+              <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                <div class="md:w-5/12 w-full pl-20 md:pl-0 md:text-right md:pr-12">
+                  <h3 class="text-2xl font-bold text-white mb-3 transition-colors group-hover:text-[var(--orange)]">Equity Review</h3>
+                  <p class="text-[var(--off)] leading-relaxed">Passez chaque actif au microscope. Accédez aux états financiers agrégés, à la structure de la dette, aux ratios de valorisation et aux signaux techniques dans une interface de due diligence unifiée.</p>
+                </div>
+                <div class="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-[var(--bg-2)] border-2 border-[var(--border)] group-hover:border-[var(--orange)] text-[var(--dim)] group-hover:text-[var(--orange)] flex items-center justify-center font-mono font-bold text-xl -translate-x-1/2 transition-all duration-300 z-10 group-hover:shadow-[0_0_20px_rgba(255,69,0,0.4)]">5</div>
+                <div class="md:w-5/12 hidden md:block md:pl-12">
+                  <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-[var(--border)] opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-8 group-hover:translate-x-0 shadow-[0_0_30px_rgba(255,69,0,0.15)]">
+                    <img src="../assets/img/capitalis_view/equity_review_light.png" class="w-full h-full object-cover" alt="Equity Review" onerror="this.src='../assets/img/banner.jpg';">
+                  </div>
+                </div>
               </div>
-            </div>
+
+              <!-- Etape 6 -->
+              <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                <div class="md:w-5/12 hidden md:block md:pr-12">
+                  <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-[var(--border)] opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-x-8 group-hover:translate-x-0 shadow-[0_0_30px_rgba(255,69,0,0.15)]">
+                    <img src="../assets/img/capitalis_view/reporting.png" class="w-full h-full object-cover" alt="Reporting" onerror="this.src='../assets/img/banner.jpg';">
+                  </div>
+                </div>
+                <div class="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-[var(--bg-2)] border-2 border-[var(--border)] group-hover:border-[var(--orange)] text-[var(--dim)] group-hover:text-[var(--orange)] flex items-center justify-center font-mono font-bold text-xl -translate-x-1/2 transition-all duration-300 z-10 group-hover:shadow-[0_0_20px_rgba(255,69,0,0.4)]">6</div>
+                <div class="md:w-5/12 w-full pl-20 md:pl-12 text-left">
+                  <h3 class="text-2xl font-bold text-white mb-3 transition-colors group-hover:text-[var(--orange)]">Reporting & Audit</h3>
+                  <p class="text-[var(--off)] leading-relaxed">Confrontez vos stratégies à la réalité. Auditez l'efficacité de vos choix d'allocation, analysez l'attribution de vos gains et générez des rapports de performance de grade institutionnel en un clic.</p>
+                </div>
+              </div>
+
           </div>
         </div>
       </section>
