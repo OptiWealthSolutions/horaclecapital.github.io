@@ -49,7 +49,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
     <meta name="twitter:image" content={ogImage} />
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/tailwind-config.js"></script>
+    <script is:inline src="/tailwind-config.js"></script>
   </head>
   <body>
     <!-- Reading progress bar -->
@@ -169,6 +169,6 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
       </div>
     </footer>
 
-    <script src="/main.js"></script>
+    <script is:inline src="/main.js"></script>
   </body>
 </html>
