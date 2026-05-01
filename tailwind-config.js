@@ -12,11 +12,11 @@ tailwind.config = {
         'dark-3': '#243044',
         /* Text */
         text:     '#0F172A',
-        off:      '#475569',
-        dim:      '#94A3B8',
+        off:      '#334155',
+        dim:      '#5B6E85',
         /* Borders */
-        border:   '#E2E8F0',
-        'border-2': '#CBD5E1',
+        border:   '#B8C5D6',
+        'border-2': '#93A8C0',
         'border-dk': '#1E2D45',
         /* Blue accent — maps all "orange" refs to blue */
         orange:   '#2563EB',
@@ -29,7 +29,7 @@ tailwind.config = {
         white:    '#FFFFFF',
       },
       fontFamily: {
-        mono: ['JetBrains Mono', 'monospace'],
+        mono: ['DM Sans', 'sans-serif'],
         sans: ['DM Sans', 'sans-serif'],
         head: ['DM Serif Display', 'serif'],
       }

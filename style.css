@@ -17,12 +17,12 @@
   /* ── Typography ─────────────────────────────────────────────── */
   --text:      #0F172A;
   --white:     #FFFFFF;
-  --off:       #475569;
-  --dim:       #94A3B8;
+  --off:       #334155;
+  --dim:       #5B6E85;
 
   /* ── Borders ─────────────────────────────────────────────────── */
-  --border:    #E2E8F0;
-  --border-2:  #CBD5E1;
+  --border:    #B8C5D6;
+  --border-2:  #93A8C0;
   --border-dk: #1E2D45;
 
   /* ── Blue accent ─────────────────────────────────────────────── */
@@ -36,7 +36,7 @@
   --orange-d:  rgba(37, 99, 235, 0.07);
 
   /* ── Fonts ───────────────────────────────────────────────────── */
-  --ff-mono:   'JetBrains Mono', monospace;
+  --ff-mono:   'DM Sans', sans-serif;
   --ff-body:   'DM Sans', sans-serif;
   --ff-head:   'DM Serif Display', serif;
 }
@@ -276,48 +276,11 @@ nav {
   font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
 }
 
-/* ─── TICKER ───────────────────────────────────────────────────── */
-.ticker-wrap {
-  margin-top: 60px;
-  background: var(--dark-2);
-  border-bottom: 1px solid var(--border-dk);
-  overflow: hidden; position: relative; z-index: 1;
-}
-.ticker-wrap::before,
-.ticker-wrap::after {
-  content: '';
-  position: absolute; top: 0; bottom: 0;
-  width: 60px; z-index: 2;
-}
-.ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--dark-2), transparent); }
-.ticker-wrap::after  { right: 0; background: linear-gradient(to left, var(--dark-2), transparent); }
-
-.ticker-track {
-  display: flex; width: max-content;
-  animation: tick 30s linear infinite;
-}
-.ticker-track:hover { animation-play-state: paused; }
-
-@keyframes tick {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.t-item {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 9px 28px;
-  font-family: var(--ff-mono); font-size: 0.6rem;
-  letter-spacing: 0.07em; color: rgba(255, 255, 255, 0.35);
-  border-right: 1px solid var(--border-dk); white-space: nowrap;
-}
-.t-item b { color: rgba(255, 255, 255, 0.7); }
-.t-item .up { color: #34D399; }
-.t-item .dn { color: #F87171; }
 
 /* ─── HERO ─────────────────────────────────────────────────────── */
 .hero {
   position: relative; z-index: 1;
-  min-height: calc(100vh - 60px - 37px);
+  min-height: calc(100vh - 60px);
   display: flex; flex-direction: column; justify-content: center;
   padding: 80px 40px;
   overflow: hidden;
