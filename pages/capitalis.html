@@ -23,7 +23,11 @@
       .cap-hero {
         background: var(--dark);
         border-bottom: 1px solid var(--border-dk);
-        padding: 8rem 2rem 6rem;
+        padding: clamp(100px, 10vh, 140px) clamp(32px, 8vw, 120px);
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         position: relative;
         overflow: hidden;
       }
@@ -47,7 +51,7 @@
       .cap-hero-inner {
         position: relative;
         z-index: 2;
-        max-width: 820px;
+        max-width: 1000px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -81,9 +85,10 @@
       }
       .cap-hero h1 {
         font-family: var(--ff-head);
-        font-size: clamp(2rem,5vw,3.5rem);
+        font-size: clamp(3.2rem, 8.5vw, 7.5rem);
         font-weight: 400;
-        line-height: 1.15;
+        line-height: 0.95;
+        letter-spacing: -0.025em;
         color: #fff;
         margin-bottom: 1.5rem;
       }
@@ -93,7 +98,7 @@
         color: rgba(255,255,255,0.58);
         line-height: 1.7;
         margin-bottom: 2.5rem;
-        max-width: 560px;
+        max-width: 700px;
         margin-left: auto;
         margin-right: auto;
       }
@@ -309,8 +314,8 @@
         <div class="cap-hero-left">
           <span class="cap-badge">App Disponible</span>
           <h1 class="font-head">
-            L'infrastructure institutionnelle,<br>
-            <span style="color:var(--blue-3)">pour investisseurs indépendants.</span>
+            Découvrez<br>
+            <span style="color:var(--blue-3)">CAPITALIS</span>
           </h1>
           <p>
             Capitalis centralise la donnée macroéconomique, quantitative et fondamentale. De la génération d'idées à l'audit de performance, pilotez votre portefeuille avec une rigueur absolue.
