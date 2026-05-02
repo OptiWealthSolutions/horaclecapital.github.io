@@ -331,9 +331,9 @@ nav {
 }
 
 .hero h1 {
-  font-family: var(--ff-body);
+  font-family: var(--ff-head);
   font-size: clamp(3.2rem, 8.5vw, 7.5rem);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
   color: var(--white);
@@ -809,7 +809,7 @@ footer {
 }
 .page-header h1 {
   position: relative; z-index: 2;
-  font-family: var(--ff-body); font-size: clamp(2.6rem, 5.5vw, 5.5rem);
+  font-family: var(--ff-head); font-size: clamp(2.6rem, 5.5vw, 5.5rem);
   font-weight: 400; letter-spacing: -0.025em; color: #fff;
   line-height: 1.06; margin: 0 auto 20px auto; max-width: 900px;
 }
@@ -1158,20 +1158,31 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
 
 /* ─── PRINT ──────────────────────────────────────────────────────── */
 @media print {
-  body { background: #fff !important; color: #000 !important; }
+  @page { margin: 2cm 1.5cm; }
+  body { background: #fff !important; color: #000 !important; font-size: 10pt !important; line-height: 1.6 !important; }
   body::before, .header-bg, .hero-bg, .absolute { display: none !important; }
   nav, footer, .newsletter-section, .cookie-banner, .scroll-top-btn,
   #reading-progress, .nav-overlay, .hero-actions, .socials, .nav-search,
-  button, #copy-link-btn, #share-li, #share-tw { display: none !important; }
+  button, #copy-link-btn, #share-li, #share-tw, .research-toolbar { display: none !important; }
   * { background-color: transparent !important; color: #000 !important; box-shadow: none !important; }
-  .exec-summary, .strategy-box, blockquote, .report-table, .disclaimer { border: 1px solid #999 !important; }
+  
+  .exec-summary { border: none !important; border-left: 3px solid #000 !important; padding: 10px 15px !important; margin: 20px 0 !important; }
+  .strategy-box, blockquote, .report-table, .disclaimer { border: 1px solid #ccc !important; }
+  
   .container, .article-container, .page-header { max-width: 100% !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
-  .page-header { border-bottom: 2px solid #000 !important; padding-bottom: 20px !important; margin-bottom: 30px !important; }
-  .article-container { margin-top: 30px !important; }
-  h1, h2, h3, h4 { page-break-after: avoid; break-after: avoid; margin-top: 24px !important; }
+  .page-header { border-bottom: 1px solid #000 !important; padding-bottom: 15px !important; margin-bottom: 20px !important; text-align: left !important; }
+  .page-header h1 { font-size: 24pt !important; margin: 0 0 10px 0 !important; }
+  .page-header p, .page-header span { margin: 0 !important; font-size: 10pt !important; }
+  
+  .article-container { margin-top: 0 !important; font-size: 10pt !important; line-height: 1.6 !important; }
+  h1, h2, h3, h4 { page-break-after: avoid; break-after: avoid; margin-top: 20px !important; margin-bottom: 10px !important; }
+  h2 { font-size: 16pt !important; border-bottom: 1px solid #eee !important; padding-bottom: 5px !important; }
+  h3 { font-size: 13pt !important; }
+  h4 { font-size: 11pt !important; }
+  
   p, figure, img, table, .strategy-box, .exec-summary, blockquote, ul, li { page-break-inside: avoid; break-inside: avoid; }
-  img { filter: grayscale(100%) !important; max-width: 100% !important; }
-  a { text-decoration: underline !important; }
+  img { filter: grayscale(100%) !important; max-width: 100% !important; border: none !important; }
+  a { text-decoration: underline !important; color: #000 !important; }
 }
 
 /* ─── HERO EDITORIAL PANEL ──────────────────────────────────────── */
