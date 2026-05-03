@@ -22,6 +22,26 @@
     <meta name="twitter:image" content="https://horaclecapital.com/assets/img/banner.jpg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind-config.js"></script>
+    <style>
+      @media (max-width: 1649px) {
+        .hero-visual {
+          display: none !important;
+        }
+        .hero-split {
+          flex-direction: column !important;
+          align-items: center !important;
+          text-align: center !important;
+        }
+        .hero-content {
+          width: 100% !important;
+          max-width: none !important;
+          align-items: center !important;
+        }
+        .hero-actions {
+          justify-content: center !important;
+        }
+      }
+    </style>
   </head>
   <body>
 
@@ -163,7 +183,7 @@
           <div class="grid lg:grid-cols-3 gap-6 items-stretch">
 
             <!-- Capitalis : 2/3 width -->
-            <a href="pages/capitalis.html" class="reveal group relative overflow-hidden lg:col-span-2 flex flex-col p-10 rounded-lg min-h-[320px]" style="background:var(--dark-2);border:1px solid var(--border-dk);">
+            <a href="pages/capitalis.html" class="reveal group relative overflow-hidden lg:col-span-2 flex flex-col p-10 min-h-[320px]" style="background:var(--dark-2);border:1px solid var(--border-dk);">
               <img
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
                 onerror="this.src='assets/img/banner.jpg'"
@@ -184,7 +204,7 @@
             </a>
 
             <!-- Academy : 1/3 width -->
-            <a href="academy.html" class="reveal reveal-delay-1 group flex flex-col p-10 rounded-lg" style="background:var(--bg);border:1px solid var(--border);">
+            <a href="academy.html" class="reveal reveal-delay-1 group flex flex-col p-10" style="background:var(--bg);border:1px solid var(--border);">
               <span class="font-sans text-[0.6rem] uppercase tracking-[0.12em] px-3 py-1 font-bold rounded-full self-start" style="border:1px solid var(--blue-2);color:var(--blue-2);">Cours privés</span>
               <div class="mt-auto pt-16">
                 <h3 class="font-head text-3xl font-normal text-text mb-3 tracking-tight">Horacle Academy</h3>
@@ -202,7 +222,7 @@
 
       <!-- PRÉSENTATION -->
       <section id="about" class="about-section">
-        <div class="container container-wide">
+        <div class="container">
           <div class="section-rule">
             <span class="section-label">Présentation</span>
             <div class="rule-line"></div>
@@ -286,8 +306,8 @@
 
           <div class="grid lg:grid-cols-2 gap-6">
 
-            <a href="reports/rapport_24_04_26.html" class="reveal group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 rounded-lg shadow-sm hover:shadow-md">
-              <div class="h-56 overflow-hidden relative border-b border-border rounded-t-lg">
+            <a href="reports/rapport_24_04_26.html" class="reveal group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
+              <div class="h-56 overflow-hidden relative border-b border-border">
                 <img
                   src="assets/img/hormuz.jpg"
                   onerror="this.src='assets/img/banner.jpg'"
@@ -295,7 +315,7 @@
                   class="w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700">
                 <div class="absolute top-4 left-4 flex gap-2">
                   <span class="bg-orange text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-full">Macro</span>
-                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1 rounded">Hebdo N°9</span>
+                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1">Hebdo N°9</span>
                 </div>
               </div>
               <div class="p-8 flex-1 flex flex-col">
@@ -308,16 +328,16 @@
               </div>
             </a>
 
-            <a href="pages/scoring-report.html" class="reveal reveal-delay-1 group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 rounded-lg shadow-sm hover:shadow-md">
-              <div class="h-56 overflow-hidden relative border-b border-border rounded-t-lg">
+            <a href="pages/scoring-report.html" class="reveal reveal-delay-1 group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
+              <div class="h-56 overflow-hidden relative border-b border-border">
                 <img
-                  src="assets/img/banner.jpg"
+                  src="assets/img/capitalis_view/scorer.png"
                   onerror="this.src='assets/img/banner.jpg'"
                   alt="Modèle de scoring quantitatif"
                   class="w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700">
                 <div class="absolute top-4 left-4 flex gap-2">
                   <span class="bg-dark text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-full">Quant</span>
-                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1 rounded">PDF & Modèle</span>
+                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1">PDF & Modèle</span>
                 </div>
               </div>
               <div class="p-8 flex-1 flex flex-col">
@@ -337,7 +357,7 @@
     </main>
 
     <section class="newsletter-section py-20 px-5 border-t border-border-dk">
-      <div class="container max-w-[600px] text-center px-0">
+      <div class="container max-w-[600px] text-center">
         <h2 class="font-head text-3xl font-normal text-white mb-4 tracking-tight">Newsletter</h2>
         <p class="mb-8 text-[0.95rem]" style="color:rgba(255,255,255,0.55);">Soyez notifié de nos dernières analyses et publications quantitatives directement dans votre boîte de réception.</p>
         <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">

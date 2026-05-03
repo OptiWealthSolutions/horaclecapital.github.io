@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const q = query.toLowerCase().trim();
-    const filtered = siteData.filter(item => item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q));
+    const filtered = siteData.filter(item => item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q) || item.shortDesc.toLowerCase().includes(q) || item.category.toLowerCase().includes(q));
 
     if (filtered.length === 0) {
       smResults.innerHTML = '<div class="sm-empty">Aucun résultat trouvé pour "'+query+'"</div>';
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Logique pour la page Research (Filtres et Recherche)
   const searchInput = document.getElementById('research-search');
   const filterButtons = document.querySelectorAll('.rt-filter');
-  const researchCards = document.querySelectorAll('.research-card');
+  const researchCards = document.querySelectorAll('.research-item');
   const noResultsMsg = document.getElementById('no-results');
 
   if (searchInput && filterButtons.length > 0 && researchCards.length > 0) {
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       researchCards.forEach(card => {
         const title = card.querySelector('h3').textContent.toLowerCase();
-        const desc = card.querySelector('.rc-desc').textContent.toLowerCase();
+        const desc = card.querySelector('.research-description').textContent.toLowerCase();
         const category = card.getAttribute('data-category');
 
         const matchesSearch = title.includes(searchTerm) || desc.includes(searchTerm);

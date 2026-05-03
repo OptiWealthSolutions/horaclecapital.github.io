@@ -90,7 +90,7 @@ const fallbackImg = '/assets/img/banner.jpg';
       <!-- Article à la une -->
       {featured && (
         <div class="container pt-14 pb-0">
-          <div class="flex flex-col lg:flex-row border border-[var(--border)] overflow-hidden mb-16 group">
+          <a href={`/reports/${featured.slug}.html`} class="flex flex-col lg:flex-row border border-[var(--border)] overflow-hidden mb-16 group">
             <div class="relative lg:w-[58%] overflow-hidden bg-[var(--bg-2)]" style="min-height:300px">
               <img
                 src={featured.data.thumbnail || fallbackImg}
@@ -110,12 +110,12 @@ const fallbackImg = '/assets/img/banner.jpg';
                   {featured.data.description}
                 </p>
               </div>
-              <a href={`/reports/${featured.slug}.html`} class="btn-primary self-start">
+              <div class="btn-primary self-start">
                 Lire le rapport
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       )}
 
@@ -128,7 +128,7 @@ const fallbackImg = '/assets/img/banner.jpg';
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {grid.map((rapport) => (
-            <article class="group flex flex-col border border-[var(--border)] hover:border-[rgba(37,99,235,0.4)] transition-colors duration-300 overflow-hidden">
+            <a href={`/reports/${rapport.slug}.html`} class="group flex flex-col border border-[var(--border)] hover:border-[rgba(37,99,235,0.4)] transition-colors duration-300 overflow-hidden">
               <div class="relative overflow-hidden bg-[var(--bg-2)]" style="aspect-ratio:16/9">
                 <img
                   src={rapport.data.thumbnail || fallbackImg}
@@ -144,17 +144,15 @@ const fallbackImg = '/assets/img/banner.jpg';
                 </div>
                 <h3 class="font-head text-[var(--text)] leading-snug mb-3 flex-1" style="font-size:1.05rem">{rapport.data.title}</h3>
                 <p style="font-family:var(--ff-body);font-size:0.82rem;color:var(--off);line-height:1.65;margin-bottom:1.25rem">{rapport.data.description}</p>
-                <a
-                  href={`/reports/${rapport.slug}.html`}
-                  style="display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-body);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:3px;transition:color 0.2s"
-                  onmouseover="this.style.color='var(--blue-2)'"
-                  onmouseout="this.style.color='var(--text)'"
+                <span
+                  style="display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-body);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:3px;transition:color 0.2s"
+                  class="text-text group-hover:text-blue-2"
                 >
                   Lire
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
+                </span>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>
@@ -168,8 +166,8 @@ const fallbackImg = '/assets/img/banner.jpg';
         <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
           <div class="flex w-full flex-row">
             <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail professionnelle" required
-                   style="flex:1;padding:14px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-right:none;color:#fff;font-family:var(--ff-body);outline:none;border-radius:7px 0 0 7px;" />
-            <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap" style="border-radius:0 7px 7px 0;">S'abonner</button>
+                   style="flex:1;padding:14px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-right:none;color:#fff;font-family:var(--ff-body);outline:none;border-radius:0;" />
+            <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap" style="border-radius:0;">S'abonner</button>
           </div>
           <p id="subscription-status" class="mt-4 font-mono text-xs uppercase tracking-widest min-h-[1.2em]" style="color:rgba(255,255,255,0.5)"></p>
         </form>

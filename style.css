@@ -154,7 +154,7 @@ nav {
   display: flex; align-items: center; padding: 0 14px; height: 34px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 100px;
+  border-radius: 0;
   margin-left: 16px;
   transition: border-color 0.25s, background 0.25s;
 }
@@ -360,7 +360,7 @@ nav {
   color: #fff;
   font-family: var(--ff-body); font-size: 0.88rem; font-weight: 600;
   letter-spacing: 0.01em;
-  border-radius: 7px;
+  border-radius: 0;
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
 }
@@ -377,7 +377,7 @@ nav {
   color: #fff;
   font-family: var(--ff-body); font-size: 0.88rem; font-weight: 500;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 7px;
+  border-radius: 0;
   transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
 }
 .btn-ghost:hover {
@@ -554,8 +554,8 @@ nav {
   color: var(--off); transition: all 0.2s;
   border-radius: 0;
 }
-.social-pill:first-child { border-radius: 6px 6px 0 0; }
-.social-pill:last-child { border-bottom: 1px solid var(--border); border-radius: 0 0 6px 6px; }
+.social-pill:first-child { border-radius: 0; }
+.social-pill:last-child { border-bottom: 1px solid var(--border); border-radius: 0; }
 .social-pill:hover { background: var(--blue-d); border-color: var(--blue-2); color: var(--blue-2); }
 .social-pill:hover + .social-pill { border-top-color: var(--blue-2); }
 .sp-arrow { margin-left: auto; opacity: 0; transition: all 0.2s; }
@@ -962,7 +962,7 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
 .rt-search input {
   width: 100%; background: var(--white); border: 1px solid var(--border);
   color: var(--text); font-family: var(--ff-body); font-size: 0.95rem;
-  padding: 14px 14px 14px 48px; border-radius: 8px;
+  padding: 14px 14px 14px 48px; border-radius: 0;
   outline: none; transition: border-color 0.2s, box-shadow 0.2s;
 }
 .rt-search input:focus { border-color: var(--blue-2); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
@@ -970,7 +970,7 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
 
 .rt-filters { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .rt-filter {
-  background: transparent; border: 1px solid var(--border); border-radius: 6px;
+  background: transparent; border: 1px solid var(--border); border-radius: 0;
   color: var(--off); font-family: var(--ff-body); font-size: 0.78rem; font-weight: 500;
   text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 16px;
   cursor: pointer; transition: all 0.2s;
@@ -1001,7 +1001,7 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
 .research-card:hover .rc-media img { transform: scale(1.06); }
 .rc-play {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 48px; height: 48px; background: rgba(37,99,235,0.9); border-radius: 50%;
+  width: 48px; height: 48px; background: rgba(37,99,235,0.9); border-radius: 0;
   display: flex; align-items: center; justify-content: center; color: #fff;
   transition: background 0.2s, transform 0.2s;
 }
@@ -1035,7 +1035,7 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
 .rc-action:hover { color: var(--blue); }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────────── */
-@media (max-width: 1500px) {
+@media (max-width: 1300px) {
   .hero-inner.hero-split { flex-direction: column; text-align: center; gap: 40px; }
   .hero-split .hero-content { align-items: center; max-width: 800px; margin: 0 auto; }
   .hero-split .hero-tag::before { display: block; }
@@ -1089,7 +1089,7 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
   position: fixed; bottom: 32px; right: 32px;
   width: 44px; height: 44px;
   background: var(--white); border: 1px solid var(--border); color: var(--off);
-  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  border-radius: 0; display: flex; align-items: center; justify-content: center;
   cursor: pointer; opacity: 0; pointer-events: none;
   transition: all 0.3s ease; z-index: 50;
   box-shadow: 0 4px 14px rgba(15,23,42,0.1);
@@ -1124,14 +1124,14 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
 .cookie-btn-refuse {
   font-family: var(--ff-body); font-size: 0.8rem; font-weight: 500;
   color: var(--off); background: transparent;
-  border: 1px solid var(--border); border-radius: 6px;
+  border: 1px solid var(--border); border-radius: 0;
   padding: 10px 20px; cursor: pointer; transition: all 0.2s;
 }
 .cookie-btn-refuse:hover { color: var(--text); border-color: var(--border-2); }
 .cookie-btn-accept {
   font-family: var(--ff-body); font-size: 0.8rem; font-weight: 600;
   color: #fff; background: var(--blue-2);
-  border: 1px solid var(--blue-2); border-radius: 6px;
+  border: 1px solid var(--blue-2); border-radius: 0;
   padding: 10px 20px; cursor: pointer; transition: all 0.2s;
 }
 .cookie-btn-accept:hover { background: var(--blue); }
