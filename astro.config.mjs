@@ -6,7 +6,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://horaclecapital.com',
   integrations: [
-    sitemap(),
+    // sitemap(),
     tailwind()
   ],
   build: {
