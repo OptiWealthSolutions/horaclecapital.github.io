@@ -74,9 +74,7 @@
     <div class="nav-overlay" id="nav-overlay"></div>
 
     <header class="hero hero-index">
-      <!-- Static fallback visible only if all videos fail to load -->
       <img src="assets/img/banner.jpg" alt="" class="hero-bg" aria-hidden="true" />
-      <!-- Night city video reel — 3 clips crossfade every 15s -->
       <div class="hero-bg-videos" aria-hidden="true">
         <video class="hero-vid active" muted loop playsinline preload="auto">
           <source src="https://videos.pexels.com/video-files/9921281/9921281-uhd_2560_1440_30fps.mp4" type="video/mp4">
@@ -111,7 +109,6 @@
         <div class="hero-visual">
           <div class="hero-visual-card">
             <div class="hero-visual-glow"></div>
-            
             <div class="chart-header">
               <div style="display:flex;align-items:center;gap:9px;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue-3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
@@ -119,46 +116,24 @@
               </div>
               <div class="chart-live"><div class="live-dot"></div>Live</div>
             </div>
-            
             <div class="chart-container">
               <svg class="chart-svg" viewBox="0 0 500 250" preserveAspectRatio="none">
                 <defs>
-                  <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <linearGradient id="lineGrad" x1="0%" x1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="var(--blue-3)" />
                     <stop offset="100%" stop-color="var(--blue-2)" />
                   </linearGradient>
                 </defs>
-                
-                <!-- Lignes de repère -->
                 <line x1="0" y1="50" x2="500" y2="50" class="grid-line" />
                 <line x1="0" y1="100" x2="500" y2="100" class="grid-line" />
                 <line x1="0" y1="150" x2="500" y2="150" class="grid-line" />
                 <line x1="0" y1="200" x2="500" y2="200" class="grid-line" />
-
-                <!-- Courbe animée -->
                 <path class="chart-path" d="M 0 200 C 80 200, 120 120, 180 130 C 240 140, 280 50, 340 70 C 400 90, 440 20, 480 30" fill="none" stroke="url(#lineGrad)" stroke-width="4" stroke-linecap="round" />
-
-                <!-- Points d'informations -->
-                <g class="chart-point point-1">
-                  <circle cx="180" cy="130" r="5" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" />
-                  <rect x="130" y="90" width="100" height="26" rx="4" class="chart-tooltip-bg" />
-                  <text x="180" y="107" class="chart-tooltip-text">Signal Achat</text>
-                </g>
-
-                <g class="chart-point point-2">
-                  <circle cx="340" cy="70" r="5" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" />
-                  <rect x="290" y="30" width="100" height="26" rx="4" class="chart-tooltip-bg" />
-                  <text x="340" y="47" class="chart-tooltip-text">Breakout Vol.</text>
-                </g>
-
-                <g class="chart-point point-3">
-                  <circle cx="480" cy="30" r="5" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" />
-                  <rect x="390" y="45" width="100" height="26" rx="4" class="chart-tooltip-bg" />
-                  <text x="440" y="62" class="chart-tooltip-text">Cible Atteinte</text>
-                </g>
+                <g class="chart-point point-1"><circle cx="180" cy="130" r="5" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" /><rect x="130" y="90" width="100" height="26" rx="4" class="chart-tooltip-bg" /><text x="180" y="107" class="chart-tooltip-text">Signal Achat</text></g>
+                <g class="chart-point point-2"><circle cx="340" cy="70" r="5" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" /><rect x="290" y="30" width="100" height="26" rx="4" class="chart-tooltip-bg" /><text x="340" y="47" class="chart-tooltip-text">Breakout Vol.</text></g>
+                <g class="chart-point point-3"><circle cx="480" cy="30" r="5" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" /><rect x="390" y="45" width="100" height="26" rx="4" class="chart-tooltip-bg" /><text x="440" y="62" class="chart-tooltip-text">Cible Atteinte</text></g>
               </svg>
             </div>
-
             <div class="chart-footer">
               <div class="cf-stat"><span class="cf-label">Rendement</span><span class="cf-val up">+14.2%</span></div>
               <div class="cf-stat" style="align-items:center;"><span class="cf-label">Sharpe</span><span class="cf-val">2.1</span></div>
@@ -171,124 +146,159 @@
     </header>
 
     <main>
-
-      <!-- ÉCOSYSTÈME — en premier -->
-      <section class="py-[100px] border-t border-border" style="background:var(--bg-2);">
+      <!-- ÉCOSYSTÈME ASYMÉTRIQUE -->
+      <section class="py-12 border-t border-border" style="background:var(--bg-2);">
         <div class="container">
           <div class="section-rule mb-12">
             <span class="section-label">L'Écosystème Horacle</span>
             <div class="rule-line"></div>
           </div>
 
-          <div class="grid lg:grid-cols-3 gap-6 items-stretch">
-
-            <!-- Capitalis : 2/3 width -->
-            <a href="pages/capitalis.html" class="reveal group relative overflow-hidden lg:col-span-2 flex flex-col p-10 min-h-[320px]" style="background:var(--dark-2);border:1px solid var(--border-dk);">
-              <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
-                onerror="this.src='assets/img/banner.jpg'"
-                alt=""
-                aria-hidden="true"
-                class="absolute inset-0 w-full h-full object-cover opacity-10 grayscale group-hover:opacity-18 transition-opacity duration-500">
-              <div class="relative z-10 flex justify-between items-start">
-                <span class="font-sans text-[0.6rem] uppercase tracking-[0.12em] bg-orange text-white px-3 py-1 font-bold rounded-full">SaaS Bêta</span>
-              </div>
-              <div class="relative z-10 mt-auto pt-16">
-                <h3 class="font-head text-4xl font-normal text-white mb-3 tracking-tight">Capitalis</h3>
-                <p class="text-[0.95rem] leading-relaxed mb-8" style="color:rgba(255,255,255,0.5);">Application d'investissement : Screening, Scoring, Allocation et Reporting en un workflow intégré.</p>
-                <span class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold group-hover:text-white transition-colors" style="color:var(--blue-3);">
-                  Découvrir l'application
-                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </span>
-              </div>
+          <div class="eco-grid">
+            <a href="academy.html" class="eco-card academy reveal">
+              <div class="eco-image-bg" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80');"></div>
+              <span class="eco-label">Formation Macroéconomique</span>
+              <h3 class="eco-title">Horacle Academy</h3>
+              <p class="eco-desc">Maîtrisez les cycles économiques mondiaux et apprenez à décrypter les signaux des banques centrales pour une compréhension approfondie du monde financier.</p>
+              <span class="eco-link">Explorer les programmes <span>→</span></span>
             </a>
 
-            <!-- Academy : 1/3 width -->
-            <a href="academy.html" class="reveal reveal-delay-1 group flex flex-col p-10" style="background:var(--bg);border:1px solid var(--border);">
-              <span class="font-sans text-[0.6rem] uppercase tracking-[0.12em] px-3 py-1 font-bold rounded-full self-start" style="border:1px solid var(--blue-2);color:var(--blue-2);">Cours privés</span>
-              <div class="mt-auto pt-16">
-                <h3 class="font-head text-3xl font-normal text-text mb-3 tracking-tight">Horacle Academy</h3>
-                <p class="text-[0.9rem] text-off leading-relaxed mb-8">Cours particuliers en Macroéconomie, Statistiques et Finance Quantitative. Sessions 1-on-1 adaptées à votre niveau.</p>
-                <span class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange group-hover:text-blue transition-colors">
-                  Voir les programmes
-                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </span>
+            <a href="pages/capitalis.html" class="eco-card capitalis dark reveal reveal-delay-1">
+              <div class="eco-image-bg" style="background-image: url('assets/img/capitalis_view/dashboard.png'); opacity: 0.1;"></div>
+              <span class="eco-label">Technologie & Recherche</span>
+              <h3 class="eco-title">Capitalis SaaS</h3>
+              <p class="eco-desc" style="max-width: none;">L'infrastructure technologique de notre recherche. Accédez à nos outils propriétaires de screening et de scoring multifactoriel pour une analyse de marché précise.</p>
+              <div class="mt-8 grid grid-cols-1 gap-4 mb-8">
+                <div class="flex items-center gap-3">
+                  <div class="w-1.5 h-1.5 bg-blue-3 rounded-full"></div>
+                  <span class="text-xs font-semibold tracking-wider uppercase opacity-80">Multifactor Scoring</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-1.5 h-1.5 bg-blue-3 rounded-full"></div>
+                  <span class="text-xs font-semibold tracking-wider uppercase opacity-80">Dynamic Allocation</span>
+                </div>
               </div>
+              <span class="eco-link">Accéder à la plateforme <span>→</span></span>
             </a>
 
+            <div class="eco-card mission reveal reveal-delay-2">
+              <span class="eco-label">Comprendre le Monde</span>
+              <h3 class="eco-title">Rigueur & Indépendance</h3>
+              <p class="eco-desc">Horacle Capital est une structure de recherche pure. Nous fournissons des rapports macroéconomiques et des signaux analytiques clairs pour aider à mieux comprendre le monde qui nous entoure.</p>
+              <div class="flex gap-4">
+                <a href="about.html" class="eco-link">En savoir plus <span>→</span></a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- PRÉSENTATION -->
-      <section id="about" class="about-section">
+      <section id="about" class="about-section" style="background:var(--dark); border-top:1px solid var(--border-dk); border-bottom:1px solid var(--border-dk); padding: 32px 0;">
         <div class="container">
-          <div class="section-rule">
-            <span class="section-label">Présentation</span>
-            <div class="rule-line"></div>
+          <div class="section-rule" style="border-left:none;">
+            <span class="section-label" style="color:var(--blue-3);">Présentation</span>
+            <div class="rule-line" style="background:var(--border-dk);"></div>
           </div>
           <div class="about-grid">
             <div class="about-body reveal">
-              <h2 class="section-title">QUI SOMMES-<br>NOUS ?</h2>
-              <p>
-                <strong>Horacle Capital</strong> est une structure de recherche indépendante spécialisée dans l'analyse macroéconomique et la modélisation quantitative des marchés financiers.
+              <h2 class="section-title" style="color:var(--white);">QUI SOMMES-<br>NOUS ?</h2>
+              <p style="color:rgba(255,255,255,0.7);">
+                <strong style="color:var(--white);">Horacle Capital</strong> est une structure de recherche indépendante spécialisée dans l'analyse macroéconomique et la modélisation quantitative des marchés financiers.
               </p>
-              <p>
-                Nous publions des <strong>rapports hebdomadaires</strong> sur l'environnement macro-financier mondial, des <strong>travaux quantitatifs</strong> (HMM, scoring multifactoriel, études statistiques), et proposons des <strong>cours privés</strong> en macroéconomie, statistiques et finance de marché.
+              <p style="color:rgba(255,255,255,0.7);">
+                Nous publions des <strong style="color:var(--white);">rapports hebdomadaires</strong> stratégiques et proposons un <strong style="color:var(--white);">mentorat privé</strong> pour maîtriser les fondamentaux de l'économie mondiale.
               </p>
-              <p>
-                Explorez nos <a href="reports.html">Rapports</a>, nos <a href="research.html">Recherches</a>, ou découvrez <a href="pages/capitalis.html">Capitalis →</a>
+              <p style="color:rgba(255,255,255,0.7);">
+                Explorez nos <a href="reports.html" style="color:var(--blue-3);">Rapports</a>, nos <a href="research.html" style="color:var(--blue-3);">Recherches</a>, ou découvrez <a href="pages/capitalis.html" style="color:var(--blue-3);">Capitalis →</a>
               </p>
-              <div class="disclaimer">
+              <div class="disclaimer" style="color:rgba(255,255,255,0.4); border-top-color:var(--border-dk);">
                 ⚠ Rien de ce qui est publié ici ne constitue un conseil en investissement.
-                Les marchés financiers comportent des risques.
               </div>
               <div class="socials">
-                <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank" class="social-pill">
+                <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank" class="social-pill" style="color:rgba(255,255,255,0.6); border-color:var(--border-dk); background:transparent;">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                   LinkedIn — Léo Lombardini
-                  <svg class="sp-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6 2.5l3.5 3.5L6 9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="https://www.instagram.com/horacle_capital" target="_blank" class="social-pill">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                  Instagram — @horacle_capital
-                  <svg class="sp-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6 2.5l3.5 3.5L6 9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-                <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank" class="social-pill">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#111"/></svg>
+                <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank" class="social-pill" style="color:rgba(255,255,255,0.6); border-color:var(--border-dk); background:transparent;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor"/></svg>
                   YouTube — @lbrd_leo
-                  <svg class="sp-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6 2.5l3.5 3.5L6 9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
               </div>
             </div>
 
-            <div class="about-panel reveal reveal-delay-1">
-              <div class="panel-header">
+            <div class="about-panel reveal reveal-delay-1" style="background:var(--dark-2); border-color:var(--border-dk); box-shadow:none;">
+              <div class="panel-header" style="background:var(--dark-3); border-color:var(--border-dk);">
                 <div class="panel-dot"></div>
                 <span>Notre Approche</span>
               </div>
               <div class="approach-method">
-                <div class="am-item">
-                  <span class="am-num">01</span>
+                <div class="am-item" style="border-bottom-color:var(--border-dk);">
+                  <span class="am-num" style="color:var(--blue-3);">01</span>
                   <div>
-                    <strong class="am-title">Analyse fondamentale</strong>
-                    <p class="am-desc">Politique monétaire, cycles économiques, géopolitique : le cadre directionnel de chaque publication.</p>
+                    <strong class="am-title" style="color:var(--white);">Analyse fondamentale</strong>
+                    <p class="am-desc" style="color:rgba(255,255,255,0.6);">Décryptage des cycles économiques et des politiques monétaires.</p>
                   </div>
                 </div>
-                <div class="am-item">
-                  <span class="am-num">02</span>
+                <div class="am-item" style="border-bottom-color:var(--border-dk);">
+                  <span class="am-num" style="color:var(--blue-3);">02</span>
                   <div>
-                    <strong class="am-title">Modélisation quantitative</strong>
-                    <p class="am-desc">HMM, scoring multifactoriel, backtesting systématique. La rigueur mathématique comme filtre.</p>
+                    <strong class="am-title" style="color:var(--white);">Rigueur Scientifique</strong>
+                    <p class="am-desc" style="color:rgba(255,255,255,0.6);">Utilisation de modèles statistiques pour filtrer le bruit du marché.</p>
                   </div>
                 </div>
-                <div class="am-item">
-                  <span class="am-num">03</span>
+                <div class="am-item" style="border-bottom:none;">
+                  <span class="am-num" style="color:var(--blue-3);">03</span>
                   <div>
-                    <strong class="am-title">Signal, pas bruit</strong>
-                    <p class="am-desc">Pas de futilité. Chaque rapport vise la clarté analytique, pas le volume.</p>
+                    <strong class="am-title" style="color:var(--white);">Signal, pas bruit</strong>
+                    <p class="am-desc" style="color:rgba(255,255,255,0.6);">Chaque rapport vise la clarté analytique et la compréhension globale.</p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACADEMY DETAIL -->
+      <section class="py-12 border-t border-border bg-gradient-to-b from-bg to-white relative overflow-hidden">
+        <div class="container">
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+              <span class="font-sans text-[0.6rem] uppercase tracking-[0.3em] text-orange font-bold mb-4 block">Comprendre le Monde Financier</span>
+              <h2 class="font-head text-4xl md:text-5xl text-text mb-6 leading-[1.1] tracking-tight">Horacle Academy : Masterclass Macroéconomie</h2>
+              <p class="text-off text-lg mb-8 leading-relaxed font-light">
+                Ne subissez plus le marché, anticipez-le par une analyse fondamentale rigoureuse. Nous formons ceux qui souhaitent faire le pont entre théorie et réalité du terrain.
+              </p>
+              <div class="grid gap-4 mb-10">
+                <div class="flex items-start gap-4 p-5 bg-bg-2 border border-border rounded-lg shadow-sm">
+                  <div class="w-8 h-8 bg-orange/10 flex items-center justify-center rounded-full flex-shrink-0">
+                    <span class="font-head text-orange text-sm font-bold">01</span>
+                  </div>
+                  <div>
+                    <h4 class="font-sans font-bold text-text text-sm mb-1">Framework Macroéconomique</h4>
+                    <p class="text-off text-xs leading-relaxed">Maîtrise des politiques de Banques Centrales et décryptage des indicateurs (CPI, NFP).</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4 p-5 bg-bg-2 border border-border rounded-lg shadow-sm">
+                  <div class="w-8 h-8 bg-orange/10 flex items-center justify-center rounded-full flex-shrink-0">
+                    <span class="font-head text-orange text-sm font-bold">02</span>
+                  </div>
+                  <div>
+                    <h4 class="font-sans font-bold text-text text-sm mb-1">Sessions Privées d'Élite</h4>
+                    <p class="text-off text-xs leading-relaxed">Un accompagnement sur-mesure pour transformer vos lacunes en avantages compétitifs.</p>
+                  </div>
+                </div>
+              </div>
+              <a href="academy.html" class="btn-primary" style="padding: 14px 32px; font-size: 0.9rem;">
+                Découvrir l'Academy
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+            <div class="relative reveal reveal-delay-1">
+              <div class="aspect-square bg-dark border border-border-dk overflow-hidden rounded-xl max-w-[400px] mx-auto lg:mr-0 flex items-center justify-center" style="box-shadow:none !important;">
+                <img src="assets/img/biglogo.png" alt="Horacle Capital Logo" class="w-full h-full object-contain p-8 transition-all duration-700" style="box-shadow:none !important; filter:none !important;">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-30"></div>
               </div>
             </div>
           </div>
@@ -296,23 +306,17 @@
       </section>
 
       <!-- DERNIÈRES PUBLICATIONS -->
-      <section class="py-[100px]">
+      <section class="py-12 border-t border-border">
         <div class="container">
           <div class="section-rule mb-12">
             <span class="section-label">Dernières Publications</span>
             <div class="rule-line"></div>
             <a href="reports.html" class="rule-link">Tout voir <span>→</span></a>
           </div>
-
           <div class="grid lg:grid-cols-2 gap-6">
-
             <a href="reports/rapport_24_04_26.html" class="reveal group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
               <div class="h-56 overflow-hidden relative border-b border-border">
-                <img
-                  src="assets/img/hormuz.jpg"
-                  onerror="this.src='assets/img/banner.jpg'"
-                  alt="Rapport macro"
-                  class="w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700">
+                <img src="assets/img/hormuz.jpg" onerror="this.src='assets/img/banner.jpg'" alt="Rapport macro" class="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700">
                 <div class="absolute top-4 left-4 flex gap-2">
                   <span class="bg-orange text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-full">Macro</span>
                   <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1">Hebdo N°9</span>
@@ -327,14 +331,9 @@
                 </div>
               </div>
             </a>
-
             <a href="pages/scoring-report.html" class="reveal reveal-delay-1 group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
               <div class="h-56 overflow-hidden relative border-b border-border">
-                <img
-                  src="assets/img/capitalis_view/scorer.png"
-                  onerror="this.src='assets/img/banner.jpg'"
-                  alt="Modèle de scoring quantitatif"
-                  class="w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700">
+                <img src="assets/img/capitalis_view/scorer.png" onerror="this.src='assets/img/banner.jpg'" alt="Modèle de scoring quantitatif" class="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700">
                 <div class="absolute top-4 left-4 flex gap-2">
                   <span class="bg-dark text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-full">Quant</span>
                   <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1">PDF & Modèle</span>
@@ -349,30 +348,29 @@
                 </div>
               </div>
             </a>
-
           </div>
         </div>
       </section>
 
+      <!-- NEWSLETTER -->
+      <section class="newsletter-section py-16 border-t border-border-dk">
+        <div class="container max-w-[700px] text-center">
+          <h2 class="font-head text-4xl font-normal text-white mb-6 tracking-tight">Intelligence Newsletter</h2>
+          <p class="mb-10 text-lg leading-relaxed" style="color:rgba(255,255,255,0.55);">Recevez nos analyses stratégiques et mises à jour quantitatives directement par email.</p>
+          <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
+            <div class="flex w-full flex-row">
+              <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse email professionnelle" required
+                     style="flex:1;padding:16px 20px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-right:none;color:#fff;font-family:var(--ff-body);outline:none;transition:border-color .2s;border-radius:0;"
+                     onfocus="this.style.borderColor='var(--blue-3)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+              <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap" style="box-shadow: none;">
+                S'abonner
+              </button>
+            </div>
+            <p id="subscription-status" class="mt-4 font-sans text-xs uppercase tracking-widest min-h-[1.2em]" style="color:rgba(255,255,255,0.5)"></p>
+          </form>
+        </div>
+      </section>
     </main>
-
-    <section class="newsletter-section py-20 px-5 border-t border-border-dk">
-      <div class="container max-w-[600px] text-center">
-        <h2 class="font-head text-3xl font-normal text-white mb-4 tracking-tight">Newsletter</h2>
-        <p class="mb-8 text-[0.95rem]" style="color:rgba(255,255,255,0.55);">Soyez notifié de nos dernières analyses et publications quantitatives directement dans votre boîte de réception.</p>
-        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
-          <div class="flex w-full flex-row">
-            <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail" required
-                   style="flex:1;padding:14px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-right:none;color:#fff;font-family:var(--ff-body);outline:none;transition:border-color .2s;border-radius:7px 0 0 7px;"
-                   onfocus="this.style.borderColor='rgba(96,165,250,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-            <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap" style="border-radius:0 7px 7px 0;">
-              S'abonner
-            </button>
-          </div>
-          <p id="subscription-status" class="mt-4 font-sans text-xs uppercase tracking-widest min-h-[1.2em]" style="color:rgba(255,255,255,0.5)"></p>
-        </form>
-      </div>
-    </section>
 
     <footer>
       <div class="footer-top">

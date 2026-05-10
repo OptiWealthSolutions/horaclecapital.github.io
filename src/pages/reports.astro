@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const allRapports = await getCollection('rapports', ({ data }) => !data.draft);
 const rapports = allRapports.sort((a, b) =>
@@ -22,62 +23,11 @@ function formatDateShort(dateStr: string) {
 }
 
 const fallbackImg = '/assets/img/banner.jpg';
+const title = 'Rapports Macro | Horacle Capital';
+const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital : banques centrales, cycles, géopolitique et marchés financiers.";
 ---
 
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rapports Macro | Horacle Capital</title>
-    <link rel="icon" type="image/png" href="/assets/img/logo.png" />
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="2de0cd59-a747-4d4a-898e-5b2ff8cee015"></script>
-
-    <meta name="description" content="Rapports macroéconomiques hebdomadaires d'Horacle Capital : banques centrales, cycles, géopolitique et marchés financiers." />
-    <meta property="og:title" content="Rapports Macro | Horacle Capital" />
-    <meta property="og:description" content="Analyses hebdomadaires de l'environnement macro-financier mondial." />
-    <meta property="og:image" content="https://horaclecapital.com/assets/img/banner.jpg" />
-    <meta property="og:url" content="https://horaclecapital.com/reports.html" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Rapports Macro | Horacle Capital" />
-    <meta name="twitter:description" content="Analyses hebdomadaires de l'environnement macro-financier mondial." />
-    <meta name="twitter:image" content="https://horaclecapital.com/assets/img/banner.jpg" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script is:inline src="/tailwind-config.js"></script>
-  </head>
-  <body>
-    <nav>
-      <div class="logo-container">
-        <a href="/index.html">
-          <img src="/assets/img/biglogo.png" alt="HORACLE CAPITAL" />
-        </a>
-      </div>
-      <div class="nav-links" id="nav-links">
-        <button class="menu-close" id="menu-close" aria-label="Fermer le menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-        <a href="/index.html">Home</a>
-        <a href="/reports.html" class="active">Rapports</a>
-        <a href="/research.html">Recherches</a>
-        <a href="/about.html">À Propos</a>
-        <a href="/pages/capitalis.html">Capitalis</a>
-        <a href="/academy.html" class="flex items-center gap-1">Academy <span class="nav-badge-new">NEW</span></a>
-        <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
-        <form class="nav-search" id="global-search-form" action="#">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" placeholder="Rechercher..." aria-label="Rechercher sur le site" />
-        </form>
-      </div>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
-    </nav>
-    <div class="nav-overlay" id="nav-overlay"></div>
-
+<BaseLayout {title} {description} activeNav="reports">
     <header class="page-header">
       <img src="/assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
       <span>Publications</span>
@@ -85,16 +35,14 @@ const fallbackImg = '/assets/img/banner.jpg';
       <p>Analyses hebdomadaires de l'environnement macro-financier</p>
     </header>
 
-    <main>
-
       <!-- Article à la une -->
       {featured && (
         <div class="container pt-14 pb-0">
-          <a href={`/reports/${featured.slug}.html`} class="flex flex-col lg:flex-row border border-[var(--border)] overflow-hidden mb-16 group">
+          <a href={`/reports/${featured.slug}`} class="flex flex-col lg:flex-row border border-[var(--border)] overflow-hidden mb-16 group">
             <div class="relative lg:w-[58%] overflow-hidden bg-[var(--bg-2)]" style="min-height:300px">
               <img
                 src={featured.data.thumbnail || fallbackImg}
-                alt=""
+                alt={featured.data.title}
                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 onerror={`this.src='${fallbackImg}'`}
               />
@@ -128,11 +76,11 @@ const fallbackImg = '/assets/img/banner.jpg';
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {grid.map((rapport) => (
-            <a href={`/reports/${rapport.slug}.html`} class="group flex flex-col border border-[var(--border)] hover:border-[rgba(37,99,235,0.4)] transition-colors duration-300 overflow-hidden">
+            <a href={`/reports/${rapport.slug}`} class="group flex flex-col border border-[var(--border)] hover:border-[rgba(37,99,235,0.4)] transition-colors duration-300 overflow-hidden">
               <div class="relative overflow-hidden bg-[var(--bg-2)]" style="aspect-ratio:16/9">
                 <img
                   src={rapport.data.thumbnail || fallbackImg}
-                  alt=""
+                  alt={rapport.data.title}
                   class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
                   onerror={`this.src='${fallbackImg}'`}
                 />
@@ -156,41 +104,4 @@ const fallbackImg = '/assets/img/banner.jpg';
           ))}
         </div>
       </div>
-    </main>
-
-    <!-- Newsletter -->
-    <section class="newsletter-section py-20 px-5 border-t border-border-dk">
-      <div class="container max-w-[600px] text-center px-0">
-        <h2 class="font-head text-3xl font-normal text-white mb-4 tracking-tight">Newsletter</h2>
-        <p class="mb-8 text-[0.95rem]" style="color:rgba(255,255,255,0.55)">Soyez notifié de nos dernières analyses de marché et publications quantitatives directement dans votre boîte de réception.</p>
-        <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
-          <div class="flex w-full flex-row">
-            <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail professionnelle" required
-                   style="flex:1;padding:14px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-right:none;color:#fff;font-family:var(--ff-body);outline:none;border-radius:0;" />
-            <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap" style="border-radius:0;">S'abonner</button>
-          </div>
-          <p id="subscription-status" class="mt-4 font-mono text-xs uppercase tracking-widest min-h-[1.2em]" style="color:rgba(255,255,255,0.5)"></p>
-        </form>
-      </div>
-    </section>
-
-    <footer>
-      <div class="footer-top">
-        <p>&copy; 2026 HORACLE CAPITAL</p>
-        <div class="footer-links">
-          <a href="/about.html">À Propos</a>
-          <a href="/mentions_legales.html">Mentions Légales</a>
-          <a href="/reports.html">Rapports</a>
-          <a href="https://www.instagram.com/horacle_capital" target="_blank">Instagram</a>
-          <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank">LinkedIn</a>
-          <a href="https://youtube.com/@lbrd_leo" target="_blank">YouTube</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-disclaimer">Avertissement sur les risques : Le trading et l'investissement sur les marchés financiers (actions, devises, cryptomonnaies, matières premières) comportent un niveau de risque élevé et peuvent ne pas convenir à tous les investisseurs. Les performances passées ne préjugent pas des performances futures. Le contenu de ce site est fourni à titre exclusivement informatif et pédagogique et ne constitue en aucun cas un conseil en investissement. Horacle Capital ne saurait être tenu responsable de toute perte ou dommage découlant de la confiance accordée aux informations contenues sur ce site.</p>
-      </div>
-    </footer>
-
-    <script is:inline src="/main.js"></script>
-  </body>
-</html>
+</BaseLayout>

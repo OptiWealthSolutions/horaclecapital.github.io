@@ -7,3 +7,5 @@ dist/
 
 # Ignore Claude temporary worktrees
 .claude/
+.aidesigner/*
+!.aidesigner/.gitkeep

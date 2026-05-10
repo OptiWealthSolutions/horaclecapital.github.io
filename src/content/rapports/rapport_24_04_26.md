@@ -4,7 +4,8 @@ description: "Persistance des tensions géopolitiques, rebond technique des indi
 date: "2026-04-24"
 category: "Macro Economics"
 issue: "N°9"
-thumbnail: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&auto=format&fit=crop"
+ogImage: "/assets/img/hormuz.jpg"
+thumbnail: "/assets/img/hormuz.jpg"
 ---
 
 <div class="exec-summary">

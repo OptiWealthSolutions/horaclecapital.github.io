@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'À Propos & Contact | Léo Lombardini';
+const description = "Découvrez la genèse d'Horacle Capital, notre philosophie d'investissement liant analyse fondamentale et modélisation quantitative, par Léo Lombardini.";
+---
+
+<BaseLayout {title} {description} activeNav="about">
+    <header class="page-header">
+      <img src="/assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
+      <span>Horacle Capital</span>
+      <h1>À Propos &amp; Contact</h1>
+      <p>Le projet, la méthode, le contact.</p>
+    </header>
+
+    <div class="container pt-[80px] pb-[120px]">
+        <div class="about-grid items-start gap-20">
+            <div class="about-body">
+                <h2 class="section-title text-[2.2rem] mb-5">Léo Lombardini</h2>
+                <p class="text-off leading-relaxed">
+                    Les marchés financiers me captent depuis mes 16 ans. Ce qui a commencé comme une fascination s'est structuré via un parcours académique en économie et gestion, puis à l'EDHEC Business School. Horacle Capital est le prolongement naturel de cette rigueur : appliquer une méthode analytique sérieuse à la recherche indépendante.
+                </p>
+
+                <h3 class="font-head text-text mt-10 mb-4 text-[1.6rem]">La Méthode</h3>
+                <p class="text-off leading-relaxed">
+                    Horacle Capital est une structure spécialisée dans l'analyse macroéconomique et la modélisation statistique des marchés financiers. L'analyse fondamentale — politiques monétaires, cycles, géopolitique — fixe le cadre directionnel. La quantification — HMM, scoring multifactoriel, backtesting — gère la précision. Pas de futilité : uniquement du signal.
+                </p>
+            </div>
+
+            <div class="about-body">
+                <h2 class="section-title text-[2.2rem] mb-5">Contact</h2>
+                <p class="text-off mb-8">Pour toute question relative à nos recherches, propositions de collaboration ou accès à nos modèles, utilisez ce canal sécurisé.</p>
+                
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="c455f599-cf43-4be4-9835-019ffa3330db">
+                    
+                    <div class="flex flex-col gap-4">
+                        <input type="text" name="Nom" placeholder="Nom Complet" required class="p-4 bg-white border border-border text-text font-sans outline-none transition-colors duration-200 focus:border-orange rounded-lg">
+                        <input type="email" name="Email" placeholder="Adresse E-mail" required class="p-4 bg-white border border-border text-text font-sans outline-none transition-colors duration-200 focus:border-orange rounded-lg">
+                        <textarea name="Message" rows="5" placeholder="Votre message..." required class="p-4 bg-white border border-border text-text font-sans resize-y outline-none transition-colors duration-200 focus:border-orange rounded-lg"></textarea>
+                        <button type="submit" class="btn-primary border-none cursor-pointer justify-center w-full">Envoyer le message</button>
+                    </div>
+                </form>
+                <p id="form-status" class="mt-5 font-mono text-center min-h-[1.2em] text-[0.9rem]"></p>
+            </div>
+        </div>
+    </div>
+
+    <script is:inline>
+      // Script pour le formulaire de contact
+      var form = document.getElementById("contact-form");
+      if (form) {
+          async function handleSubmit(event) {
+            event.preventDefault();
+            var status = document.getElementById("form-status");
+            var button = form.querySelector("button");
+            var data = new FormData(event.target);
+        
+            button.disabled = true;
+            button.textContent = "Envoi en cours...";
+            status.innerHTML = "";
+        
+            fetch(event.target.action, {
+              method: form.method,
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            }).then(response => {
+              button.disabled = false;
+              button.textContent = "Envoyer le message";
+              if (response.ok) {
+                status.style.color = "var(--blue-2)";
+                status.innerHTML = "Message envoyé. Nous vous répondrons sous peu.";
+                form.reset();
+              } else {
+                response.json().then(data => {
+                  status.style.color = "#DC2626";
+                  if (Object.hasOwn(data, 'message')) {
+                    status.innerHTML = "Erreur : " + data.message;
+                  } else {
+                    status.innerHTML = "Une erreur est survenue. Veuillez réessayer.";
+                  }
+                })
+              }
+            }).catch(error => {
+              button.disabled = false;
+              button.textContent = "Envoyer le message";
+              status.style.color = "#DC2626";
+              status.innerHTML = "Échec de connexion. Veuillez réessayer.";
+            });
+          }
+          form.addEventListener("submit", handleSubmit);
+      }
+    </script>
+</BaseLayout>

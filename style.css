@@ -534,7 +534,7 @@ nav {
 
 /* ─── ABOUT ─────────────────────────────────────────────────────── */
 .about-section {
-  padding: 100px 0;
+  padding: 64px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   background: var(--bg-2);
@@ -629,7 +629,7 @@ nav {
 .sb-sep { color: var(--border-2); user-select: none; }
 
 /* ─── REPORT CARD FEATURED ──────────────────────────────────────── */
-.reports-section { padding: 100px 0; }
+.reports-section { padding: 64px 0; }
 
 .report-card-featured {
   position: relative; display: block;
@@ -1204,6 +1204,205 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
 /* ─── INDEX-ONLY HERO MOBILE OVERRIDE ──────────────────────────── */
 @media (max-width: 960px) {
   .hero-index { min-height: 75vh !important; }
+}
+
+/* ─── INSTITUTIONAL ECOSYSTEM (Asymmetric) ───────────────────────── */
+.eco-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 32px;
+  align-items: stretch;
+}
+
+.eco-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 48px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+
+.eco-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.1);
+  border-color: var(--blue-2);
+}
+
+.eco-card.dark {
+  background: var(--dark);
+  border-color: var(--border-dk);
+  color: var(--white);
+}
+
+.eco-card.academy { grid-column: 1 / 3; }
+.eco-card.capitalis { grid-column: 3 / 4; grid-row: 1 / 3; min-height: 500px; }
+.eco-card.mission { grid-column: 1 / 3; background: var(--bg-2); }
+
+.eco-label {
+  font-family: var(--ff-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue-2);
+  margin-bottom: 24px;
+}
+
+.eco-card.dark .eco-label { color: var(--blue-3); }
+
+.eco-title {
+  font-family: var(--ff-head);
+  font-size: 2.4rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.eco-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--off);
+  margin-bottom: 32px;
+  max-width: 500px;
+}
+
+.eco-card.dark .eco-desc { color: rgba(255, 255, 255, 0.6); }
+
+.eco-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--blue-2);
+}
+
+.eco-card.dark .eco-link { color: var(--blue-3); }
+
+.eco-image-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.15;
+  filter: grayscale(1);
+  mix-blend-mode: overlay;
+  transition: opacity 0.4s;
+}
+
+.eco-card:hover .eco-image-bg { opacity: 0.25; }
+
+/* ─── JOURNAL DE PUBLICATION ───────────────────────────────────── */
+.journal-section { padding: 80px 0; background: var(--bg); }
+
+.journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 64px;
+  border-bottom: 2px solid var(--text);
+  padding-bottom: 24px;
+}
+
+.journal-meta-header {
+  font-family: var(--ff-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.journal-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.journal-item {
+  display: grid;
+  grid-template-columns: 140px 1fr 180px;
+  gap: 48px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.journal-item:hover {
+  background: var(--bg-2);
+}
+
+.journal-date {
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  color: var(--dim);
+}
+
+.journal-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.journal-category {
+  font-family: var(--ff-body);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-2);
+}
+
+.journal-title {
+  font-family: var(--ff-head);
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.journal-item:hover .journal-title { color: var(--blue-2); }
+
+.journal-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.conviction-meter {
+  display: flex;
+  gap: 4px;
+}
+
+.conv-dot {
+  width: 12px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 1px;
+}
+
+.conv-dot.active { background: var(--blue-2); }
+
+.conv-label {
+  font-family: var(--ff-body);
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-top: 4px;
+}
+
+@media (max-width: 1024px) {
+  .eco-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .eco-card.academy, .eco-card.capitalis, .eco-card.mission { grid-column: 1 / 2; grid-row: auto; min-height: auto; }
+  .journal-item { grid-template-columns: 1fr; gap: 20px; }
+  .journal-meta { align-items: flex-start; }
 }
 
 /* ─── ANIMATED CHART (Hero) ─── */

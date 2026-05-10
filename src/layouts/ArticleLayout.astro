@@ -1,4 +1,6 @@
 ---
+import SEO from '../components/SEO.astro';
+
 export interface Props {
   title: string;
   description: string;
@@ -19,7 +21,8 @@ const {
   slug,
 } = Astro.props;
 
-const canonicalUrl = `https://horaclecapital.com${Astro.url.pathname}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://horaclecapital.com').toString();
+
 const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
   day: 'numeric', month: 'long', year: 'numeric',
 });
@@ -58,7 +61,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
     <!-- Nav -->
     <nav>
       <div class="logo-container">
-        <a href="/index.html">
+        <a href="/">
           <img src="/assets/img/biglogo.png" alt="HORACLE CAPITAL" />
         </a>
       </div>
@@ -66,12 +69,12 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
         <button class="menu-close" id="menu-close" aria-label="Fermer le menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
-        <a href="/index.html">Home</a>
-        <a href="/reports.html" class="active">Rapports</a>
-        <a href="/research.html">Recherches</a>
-        <a href="/about.html">À Propos</a>
-        <a href="/pages/capitalis.html">Capitalis</a>
-        <a href="/academy.html" class="flex items-center gap-1">Academy <span class="nav-badge-new">NEW</span></a>
+        <a href="/">Home</a>
+        <a href="/reports" class="active">Rapports</a>
+        <a href="/research">Recherches</a>
+        <a href="/about">À Propos</a>
+        <a href="/pages/capitalis">Capitalis</a>
+        <a href="/academy" class="flex items-center gap-1">Academy <span class="nav-badge-new">NEW</span></a>
         <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
         <form class="nav-search" id="global-search-form" action="#">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>

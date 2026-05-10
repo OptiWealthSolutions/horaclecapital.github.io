@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Recherche Quantitative & Fondamentale';
+const description = "Explorez le laboratoire d'analyses d'Horacle Capital. Modèles de scoring, algorithmes de trading, HMM et rapports de recherche quantitative.";
+---
+
+<BaseLayout {title} {description} activeNav="research">
+    <header class="page-header">
+      <img src="/assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
+      <span>Finance Quantitative</span>
+      <h1>Recherches &amp; Modèles</h1>
+      <p>Modèles statistiques, notebooks et papiers de recherche</p>
+    </header>
+
+    <div class="container pt-[60px] pb-[120px] min-h-[60vh]">
+      
+      <!-- Barre d'outils : Recherche et Filtres -->
+      <div class="research-toolbar">
+        <div class="rt-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="research-search" placeholder="Rechercher un modèle, une vidéo, un mot-clé..." />
+        </div>
+        <div class="rt-filters" id="research-filters">
+          <button class="rt-filter active" data-filter="all">Tout</button>
+          <button class="rt-filter" data-filter="pdf">PDFs & Modèles</button>
+          <button class="rt-filter" data-filter="notebook">Notebooks</button>
+          <button class="rt-filter" data-filter="code">Code Snippets</button>
+          <button class="rt-filter" data-filter="video">Vidéos</button>
+          <button class="rt-filter" data-filter="link">Liens Externes</button>
+        </div>
+      </div>
+
+      <!-- Grille des publications -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="research-grid">
+          
+          <!-- Scoring Report -->
+          <article class="group flex flex-col border border-[var(--border)] hover:border-[rgba(37,99,235,0.4)] transition-colors duration-300 overflow-hidden research-item" data-category="pdf">
+            <div class="relative overflow-hidden bg-[var(--bg-2)]" style="aspect-ratio:16/9">
+              <img
+                src="/assets/img/capitalis_view/scorer.png"
+                alt="Scoring Report Multifacteurs"
+                class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                onerror="this.src='/assets/img/banner.jpg'"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <div class="flex items-center gap-3 mb-3">
+                <span style="font-family:var(--ff-body);font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue-2)">PDF & Modèles</span>
+                <span style="font-family:var(--ff-body);font-size:0.68rem;color:var(--dim)">Avr 2026</span>
+              </div>
+              <h3 class="font-head text-[var(--text)] leading-snug mb-3 flex-1" style="font-size:1.05rem">Scoring Report : Modèle Quantitatif</h3>
+              <p class="research-description" style="font-family:var(--ff-body);font-size:0.82rem;color:var(--off);line-height:1.65;margin-bottom:1.25rem">Présentation détaillée de la méthodologie de notre modèle de scoring quantitatif multifactoriel. Retrouvez l'explication complète des métriques et le rapport PDF téléchargeable.</p>
+              <a
+                href="/pages/scoring-report"
+                style="display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-body);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:3px;transition:color 0.2s"
+                onmouseover="this.style.color='var(--blue-2)'"
+                onmouseout="this.style.color='var(--text)'"
+              >
+                Lire & Télécharger
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </article>
+...
+          
+          <!-- Polymarket Paper -->
+          <article class="group flex flex-col border border-[var(--border)] hover:border-[rgba(37,99,235,0.4)] transition-colors duration-300 overflow-hidden research-item" data-category="pdf">
+            <div class="relative overflow-hidden bg-[var(--bg-2)]" style="aspect-ratio:16/9">
+              <img
+                src="/assets/img/polymarket_paper.jpg"
+                alt="Polymarket Research Paper"
+                class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                onerror="this.src='/assets/img/banner.jpg'"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <div class="flex items-center gap-3 mb-3">
+                <span style="font-family:var(--ff-body);font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue-2)">PDF & Modèles</span>
+                <span style="font-family:var(--ff-body);font-size:0.68rem;color:var(--dim)">Avr 2026</span>
+              </div>
+              <h3 class="font-head text-[var(--text)] leading-snug mb-3 flex-1" style="font-size:1.05rem">Microstructure, Market Making, and Algorithmic Arbitrage on Decentralised Prediction Markets</h3>
+              <p class="research-description" style="font-family:var(--ff-body);font-size:0.82rem;color:var(--off);line-height:1.65;margin-bottom:1.25rem">Ce document développe un cadre quantitatif rigoureux pour la participation algorithmique sur les marchés de prédiction décentralisés, en utilisant Polymarket comme environnement empirique principal.</p>
+              <a
+                href="/assets/pdf/polymarket_paper.pdf"
+                target="_blank"
+                download
+                style="display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-body);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:3px;transition:color 0.2s"
+                onmouseover="this.style.color='var(--blue-2)'"
+                onmouseout="this.style.color='var(--text)'"
+              >
+                Télécharger
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- HMM Engine Notebook -->
+          <article class="group flex flex-col border border-[var(--border)] hover:border-[rgba(37,99,235,0.4)] transition-colors duration-300 overflow-hidden research-item" data-category="notebook">
+            <div class="relative overflow-hidden bg-[var(--bg-2)]" style="aspect-ratio:16/9">
+              <img
+                src="/assets/img/notebook_banner.jpg"
+                alt="Notebook HMM Engine"
+                class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                onerror="this.src='/assets/img/banner.jpg'"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <div class="flex items-center gap-3 mb-3">
+                <span style="font-family:var(--ff-body);font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue-2)">Notebooks</span>
+                <span style="font-family:var(--ff-body);font-size:0.68rem;color:var(--dim)">Avr 2026</span>
+              </div>
+              <h3 class="font-head text-[var(--text)] leading-snug mb-3 flex-1" style="font-size:1.05rem">HMM Engine - Détection de Régimes de Marché</h3>
+              <p class="research-description" style="font-family:var(--ff-body);font-size:0.82rem;color:var(--off);line-height:1.65;margin-bottom:1.25rem">Moteur d'inférence basé sur les modèles de Markov cachés (Hidden Markov Models) pour identifier et modéliser les différents régimes de volatilité et de tendance sur les marchés financiers.</p>
+              <a
+                href="/assets/notebooks/HMM_engine.ipynb"
+                target="_blank"
+                download
+                style="display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-body);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:3px;transition:color 0.2s"
+                onmouseover="this.style.color='var(--blue-2)'"
+                onmouseout="this.style.color='var(--text)'"
+              >
+                Télécharger
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Message si aucune recherche trouvée -->
+          <div class="no-results hidden col-span-full text-center p-10 border border-dashed border-border text-dim" id="no-results">
+            <p class="font-mono text-sm uppercase tracking-widest">Aucun résultat trouvé pour votre recherche.</p>
+          </div>
+      </div>
+    </main>
+</BaseLayout>
