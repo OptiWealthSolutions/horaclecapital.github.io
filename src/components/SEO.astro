@@ -38,7 +38,7 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Léo Lombardini",
-  "url": "https://horaclecapital.com/about.html",
+  "url": "https://horaclecapital.com/about",
   "jobTitle": "Analyste Macro & Fondateur",
   "worksFor": {
     "@type": "Organization",
@@ -60,14 +60,23 @@ const websiteSchema = {
 
 const articleSchema = type === 'article' ? {
   "@context": "https://schema.org",
-  "@type": "TechArticle",
+  "@type": "AnalysisNewsArticle",
   "headline": title,
   "description": description,
   "image": [image],
   "datePublished": articleDate,
   "author": {
     "@type": "Person",
-    "name": "Léo Lombardini"
+    "name": "Léo Lombardini",
+    "url": "https://horaclecapital.com/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Horacle Capital",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://horaclecapital.com/assets/img/biglogo.png"
+    }
   }
 } : null;
 ---

@@ -7,7 +7,7 @@ export interface Props {
 	image?: string;
 	type?: 'website' | 'article';
 	articleDate?: string;
-	activeNav?: 'home' | 'reports' | 'research' | 'about' | 'capitalis' | 'academy';
+	activeNav?: 'home' | 'reports' | 'research' | 'about' | 'academy';
 }
 
 const { 
@@ -55,7 +55,6 @@ const {
       <a href="/reports" class:list={[ { 'active': activeNav === 'reports' } ]}>Rapports</a>
       <a href="/research" class:list={[ { 'active': activeNav === 'research' } ]}>Recherches</a>
       <a href="/about" class:list={[ { 'active': activeNav === 'about' } ]}>À Propos</a>
-      <a href="/pages/capitalis" class:list={[ "flex items-center gap-1", { 'active': activeNav === 'capitalis' } ]}>Capitalis <span class="nav-badge">APP</span></a>
       <a href="/academy" class:list={[ "flex items-center gap-1", { 'active': activeNav === 'academy' } ]}>Academy <span class="nav-badge-new">NEW</span></a>
       <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
       <form class="nav-search" id="global-search-form" action="#">
@@ -80,9 +79,9 @@ const {
         <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
           <div class="flex w-full flex-row">
             <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse e-mail" required
-                   style="flex:1;padding:14px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-right:none;color:#fff;font-family:var(--ff-body);outline:none;transition:border-color .2s;border-radius:7px 0 0 7px;"
+                   style="flex:1;padding:14px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-right:none;color:#fff;font-family:var(--ff-body);outline:none;transition:border-color .2s;border-radius:0;"
                    onfocus="this.style.borderColor='rgba(96,165,250,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-            <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap" style="border-radius:0 7px 7px 0;">
+            <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap" style="border-radius:0;">
               S'abonner
             </button>
           </div>
@@ -96,7 +95,7 @@ const {
       <p>&copy; {new Date().getFullYear()} HORACLE CAPITAL</p>
       <div class="footer-links">
         <a href="/about">À Propos</a>
-        <a href="/mentions_legales">Mentions Légales</a>
+        <a href="/mentions-legales">Mentions Légales</a>
         <a href="/reports">Rapports</a>
         <a href="https://www.instagram.com/horacle_capital" target="_blank">Instagram</a>
         <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank">LinkedIn</a>

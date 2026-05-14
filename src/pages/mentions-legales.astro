@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Mentions Légales & Politique de Confidentialité | Horacle Capital';
+const description = "Éditeur du site, hébergement, protection des données personnelles (RGPD) et avertissements sur les risques financiers.";
+---
+
+<BaseLayout {title} {description}>
+    <header class="page-header">
+      <img src="/assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
+      <span>Conformité & RGPD</span>
+      <h1>Mentions Légales</h1>
+      <p>Politique de confidentialité et conditions d'utilisation</p>
+    </header>
+
+    <main class="article-container">
+      <h2>1. Éditeur du site</h2>
+      <p>
+        Le site <strong>Horacle Capital</strong> (horaclecapital.com) est un site vitrine personnel édité à titre indépendant par :<br>
+        <strong>Léo Lombardini</strong><br>
+        Contact : via le formulaire de la page "À Propos" ou par message privé LinkedIn.
+      </p>
+
+      <h2>2. Hébergement</h2>
+      <p>
+        Le site est hébergé par :<br>
+        <strong>GitHub, Inc.</strong> (GitHub Pages)<br>
+        88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis.
+      </p>
+
+      <h2>3. Données personnelles & RGPD</h2>
+      <p>
+        En conformité avec le Règlement Général sur la Protection des Données (RGPD), nous veillons à limiter la collecte de données au strict nécessaire :
+      </p>
+      <ul>
+        <li><strong>Newsletter :</strong> Si vous vous abonnez à notre newsletter, votre e-mail est collecté et traité par notre partenaire <em>Brevo (Sendinblue)</em>. Vous pouvez vous désinscrire à tout moment via le lien en bas de chaque e-mail.</li>
+        <li><strong>Formulaire de contact :</strong> Vos données sont transmises via <em>Web3Forms</em> et utilisées uniquement pour vous recontacter. Elles ne sont jamais revendues.</li>
+        <li><strong>Analytics :</strong> Nous utilisons <em>Umami</em>, un outil d'analyse open-source respectueux de la vie privée qui ne dépose aucun cookie de pistage inter-sites et anonymise votre adresse IP.</li>
+      </ul>
+
+      <h2>4. Cookies</h2>
+      <p>
+        L'intégration d'outils tiers (tels que le widget de prise de rendez-vous <em>Calendly</em>) peut entraîner le dépôt de cookies techniques et analytiques sur votre navigateur. Vous pouvez accepter ou refuser ces cookies via le bandeau qui apparaît lors de votre première visite.
+      </p>
+
+      <h2>5. Propriété intellectuelle</h2>
+      <p>
+        L'ensemble des éléments présents sur ce site (textes, analyses macroéconomiques, modèles quantitatifs, code source, graphiques) sont la propriété exclusive de Léo Lombardini, sauf mention contraire. Toute reproduction, représentation ou diffusion, partielle ou totale, est strictement interdite sans autorisation préalable.
+      </p>
+
+      <h2>6. Avertissement sur les risques (Disclaimer)</h2>
+      <p>
+        Toutes les analyses et informations partagées sur ce site sont fournies <strong>à des fins strictement éducatives et informatives</strong>. Elles ne constituent en aucun cas une sollicitation, une offre ou une recommandation d'achat ou de vente de tout instrument financier.
+      </p>
+      <p>
+        L'investissement et le trading sur les marchés (actions, devises, cryptomonnaies, options) comportent un <strong>risque élevé de perte en capital</strong>. Les performances passées ne préjugent pas des performances futures. Horacle Capital et son éditeur ne sauraient être tenus responsables de toute perte financière ou dommage découlant de l'utilisation de ces informations.
+      </p>
+    </main>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Inscription Confirmée | Newsletter Horacle Capital';
+const description = "Votre abonnement à la newsletter Horacle Capital est confirmé.";
+---
+
+<BaseLayout {title} {description}>
+    <header class="hero min-h-[40vh] md:min-h-[80vh] border-b-0 justify-center text-center">
+      <img src="/assets/img/banner.jpg" alt="" class="hero-bg opacity-5" aria-hidden="true" />
+      
+      <div class="hero-inner">
+        <div class="hero-tag">Succès</div>
+        <h1 class="text-[clamp(2.5rem,6vw,4.5rem)]">
+          INSCRIPTION<br>
+          <span class="o">CONFIRMÉE</span>
+        </h1>
+        <p class="hero-sub font-sans normal-case tracking-normal text-[1.15rem] max-w-[650px] mb-10 leading-relaxed">
+          Merci de rejoindre la newsletter Horacle Capital. Vous recevrez désormais nos dernières analyses macroéconomiques et nos recherches directement dans votre boîte mail.
+        </p>
+        <div class="hero-actions justify-center">
+          <a href="/" class="btn-primary">
+            Retourner à l'accueil
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+</BaseLayout>

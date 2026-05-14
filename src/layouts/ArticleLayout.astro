@@ -73,7 +73,6 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
         <a href="/reports" class="active">Rapports</a>
         <a href="/research">Recherches</a>
         <a href="/about">À Propos</a>
-        <a href="/pages/capitalis">Capitalis</a>
         <a href="/academy" class="flex items-center gap-1">Academy <span class="nav-badge-new">NEW</span></a>
         <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank">YouTube</a>
         <form class="nav-search" id="global-search-form" action="#">
@@ -100,11 +99,11 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
       <!-- Toolbar: reading time, share, download -->
       <div class="flex flex-wrap items-center justify-between gap-4 mb-8 border-b pb-4" style="border-color:var(--border)">
         <div class="flex flex-wrap items-center gap-3">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-bg-2 border text-off font-mono text-[0.6rem] uppercase tracking-widest" style="border-color:var(--border)">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-dark border text-white font-mono text-[0.6rem] uppercase tracking-widest" style="border-color:var(--border-dk)">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             5 min de lecture
           </span>
-          <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-bg-2 border text-off hover:text-orange hover:border-orange transition-colors font-mono text-[0.6rem] uppercase tracking-widest cursor-pointer" style="border-color:var(--border)">
+          <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-dark border text-white hover:text-orange hover:border-orange transition-colors font-mono text-[0.6rem] uppercase tracking-widest cursor-pointer" style="border-color:var(--border-dk)">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             Télécharger PDF
           </button>
@@ -114,7 +113,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
           <span class="font-mono text-[0.55rem] text-dim uppercase tracking-widest mr-1">Partager :</span>
           <button id="copy-link-btn" class="w-8 h-8 bg-bg-2 border border-border flex items-center justify-center text-off hover:text-orange hover:border-orange transition-colors relative group" title="Copier le lien">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-            <span id="copy-tooltip" class="absolute -top-8 bg-dark text-white text-[0.65rem] font-mono px-2 py-1 rounded opacity-0 transition-opacity pointer-events-none whitespace-nowrap">Copié !</span>
+            <span id="copy-tooltip" class="absolute -top-8 bg-dark text-white text-[0.65rem] font-mono px-2 py-1 rounded-none opacity-0 transition-opacity pointer-events-none whitespace-nowrap">Copié !</span>
           </button>
           <a href="#" id="share-li" target="_blank" class="w-8 h-8 bg-bg-2 border border-border flex items-center justify-center text-off hover:text-orange hover:border-orange transition-colors" title="Partager sur LinkedIn">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -129,12 +128,22 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
       <slot />
 
       <!-- Author bio -->
-      <div class="mt-16 bg-bg-2 border border-border rounded-xl p-8 flex gap-6 items-start">
-        <div class="w-16 h-16 rounded-full bg-blue-2 flex items-center justify-center text-white font-head text-2xl font-normal flex-shrink-0" style="background:var(--blue-2);color:#fff">L</div>
-        <div>
-          <h4 class="font-sans font-semibold text-text text-base mb-1">{author}</h4>
-          <p class="text-off text-sm leading-relaxed mb-3">Analyste macro & fondateur d'Horacle Capital. Spécialiste des marchés financiers, des banques centrales et de la finance quantitative.</p>
-          <a href="https://www.linkedin.com/in/léo-lombardini-418018280/" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold" style="color:var(--blue-2)">Suivre sur LinkedIn →</a>
+      <div class="mt-20 bg-bg-2 border border-border p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center md:items-start relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-1 h-full bg-blue-2"></div>
+        <img 
+          src="/assets/img/image_profil_leo.jpeg" 
+          alt={author} 
+          class="w-28 h-28 object-cover rounded-full border-4 border-white shadow-md flex-shrink-0"
+        />
+        <div class="text-center md:text-left">
+          <h4 class="font-head text-2xl text-text mb-2">{author}</h4>
+          <p class="text-off text-[0.95rem] leading-relaxed mb-4 max-w-2xl">Analyste macroéconomique et fondateur d'Horacle Capital. Spécialiste du décryptage des cycles financiers, des politiques monétaires des banques centrales et de la modélisation quantitative appliquée aux marchés.</p>
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <a href="https://www.linkedin.com/in/léo-lombardini-418018280/" target="_blank" class="inline-flex items-center gap-2 text-sm font-bold text-blue-2 hover:text-blue hover:translate-x-1 transition-all">
+              Suivre sur LinkedIn 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </main>
@@ -159,9 +168,9 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
       <div class="footer-top">
         <p>&copy; 2026 HORACLE CAPITAL</p>
         <div class="footer-links">
-          <a href="/about.html">À Propos</a>
-          <a href="/mentions_legales.html">Mentions Légales</a>
-          <a href="/reports.html">Rapports</a>
+          <a href="/about">À Propos</a>
+          <a href="/mentions-legales">Mentions Légales</a>
+          <a href="/reports">Rapports</a>
           <a href="https://www.instagram.com/horacle_capital" target="_blank">Instagram</a>
           <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank">LinkedIn</a>
           <a href="https://youtube.com/@lbrd_leo" target="_blank">YouTube</a>

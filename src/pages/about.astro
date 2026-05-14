@@ -1,16 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'À Propos & Contact | Léo Lombardini';
-const description = "Découvrez la genèse d'Horacle Capital, notre philosophie d'investissement liant analyse fondamentale et modélisation quantitative, par Léo Lombardini.";
+const title = 'À Propos de Horacle Capital | Expertise Macro & Recherche Indépendante';
+const description = "Découvrez la vision d'Horacle Capital. Fondée par Léo Lombardini, notre structure allie analyse macroéconomique de pointe et finance quantitative pour une recherche d'excellence.";
 ---
 
 <BaseLayout {title} {description} activeNav="about">
     <header class="page-header">
-      <img src="/assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
-      <span>Horacle Capital</span>
-      <h1>À Propos &amp; Contact</h1>
-      <p>Le projet, la méthode, le contact.</p>
+      <img src="/assets/img/banner.jpg" alt="L'expertise Horacle Capital : analyse fondamentale et précision statistique" class="header-bg" aria-hidden="true" />
+      <span>Structure de Recherche</span>
+      <h1>À Propos</h1>
+      <p>L'expertise Horacle Capital : du signal fondamental à la précision statistique.</p>
     </header>
 
     <div class="container pt-[80px] pb-[120px]">
@@ -18,12 +18,12 @@ const description = "Découvrez la genèse d'Horacle Capital, notre philosophie 
             <div class="about-body">
                 <h2 class="section-title text-[2.2rem] mb-5">Léo Lombardini</h2>
                 <p class="text-off leading-relaxed">
-                    Les marchés financiers me captent depuis mes 16 ans. Ce qui a commencé comme une fascination s'est structuré via un parcours académique en économie et gestion, puis à l'EDHEC Business School. Horacle Capital est le prolongement naturel de cette rigueur : appliquer une méthode analytique sérieuse à la recherche indépendante.
+                    Analyste financier spécialisé dans les dynamiques macro-globales, mon parcours s'est structuré à l'EDHEC Business School. Horacle Capital est né d'une conviction : la recherche indépendante doit allier rigueur académique et réactivité opérationnelle.
                 </p>
 
-                <h3 class="font-head text-text mt-10 mb-4 text-[1.6rem]">La Méthode</h3>
+                <h3 class="font-head text-text mt-10 mb-4 text-[1.6rem]">La Méthodologie Horacle</h3>
                 <p class="text-off leading-relaxed">
-                    Horacle Capital est une structure spécialisée dans l'analyse macroéconomique et la modélisation statistique des marchés financiers. L'analyse fondamentale — politiques monétaires, cycles, géopolitique — fixe le cadre directionnel. La quantification — HMM, scoring multifactoriel, backtesting — gère la précision. Pas de futilité : uniquement du signal.
+                    Notre approche repose sur un double moteur. L'<strong>Analyse Macroéconomique</strong> définit le cadre directionnel (politiques monétaires, cycles de liquidité, tensions géopolitiques). La <strong>Finance Quantitative</strong> assure la précision via des modèles statistiques avancés (HMM, scoring multifactoriel). Cette synergie permet d'extraire le signal pur au milieu du bruit des marchés financiers.
                 </p>
             </div>
 
@@ -35,9 +35,9 @@ const description = "Découvrez la genèse d'Horacle Capital, notre philosophie 
                     <input type="hidden" name="access_key" value="c455f599-cf43-4be4-9835-019ffa3330db">
                     
                     <div class="flex flex-col gap-4">
-                        <input type="text" name="Nom" placeholder="Nom Complet" required class="p-4 bg-white border border-border text-text font-sans outline-none transition-colors duration-200 focus:border-orange rounded-lg">
-                        <input type="email" name="Email" placeholder="Adresse E-mail" required class="p-4 bg-white border border-border text-text font-sans outline-none transition-colors duration-200 focus:border-orange rounded-lg">
-                        <textarea name="Message" rows="5" placeholder="Votre message..." required class="p-4 bg-white border border-border text-text font-sans resize-y outline-none transition-colors duration-200 focus:border-orange rounded-lg"></textarea>
+                        <input type="text" name="Nom" placeholder="Nom Complet" required class="p-4 bg-white border border-border text-text font-sans outline-none transition-colors duration-200 focus:border-orange rounded-none">
+                        <input type="email" name="Email" placeholder="Adresse E-mail" required class="p-4 bg-white border border-border text-text font-sans outline-none transition-colors duration-200 focus:border-orange rounded-none">
+                        <textarea name="Message" rows="5" placeholder="Votre message..." required class="p-4 bg-white border border-border text-text font-sans resize-y outline-none transition-colors duration-200 focus:border-orange rounded-none"></textarea>
                         <button type="submit" class="btn-primary border-none cursor-pointer justify-center w-full">Envoyer le message</button>
                     </div>
                 </form>

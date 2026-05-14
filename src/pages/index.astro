@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'HORACLE CAPITAL | Analyse Macro & Finance Quantitative';
-const description = "Horacle Capital est une structure de recherche spécialisée dans l'analyse macroéconomique et la modélisation quantitative des marchés financiers. Rapports hebdomadaires et finance quantitative.";
+const title = 'HORACLE CAPITAL | Analyse Macroéconomique & Finance Quantitative';
+const description = "Horacle Capital : Recherche indépendante en macroéconomie et finance quantitative. Analyses hebdomadaires, modèles de scoring et mentorat stratégique pour investisseurs.";
 ---
 
 <BaseLayout {title} {description} activeNav="home">
@@ -25,9 +25,9 @@ const description = "Horacle Capital est une structure de recherche spécialisé
       }
     </style>
     <header class="hero hero-index">
-      <h1 class="sr-only">Horacle Capital - Analyse Macro & Finance Quantitative</h1>
+      <h1 class="sr-only">Analyse Macroéconomique & Finance Quantitative | Horacle Capital</h1>
       <!-- Static fallback visible only if all videos fail to load -->
-      <img src="/assets/img/banner.jpg" alt="" class="hero-bg" aria-hidden="true" />
+      <img src="/assets/img/banner.jpg" alt="Analyste financier travaillant sur des rapports macroéconomiques Horacle Capital" class="hero-bg" aria-hidden="true" />
       <!-- Night city video reel — 3 clips crossfade every 15s -->
       <div class="hero-bg-videos" aria-hidden="true">
         <video class="hero-vid active" muted loop playsinline preload="auto">
@@ -46,15 +46,15 @@ const description = "Horacle Capital est une structure de recherche spécialisé
             <img src="/assets/img/logo_ban.svg" alt="HORACLE CAPITAL" class="w-full max-w-[320px] md:max-w-[500px] lg:max-w-[650px] min-[1500px]:max-w-[800px]" />
           </div>
           <p class="hero-sub">
-            Rapports hebdomadaires<span class="dot">·</span>Modèles statistiques<span class="dot">·</span>Cours privés
+            Analyse Macroéconomique<span class="dot">·</span>Finance Quantitative<span class="dot">·</span>Stratégie de Marché
           </p>
           <div class="hero-actions">
             <a href="/reports" class="btn-primary">
-              Voir les rapports
+              Nos rapports macro
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
             <a href="/research" class="btn-ghost">
-              Recherches
+              Nos recherches
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
@@ -92,20 +92,20 @@ const description = "Horacle Capital est une structure de recherche spécialisé
 
                 <!-- Points d'informations -->
                 <g class="chart-point point-1">
-                  <circle cx="180" cy="130" r="5" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" />
-                  <rect x="130" y="90" width="100" height="26" rx="4" class="chart-tooltip-bg" />
+                  <rect x="175" y="125" width="10" height="10" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" />
+                  <rect x="130" y="90" width="100" height="26" rx="0" class="chart-tooltip-bg" />
                   <text x="180" y="107" class="chart-tooltip-text">Signal Achat</text>
                 </g>
 
                 <g class="chart-point point-2">
-                  <circle cx="340" cy="70" r="5" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" />
-                  <rect x="290" y="30" width="100" height="26" rx="4" class="chart-tooltip-bg" />
+                  <rect x="335" y="65" width="10" height="10" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" />
+                  <rect x="290" y="30" width="100" height="26" rx="0" class="chart-tooltip-bg" />
                   <text x="340" y="47" class="chart-tooltip-text">Breakout Vol.</text>
                 </g>
 
                 <g class="chart-point point-3">
-                  <circle cx="480" cy="30" r="5" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" />
-                  <rect x="390" y="45" width="100" height="26" rx="4" class="chart-tooltip-bg" />
+                  <rect x="475" y="25" width="10" height="10" fill="var(--bg)" stroke="var(--blue-3)" stroke-width="2" />
+                  <rect x="390" y="45" width="100" height="26" rx="0" class="chart-tooltip-bg" />
                   <text x="440" y="62" class="chart-tooltip-text">Cible Atteinte</text>
                 </g>
               </svg>
@@ -135,40 +135,28 @@ const description = "Horacle Capital est une structure de recherche spécialisé
             <!-- Academy -->
             <a href="/academy" class="eco-card academy reveal">
               <div class="eco-image-bg" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80');"></div>
-              <span class="eco-label">Comprendre les Marchés</span>
+              <span class="eco-label">Formation & Mentorat</span>
               <h3 class="eco-title">Horacle Academy</h3>
-              <p class="eco-desc">Formation stratégique en macroéconomie. Apprenez à décrypter les dynamiques mondiales et les cycles de marché pour une vision éclairée de l'économie.</p>
+              <p class="eco-desc">Maîtrisez les rouages de l'économie mondiale. Un mentorat stratégique pour apprendre à décrypter les cycles de marché et les politiques des banques centrales.</p>
               <span class="eco-link">Explorer les programmes <span>→</span></span>
             </a>
 
-            <!-- Capitalis -->
-            <a href="/pages/capitalis" class="eco-card capitalis dark reveal reveal-delay-1">
-              <div class="eco-image-bg" style="background-image: url('/assets/img/capitalis_view/dashboard.png'); opacity: 0.1;"></div>
-              <span class="eco-label">Outils de Recherche</span>
-              <h3 class="eco-title">Capitalis SaaS</h3>
-              <p class="eco-desc" style="max-width: none;">Notre infrastructure technologique propriétaire. Accédez à des outils avancés de screening et de scoring pour filtrer le signal du bruit du marché.</p>
-              <div class="mt-8 grid grid-cols-1 gap-4 mb-8">
-                <div class="flex items-center gap-3">
-                  <div class="w-1.5 h-1.5 bg-blue-3 rounded-full"></div>
-                  <span class="text-xs font-semibold tracking-wider uppercase opacity-80">Multifactor Scoring</span>
-                </div>
-                <div class="flex items-center gap-3">
-                  <div class="w-1.5 h-1.5 bg-blue-3 rounded-full"></div>
-                  <span class="text-xs font-semibold tracking-wider uppercase opacity-80">Dynamic Allocation</span>
-                </div>
-              </div>
-              <span class="eco-link">Accéder à la plateforme <span>→</span></span>
+            <!-- Research -->
+            <a href="/research" class="eco-card featured dark reveal reveal-delay-1">
+              <div class="eco-image-bg" style="background-image: url('/assets/img/notebook_banner.jpg');"></div>
+              <span class="eco-label">Finance Quantitative</span>
+              <h3 class="eco-title">Nos recherches et convictions</h3>
+              <p class="eco-desc">Découvrez nos thèses d'investissement et nos travaux de recherche. Une approche rigoureuse mêlant modélisation statistique et analyse fondamentale approfondie.</p>
+              <span class="eco-link">Consulter nos recherches <span>→</span></span>
             </a>
 
-            <!-- Mission -->
-            <div class="eco-card mission reveal reveal-delay-2">
-              <span class="eco-label">Décrypter le Monde</span>
-              <h3 class="eco-title">Rigueur & Indépendance</h3>
-              <p class="eco-desc">Structure de recherche indépendante, Horacle Capital fournit des analyses macroéconomiques approfondies pour aider chacun à mieux comprendre les enjeux globaux.</p>
-              <div class="flex gap-4">
-                <a href="/about" class="eco-link">Notre vision <span>→</span></a>
-              </div>
-            </div>
+            <!-- Reports -->
+            <a href="/reports" class="eco-card mission reveal reveal-delay-2">
+              <span class="eco-label">Veille Stratégique</span>
+              <h3 class="eco-title">Nos rapports</h3>
+              <p class="eco-desc">Recevez chaque semaine nos analyses de haute précision sur l'actualité macroéconomique. Un éclairage indépendant pour comprendre les enjeux financiers globaux.</p>
+              <span class="eco-link">Accéder aux rapports <span>→</span></span>
+            </a>
           </div>
         </div>
       </section>
@@ -182,7 +170,7 @@ const description = "Horacle Capital est une structure de recherche spécialisé
           </div>
           <div class="about-grid">
             <div class="about-body reveal">
-              <h2 class="section-title" style="color:var(--white);">QUI SOMMES-<br>NOUS ?</h2>
+              <h3 class="section-title" style="color:var(--white);">QUI SOMMES-<br>NOUS ?</h3>
               <p style="color:rgba(255,255,255,0.7);">
                 <strong style="color:var(--white);">Horacle Capital</strong> est une structure de recherche indépendante spécialisée dans l'analyse macroéconomique et la modélisation quantitative des marchés financiers.
               </p>
@@ -190,7 +178,7 @@ const description = "Horacle Capital est une structure de recherche spécialisé
                 Nous publions des <strong style="color:var(--white);">rapports hebdomadaires</strong> stratégiques et proposons un <strong style="color:var(--white);">mentorat privé</strong> pour maîtriser les fondamentaux de l'économie mondiale.
               </p>
               <p style="color:rgba(255,255,255,0.7);">
-                Explorez nos <a href="/reports" style="color:var(--blue-3);">Rapports</a>, nos <a href="/research" style="color:var(--blue-3);">Recherches</a>, ou découvrez <a href="/pages/capitalis" style="color:var(--blue-3);">Capitalis →</a>
+                Explorez nos <a href="/reports" style="color:var(--blue-3);">Rapports</a> ou nos <a href="/research" style="color:var(--blue-3);">Recherches</a>.
               </p>
               <div class="disclaimer" style="color:rgba(255,255,255,0.4); border-top-color:var(--border-dk);">
                 ⚠ Rien de ce qui est publié ici ne constitue un conseil en investissement.
@@ -210,28 +198,33 @@ const description = "Horacle Capital est une structure de recherche spécialisé
             <div class="about-panel reveal reveal-delay-1" style="background:var(--dark-2); border-color:var(--border-dk); box-shadow:none;">
               <div class="panel-header" style="background:var(--dark-3); border-color:var(--border-dk);">
                 <div class="panel-dot"></div>
-                <span>Notre Approche</span>
+                <span>Notre Méthodologie</span>
               </div>
-              <div class="approach-method">
-                <div class="am-item" style="border-bottom-color:var(--border-dk);">
-                  <span class="am-num" style="color:var(--blue-3);">01</span>
+              <div class="p-10 flex flex-col gap-8 relative">
+                <!-- Decorative line -->
+                <div class="absolute left-[59px] top-[60px] bottom-[60px] w-px bg-gradient-to-b from-blue-3 via-blue-2 to-transparent opacity-30"></div>
+                
+                <div class="flex items-center gap-6 relative z-10">
+                  <div class="w-10 h-10 rounded-none bg-blue-d border border-blue-3/30 flex items-center justify-center text-blue-3 font-mono text-sm">01</div>
                   <div>
-                    <strong class="am-title" style="color:var(--white);">Analyse fondamentale</strong>
-                    <p class="am-desc" style="color:rgba(255,255,255,0.6);">Décryptage des cycles économiques et des politiques monétaires.</p>
+                    <h4 class="text-white font-sans font-bold text-sm uppercase tracking-wider">Macro-Analyse</h4>
+                    <p class="text-dim text-xs">Cycles monétaires & politiques des Banques Centrales.</p>
                   </div>
                 </div>
-                <div class="am-item" style="border-bottom-color:var(--border-dk);">
-                  <span class="am-num" style="color:var(--blue-3);">02</span>
+
+                <div class="flex items-center gap-6 relative z-10">
+                  <div class="w-10 h-10 rounded-none bg-blue-d border border-blue-3/30 flex items-center justify-center text-blue-3 font-mono text-sm">02</div>
                   <div>
-                    <strong class="am-title" style="color:var(--white);">Rigueur Scientifique</strong>
-                    <p class="am-desc" style="color:rgba(255,255,255,0.6);">Utilisation de modèles statistiques pour filtrer le bruit du marché.</p>
+                    <h4 class="text-white font-sans font-bold text-sm uppercase tracking-wider">Filtrage Quantitatif</h4>
+                    <p class="text-dim text-xs">Modèles statistiques HMM & scoring multifactoriel.</p>
                   </div>
                 </div>
-                <div class="am-item" style="border-bottom:none;">
-                  <span class="am-num" style="color:var(--blue-3);">03</span>
+
+                <div class="flex items-center gap-6 relative z-10">
+                  <div class="w-10 h-10 rounded-none bg-blue-d border border-blue-3/30 flex items-center justify-center text-blue-3 font-mono text-sm">03</div>
                   <div>
-                    <strong class="am-title" style="color:var(--white);">Signal, pas bruit</strong>
-                    <p class="am-desc" style="color:rgba(255,255,255,0.6);">Chaque rapport vise la clarté analytique et la compréhension globale.</p>
+                    <h4 class="text-white font-sans font-bold text-sm uppercase tracking-wider">Signal de Décision</h4>
+                    <p class="text-dim text-xs">Extraction de la valeur pure au milieu du bruit du marché.</p>
                   </div>
                 </div>
               </div>
@@ -251,8 +244,8 @@ const description = "Horacle Capital est une structure de recherche spécialisé
                 Ne subissez plus le marché, anticipez-le par une analyse fondamentale rigoureuse. Nous formons ceux qui souhaitent faire le pont entre théorie et réalité du terrain.
               </p>
               <div class="grid gap-4 mb-10">
-                <div class="flex items-start gap-4 p-5 bg-bg-2 border border-border rounded-lg shadow-sm">
-                  <div class="w-8 h-8 bg-orange/10 flex items-center justify-center rounded-full flex-shrink-0">
+                <div class="flex items-start gap-4 p-5 bg-bg-2 border border-border rounded-none shadow-sm">
+                  <div class="w-8 h-8 bg-orange/10 flex items-center justify-center rounded-none flex-shrink-0">
                     <span class="font-head text-orange text-sm font-bold">01</span>
                   </div>
                   <div>
@@ -260,8 +253,8 @@ const description = "Horacle Capital est une structure de recherche spécialisé
                     <p class="text-off text-xs leading-relaxed">Maîtrise des politiques de Banques Centrales et décryptage des indicateurs (CPI, NFP).</p>
                   </div>
                 </div>
-                <div class="flex items-start gap-4 p-5 bg-bg-2 border border-border rounded-lg shadow-sm">
-                  <div class="w-8 h-8 bg-orange/10 flex items-center justify-center rounded-full flex-shrink-0">
+                <div class="flex items-start gap-4 p-5 bg-bg-2 border border-border rounded-none shadow-sm">
+                  <div class="w-8 h-8 bg-orange/10 flex items-center justify-center rounded-none flex-shrink-0">
                     <span class="font-head text-orange text-sm font-bold">02</span>
                   </div>
                   <div>
@@ -276,9 +269,8 @@ const description = "Horacle Capital est une structure de recherche spécialisé
               </a>
             </div>
             <div class="relative reveal reveal-delay-1">
-              <div class="aspect-square bg-dark border border-border-dk overflow-hidden rounded-xl max-w-[400px] mx-auto lg:mr-0 flex items-center justify-center" style="box-shadow:none !important;">
+              <div class="aspect-square bg-dark border border-border-dk overflow-hidden rounded-none max-w-[400px] mx-auto lg:mr-0 flex items-center justify-center" style="box-shadow:none !important;">
                 <img src="/assets/img/biglogo.png" alt="Horacle Capital Logo" class="w-full h-full object-contain p-12 transition-all duration-700" style="box-shadow:none !important; filter:none !important;">
-                <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-20"></div>
               </div>
             </div>
           </div>
@@ -304,7 +296,7 @@ const description = "Horacle Capital est une structure de recherche spécialisé
                   alt="Tensions géopolitiques Détroit d'Ormuz"
                   class="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700">
                 <div class="absolute top-4 left-4 flex gap-2">
-                  <span class="bg-orange text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-full">Macro</span>
+                  <span class="bg-orange text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-none">Macro</span>
                   <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1">Hebdo N°9</span>
                 </div>
               </div>
@@ -318,22 +310,22 @@ const description = "Horacle Capital est une structure de recherche spécialisé
               </div>
             </a>
 
-            <a href="/pages/scoring-report" class="reveal reveal-delay-1 group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
+            <a href="/reports/rapport_12_04_26" class="reveal reveal-delay-1 group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
               <div class="h-56 overflow-hidden relative border-b border-border">
                 <img
-                  src="/assets/img/capitalis_view/scorer.png"
+                  src="https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?w=800&q=80&auto=format&fit=crop"
                   onerror="this.src='/assets/img/banner.jpg'"
-                  alt="Interface Modèle de scoring quantitatif"
+                  alt="Trêve Annoncée et Résistance de l'Inflation"
                   class="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700">
                 <div class="absolute top-4 left-4 flex gap-2">
-                  <span class="bg-dark text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-full">Quant</span>
-                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1">PDF & Modèle</span>
+                  <span class="bg-orange text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-none">Macro</span>
+                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1">Hebdo N°8</span>
                 </div>
               </div>
               <div class="p-8 flex-1 flex flex-col">
-                <div class="font-sans text-[0.6rem] text-dim mb-3 uppercase tracking-widest">Avril 2026</div>
-                <h3 class="font-head text-2xl font-normal text-text mb-4 leading-tight group-hover:text-orange transition-colors">Scoring Report :<br>Modèle Quantitatif</h3>
-                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Présentation détaillée de la méthodologie de notre modèle de scoring quantitatif multifactoriel. Métriques, pondérations et rapport PDF téléchargeable.</p>
+                <div class="font-sans text-[0.6rem] text-dim mb-3 uppercase tracking-widest">12 Avril 2026</div>
+                <h3 class="font-head text-2xl font-normal text-text mb-4 leading-tight group-hover:text-orange transition-colors">Trêve Annoncée &amp;<br>Inflation Persistante</h3>
+                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Débrief de la semaine : signaux de pause des banques centrales face à l'inflation persistante et impact de la trêve sur les marchés.</p>
                 <div class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange mt-auto pt-6 border-t border-border">
                   Lire le rapport <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </div>
@@ -344,24 +336,6 @@ const description = "Horacle Capital est une structure de recherche spécialisé
         </div>
       </section>
 
-      <!-- NEWSLETTER -->
-      <section class="newsletter-section py-16 border-t border-border-dk">
-        <div class="container max-w-[700px] text-center">
-          <h2 class="font-head text-4xl font-normal text-white mb-6 tracking-tight">Intelligence Newsletter</h2>
-          <p class="mb-10 text-lg leading-relaxed" style="color:rgba(255,255,255,0.55);">Recevez nos analyses stratégiques et mises à jour quantitatives directement par email.</p>
-          <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col w-full">
-            <div class="flex w-full flex-row">
-              <input type="email" name="EMAIL" id="subscriber-email" placeholder="Adresse email professionnelle" required
-                     style="flex:1;padding:16px 20px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-right:none;color:#fff;font-family:var(--ff-body);outline:none;transition:border-color .2s;border-radius:0;"
-                     onfocus="this.style.borderColor='var(--blue-3)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
-              <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer justify-center whitespace-nowrap" style="box-shadow: none;">
-                S'abonner
-              </button>
-            </div>
-            <p id="subscription-status" class="mt-4 font-sans text-xs uppercase tracking-widest min-h-[1.2em]" style="color:rgba(255,255,255,0.5)"></p>
-          </form>
-        </div>
-      </section>
     </main>
 
     <script is:inline>

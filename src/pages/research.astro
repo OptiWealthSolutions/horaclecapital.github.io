@@ -1,16 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'Recherche Quantitative & Fondamentale';
-const description = "Explorez le laboratoire d'analyses d'Horacle Capital. Modèles de scoring, algorithmes de trading, HMM et rapports de recherche quantitative.";
+const title = 'Recherche Quantitative & Modélisation Financière | Horacle Capital';
+const description = "Explorez notre laboratoire d'analyses : modèles de scoring multifactoriels, algorithmes de trading (HMM) et recherche empirique sur la microstructure des marchés.";
 ---
 
 <BaseLayout {title} {description} activeNav="research">
     <header class="page-header">
-      <img src="/assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
-      <span>Finance Quantitative</span>
-      <h1>Recherches &amp; Modèles</h1>
-      <p>Modèles statistiques, notebooks et papiers de recherche</p>
+      <img src="/assets/img/banner.jpg" alt="Laboratoire de recherche quantitative Horacle Capital" class="header-bg" aria-hidden="true" />
+      <span>Laboratoire Quantitatif</span>
+      <h1>Nos Recherches</h1>
+      <p>Modèles prédictifs, détection de régimes et recherche empirique sur les marchés financiers.</p>
     </header>
 
     <div class="container pt-[60px] pb-[120px] min-h-[60vh]">
@@ -38,8 +38,8 @@ const description = "Explorez le laboratoire d'analyses d'Horacle Capital. Modè
           <article class="group flex flex-col border border-[var(--border)] hover:border-[rgba(37,99,235,0.4)] transition-colors duration-300 overflow-hidden research-item" data-category="pdf">
             <div class="relative overflow-hidden bg-[var(--bg-2)]" style="aspect-ratio:16/9">
               <img
-                src="/assets/img/capitalis_view/scorer.png"
-                alt="Scoring Report Multifacteurs"
+                src="/assets/img/report_banner.jpg"
+                alt="Modèle de Scoring Quantitatif"
                 class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
                 onerror="this.src='/assets/img/banner.jpg'"
               />
@@ -49,21 +49,19 @@ const description = "Explorez le laboratoire d'analyses d'Horacle Capital. Modè
                 <span style="font-family:var(--ff-body);font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue-2)">PDF & Modèles</span>
                 <span style="font-family:var(--ff-body);font-size:0.68rem;color:var(--dim)">Avr 2026</span>
               </div>
-              <h3 class="font-head text-[var(--text)] leading-snug mb-3 flex-1" style="font-size:1.05rem">Scoring Report : Modèle Quantitatif</h3>
-              <p class="research-description" style="font-family:var(--ff-body);font-size:0.82rem;color:var(--off);line-height:1.65;margin-bottom:1.25rem">Présentation détaillée de la méthodologie de notre modèle de scoring quantitatif multifactoriel. Retrouvez l'explication complète des métriques et le rapport PDF téléchargeable.</p>
+              <h3 class="font-head text-[var(--text)] leading-snug mb-3 flex-1" style="font-size:1.05rem">Scoring Report : Modèle Quantitatif Multifactoriel</h3>
+              <p class="research-description" style="font-family:var(--ff-body);font-size:0.82rem;color:var(--off);line-height:1.65;margin-bottom:1.25rem">Documentation technique du moteur de scoring macroéconomique. Architecture, méthodologie et validation du signal quantitatif d'Horacle Capital.</p>
               <a
-                href="/pages/scoring-report"
-                style="display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-body);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:3px;transition:color 0.2s"
-                onmouseover="this.style.color='var(--blue-2)'"
-                onmouseout="this.style.color='var(--text)'"
+                href="/recherches/scoring-report"
+                class="btn-primary text-white"
+                style="padding: 8px 16px; font-size: 0.65rem; justify-content: center; width: fit-content;"
               >
-                Lire & Télécharger
+                Consulter le Projet
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
             </div>
           </article>
-...
-          
+
           <!-- Polymarket Paper -->
           <article class="group flex flex-col border border-[var(--border)] hover:border-[rgba(37,99,235,0.4)] transition-colors duration-300 overflow-hidden research-item" data-category="pdf">
             <div class="relative overflow-hidden bg-[var(--bg-2)]" style="aspect-ratio:16/9">
@@ -82,15 +80,12 @@ const description = "Explorez le laboratoire d'analyses d'Horacle Capital. Modè
               <h3 class="font-head text-[var(--text)] leading-snug mb-3 flex-1" style="font-size:1.05rem">Microstructure, Market Making, and Algorithmic Arbitrage on Decentralised Prediction Markets</h3>
               <p class="research-description" style="font-family:var(--ff-body);font-size:0.82rem;color:var(--off);line-height:1.65;margin-bottom:1.25rem">Ce document développe un cadre quantitatif rigoureux pour la participation algorithmique sur les marchés de prédiction décentralisés, en utilisant Polymarket comme environnement empirique principal.</p>
               <a
-                href="/assets/pdf/polymarket_paper.pdf"
-                target="_blank"
-                download
-                style="display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-body);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:3px;transition:color 0.2s"
-                onmouseover="this.style.color='var(--blue-2)'"
-                onmouseout="this.style.color='var(--text)'"
+                href="/recherches/polymarket-research"
+                class="btn-primary text-white"
+                style="padding: 8px 16px; font-size: 0.65rem; justify-content: center; width: fit-content;"
               >
-                Télécharger
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Consulter le Projet
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
             </div>
           </article>
@@ -113,15 +108,12 @@ const description = "Explorez le laboratoire d'analyses d'Horacle Capital. Modè
               <h3 class="font-head text-[var(--text)] leading-snug mb-3 flex-1" style="font-size:1.05rem">HMM Engine - Détection de Régimes de Marché</h3>
               <p class="research-description" style="font-family:var(--ff-body);font-size:0.82rem;color:var(--off);line-height:1.65;margin-bottom:1.25rem">Moteur d'inférence basé sur les modèles de Markov cachés (Hidden Markov Models) pour identifier et modéliser les différents régimes de volatilité et de tendance sur les marchés financiers.</p>
               <a
-                href="/assets/notebooks/HMM_engine.ipynb"
-                target="_blank"
-                download
-                style="display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-body);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:3px;transition:color 0.2s"
-                onmouseover="this.style.color='var(--blue-2)'"
-                onmouseout="this.style.color='var(--text)'"
+                href="/recherches/hmm-engine"
+                class="btn-primary text-white"
+                style="padding: 8px 16px; font-size: 0.65rem; justify-content: center; width: fit-content;"
               >
-                Télécharger
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Consulter le Projet
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
             </div>
           </article>
