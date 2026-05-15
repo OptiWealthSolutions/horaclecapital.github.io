@@ -2,27 +2,31 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Horacle Academy | Mentorat en Analyse Macroéconomique & Stratégie';
-const description = "Maîtrisez les rouages de l'économie mondiale. Mentorat privé et sessions de formation sur les banques centrales, les indicateurs économiques et la stratégie de marché.";
+const description = "Accompagnement stratégique sur mesure pour maîtriser les Marchés Financiers. Sessions privées fondées sur la modélisation statistique et l'analyse fondamentale.";
 ---
 
 <BaseLayout {title} {description} activeNav="academy">
-    <header class="hero min-h-[40vh] md:min-h-[80vh] border-b border-border">
-      <img src="/assets/img/banner.jpg" alt="" class="hero-bg opacity-10 grayscale object-top" aria-hidden="true" />
-      <div class="hero-inner">
+    <header class="hero min-h-[40vh] md:min-h-[80vh] border-b border-border relative overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <video class="w-full h-full object-cover opacity-20 grayscale" muted loop playsinline autoplay>
+          <source src="https://videos.pexels.com/video-files/3130182/3130182-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-inner relative z-10">
         <div class="hero-tag">Mentorat de Haute Précision</div>
         <h1 class="font-head max-w-[900px] mx-auto mb-8 text-white">
           Horacle Academy
         </h1>
         <p class="hero-sub font-sans normal-case tracking-normal text-lg max-w-[700px] mb-10 leading-relaxed">
-          Un accompagnement stratégique sur mesure pour maîtriser les Marchés Financiers. Sessions privées fondées sur la modélisation statistique et l'analyse fondamentale.
+          Un accompagnement stratégique sur mesure pour transformer votre compréhension des marchés en un avantage compétitif durable.
         </p>
         <div class="hero-actions">
           <a href="#calendly" class="btn-primary">
             Réserver un appel de diagnostic
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#methode" class="btn-ghost">
-            La Méthode Horacle
+          <a href="#benefices" class="btn-ghost">
+            Bénéfices & Méthode
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -31,240 +35,148 @@ const description = "Maîtrisez les rouages de l'économie mondiale. Mentorat pr
 
     <main class="container pt-[100px] pb-[120px]">
 
-        <!-- Curriculum : Spécialisations Macro -->
+        <!-- Bénéfices -->
+        <div id="benefices" class="section-rule scroll-mt-[100px]">
+            <h2 class="section-label">Pourquoi choisir ce mentorat ?</h2>
+            <div class="rule-line"></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-[120px] mt-12">
+            <div class="p-8 bg-bg-2 border border-border hover:border-blue-3 transition-colors">
+                <div class="w-10 h-10 bg-blue-3/10 flex items-center justify-center text-blue-3 mb-6">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <h3 class="font-head text-2xl mb-4">Lecture Institutionnelle</h3>
+                <p class="text-off text-sm leading-relaxed">Apprenez à penser comme les banques centrales et les gestionnaires de fonds. Ne subissez plus les news, anticipez les flux.</p>
+            </div>
+            <div class="p-8 bg-bg-2 border border-border hover:border-blue-3 transition-colors">
+                <div class="w-10 h-10 bg-blue-3/10 flex items-center justify-center text-blue-3 mb-6">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <h3 class="font-head text-2xl mb-4">Framework Structuré</h3>
+                <p class="text-off text-sm leading-relaxed">Passez du chaos informationnel à une méthodologie de recherche rigoureuse et reproductible chaque semaine.</p>
+            </div>
+            <div class="p-8 bg-bg-2 border border-border hover:border-blue-3 transition-colors">
+                <div class="w-10 h-10 bg-blue-3/10 flex items-center justify-center text-blue-3 mb-6">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
+                </div>
+                <h3 class="font-head text-2xl mb-4">Décision Asymétrique</h3>
+                <p class="text-off text-sm leading-relaxed">Identifiez les moments où les probabilités sont en votre faveur grâce à la convergence de la macro et de la data.</p>
+            </div>
+        </div>
+
+        <!-- Curriculum -->
         <div class="section-rule">
-            <h2 class="section-label">Programme : Masterclass Macro &amp; Quant</h2>
+            <h2 class="section-label">L'Accompagnement</h2>
             <div class="rule-line"></div>
         </div>
         
-        <div class="group relative bg-bg-2 border border-border hover:border-orange transition-all duration-300 p-8 md:p-12 flex flex-col lg:flex-row gap-10 overflow-hidden mb-8">
-          
-
+        <div class="group relative bg-bg-2 border border-border hover:border-blue-3 transition-all duration-300 p-8 md:p-12 flex flex-col lg:flex-row gap-10 overflow-hidden mb-24 mt-12">
           <div class="flex-1 flex flex-col relative z-10">
             <div class="flex items-center gap-3 mb-6 flex-wrap">
-              <span class="bg-orange text-bg font-mono text-[0.6rem] uppercase tracking-widest px-3 py-1 font-bold rounded-none">Mentorat Finance</span>
-              <span class="border border-[var(--border)] font-mono text-[var(--text)] text-[0.6rem] uppercase tracking-widest px-3 py-1">Analyse de Marché</span>
-              <span class="font-mono text-dim text-[0.6rem] uppercase tracking-widest">Niveau : Intermédiaire / Avancé</span>
+              <span class="bg-blue-3 text-white font-mono text-[0.6rem] uppercase tracking-widest px-3 py-1 font-bold rounded-none">Programme Élite</span>
+              <span class="border border-border font-mono text-text text-[0.6rem] uppercase tracking-widest px-3 py-1">Macro-Analyse</span>
             </div>
             
-            <h3 class="font-head text-[var(--text)] mb-5 leading-tight" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400">
-              Expertise Macroéconomique
+            <h3 class="font-head text-text mb-5 leading-tight" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400">
+              Maîtrise de l'Écosystème Macroéconomique
             </h3>
             
             <p class="text-off text-[0.95rem] leading-relaxed mb-8 max-w-lg">
-              De la compréhension des cycles monétaires à la maîtrise des politiques de Banques Centrales. Ce programme vous apprend à décrypter les indicateurs économiques clés et à construire des scénarios d'investissement robustes basés sur le signal fondamental.
+              Notre mentorat n'est pas une simple formation théorique. C'est un transfert de compétences en temps réel sur les marchés. Nous étudions les conditions actuelles pour forger votre intuition financière.
             </p>
 
-            <ul class="font-mono text-[0.65rem] text-dim uppercase tracking-widest flex flex-col gap-3 mb-10">
-              <li class="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="text-orange w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Maîtrise des politiques de Banques Centrales
-              </li>
-              <li class="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="text-orange w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Décryptage des indicateurs économiques (CPI, NFP)
-              </li>
-              <li class="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="text-orange w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Corrélations inter-marchés &amp; Construction de scénarios
-              </li>
-            </ul>
+            <div class="grid sm:grid-cols-2 gap-6 mb-10">
+                <div class="flex flex-col gap-2">
+                    <span class="font-mono text-blue-3 text-xs uppercase font-bold tracking-widest">01. Théorie Appliquée</span>
+                    <p class="text-xs text-dim leading-relaxed">Comprendre les mécanismes profonds sans s'y perdre, toujours avec un œil sur les graphiques.</p>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="font-mono text-blue-3 text-xs uppercase font-bold tracking-widest">02. Analyse Live</span>
+                    <p class="text-xs text-dim leading-relaxed">Décryptage des news de la semaine (CPI, FOMC) et impact immédiat sur les thèses.</p>
+                </div>
+            </div>
 
-            <div class="mt-auto">
-              <a href="/recherches/fondamentaux-macro" class="btn-primary">
-                Découvrir le programme
+            <div class="mt-auto flex flex-wrap gap-4">
+              <a href="/academy/mentorship-details" class="btn-primary">
+                Découvrir l'accompagnement
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" class="ml-2 transform group-hover:translate-x-1 transition-transform"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="#calendly" class="btn-ghost">
+                Postuler
               </a>
             </div>
           </div>
 
-          <div class="flex-1 bg-bg border border-border p-8 relative z-10 flex flex-col">
+          <div class="flex-1 bg-bg border border-border p-8 relative z-10 flex flex-col shadow-xl">
             <div class="mb-6 border-b border-border pb-3 flex justify-between items-center">
-              <span class="font-mono text-[0.62rem] uppercase tracking-widest text-dim">Contenu du programme</span>
-              <span class="font-mono text-[0.62rem] uppercase tracking-widest text-dim">4 modules</span>
+              <span class="font-mono text-[0.62rem] uppercase tracking-widest text-dim">Modules de Spécialisation</span>
             </div>
 
-            <div class="flex flex-col gap-6 font-mono">
-              <div class="flex items-start gap-4 group/mod cursor-default">
-                <span class="text-dim text-[0.7rem] pt-1 transition-colors group-hover/mod:text-orange">M1</span>
+            <div class="flex flex-col gap-8 font-mono">
+              <div class="flex items-start gap-4">
+                <span class="text-blue-3 text-[0.7rem] font-bold">M1</span>
                 <div>
-                  <h4 class="text-[var(--text)] text-[0.8rem] uppercase tracking-wider mb-1">Le Framework Macro</h4>
-                  <p class="text-dim text-[0.65rem] leading-relaxed">Cycles économiques, indicateurs avancés (Leading) vs retardés (Lagging) et vision globale.</p>
+                  <h4 class="text-text text-[0.8rem] uppercase tracking-wider mb-1">Architecture Monétaire</h4>
+                  <p class="text-dim text-[0.65rem] leading-relaxed">Banques centrales, taux d'intérêt et liquidité mondiale. Le socle de toute analyse.</p>
                 </div>
               </div>
               
-              <div class="flex items-start gap-4 group/mod cursor-default">
-                <span class="text-dim text-[0.7rem] pt-1 transition-colors group-hover/mod:text-orange">M2</span>
+              <div class="flex items-start gap-4">
+                <span class="text-blue-3 text-[0.7rem] font-bold">M2</span>
                 <div>
-                  <h4 class="text-[var(--text)] text-[0.8rem] uppercase tracking-wider mb-1">Banques Centrales &amp; Taux</h4>
-                  <p class="text-dim text-[0.65rem] leading-relaxed">Rôle de la FED et de la BCE, politiques monétaires, QE/QT et impact sur les actifs.</p>
+                  <h4 class="text-text text-[0.8rem] uppercase tracking-wider mb-1">Dynamique de l'Inflation</h4>
+                  <p class="text-dim text-[0.65rem] leading-relaxed">CPI, PPI, PCE. Apprendre à lire entre les lignes des rapports officiels.</p>
                 </div>
               </div>
 
-              <div class="flex items-start gap-4 group/mod cursor-default">
-                <span class="text-dim text-[0.7rem] pt-1 transition-colors group-hover/mod:text-orange">M3</span>
+              <div class="flex items-start gap-4">
+                <span class="text-blue-3 text-[0.7rem] font-bold">M3</span>
                 <div>
-                  <h4 class="text-[var(--text)] text-[0.8rem] uppercase tracking-wider mb-1">Data, Inflation &amp; Emploi</h4>
-                  <p class="text-dim text-[0.65rem] leading-relaxed">Analyse des rapports cruciaux (CPI, NFP, ISM) pour anticiper les pivots institutionnels.</p>
+                  <h4 class="text-text text-[0.8rem] uppercase tracking-wider mb-1">Cycles & Sentiment</h4>
+                  <p class="text-dim text-[0.65rem] leading-relaxed">Positionnement institutionnel (COT), psychologie des cycles et gestion du risque.</p>
                 </div>
               </div>
 
-              <div class="flex items-start gap-4 group/mod cursor-default">
-                <span class="text-dim text-[0.7rem] pt-1 transition-colors group-hover/mod:text-orange">M4</span>
+              <div class="flex items-start gap-4">
+                <span class="text-blue-3 text-[0.7rem] font-bold">M4</span>
                 <div>
-                  <h4 class="text-[var(--text)] text-[0.8rem] uppercase tracking-wider mb-1">Corrélations &amp; Synthèse</h4>
-                  <p class="text-dim text-[0.65rem] leading-relaxed">Relations entre Forex, Yields et Actions. Rédaction d'un rapport macroéconomique professionnel.</p>
+                  <h4 class="text-text text-[0.8rem] uppercase tracking-wider mb-1">Synthèse Stratégique</h4>
+                  <p class="text-dim text-[0.65rem] leading-relaxed">Construction d'un portefeuille et rédaction de thèses d'investissement professionnelles.</p>
                 </div>
               </div>
             </div>
           </div>
-            </div>
+        </div>
 
-        <div class="border border-border bg-bg-2 p-8 md:p-10 mb-[120px] flex flex-col md:flex-row items-center justify-between gap-8 hover:border-orange transition-colors duration-300">
-            <div class="flex-1 text-center md:text-left">
-                <div class="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-orange mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Option Flexible
+        <!-- Consulting -->
+        <div class="border border-border bg-dark p-8 md:p-12 mb-[120px] flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden group">
+            <div class="absolute inset-0 z-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+            <div class="flex-1 text-center md:text-left relative z-10">
+                <div class="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-blue-3 mb-4">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Session Flash
                 </div>
-                <h3 class="font-sans text-2xl font-bold text-[var(--text)] uppercase tracking-tight mb-3">Cours &amp; Consulting à l'heure</h3>
-                <p class="font-sans text-off text-[0.95rem] leading-relaxed m-0 max-w-[450px] mx-auto md:mx-0">
-                    Un besoin précis ? Préparation aux entretiens en finance, revue de portefeuille ou approfondissement d'un concept macroéconomique spécifique.
+                <h3 class="font-head text-3xl text-white mb-4">Consulting Macro à l'heure</h3>
+                <p class="font-sans text-off text-[0.95rem] leading-relaxed m-0 max-w-[500px] mx-auto md:mx-0">
+                    Besoin d'un éclairage immédiat sur une situation de marché ? Réservez une session ponctuelle pour débloquer votre analyse ou valider une conviction.
                 </p>
             </div>
-            <div class="shrink-0 text-center md:text-right flex flex-col items-center md:items-end">
-                <div class="font-mono text-[var(--text)] text-3xl font-bold tracking-tight mb-1">40€ <span class="text-dim text-lg">/ heure</span></div>
-                <div class="font-mono text-dim text-[0.65rem] uppercase tracking-widest mb-5">Sans engagement</div>
-                <a href="#calendly" class="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-[var(--text)] hover:text-orange transition-colors border-b border-orange pb-1">
-                    Planifier une session <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <div class="shrink-0 text-center md:text-right flex flex-col items-center md:items-end relative z-10">
+                <div class="font-mono text-white text-4xl font-bold tracking-tight mb-2">40€ <span class="text-dim text-lg">/ heure</span></div>
+                <div class="font-mono text-blue-3 text-[0.65rem] uppercase tracking-[0.2em] mb-8 font-bold">Expertise à la demande</div>
+                <a href="#calendly" class="btn-primary" style="padding: 12px 24px; font-size: 0.75rem;">
+                    Prendre rendez-vous
                 </a>
-            </div>
-        </div>
-
-        <!-- L'Approche Mentorat -->
-        <div class="about-grid gap-20 mb-[120px] items-start">
-            <div class="about-body">
-                <h2 class="section-title">L'APPROCHE MENTORAT</h2>
-                <p>L'Academy Horacle est dirigée par <strong>Léo Lombardini</strong>, fondateur d'<strong>Horacle Capital</strong>.</p>
-                <p>L'objectif de cet accompagnement est de dépasser le cadre purement théorique. Les programmes s'appuient sur l'expérience concrète acquise au sein de notre structure : analyse fondamentale de pointe, décryptage institutionnel et gestion de portefeuille.</p>
-                <p>Ces sessions s'adressent à ceux qui souhaitent faire le pont entre l'exigence académique et la réalité du terrain. <strong class="text-orange">Chaque concept étudié est systématiquement appliqué à des cas réels</strong> et aux conditions macroéconomiques actuelles.</p>
-            </div>
-            <div class="about-panel p-8">
-                <h4 class="font-mono text-[0.62rem] uppercase tracking-widest text-dim mb-6 border-b border-border pb-4">Léo Lombardini</h4>
-                <div class="approach-method">
-                    <div class="am-item">
-                        <span class="am-num">01</span>
-                        <div>
-                            <span class="am-title">EDHEC Business School</span>
-                            <p class="am-desc">Programme Grande École, spécialisation Marchés Financiers et gestion d'actifs quantitative.</p>
-                        </div>
-                    </div>
-                    <div class="am-item">
-                        <span class="am-num">02</span>
-                        <div>
-                            <span class="am-title">Analyste Macro & Fondateur</span>
-                            <p class="am-desc">Créateur d'Horacle Capital. Spécialiste des cycles monétaires, géopolitique et modélisation statistique des marchés.</p>
-                        </div>
-                    </div>
-                    <div class="am-item">
-                        <span class="am-num">03</span>
-                        <div>
-                            <span class="am-title">Analyse Quantitative Appliquée</span>
-                            <p class="am-desc">Utilisation des outils statistiques et des modèles de scoring pour valider les thèses fondamentales. Lecture critique de la data macroéconomique.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Le Workflow -->
-        <div id="methode" class="section-rule scroll-mt-[100px]">
-            <span class="section-label">Le Workflow d'Apprentissage</span>
-            <div class="rule-line"></div>
-        </div>
-        
-        <div class="relative mt-16 max-w-5xl mx-auto mb-[120px]">
-            <!-- Ligne horizontale (Desktop) -->
-            <div class="hidden md:block absolute top-[24px] left-[10%] right-[10%] h-px bg-[var(--border)] z-0"></div>
-            <!-- Ligne verticale (Mobile) -->
-            <div class="md:hidden absolute top-[24px] bottom-[24px] left-1/2 w-px bg-[var(--border)] -translate-x-1/2 z-0"></div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-              
-              <!-- Etape 1 -->
-              <div class="relative z-10 flex flex-col items-center text-center">
-                <div class="w-12 h-12 rounded-none bg-white border-2 border-[var(--border)] text-[var(--dim)] flex items-center justify-center font-mono font-bold text-xl mb-6">1</div>
-                <h3 class="text-xl font-normal text-[var(--blue-2)] mb-3" style="font-family: var(--ff-head)">Appel Découverte</h3>
-                <p class="text-[var(--off)] leading-relaxed px-4 text-[0.88rem]">Une session gratuite de 15 minutes pour évaluer votre niveau et définir vos objectifs précis.</p>
-              </div>
-
-              <!-- Etape 2 -->
-              <div class="relative z-10 flex flex-col items-center text-center">
-                <div class="w-12 h-12 rounded-none bg-white border-2 border-[var(--border)] text-[var(--dim)] flex items-center justify-center font-mono font-bold text-xl mb-6">2</div>
-                <h3 class="text-xl font-normal text-[var(--blue-2)] mb-3" style="font-family: var(--ff-head)">Plan Sur-Mesure</h3>
-                <p class="text-[var(--off)] leading-relaxed px-4 text-[0.88rem]">Élaboration d'un programme personnalisé. Uniquement ce dont vous avez besoin pour progresser.</p>
-              </div>
-
-              <!-- Etape 3 -->
-              <div class="relative z-10 flex flex-col items-center text-center">
-                <div class="w-12 h-12 rounded-none bg-white border-2 border-[var(--border)] text-[var(--dim)] flex items-center justify-center font-mono font-bold text-xl mb-6">3</div>
-                <h3 class="text-xl font-normal text-[var(--blue-2)] mb-3" style="font-family: var(--ff-head)">Sessions 1-on-1</h3>
-                <p class="text-[var(--off)] leading-relaxed px-4 text-[0.88rem]">Cours intensifs en visio. Études de cas réels, analyse de l'actualité en direct et méthodologie de recherche professionnelle.</p>
-              </div>
-
-            </div>
-        </div>
-
-        <!-- Témoignages -->
-        <div class="section-rule scroll-mt-[100px]">
-            <span class="section-label">Témoignages</span>
-            <div class="rule-line"></div>
-        </div>
-        
-        <div class="mb-[120px] flex flex-col gap-0 border border-border">
-            <!-- Testimonial 1 — large, featured -->
-            <div class="p-8 md:p-12 border-b border-border">
-                <p class="font-head text-[var(--text)] leading-snug mb-6" style="font-size:clamp(1.1rem,2vw,1.4rem);font-weight:400;max-width:70ch">"Une approche extrêmement rigoureuse. Léo m'a permis de comprendre concrètement comment les flux de liquidités impactent la courbe des taux. Ce mentorat a transformé ma façon de gérer mon portefeuille."</p>
-                <div class="flex items-center gap-4">
-                    <div style="width:36px;height:36px;border-radius:0;background:var(--blue-2);display:flex;align-items:center;justify-content:center;font-family:var(--ff-head);color:#fff;font-size:1rem;flex-shrink:0">T</div>
-                    <div>
-                        <span class="font-sans font-semibold text-[var(--text)] text-sm">Thomas D.</span>
-                        <span style="font-family:var(--ff-body);font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);display:block;margin-top:1px">Analyste Junior</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Testimonials 2 & 3 — side by side -->
-            <div class="flex flex-col md:flex-row">
-                <div class="flex-1 p-8 border-b md:border-b-0 md:border-r border-border">
-                    <p class="font-sans text-off leading-relaxed mb-6 text-[0.92rem]">"Le pont parfait entre théorie académique et réalité du marché. La masterclass sur la rédaction de rapports macro est d'une valeur inestimable pour quiconque souhaite se professionnaliser."</p>
-                    <div class="flex items-center gap-3">
-                        <div style="width:30px;height:30px;border-radius:0;background:var(--bg-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--ff-head);color:var(--text);font-size:0.9rem;flex-shrink:0">S</div>
-                        <div>
-                            <span class="font-sans font-semibold text-[var(--text)] text-sm">Sophie M.</span>
-                            <span style="font-family:var(--ff-body);font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);display:block">Étudiante Master Finance</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex-1 p-8">
-                    <p class="font-sans text-off leading-relaxed mb-6 text-[0.92rem]">"Des sessions denses et très techniques, toujours orientées vers des résultats concrets. L'application des modèles quantitatifs à des cas réels du marché est particulièrement percutante."</p>
-                    <div class="flex items-center gap-3">
-                        <div style="width:30px;height:30px;border-radius:0;background:var(--bg-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--ff-head);color:var(--text);font-size:0.9rem;flex-shrink:0">A</div>
-                        <div>
-                            <span class="font-sans font-semibold text-[var(--text)] text-sm">Alexandre V.</span>
-                            <span style="font-family:var(--ff-body);font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);display:block">Trader Indépendant</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
         <!-- Calendly CTA -->
         <div id="calendly" class="text-center scroll-mt-[100px] max-w-[900px] mx-auto">
-            <h2 class="section-title text-[2.2rem] mb-5">PASSEZ À L'ÉTAPE SUPÉRIEURE</h2>
-            <p class="text-off mb-10 text-[1.1rem]">Réservez votre appel de découverte gratuit ci-dessous et commençons à construire votre programme.</p>
+            <h2 class="font-head text-[2.8rem] text-text mb-6">POSTULER AU MENTORAT</h2>
+            <p class="text-off mb-12 text-lg">Construisons ensemble votre framework de décision. Réservez votre appel de diagnostic gratuit ci-dessous.</p>
             
-            <!-- Calendly inline widget begin -->
-            <div class="calendly-inline-widget" data-url="https://calendly.com/llombardini-leo/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff&primary_color=ffa500" style="min-width:320px;height:700px;"></div>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/llombardini-leo/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f172a&text_color=ffffff&primary_color=2563eb" style="min-width:320px;height:750px;border:1px solid var(--border)"></div>
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-            <!-- Calendly inline widget end -->
         </div>
 
     </main>

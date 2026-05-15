@@ -1,11 +1,17 @@
 ---
-title: "Microstructure & Algorithmic Arbitrage on Prediction Markets"
-description: "Recherche sur la participation algorithmique et le market making sur Polymarket. Cadre théorique et application empirique."
-date: "2026-04-20"
-category: "Finance Quantitative"
-thumbnail: "/assets/img/polymarket_paper.jpg"
+title: Microstructure & Algorithmic Arbitrage on Prediction Markets
+description: Recherche sur la participation algorithmique et le market making sur
+  Polymarket. Cadre théorique et application empirique.
+date: '2026-04-20'
+category: Finance Quantitative
+thumbnail: /assets/img/polymarket_paper.jpg
+tags:
+- Quantitative
+- Finance
+- Statistics
+- Microstructure
+- Algorithmic
 ---
-
 <div class="exec-summary">
   <strong>Executive Summary</strong>
   Ce document développe un cadre quantitatif rigoureux pour la participation algorithmique sur les marchés de prédiction décentralisés (DPM), en utilisant Polymarket comme environnement empirique principal. Nous analysons les dynamiques de carnet d'ordres et les opportunités d'arbitrage statistique.

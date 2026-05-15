@@ -6,6 +6,7 @@ category: "Macro Economics"
 issue: "N°9"
 ogImage: "/assets/img/hormuz.jpg"
 thumbnail: "/assets/img/hormuz.jpg"
+tags: ["Macro", "Geopolitique", "Iran", "USA", "Equities"]
 ---
 
 <div class="exec-summary">

@@ -1,0 +1,19 @@
+---
+interface Props {
+  tags: string[];
+  class?: string;
+}
+
+const { tags, class: className } = Astro.props;
+---
+
+<div class={`flex flex-wrap gap-2 ${className}`}>
+  {tags.map((tag) => (
+    <a
+      href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+      class="px-2 py-1 text-[0.6rem] font-bold uppercase tracking-wider bg-bg-2 border border-border text-dim hover:text-blue-3 hover:border-blue-3 transition-all duration-200"
+    >
+      #{tag}
+    </a>
+  ))}
+</div>

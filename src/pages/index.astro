@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import MacroFAQ from '../components/MacroFAQ.astro';
 
 const title = 'HORACLE CAPITAL | Analyse Macroéconomique & Finance Quantitative';
 const description = "Horacle Capital : Recherche indépendante en macroéconomie et finance quantitative. Analyses hebdomadaires, modèles de scoring et mentorat stratégique pour investisseurs.";
@@ -26,8 +27,6 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
     </style>
     <header class="hero hero-index">
       <h1 class="sr-only">Analyse Macroéconomique & Finance Quantitative | Horacle Capital</h1>
-      <!-- Static fallback visible only if all videos fail to load -->
-      <img src="/assets/img/banner.jpg" alt="Analyste financier travaillant sur des rapports macroéconomiques Horacle Capital" class="hero-bg" aria-hidden="true" />
       <!-- Night city video reel — 3 clips crossfade every 15s -->
       <div class="hero-bg-videos" aria-hidden="true">
         <video class="hero-vid active" muted loop playsinline preload="auto">
@@ -161,73 +160,168 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
         </div>
       </section>
 
-      <!-- PRÉSENTATION -->
-      <section id="about" class="about-section" style="background:var(--dark); border-top:1px solid var(--border-dk); border-bottom:1px solid var(--border-dk); padding: 32px 0;">
-        <div class="container">
-          <div class="section-rule" style="border-left:none;">
-            <h2 class="section-label" style="color:var(--blue-3);">Présentation</h2>
-            <div class="rule-line" style="background:var(--border-dk);"></div>
-          </div>
-          <div class="about-grid">
-            <div class="about-body reveal">
-              <h3 class="section-title" style="color:var(--white);">QUI SOMMES-<br>NOUS ?</h3>
-              <p style="color:rgba(255,255,255,0.7);">
-                <strong style="color:var(--white);">Horacle Capital</strong> est une structure de recherche indépendante spécialisée dans l'analyse macroéconomique et la modélisation quantitative des marchés financiers.
+      <!-- QUI SOMMES-NOUS : INNOVATION LAYOUT -->
+      <section id="about" class="py-32 bg-dark relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+          <div class="absolute top-10 left-10 w-96 h-96 border border-blue-3 rounded-full"></div>
+          <div class="absolute bottom-10 right-10 w-[500px] h-[500px] border border-blue-3 rounded-full"></div>
+        </div>
+
+        <div class="container relative z-10">
+          <div class="grid lg:grid-cols-[1fr_1.5fr] gap-20 items-center">
+            <div class="reveal">
+              <span class="font-mono text-[0.65rem] uppercase tracking-[0.4em] text-blue-3 mb-6 block">Intelligence Indépendante</span>
+              <h2 class="font-head text-5xl md:text-7xl text-white mb-10 leading-[1.05]">Horacle <br><span class="text-blue-3/80">Capital</span></h2>
+              <div class="w-20 h-1 bg-blue-3 mb-10"></div>
+              <p class="text-xl text-white/70 leading-relaxed font-light mb-8">
+                Nous ne sommes pas un média. Nous sommes un laboratoire de recherche dédié à l'asymétrie d'information.
               </p>
-              <p style="color:rgba(255,255,255,0.7);">
-                Nous publions des <strong style="color:var(--white);">rapports hebdomadaires</strong> stratégiques et proposons un <strong style="color:var(--white);">mentorat privé</strong> pour maîtriser les fondamentaux de l'économie mondiale.
-              </p>
-              <p style="color:rgba(255,255,255,0.7);">
-                Explorez nos <a href="/reports" style="color:var(--blue-3);">Rapports</a> ou nos <a href="/research" style="color:var(--blue-3);">Recherches</a>.
-              </p>
-              <div class="disclaimer" style="color:rgba(255,255,255,0.4); border-top-color:var(--border-dk);">
-                ⚠ Rien de ce qui est publié ici ne constitue un conseil en investissement.
-              </div>
-              <div class="socials">
-                <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank" class="social-pill" style="color:rgba(255,255,255,0.6); border-color:var(--border-dk); background:transparent;">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                  LinkedIn — Léo Lombardini
-                </a>
-                <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank" class="social-pill" style="color:rgba(255,255,255,0.6); border-color:var(--border-dk); background:transparent;">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor"/></svg>
-                  YouTube — @lbrd_leo
-                </a>
+              <div class="flex flex-col gap-6 text-white/50 text-sm leading-relaxed max-w-md">
+                <p>Horacle Capital décrypte les flux de liquidités mondiaux et les politiques monétaires pour identifier les points d'inflexion des cycles financiers.</p>
+                <p>Notre approche combine la rigueur de l'analyse fondamentale et la clarté de la modélisation pour extraire le signal pur au milieu du bruit médiatique.</p>
               </div>
             </div>
 
-            <div class="about-panel reveal reveal-delay-1" style="background:var(--dark-2); border-color:var(--border-dk); box-shadow:none;">
-              <div class="panel-header" style="background:var(--dark-3); border-color:var(--border-dk);">
-                <div class="panel-dot"></div>
-                <span>Notre Méthodologie</span>
-              </div>
-              <div class="p-10 flex flex-col gap-8 relative">
-                <!-- Decorative line -->
-                <div class="absolute left-[59px] top-[60px] bottom-[60px] w-px bg-gradient-to-b from-blue-3 via-blue-2 to-transparent opacity-30"></div>
+            <!-- CAROUSEL INNOVATION: THE HORACLE ECOSYSTEM -->
+            <div class="reveal reveal-delay-1 relative overflow-hidden group">
+              <div class="bg-white border border-border relative shadow-xl overflow-hidden h-[500px] flex flex-col">
+                <!-- Decorative background grid -->
+                <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: radial-gradient(var(--blue-3) 1px, transparent 1px); background-size: 30px 30px;"></div>
                 
-                <div class="flex items-center gap-6 relative z-10">
-                  <div class="w-10 h-10 rounded-none bg-blue-d border border-blue-3/30 flex items-center justify-center text-blue-3 font-mono text-sm">01</div>
+                <!-- Glow effect (Subtle on light) -->
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-50 blur-[100px] rounded-full"></div>
+
+                <div class="p-8 md:p-12 border-b border-border flex items-center justify-between relative z-10 bg-white/80 backdrop-blur-sm">
                   <div>
-                    <h4 class="text-white font-sans font-bold text-sm uppercase tracking-wider">Macro-Analyse</h4>
-                    <p class="text-dim text-xs">Cycles monétaires & politiques des Banques Centrales.</p>
+                    <h3 class="font-mono text-[0.6rem] uppercase tracking-[0.4em] text-blue-3 mb-1 font-bold">Piliers Stratégiques</h3>
+                    <p class="text-text font-head text-2xl italic">Intelligence & Convictions <span class="text-dim font-light not-italic ml-2 text-sm">v4.8</span></p>
+                  </div>
+                  <div class="flex gap-2" id="carousel-dots">
+                    <button class="w-8 h-1 bg-blue-3 transition-all duration-300 active" data-index="0"></button>
+                    <button class="w-8 h-1 bg-border transition-all duration-300" data-index="1"></button>
+                    <button class="w-8 h-1 bg-border transition-all duration-300" data-index="2"></button>
                   </div>
                 </div>
 
-                <div class="flex items-center gap-6 relative z-10">
-                  <div class="w-10 h-10 rounded-none bg-blue-d border border-blue-3/30 flex items-center justify-center text-blue-3 font-mono text-sm">02</div>
-                  <div>
-                    <h4 class="text-white font-sans font-bold text-sm uppercase tracking-wider">Filtrage Quantitatif</h4>
-                    <p class="text-dim text-xs">Modèles statistiques HMM & scoring multifactoriel.</p>
+                <div class="flex-1 relative overflow-hidden">
+                  <div id="engine-carousel" class="flex h-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                    <!-- Slide 1: Rapports -->
+                    <div class="min-w-full h-full p-12 flex flex-col justify-center relative">
+                      <div class="flex items-center gap-6 mb-8">
+                        <span class="font-mono text-4xl text-blue-3/10 font-bold">01</span>
+                        <div class="h-px flex-1 bg-gradient-to-r from-blue-3/20 to-transparent"></div>
+                      </div>
+                      <h4 class="text-text font-head text-4xl md:text-5xl mb-6 italic leading-tight">Rapports <br><span class="text-blue-3">Hebdomadaires</span></h4>
+                      <p class="text-off text-sm md:text-base leading-relaxed max-w-md font-light italic mb-8">
+                        Analyses de haute précision sur la <span class="text-text font-medium">liquidité mondiale</span>, les bilans des banques centrales et les indicateurs avancés (ISM, NFP, CPI). Anticipez les pivots institutionnels avant le consensus.
+                      </p>
+                      <a href="/reports" class="text-blue-3 font-mono text-[0.6rem] uppercase tracking-widest flex items-center gap-3 group/link hover:text-text transition-colors">
+                        Consulter les derniers rapports <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+                      </a>
+                    </div>
+
+                    <!-- Slide 2: Recherches -->
+                    <div class="min-w-full h-full p-12 flex flex-col justify-center relative">
+                      <div class="flex items-center gap-6 mb-8">
+                        <span class="font-mono text-4xl text-blue-3/10 font-bold">02</span>
+                        <div class="h-px flex-1 bg-gradient-to-r from-blue-3/20 to-transparent"></div>
+                      </div>
+                      <h4 class="text-text font-head text-4xl md:text-5xl mb-6 italic leading-tight">Recherche <br><span class="text-blue-3">Quantitative</span></h4>
+                      <p class="text-off text-sm md:text-base leading-relaxed max-w-md font-light italic mb-8">
+                        Modélisation statistique via nos moteurs <span class="text-text font-medium">HMM (Hidden Markov Models)</span> et scoring multi-facteurs. Une approche mathématique pour extraire le signal pur au milieu du bruit.
+                      </p>
+                      <a href="/research" class="text-blue-3 font-mono text-[0.6rem] uppercase tracking-widest flex items-center gap-3 group/link hover:text-text transition-colors">
+                        Explorer nos travaux <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+                      </a>
+                    </div>
+
+                    <!-- Slide 3: Thèses -->
+                    <div class="min-w-full h-full p-12 flex flex-col justify-center relative">
+                      <div class="flex items-center gap-6 mb-8">
+                        <span class="font-mono text-4xl text-blue-3/10 font-bold">03</span>
+                        <div class="h-px flex-1 bg-gradient-to-r from-blue-3/20 to-transparent"></div>
+                      </div>
+                      <h4 class="text-text font-head text-4xl md:text-5xl mb-6 italic leading-tight">Thèses <br><span class="text-blue-3">d'Investissement</span></h4>
+                      <p class="text-off text-sm md:text-base leading-relaxed max-w-md font-light italic mb-8">
+                        Convictions de haute intensité sur les <span class="text-text font-medium">Equities, Commodities et FX</span>. Des thèses asymétriques basées sur la convergence de la macroéconomie et des fondamentaux.
+                      </p>
+                      <a href="/portfolio" class="text-blue-3 font-mono text-[0.6rem] uppercase tracking-widest flex items-center gap-3 group/link hover:text-text transition-colors">
+                        Voir les convictions <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
 
-                <div class="flex items-center gap-6 relative z-10">
-                  <div class="w-10 h-10 rounded-none bg-blue-d border border-blue-3/30 flex items-center justify-center text-blue-3 font-mono text-sm">03</div>
-                  <div>
-                    <h4 class="text-white font-sans font-bold text-sm uppercase tracking-wider">Signal de Décision</h4>
-                    <p class="text-dim text-xs">Extraction de la valeur pure au milieu du bruit du marché.</p>
+                <div class="p-8 border-t border-border flex items-center justify-between bg-white relative z-10">
+                  <div class="flex items-center gap-3">
+                    <span class="w-2 h-2 bg-blue-3 rounded-full animate-pulse shadow-[0_0_8px_rgba(37,99,235,0.4)]"></span>
+                    <span class="font-mono text-[0.55rem] uppercase tracking-widest text-dim">Flux Live : Actif</span>
+                  </div>
+                  <div class="flex gap-4">
+                    <button id="prev-slide" class="p-2 border border-border hover:border-blue-3 transition-colors text-dim hover:text-blue-3">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <button id="next-slide" class="p-2 border border-border hover:border-blue-3 transition-colors text-dim hover:text-blue-3">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
                   </div>
                 </div>
               </div>
+
+              <script is:inline>
+                document.addEventListener('DOMContentLoaded', () => {
+                  const carousel = document.getElementById('engine-carousel');
+                  const dots = document.querySelectorAll('#carousel-dots button');
+                  const prevBtn = document.getElementById('prev-slide');
+                  const nextBtn = document.getElementById('next-slide');
+                  let currentIndex = 0;
+                  const totalSlides = 3;
+
+                  function updateCarousel(index) {
+                    currentIndex = index;
+                    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    
+                    // Update dots
+                    dots.forEach((dot, i) => {
+                      if (i === currentIndex) {
+                        dot.classList.add('active', 'bg-blue-3');
+                        dot.classList.remove('bg-white/10');
+                      } else {
+                        dot.classList.remove('active', 'bg-blue-3');
+                        dot.classList.add('bg-white/10');
+                      }
+                    });
+                  }
+
+                  function nextSlide() {
+                    let index = (currentIndex + 1) % totalSlides;
+                    updateCarousel(index);
+                  }
+
+                  function prevSlide() {
+                    let index = (currentIndex - 1 + totalSlides) % totalSlides;
+                    updateCarousel(index);
+                  }
+
+                  nextBtn.addEventListener('click', nextSlide);
+                  prevBtn.addEventListener('click', prevSlide);
+
+                  dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                      updateCarousel(parseInt(dot.dataset.index));
+                    });
+                  });
+
+                  // Auto play
+                  let interval = setInterval(nextSlide, 5000);
+
+                  carousel.parentElement.addEventListener('mouseenter', () => clearInterval(interval));
+                  carousel.parentElement.addEventListener('mouseleave', () => {
+                    interval = setInterval(nextSlide, 5000);
+                  });
+                });
+              </script>
             </div>
           </div>
         </div>
@@ -335,6 +429,9 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
           </div>
         </div>
       </section>
+
+      <!-- FAQ SECTION -->
+      <MacroFAQ />
 
     </main>
 

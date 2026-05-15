@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "portfolio:update": "python3 scripts/update_portfolio.py"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.1.6",

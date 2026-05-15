@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'L\'Accompagnement Stratégique | Horacle Academy';
+const description = "Découvrez le détail de notre mentorat macroéconomique : méthodologie, curriculum complet et bénéfices pour votre carrière d'investisseur.";
+---
+
+<BaseLayout {title} {description} activeNav="academy">
+    <header class="page-header relative py-24 md:py-32 overflow-hidden bg-dark">
+        <div class="absolute inset-0 z-0">
+            <video class="w-full h-full object-cover opacity-20 grayscale" muted loop playsinline autoplay>
+                <source src="https://videos.pexels.com/video-files/3130182/3130182-uhd_2560_1440_30fps.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="container relative z-10 text-center">
+            <span class="font-sans text-[0.65rem] uppercase tracking-[0.4em] text-blue-3 font-bold mb-6 block">Immersion Stratégique</span>
+            <h1 class="font-head text-5xl md:text-7xl mb-8 text-white leading-tight">Le Mentorat <br><span class="text-blue-3/80">Horacle</span></h1>
+            <p class="text-off text-lg md:text-xl leading-relaxed font-light max-w-2xl mx-auto">
+                Un transfert de compétences de niveau institutionnel pour naviguer les marchés avec clarté et conviction.
+            </p>
+        </div>
+    </header>
+
+    <main class="container py-20">
+        <!-- Introduction -->
+        <div class="max-w-4xl mx-auto mb-20">
+            <h2 class="font-head text-4xl mb-8 text-text">Bienvenue dans l'Élite de l'Analyse</h2>
+            <p class="text-lg text-off leading-relaxed mb-6">
+                Le mentorat Horacle n'est pas un cours en ligne passif. C'est une collaboration directe et intense conçue pour briser les barrières entre la théorie économique complexe et l'action concrète sur les marchés. 
+            </p>
+            <p class="text-lg text-off leading-relaxed">
+                Notre objectif est simple : vous donner les clés pour lire le marché comme un professionnel, identifier les thèses de haute conviction et gérer votre risque avec une rigueur mathématique.
+            </p>
+        </div>
+
+        <!-- Les 3 Piliers -->
+        <div class="grid md:grid-cols-3 gap-12 mb-32">
+            <div class="flex flex-col gap-6">
+                <div class="text-4xl font-head text-blue-3">01.</div>
+                <h3 class="text-2xl font-head">Mécanique Monétaire</h3>
+                <p class="text-off leading-relaxed">Comprendre les rouages profonds des banques centrales, la gestion des taux et l'impact de la liquidité sur l'économie réelle.</p>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div class="text-4xl font-head text-blue-3">02.</div>
+                <h3 class="text-2xl font-head">Cycles Économiques</h3>
+                <p class="text-off leading-relaxed">Identifier les phases d'expansion et de contraction via l'analyse des indicateurs avancés et de l'inflation structurelle.</p>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div class="text-4xl font-head text-blue-3">03.</div>
+                <h3 class="text-2xl font-head">Vision Globale</h3>
+                <p class="text-off leading-relaxed">Connecter les points entre géopolitique, flux de capitaux et tendances séculaires pour bâtir une thèse de conviction.</p>
+            </div>
+        </div>
+
+        <!-- Curriculum Détallé -->
+        <section class="bg-bg-2 border border-border p-10 md:p-20 mb-32">
+            <div class="section-rule mb-12">
+                <h2 class="section-label">Parcours d'Excellence Macro</h2>
+                <div class="rule-line"></div>
+            </div>
+
+            <div class="grid gap-16">
+                <div class="grid md:grid-cols-[1fr_2fr] gap-8 border-b border-border pb-12">
+                    <div class="font-head text-2xl text-blue-3">Phase 1 : Architecture des Banques Centrales</div>
+                    <div class="flex flex-col gap-4">
+                        <p class="text-off">Une immersion totale dans la psychologie et les outils des institutions monétaires. Nous décortiquons le langage de la Fed et de la BCE pour anticiper les pivots avant le marché.</p>
+                        <ul class="grid grid-cols-2 gap-2 font-mono text-[0.65rem] uppercase tracking-wider text-dim">
+                            <li class="flex items-center gap-2">● Taux Directeurs & Corridors</li>
+                            <li class="flex items-center gap-2">● Bilans & Liquidité Bancaire</li>
+                            <li class="flex items-center gap-2">● Mécanismes de QE / QT</li>
+                            <li class="flex items-center gap-2">● Canaux de Transmission</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-[1fr_2fr] gap-8 border-b border-border pb-12">
+                    <div class="font-head text-2xl text-blue-3">Phase 2 : Analyse de l'Inflation & Croissance</div>
+                    <div class="flex flex-col gap-4">
+                        <p class="text-off">L'inflation et la croissance sont les deux piliers du cycle. Apprenez à lire les rapports CPI/GDP avec un regard critique, en isolant le signal structurel du bruit passager.</p>
+                        <ul class="grid grid-cols-2 gap-2 font-mono text-[0.65rem] uppercase tracking-wider text-dim">
+                            <li class="flex items-center gap-2">● Inflation de Service vs Biens</li>
+                            <li class="flex items-center gap-2">● Dynamique Salariale</li>
+                            <li class="flex items-center gap-2">● Indicateurs de Sentiment (PMI/ISM)</li>
+                            <li class="flex items-center gap-2">● Output Gap & Plein Emploi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-[1fr_2fr] gap-8">
+                    <div class="font-head text-2xl text-blue-3">Phase 3 : Synthèse & Thèse de Conviction</div>
+                    <div class="flex flex-col gap-4">
+                        <p class="text-off">L'aboutissement du mentorat : transformer la data en conviction. Comment structurer une thèse macroéconomique robuste et l'appliquer à une stratégie d'investissement globale.</p>
+                        <ul class="grid grid-cols-2 gap-2 font-mono text-[0.65rem] uppercase tracking-wider text-dim">
+                            <li class="flex items-center gap-2">● Intermarket Analysis</li>
+                            <li class="flex items-center gap-2">● Géopolitique & Flux de Capitaux</li>
+                            <li class="flex items-center gap-2">● Rédaction de Rapports Stratégiques</li>
+                            <li class="flex items-center gap-2">● Allocation Macro-Orientée</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Résultats & Bénéfices -->
+        <div class="grid lg:grid-cols-2 gap-20 items-center mb-32">
+            <div>
+                <h2 class="font-head text-4xl mb-8">Vos acquis fondamentaux</h2>
+                <div class="flex flex-col gap-8">
+                    <div class="flex gap-6">
+                        <div class="shrink-0 w-8 h-8 bg-blue-3 text-white flex items-center justify-center font-bold">✓</div>
+                        <div>
+                            <h4 class="font-bold mb-2">Maîtrise du Langage Institutionnel</h4>
+                            <p class="text-sm text-off">Capacité à décoder les discours des banquiers centraux et à identifier les thèmes dominants de demain.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="shrink-0 w-8 h-8 bg-blue-3 text-white flex items-center justify-center font-bold">✓</div>
+                        <div>
+                            <h4 class="font-bold mb-2">Lecture Critique de la Data</h4>
+                            <p class="text-sm text-off">Ne plus être l'esclave des gros titres. Analyser les composantes réelles de l'économie avec autonomie.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="shrink-0 w-8 h-8 bg-blue-3 text-white flex items-center justify-center font-bold">✓</div>
+                        <div>
+                            <h4 class="font-bold mb-2">Anticipation des Cycles</h4>
+                            <p class="text-sm text-off">Comprendre où nous nous situons dans le cycle pour adapter votre posture stratégique avant les retournements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-dark p-12 text-white border border-border-dk shadow-2xl">
+                <blockquote class="text-xl italic font-light leading-relaxed mb-8 opacity-90">
+                    "L'objectif n'est pas de vous donner des poissons, mais de vous apprendre à naviguer l'océan financier toute votre vie."
+                </blockquote>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-blue-3"></div>
+                    <div>
+                        <span class="block font-bold">Philosophie Horacle</span>
+                        <span class="text-xs text-dim uppercase tracking-widest">Vision Long Terme</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appel à l'action final -->
+        <section class="text-center py-20 border-t border-border">
+            <h2 class="font-head text-4xl mb-6">Prêt à transformer votre approche ?</h2>
+            <p class="text-off mb-10 max-w-xl mx-auto">Le mentorat est limité à un petit nombre de participants pour garantir une qualité d'accompagnement optimale.</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="/academy#calendly" class="btn-primary" style="padding: 18px 40px;">Réserver un diagnostic</a>
+                <a href="/academy" class="btn-ghost" style="padding: 18px 40px;">Retour à l'Academy</a>
+            </div>
+        </section>
+    </main>
+</BaseLayout>

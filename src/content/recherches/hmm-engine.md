@@ -1,11 +1,18 @@
 ---
-title: "HMM Engine : Détection de Régimes de Marché"
-description: "Moteur d'inférence basé sur les modèles de Markov cachés (Hidden Markov Models) pour identifier et modéliser les différents régimes de volatilité et de tendance sur les marchés financiers."
-date: "2026-04-15"
-category: "Finance Quantitative"
-thumbnail: "/assets/img/notebook_banner.jpg"
+title: 'HMM Engine : Détection de Régimes de Marché'
+description: Moteur d'inférence basé sur les modèles de Markov cachés (Hidden Markov
+  Models) pour identifier et modéliser les différents régimes de volatilité et de
+  tendance sur les marchés financiers.
+date: '2026-04-15'
+category: Finance Quantitative
+thumbnail: /assets/img/notebook_banner.jpg
+tags:
+- Quantitative
+- Finance
+- Statistics
+- Engine
+- Détection
 ---
-
 <div class="exec-summary">
   <strong>Introduction au Projet</strong>
   Le projet HMM Engine vise à fournir un cadre mathématique pour la segmentation temporelle des séries financières. Contrairement aux approches linéaires classiques, les modèles de Markov cachés permettent de capturer la dynamique non-stationnaire des prix.

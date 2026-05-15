@@ -1,11 +1,17 @@
 ---
-title: "Scoring Report : Modèle Quantitatif"
-description: "Documentation technique du moteur de scoring macroéconomique. Architecture, méthodologie et validation du signal quantitatif d'Horacle Capital."
-date: "2026-04-01"
-category: "Recherche Quantitative"
-thumbnail: "/assets/img/report_banner.jpg"
+title: 'Scoring Report : Modèle Quantitatif'
+description: Documentation technique du moteur de scoring macroéconomique. Architecture,
+  méthodologie et validation du signal quantitatif d'Horacle Capital.
+date: '2026-04-01'
+category: Recherche Quantitative
+thumbnail: /assets/img/report_banner.jpg
+tags:
+- Quantitative
+- Finance
+- Statistics
+- Scoring
+- Report
 ---
-
 <div class="bg-bg-2 border-l-2 border-dim py-6 px-8 mb-12 text-[0.9rem] text-off">
   <strong class="font-mono text-dim uppercase block mb-3 text-[0.7rem] tracking-widest">Note d'Inspiration</strong>
   L'idée fondamentale de ce modèle de scoring est initialement inspirée par les travaux présentés dans la vidéo de <a href="https://www.youtube.com/watch?v=Y4wAaoGfp_8" target="_blank" class="text-off border-b border-dim">Brieuc</a>, que nous avons ensuite adaptés et étendus pour nos propres recherches.

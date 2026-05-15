@@ -1,12 +1,18 @@
 ---
-title: "Trêve Annoncée et Résistance de l'Inflation"
-description: "Débrief de la semaine et prévisions. Focus sur les signaux de pause des banques centrales face à l'inflation persistante."
-date: "2026-04-12"
-category: "Politique Monétaire"
-issue: "N°8"
-thumbnail: "https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?w=800&q=80&auto=format&fit=crop"
+title: Trêve Annoncée et Résistance de l'Inflation
+description: Débrief de la semaine et prévisions. Focus sur les signaux de pause des
+  banques centrales face à l'inflation persistante.
+date: '2026-04-12'
+category: Politique Monétaire
+issue: N°8
+thumbnail: https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?w=800&q=80&auto=format&fit=crop
+tags:
+- Macro
+- Economics
+- Strategy
+- Trêve
+- Annoncée
 ---
-
 <div class="exec-summary">
 <strong>Contexte Géopolitique</strong>
 Une trêve a été annoncée ce mercredi 8 avril, entre les États-Unis et l'Iran, cette dernière a permis aux différents marchés de respirer en fin de semaine, et de pratiquement rattraper leurs pertes causées par cette guerre. L'incertitude est toujours présente sur l'ensemble des marchés, les négociations de ce week-end n'ont toujours pas conclu sur un accord malheureusement.

@@ -32,4 +32,29 @@ const recherches = defineCollection({
   }),
 });
 
-export const collections = { rapports, recherches };
+const portfolios = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    riskLevel: z.enum(['Low', 'Medium', 'High']),
+    horizon: z.string().default('Medium Term'),
+    lastUpdated: z.string(),
+    stats: z.object({
+      ytd: z.string(),
+      sharpe: z.string(),
+      volatility: z.string(),
+    }),
+    positions: z.array(z.object({
+      asset: z.string(),
+      ticker: z.string().optional(), // Added for automation
+      type: z.string(),
+      weight: z.string(),
+      conviction: z.enum(['Low', 'Medium', 'High']),
+      thesis: z.string().optional(),
+    })).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { rapports, recherches, portfolios };

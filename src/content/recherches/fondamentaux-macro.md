@@ -1,11 +1,17 @@
 ---
-title: "Masterclass Macroéconomie"
-description: "Masterclass en Macroéconomie : Programme sur mesure en 4 modules pour maîtriser l'analyse fondamentale et anticiper les dynamiques de marché."
-date: "2026-05-12"
-category: "Mentorat Privé"
-thumbnail: "/assets/img/banner.jpg"
+title: Masterclass Macroéconomie
+description: 'Masterclass en Macroéconomie : Programme sur mesure en 4 modules pour
+  maîtriser l''analyse fondamentale et anticiper les dynamiques de marché.'
+date: '2026-05-12'
+category: Mentorat Privé
+thumbnail: /assets/img/banner.jpg
+tags:
+- Quantitative
+- Finance
+- Statistics
+- Masterclass
+- Macroéconomie
 ---
-
 <div class="exec-summary">
   <strong>Objectif du Programme</strong>
   Un accompagnement sur mesure en 4 modules pour acquérir la rigueur analytique des institutionnels. Décryptez la donnée, anticipez les cycles.

@@ -1,12 +1,18 @@
 ---
-title: "Choc Institutionnel : Trump, la Fed & Liquidités"
-description: "Inauguration et premières mesures. Impact sur les conditions financières mondiales et les flux de liquidités."
-date: "2026-01-17"
-category: "Géopolitique"
-issue: "N°2"
-thumbnail: "https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=800&q=80&auto=format&fit=crop"
+title: 'Choc Institutionnel : Trump, la Fed & Liquidités'
+description: Inauguration et premières mesures. Impact sur les conditions financières
+  mondiales et les flux de liquidités.
+date: '2026-01-17'
+category: Géopolitique
+issue: N°2
+thumbnail: https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=800&q=80&auto=format&fit=crop
+tags:
+- Macro
+- Economics
+- Strategy
+- Choc
+- Institutionnel
 ---
-
 <div class="exec-summary">
 <strong>>> Executive Summary</strong>
 <p class="m-0">Semaine marquée par une volatilité institutionnelle rare. Le Dollar a été secoué par des attaques politiques inédites contre l'indépendance de la Fed, tandis que le Japon s'enfonce dans une crise politique. Malgré ce bruit, les marchés actions (S&P 500) et les matières premières ignorent la peur, dopés par une injection massive de liquidités (+1000 Mds$) et les tensions géopolitiques avec l'Iran.</p>

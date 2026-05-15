@@ -1,0 +1,73 @@
+---
+const faqs = [
+  {
+    question: "Qu'est-ce que l'analyse macroéconomique ?",
+    answer: "L'analyse macroéconomique consiste à étudier les indicateurs économiques globaux tels que le PIB, l'inflation (CPI), le chômage et les taux d'intérêt pour comprendre la santé d'une économie et anticiper les mouvements des marchés financiers."
+  },
+  {
+    question: "Comment Horacle Capital utilise-t-il les modèles quantitatifs ?",
+    answer: "Nous utilisons des modèles mathématiques, notamment les modèles de Markov cachés (HMM) et le scoring multifactoriel, pour filtrer le bruit du marché et identifier des régimes de marché spécifiques où les probabilités de succès sont asymétriques."
+  },
+  {
+    question: "Quelle est la différence entre Horacle Academy et vos rapports ?",
+    answer: "Les rapports sont des analyses hebdomadaires de l'actualité des marchés, tandis que l'Academy est un programme de mentorat structuré conçu pour enseigner les compétences fondamentales en macroéconomie et en finance quantitative."
+  },
+  {
+    question: "Vos analyses constituent-elles des conseils en investissement ?",
+    answer: "Non. Horacle Capital fournit des recherches et des analyses à but éducatif et informatif. Chaque investisseur doit effectuer ses propres recherches ou consulter un conseiller financier agréé avant de prendre des décisions d'investissement."
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<section class="faq-section py-16 bg-bg-2 border-t border-border">
+    <div class="container">
+        <div class="section-rule mb-12">
+            <h2 class="section-label">Questions Fréquentes</h2>
+            <div class="rule-line"></div>
+        </div>
+        
+        <div class="max-w-3xl mx-auto">
+            <div class="grid gap-4">
+                {faqs.map((faq, index) => (
+                    <details class="faq-item group bg-white border border-border p-6 cursor-pointer transition-all duration-300 hover:border-blue-3">
+                        <summary class="flex items-center justify-between list-none font-head text-xl text-text">
+                            {faq.question}
+                            <span class="faq-icon text-blue-3 group-open:rotate-180 transition-transform duration-300">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </span>
+                        </summary>
+                        <div class="mt-4 text-off leading-relaxed prose prose-sm">
+                            <p>{faq.answer}</p>
+                        </div>
+                    </details>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    summary::-webkit-details-marker {
+        display: none;
+    }
+    
+    .faq-item[open] {
+        border-color: var(--blue-3);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.05);
+    }
+</style>
