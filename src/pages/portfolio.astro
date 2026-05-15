@@ -169,42 +169,42 @@ portfolios.sort((a, b) => b.data.lastUpdated.localeCompare(a.data.lastUpdated));
                                     <span class="text-[0.6rem] font-mono text-dim uppercase tracking-widest italic">Actualisé : {portfolio.data.lastUpdated}</span>
                                 </div>
                                 
-                                <div class="p-8 md:p-12">
-                                    <div class="flex flex-col lg:flex-row justify-between gap-12 items-start mb-16 border-b border-border pb-16">
-                                        <div class="max-w-2xl">
-                                            <div class="flex items-center gap-3 mb-6">
-                                                <span class={`px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest ${
+                                <div class="p-8 md:p-10">
+                                    <div class="flex flex-col lg:flex-row justify-between gap-10 items-start mb-12 border-b border-border pb-12">
+                                        <div class="max-w-xl">
+                                            <div class="flex items-center gap-3 mb-5">
+                                                <span class={`px-2 py-0.5 text-[0.55rem] font-bold uppercase tracking-wider ${
                                                     portfolio.data.riskLevel === 'High' ? 'bg-red-600 text-white' : 
                                                     portfolio.data.riskLevel === 'Medium' ? 'bg-orange-500 text-white' : 
                                                     'bg-blue-600 text-white'
                                                 }`}>
-                                                    Profil {portfolio.data.riskLevel}
+                                                    Risque {portfolio.data.riskLevel}
                                                 </span>
-                                                <span class="w-px h-4 bg-border"></span>
-                                                <span class="text-[0.6rem] text-dim uppercase tracking-widest font-mono">Multi-Asset Class</span>
+                                                <span class="w-px h-3 bg-border"></span>
+                                                <span class="text-[0.55rem] text-dim uppercase tracking-widest font-mono">Stratégie Active</span>
                                             </div>
-                                            <h2 class="font-head text-5xl md:text-6xl text-text mb-8 leading-tight italic">{portfolio.data.title}</h2>
-                                            <p class="text-off text-lg leading-relaxed font-light italic">{portfolio.data.description}</p>
+                                            <h2 class="font-head text-3xl md:text-4xl text-text mb-4 leading-tight italic">{portfolio.data.title}</h2>
+                                            <p class="text-off text-sm leading-relaxed font-light italic">{portfolio.data.description}</p>
                                         </div>
                                         
-                                        <!-- Institutional Performance Summary -->
-                                        <div class="w-full lg:w-auto min-w-[320px]">
-                                            <div class="bg-bg-2 border border-border p-8 space-y-6">
-                                                <div class="flex justify-between items-end border-b border-border pb-4">
-                                                    <span class="text-[0.55rem] text-dim uppercase tracking-[0.2em]">Performance YTD</span>
-                                                    <span class={`text-3xl font-head font-bold ${isNegativeYtd ? 'text-red-600' : 'text-green-600'}`}>
+                                        <!-- Institutional Performance Summary - Compact -->
+                                        <div class="w-full lg:w-auto min-w-[280px]">
+                                            <div class="bg-bg-2 border border-border p-6 divide-y divide-border/50">
+                                                <div class="flex justify-between items-center pb-4">
+                                                    <span class="text-[0.5rem] text-dim uppercase tracking-[0.15em] font-mono">Performance YTD</span>
+                                                    <span class={`text-xl font-head font-bold ${isNegativeYtd ? 'text-red-600' : 'text-green-600'}`}>
                                                         {portfolio.data.stats.ytd}
                                                     </span>
                                                 </div>
-                                                <div class="flex justify-between items-end border-b border-border pb-4">
-                                                    <span class="text-[0.55rem] text-dim uppercase tracking-[0.2em]">Ratio de Sharpe</span>
-                                                    <span class={`text-2xl font-head font-bold ${isNegativeSharpe ? 'text-red-600' : 'text-text'}`}>
+                                                <div class="flex justify-between items-center py-4">
+                                                    <span class="text-[0.5rem] text-dim uppercase tracking-[0.15em] font-mono">Ratio de Sharpe</span>
+                                                    <span class={`text-xl font-head font-bold ${isNegativeSharpe ? 'text-red-600' : 'text-text'}`}>
                                                         {portfolio.data.stats.sharpe}
                                                     </span>
                                                 </div>
-                                                <div class="flex justify-between items-end">
-                                                    <span class="text-[0.55rem] text-dim uppercase tracking-[0.2em]">Volatilité Ann.</span>
-                                                    <span class="text-2xl font-head text-text font-bold">{portfolio.data.stats.volatility}</span>
+                                                <div class="flex justify-between items-center pt-4">
+                                                    <span class="text-[0.5rem] text-dim uppercase tracking-[0.15em] font-mono">Volatilité Ann.</span>
+                                                    <span class="text-xl font-head text-text font-bold">{portfolio.data.stats.volatility}</span>
                                                 </div>
                                             </div>
                                         </div>
