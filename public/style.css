@@ -1087,7 +1087,22 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
     border-bottom: 1px solid var(--border-dk); font-size: 0.9rem; color: rgba(255,255,255,0.7);
   }
   .nav-links a::after { display: none; }
-  .nav-links a.active { border-left: 3px solid var(--blue-3); padding-left: 29px; color: #fff; }
+  .nav-links a.active { 
+    background: var(--blue-d);
+    color: var(--blue-3);
+    padding-left: 24px;
+    position: relative;
+  }
+  .nav-links a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 16px;
+    background: var(--blue-3);
+  }
   .nav-search { margin: 20px 32px; width: calc(100% - 64px); height: 44px; border-radius: 0; padding: 0 16px; }
   .nav-search input { width: 100%; }
   .nav-search input:focus { width: 100%; }
