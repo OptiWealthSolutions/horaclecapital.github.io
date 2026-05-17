@@ -38,29 +38,36 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
       <!-- Article à la une -->
       {featured && (
         <div class="container pt-14 pb-0">
-          <a href={`/reports/${featured.slug}`} class="flex flex-col lg:flex-row border border-[var(--border)] overflow-hidden mb-16 group">
-            <div class="relative lg:w-[58%] overflow-hidden bg-[var(--bg-2)]" style="min-height:300px">
+          <a href={`/reports/${featured.slug}`} class="group relative flex flex-col lg:flex-row bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden mb-16">
+            <div class="absolute top-0 left-0 w-full lg:w-1 lg:h-full h-1 bg-blue-3 scale-x-0 lg:scale-x-100 lg:scale-y-0 group-hover:scale-x-100 group-hover:scale-y-100 transition-transform origin-left lg:origin-top z-10"></div>
+            <div class="relative lg:w-[58%] overflow-hidden bg-bg-2" style="min-height:300px">
               <img
                 src={featured.data.thumbnail || fallbackImg}
                 alt={featured.data.title}
-                class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
                 onerror={`this.src='${fallbackImg}'`}
               />
+              <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
             </div>
-            <div class="lg:w-[42%] p-8 lg:p-12 flex flex-col justify-between bg-[var(--bg)]">
+            <div class="lg:w-[42%] p-8 lg:p-12 flex flex-col justify-between bg-white relative z-20">
               <div>
-                <div class="flex items-center gap-3 mb-6 flex-wrap">
-                  <span style="font-family:var(--ff-body);font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue-2);border:1px solid rgba(37,99,235,0.3);padding:3px 10px;background:rgba(37,99,235,0.05)">Rapport Hebdo</span>
-                  <span style="font-family:var(--ff-body);font-size:0.7rem;color:var(--dim);letter-spacing:0.06em;text-transform:uppercase">{formatDateFull(featured.data.date)}</span>
+                <div class="flex items-center gap-3 mb-6 flex-wrap pb-6 border-b border-border/50">
+                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">Rapport Hebdo</span>
+                  <span class="text-[0.65rem] text-dim uppercase tracking-widest">{formatDateFull(featured.data.date)}</span>
                 </div>
-                <h2 class="font-head text-[var(--text)] leading-tight mb-5" style="font-size:clamp(1.5rem,3vw,2rem)">{featured.data.title}</h2>
-                <p style="font-family:var(--ff-body);font-size:0.92rem;color:var(--off);line-height:1.7;margin-bottom:2rem">
+                <h2 class="font-head text-3xl lg:text-4xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">{featured.data.title}</h2>
+                <p class="text-off text-base leading-relaxed mb-8 font-sans">
                   {featured.data.description}
                 </p>
               </div>
-              <div class="btn-primary self-start">
-                Lire le rapport
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
+                  <div class="flex flex-col">
+                      <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Édition</span>
+                      <span class="text-[0.75rem] font-bold text-text uppercase tracking-wide">{featured.data.issue || 'Récente'}</span>
+                  </div>
+                  <span class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-widest font-bold text-text group-hover:text-blue-3 transition-colors">
+                      Lire <span class="group-hover:translate-x-1 transition-transform">→</span>
+                  </span>
               </div>
             </div>
           </a>
@@ -74,31 +81,37 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
           <div class="rule-line"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {grid.map((rapport) => (
-            <a href={`/reports/${rapport.slug}`} class="group flex flex-col border border-[var(--border)] hover:border-[rgba(37,99,235,0.4)] transition-colors duration-300 overflow-hidden">
-              <div class="relative overflow-hidden bg-[var(--bg-2)]" style="aspect-ratio:16/9">
+            <a href={`/reports/${rapport.slug}`} class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden">
+              <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
+              
+              <div class="h-48 overflow-hidden border-b border-border relative">
                 <img
                   src={rapport.data.thumbnail || fallbackImg}
                   alt={rapport.data.title}
-                  class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
                   onerror={`this.src='${fallbackImg}'`}
                 />
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
               </div>
-              <div class="p-6 flex flex-col flex-1">
-                <div class="flex items-center gap-3 mb-3">
-                  <span style="font-family:var(--ff-body);font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue-2)">{rapport.data.category}</span>
-                  <span style="font-family:var(--ff-body);font-size:0.68rem;color:var(--dim)">{formatDateShort(rapport.data.date)}</span>
+              <div class="p-8 flex flex-col flex-1">
+                <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
+                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3 line-clamp-1">{rapport.data.category}</span>
+                  <span class="text-[0.65rem] text-dim uppercase tracking-widest whitespace-nowrap">{formatDateShort(rapport.data.date)}</span>
                 </div>
-                <h3 class="font-head text-[var(--text)] leading-snug mb-3 flex-1" style="font-size:1.05rem">{rapport.data.title}</h3>
-                <p style="font-family:var(--ff-body);font-size:0.82rem;color:var(--off);line-height:1.65;margin-bottom:1.25rem">{rapport.data.description}</p>
-                <span
-                  style="display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-body);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:3px;transition:color 0.2s"
-                  class="text-text group-hover:text-blue-2"
-                >
-                  Lire
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </span>
+                <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">{rapport.data.title}</h3>
+                <p class="text-off text-sm leading-relaxed mb-8 flex-1 font-sans">{rapport.data.description}</p>
+                
+                <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
+                    <div class="flex flex-col">
+                        <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Édition</span>
+                        <span class="text-[0.7rem] font-bold text-text uppercase tracking-wide">{rapport.data.issue || 'Archive'}</span>
+                    </div>
+                    <span class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-widest font-bold text-text group-hover:text-blue-3 transition-colors">
+                        Lire <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                </div>
               </div>
             </a>
           ))}

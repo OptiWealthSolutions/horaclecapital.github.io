@@ -33,9 +33,11 @@ export default {
       fontFamily: {
         mono: ['DM Sans', 'sans-serif'],
         sans: ['DM Sans', 'sans-serif'],
-        head: ['DM Serif Display', 'serif'],
+        head: ['DM Sans', 'sans-serif'],
       }
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };
