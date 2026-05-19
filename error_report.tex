@@ -1,0 +1,129 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codered}{rgb}{0.8,0.1,0.1}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegray},
+    keywordstyle=\color{blue},
+    stringstyle=\color{codered},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{\textbf{Rapport d'Erreur Système : Apollon Orchestrator}}
+\author{Généré par Horacle / Gemini}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Résumé du problème}
+Ce document consigne une trace d'erreur (Traceback) critique rencontrée lors de l'exécution du programme \texttt{apollon\_orchestrator}. L'erreur s'est produite lors de la tentative de récupération des tickers du S\&P 500 via une requête HTTP, qui a abouti à une erreur \textbf{403 : Forbidden}.
+
+\section*{Détails de l'exception}
+Voici la trace complète de l'exception générée par l'application :
+
+\begin{lstlisting}[language=Python, title=Traceback d'exécution]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/tkinter/__init__.py", line 1968, in __call__
+    return self.func(*args)
+           ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/tkinter/__init__.py", line 862, in callit
+    func(*args)
+  File "/Users/leolombardini/Projets/apollon_orchestrator/apollon/gui/app.py", line 96, in <lambda>
+    self.root.after(0, lambda: self.status_bar.set_status(text, progress))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leolombardini/Projets/apollon_orchestrator/apollon/gui/widgets.py", line 178, in set_status
+    self._progress["value"] = progress * 100
+    ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/tkinter/__init__.py", line 1733, in __setitem__
+    self.configure({key: value})
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/tkinter/__init__.py", line 1722, in configure
+    return self._configure('configure', cnf, kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/tkinter/__init__.py", line 1712, in _configure
+    self.tk.call(_flatten((self._w, cmd)) + self._options(cnf))
+_tkinter.TclError: expected floating-point number but got "Fetching SP500 tickers...Fetching SP500 tickers..."
+15:30:33 [ERROR] apollon.gui.app: Async task failed: HTTP Error 403: Forbidden
+Traceback (most recent call last):
+  File "/Users/leolombardini/Projets/apollon_orchestrator/apollon/gui/app.py", line 101, in wrapper
+    target(*args, **kwargs)
+  File "/Users/leolombardini/Projets/apollon_orchestrator/apollon/gui/app.py", line 120, in _load_data_impl
+    self.md = load_market_data(self.cfg.data, on_progress=self._update_status)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leolombardini/Projets/apollon_orchestrator/apollon/data_engine.py", line 125, in load_market_data
+    universe = get_sp500_tickers()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/leolombardini/Projets/apollon_orchestrator/apollon/data_engine.py", line 36, in get_sp500_tickers
+    tables = pd.read_html(SP500_URL)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leolombardini/Projets/apollon_orchestrator/.venv/lib/python3.12/site-packages/pandas/io/html.py", line 1226, in read_html
+    return _parse(
+           ^^^^^^^
+  File "/Users/leolombardini/Projets/apollon_orchestrator/.venv/lib/python3.12/site-packages/pandas/io/html.py", line 979, in _parse
+    tables = p.parse_tables()
+             ^^^^^^^^^^^^^^^^
+  File "/Users/leolombardini/Projets/apollon_orchestrator/.venv/lib/python3.12/site-packages/pandas/io/html.py", line 237, in parse_tables
+    tables = self._parse_tables(self._build_doc(), self.match, self.attrs)
+                                ^^^^^^^^^^^^^^^^^
+  File "/Users/leolombardini/Projets/apollon_orchestrator/.venv/lib/python3.12/site-packages/pandas/io/html.py", line 789, in _build_doc
+    with get_handle(self.io, "r", storage_options=self.storage_options) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leolombardini/Projets/apollon_orchestrator/.venv/lib/python3.12/site-packages/pandas/io/common.py", line 776, in get_handle
+    ioargs = _get_filepath_or_buffer(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/leolombardini/Projets/apollon_orchestrator/.venv/lib/python3.12/site-packages/pandas/io/common.py", line 405, in _get_filepath_or_buffer
+    with urlopen(req_info) as req:
+         ^^^^^^^^^^^^^^^^^
+  File "/Users/leolombardini/Projets/apollon_orchestrator/.venv/lib/python3.12/site-packages/pandas/io/common.py", line 282, in urlopen
+    return urllib.request.urlopen(*args, **kwargs)  # noqa: TID251
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 521, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 630, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 559, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 639, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+\end{lstlisting}
+
+\section*{Analyse Préliminaire}
+\begin{itemize}
+    \item \textbf{Erreur Interface (GUI) :} Le composant Tkinter lève une erreur \texttt{TclError} car il essaie de mettre à jour une barre de progression avec une chaîne de caractères (\texttt{"Fetching SP500 tickers..."}) au lieu d'une valeur à virgule flottante attendue.
+    \item \textbf{Erreur Réseau (Data Engine) :} La fonction \texttt{pd.read\_html} essaie de récupérer des données depuis une URL (vraisemblablement Wikipédia pour le S\&P 500). L'accès est bloqué avec un code \textbf{403 Forbidden}, ce qui indique que le serveur rejette la requête. Cela est généralement dû à l'absence de headers \texttt{User-Agent} appropriés dans la requête de \texttt{pandas}.
+\end{itemize}
+
+\end{document}

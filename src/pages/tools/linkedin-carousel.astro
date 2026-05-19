@@ -1,0 +1,400 @@
+---
+const slides = [
+  {
+    type: 'hero',
+    title: 'Arrêtez de subir le bruit. Maîtrisez les cycles.',
+    subtitle: 'Pourquoi la plupart des investisseurs réagissent trop tard aux mouvements de marché.',
+    tag: 'Horacle Academy',
+  },
+  {
+    type: 'content',
+    title: 'L\'overdose d\'information tue votre performance.',
+    subtitle: 'La clarté est le nouvel avantage compétitif.',
+    points: [
+      'Flux de news contradictoires en continu.',
+      'Indicateurs isolés sans vision d\'ensemble.',
+      'Paralysie décisionnelle face à la volatilité.'
+    ],
+    insight: 'Le savoir est gratuit. La méthode est rare.'
+  },
+  {
+    type: 'content',
+    title: 'Comprendre la structure du marché',
+    text: 'Les marchés ne sont pas aléatoires. Ils sont mécaniques.',
+    description: 'Pour anticiper, il faut comprendre les flux de liquidité mondiaux et les politiques monétaires. C’est la base d\'une stratégie robuste.'
+  },
+  {
+    type: 'hero',
+    title: 'Horacle Academy : Forgez votre propre système.',
+    text: 'Un accompagnement stratégique pour transformer la donnée en avantage concret.',
+    description: 'On ne vous donne pas d\'avis, on vous apprend à construire les vôtres.'
+  },
+  {
+    type: 'pill',
+    title: 'P1 - Analyse de Flux',
+    subtitle: 'Décrypter les mouvements de fond.',
+    points: [
+      'Maîtrise des cycles de liquidité.',
+      'Dynamique réelle de l\'inflation.',
+      'Anticipation des thèses de marché.'
+    ]
+  },
+  {
+    type: 'pill',
+    title: 'P2 - Framework de Recherche',
+    subtitle: 'Une routine rigoureuse et répétable.',
+    points: [
+      'Protocole de recherche hebdomadaire.',
+      'Synthèse de données macro-financières.',
+      'Construction de thèses d\'investissement.'
+    ]
+  },
+  {
+    type: 'pill',
+    title: 'P3 - Clarté Décisionnelle',
+    subtitle: 'Agir quand les probabilités convergent.',
+    points: [
+      'Identifier les points d\'inflexion.',
+      'Gestion du risque par les fondamentaux.',
+      'Maîtrise du timing stratégique.'
+    ]
+  },
+  {
+    type: 'content',
+    title: 'L\'apprentissage par la pratique',
+    text: 'Pas de théorie déconnectée du réel.',
+    description: 'Nous analysons les conditions actuelles du marché pour valider chaque concept. C\'est un transfert de compétences direct et immédiatement applicable.'
+  },
+  {
+    type: 'content',
+    title: 'Pourquoi ce mentorat est unique ?',
+    text: 'Construire un actif intellectuel durable.',
+    description: 'Vous n\'achetez pas une analyse ponctuelle. Vous développez la capacité à produire vos propres analyses pour le restant de votre carrière.'
+  },
+  {
+    type: 'cta',
+    title: 'Prêt à changer de dimension ?',
+    text: 'Le mentorat Horacle Academy est sélectif.',
+    description: 'Réservez votre appel de diagnostic pour valider votre profil et vos objectifs.',
+    cta: 'Lien en bio / Commentaire'
+  }
+];
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>LinkedIn Carousel - Horacle Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark: #0F172A;
+      --white: #FFFFFF;
+      --blue: #2563EB;
+      --blue-light: #60A5FA;
+      --border: rgba(255, 255, 255, 0.1);
+      --ff-body: 'DM Sans', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body { 
+      background: #f0f2f5; 
+      font-family: var(--ff-body);
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    @page {
+      size: 1080px 1350px;
+      margin: 0;
+    }
+
+    .no-print {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: var(--blue);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-radius: 4px;
+    }
+
+    .carousel-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 80px 0;
+    }
+
+    .slide {
+      width: 1080px;
+      height: 1350px;
+      background: var(--dark) !important;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 100px;
+      flex-shrink: 0;
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .slide::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 12px;
+      background: var(--blue) !important;
+      z-index: 2;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .logo-area {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    
+    .logo-text {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+    }
+
+    .logo-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    h1 {
+      font-size: 88px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 40px;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-size: 36px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 850px;
+    }
+
+    .big-text {
+      font-size: 52px;
+      line-height: 1.3;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--blue-light);
+    }
+
+    .point-list {
+      list-style: none;
+      margin: 60px 0;
+    }
+
+    .point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      margin-bottom: 40px;
+      font-size: 34px;
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+
+    .point-bullet {
+      width: 14px;
+      height: 14px;
+      background: var(--blue) !important;
+      margin-top: 18px;
+      flex-shrink: 0;
+    }
+
+    .insight-box {
+      background: rgba(37, 99, 235, 0.15) !important;
+      border: 2px solid var(--blue);
+      padding: 45px;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 40px;
+    }
+
+    .pill {
+      background: var(--blue) !important;
+      color: white;
+      display: inline-block;
+      padding: 12px 30px;
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 50px;
+    }
+
+    .footer-note {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .cta-container {
+      text-align: center;
+      width: 100%;
+    }
+
+    .cta-btn {
+      background: var(--blue) !important;
+      color: white;
+      padding: 35px 70px;
+      font-size: 36px;
+      font-weight: 900;
+      display: inline-block;
+      margin-top: 70px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    @media print {
+      .no-print { display: none; }
+      .carousel-container { padding: 0; gap: 0; }
+      body { background: none; }
+      .slide { 
+        page-break-after: always; 
+        border: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="no-print" onclick="window.print()">Exporter en PDF</button>
+
+  <div class="carousel-container">
+    {slides.map((slide, index) => (
+      <div class="slide">
+        <div class="slide-content">
+          <div class="logo-area">
+            <span class="logo-text">Horacle Academy</span>
+            <div class="logo-line"></div>
+          </div>
+          
+          <div class="main-area">
+            {slide.type === 'hero' && (
+              <>
+                <h1>{slide.title}</h1>
+                {slide.subtitle && <p class="subtitle">{slide.subtitle}</p>}
+                {slide.text && <p class="big-text">{slide.text}</p>}
+                {slide.description && <p class="subtitle" style="margin-top: 40px; font-size: 30px;">{slide.description}</p>}
+              </>
+            )}
+
+            {slide.type === 'content' && (
+              <>
+                <h2 style="font-size: 80px; font-weight: 800; margin-bottom: 40px; letter-spacing: -0.02em;">{slide.title}</h2>
+                {slide.text && <p class="big-text">{slide.text}</p>}
+                {slide.subtitle && <p class="subtitle" style="margin-bottom: 40px;">{slide.subtitle}</p>}
+                {slide.points && (
+                  <ul class="point-list">
+                    {slide.points.map(point => (
+                      <li class="point-item">
+                        <div class="point-bullet"></div>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {slide.description && <p class="subtitle" style="font-size: 30px;">{slide.description}</p>}
+                {slide.insight && <div class="insight-box">{slide.insight}</div>}
+              </>
+            )}
+
+            {slide.type === 'pill' && (
+              <>
+                <div class="pill">{slide.title}</div>
+                <h1>{slide.subtitle}</h1>
+                <ul class="point-list">
+                  {slide.points.map(point => (
+                    <li class="point-item">
+                      <div class="point-bullet"></div>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {slide.type === 'cta' && (
+              <div class="cta-container">
+                <h1>{slide.title}</h1>
+                <p class="big-text" style="color: white;">{slide.text}</p>
+                <p class="subtitle" style="margin: 0 auto;">{slide.description}</p>
+                <div class="cta-btn">{slide.cta}</div>
+              </div>
+            )}
+          </div>
+
+          <div class="footer-note">
+            <span>HORACLECAPITAL.COM</span>
+            <span>{index + 1} / {slides.length}</span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+</body>
+</html>
+
+
