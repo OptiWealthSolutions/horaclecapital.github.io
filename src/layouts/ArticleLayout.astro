@@ -18,10 +18,15 @@ const {
   date,
   author = 'Léo Lombardini',
   category = 'Macro Economics',
-  ogImage = 'https://horaclecapital.com/assets/img/banner.jpg',
+  ogImage: ogImageProp,
   slug,
   tags = [],
 } = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://horaclecapital.com';
+const ogImage = ogImageProp 
+  ? (ogImageProp.startsWith('http') ? ogImageProp : `${siteUrl}${ogImageProp}`)
+  : `${siteUrl}/assets/img/banner.jpg`;
 
 import TagList from '../components/TagList.astro';
 import { getCollection } from 'astro:content';
@@ -58,16 +63,14 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="2de0cd59-a747-4d4a-898e-5b2ff8cee015"></script>
 
-    <meta name="description" content={description} />
-    <meta property="og:title" content={`${title} | Horacle Capital`} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:type" content="article" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <SEO 
+      title={title} 
+      description={description} 
+      image={ogImage} 
+      type="article" 
+      articleDate={date} 
+      canonicalURL={canonicalUrl}
+    />
 
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script is:inline src="/tailwind-config.js"></script>

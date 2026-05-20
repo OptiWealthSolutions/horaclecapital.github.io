@@ -11,11 +11,16 @@ export interface Props {
 const {
   title = 'HORACLE CAPITAL | Analyse Macro & Finance Quantitative',
   description = "Horacle Capital est une structure de recherche spécialisée dans l'analyse macroéconomique et la modélisation quantitative des marchés financiers.",
-  image = 'https://horaclecapital.com/assets/img/banner.jpg',
-  canonicalURL = new URL(Astro.url.pathname, Astro.site),
+  image: imageProp,
+  canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://horaclecapital.com'),
   type = 'website',
   articleDate,
 } = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://horaclecapital.com';
+const image = imageProp 
+  ? (imageProp.startsWith('http') ? imageProp : `${siteUrl}${imageProp.startsWith('/') ? '' : '/'}${imageProp}`)
+  : `${siteUrl}/assets/img/banner.jpg`;
 
 const siteName = 'Horacle Capital';
 const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;

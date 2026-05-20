@@ -4,8 +4,8 @@ description: "Analyse de la remontée brutale des rendements obligataires US : c
 date: "2026-05-19"
 category: "Le Coup d'Oeil"
 issue: "Focus Taux"
-ogImage: "/assets/img/us_10y_yield_surge.png"
-thumbnail: "/assets/img/us_10y_yield_surge.png"
+ogImage: "/assets/img/lce_1_preview.jpg"
+thumbnail: "/assets/img/lce_1_preview.jpg"
 tags: ["Fixed Income", "Treasuries", "Macro", "Investissement"]
 ---
 
