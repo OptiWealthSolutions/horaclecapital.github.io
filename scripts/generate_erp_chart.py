@@ -6,20 +6,25 @@ import matplotlib.ticker as mtick
 from datetime import datetime, timedelta
 
 def fetch_erp_data():
-    # Simulation de l'ERP (S&P 500 Earnings Yield - US 10Y Yield)
-    # Historiquement ~3-4%, actuellement proche de 0% (anomalie de marché)
-    dates = pd.date_range(end=datetime.now(), periods=48, freq='ME')
+    # Fetch real 10Y Yield from FRED
+    url_10y = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS10"
+    df_10y = pd.read_csv(url_10y)
+    df_10y['DATE'] = pd.to_datetime(df_10y['observation_date'])
+    df_10y['DGS10'] = pd.to_numeric(df_10y['DGS10'], errors='coerce')
+    df_10y = df_10y.dropna().set_index('DATE')
+
+    # Earnings Yield (S&P 500) estimate - Real current value is ~4.2% (P/E ~24)
+    # Since historical P/E is not on FRED, we use a proxy trend for the E.Y.
+    # Historically ~4.5%, compressing slightly as markets became expensive
+    dates = df_10y.index
+    ey_trend = np.linspace(4.8, 4.2, len(dates))
     
-    # Trend: compression de l'ERP car les taux montent plus vite que les profits ne s'ajustent
-    # Part de 3.5% et descend vers 0.2%
-    erp_values = np.linspace(3.5, 0.2, 48)
+    # Calculate ERP: Earnings Yield - 10Y Yield
+    df_10y['ERP'] = ey_trend - df_10y['DGS10']
     
-    # Add random noise
-    np.random.seed(42)
-    erp_values += np.random.normal(0, 0.15, 48)
-    
-    df = pd.DataFrame({'ERP': erp_values}, index=dates)
-    return df
+    # Filter last 10 years for historical perspective
+    ten_years_ago = datetime.now() - timedelta(days=10*365)
+    return df_10y[df_10y.index >= ten_years_ago]
 
 def generate_chart():
     df = fetch_erp_data()
@@ -66,7 +71,7 @@ def generate_chart():
     plt.suptitle("S&P 500 EQUITY RISK PREMIUM (ERP)", x=0.5, y=0.98, ha='center', fontsize=18, fontweight='bold', color=text_color, fontname='sans-serif')
     plt.title("Rendement excédentaire des actions vs US 10Y Treasury", loc='center', fontsize=10, color=dim_color, pad=15, fontname='sans-serif')
 
-    fig.text(0.95, 0.02, "Source : Shiller Data / HORACLE CAPITAL", fontsize=8, fontweight='bold', color=dim_color, ha='right', alpha=0.7, fontname='sans-serif')
+    fig.text(0.95, 0.02, "Source : FRED (10Y) / Market Estimate (EY) / HORACLE CAPITAL", fontsize=8, fontweight='bold', color=dim_color, ha='right', alpha=0.7, fontname='sans-serif')
 
     # Final annotation
     last_date = df.index[-1]

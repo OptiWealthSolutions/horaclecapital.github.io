@@ -6,31 +6,32 @@ import matplotlib.ticker as mtick
 from datetime import datetime, timedelta
 
 def fetch_cpi_data():
-    # Génération de données réalistes de l'inflation US (YoY) sur 2 ans
-    # Contexte 2026 : l'inflation était autour de 3% puis a rebondi récemment vers 3.8% suite au choc pétrolier
-    dates = pd.date_range(end=datetime.now(), periods=24, freq='ME')
+    # Fetch real data from FRED: Consumer Price Index (CPIAUCSL)
+    url = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL"
+    df = pd.read_csv(url)
+    df['observation_date'] = pd.to_datetime(df['observation_date'])
+    df['CPIAUCSL'] = pd.to_numeric(df['CPIAUCSL'], errors='coerce')
+    df = df.dropna().set_index('observation_date')
     
-    # Base trend + some noise
-    base_trend = np.linspace(3.4, 2.7, 18) # Descending trend for 1.5 years
-    recent_spike = np.linspace(2.8, 3.9, 6) # Recent spike due to oil shock
+    # Calculate YoY change (%)
+    df['Inflation'] = df['CPIAUCSL'].pct_change(periods=12) * 100
+    df = df.dropna()
     
-    inflation_values = np.concatenate([base_trend, recent_spike])
-    # Add random noise
-    np.random.seed(42)
-    inflation_values += np.random.normal(0, 0.1, 24)
+    # Filter for the last 5 years
+    five_years_ago = datetime.now() - timedelta(days=5*365)
+    df = df[df.index >= five_years_ago]
     
-    df = pd.DataFrame({'Inflation': inflation_values}, index=dates)
     return df
 
 def generate_chart():
     df = fetch_cpi_data()
 
     # Horacle Style Colors
-    bg_color = '#0F172A' # Tailwind slate-900 (Dark)
-    line_color = '#2563EB' # Tailwind blue-600
-    grid_color = '#1E293B' # Tailwind slate-800
+    bg_color = '#0F172A' 
+    line_color = '#2563EB' 
+    grid_color = '#1E293B'
     text_color = '#FFFFFF'
-    dim_color = '#94A3B8' # Tailwind slate-400
+    dim_color = '#94A3B8'
 
     fig, ax = plt.subplots(figsize=(10, 5), facecolor=bg_color)
     ax.set_facecolor(bg_color)
@@ -41,12 +42,17 @@ def generate_chart():
     # Fill under curve
     ax.fill_between(df.index, df['Inflation'], alpha=0.1, color=line_color, zorder=2)
 
-    # War / Oil Shock marker
-    war_start_date = df.index[18]
-    ax.axvline(x=war_start_date, color='#F87171', linestyle='--', linewidth=1.5, alpha=0.7, zorder=1)
-    ax.text(war_start_date - pd.Timedelta(days=10), ax.get_ylim()[1] * 0.95, "Début du choc pétrolier", 
-            color='#F87171', fontsize=9, fontweight='bold', fontname='sans-serif',
-            ha='right', va='top', alpha=0.9)
+    # Latest value marker
+    last_date = df.index[-1]
+    last_val = df['Inflation'].iloc[-1]
+    
+    # War / Oil Shock marker (Approximate for visual context)
+    # Ukraine war started Feb 2022
+    war_start = pd.Timestamp('2022-02-24')
+    if war_start in df.index or war_start > df.index[0]:
+        ax.axvline(x=war_start, color='#F87171', linestyle='--', linewidth=1.5, alpha=0.5, zorder=1)
+        ax.text(war_start, ax.get_ylim()[1] * 0.9, "Choc énergétique (2022)", 
+                color='#F87171', fontsize=8, ha='right', va='top', alpha=0.8, rotation=90)
 
     # Formatting
     ax.spines['top'].set_visible(False)

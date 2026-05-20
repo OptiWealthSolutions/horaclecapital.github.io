@@ -6,21 +6,19 @@ import matplotlib.ticker as mtick
 from datetime import datetime, timedelta
 
 def fetch_yield_data():
-    # Génération de données réalistes pour le 10Y Treasury Yield
-    # Contexte : hausse récente vers 5% après une période plus basse
-    dates = pd.date_range(end=datetime.now(), periods=36, freq='ME')
+    # Fetch real data from FRED: 10-Year Treasury Constant Maturity Rate (DGS10)
+    url = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS10"
+    df = pd.read_csv(url)
+    df['observation_date'] = pd.to_datetime(df['observation_date'])
+    # FRED uses '.' for missing values on holidays/weekends
+    df['DGS10'] = pd.to_numeric(df['DGS10'], errors='coerce')
+    df = df.dropna().set_index('observation_date')
     
-    # Base trend: stable around 3.5%, then steady rise to 5.2%
-    base_trend = np.linspace(3.5, 3.8, 24) # Stable for 2 years
-    recent_surge = np.linspace(3.8, 5.2, 12) # Sharp rise in the last year
+    # Filter for the last 3 years to match the previous visual scope
+    three_years_ago = datetime.now() - timedelta(days=3*365)
+    df = df[df.index >= three_years_ago]
     
-    yield_values = np.concatenate([base_trend, recent_surge])
-    # Add random noise
-    np.random.seed(42)
-    yield_values += np.random.normal(0, 0.08, 36)
-    
-    df = pd.DataFrame({'Yield': yield_values}, index=dates)
-    return df
+    return df.rename(columns={'DGS10': 'Yield'})
 
 def generate_chart():
     df = fetch_yield_data()
