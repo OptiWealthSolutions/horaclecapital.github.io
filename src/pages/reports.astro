@@ -10,7 +10,7 @@ const sortedRapports = allRapports.sort((a, b) =>
 const hebdos = sortedRapports.filter(r => r.data.category === 'Macro Economics' || r.data.category === 'Analyses Hebdomadaires');
 const coupsDoeil = sortedRapports.filter(r => r.data.category === "Le Coup d'Oeil");
 
-const featured = sortedRapports[0];
+const featured = hebdos[0];
 
 function formatDateFull(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('fr-FR', {
