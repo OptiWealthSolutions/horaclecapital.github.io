@@ -3,12 +3,14 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const allRapports = await getCollection('rapports', ({ data }) => !data.draft);
-const rapports = allRapports.sort((a, b) =>
+const sortedRapports = allRapports.sort((a, b) =>
   new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 
-const featured = rapports[0];
-const grid = rapports.slice(1);
+const hebdos = sortedRapports.filter(r => r.data.category === 'Macro Economics' || r.data.category === 'Analyses Hebdomadaires');
+const coupsDoeil = sortedRapports.filter(r => r.data.category === "Le Coup d'Oeil");
+
+const featured = sortedRapports[0];
 
 function formatDateFull(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('fr-FR', {
@@ -30,7 +32,7 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
 <BaseLayout {title} {description} activeNav="reports">
     <header class="page-header">
       <img src="/assets/img/banner.jpg" alt="Rapports d'analyses macroéconomiques hebdomadaires" class="header-bg" aria-hidden="true" />
-      <span>Analyses Hebdomadaires</span>
+      <span>Veille Stratégique</span>
       <h1>Nos Rapports</h1>
       <p>Décryptage des cycles monétaires et des fondamentaux de l'économie mondiale.</p>
     </header>
@@ -38,7 +40,7 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
       <!-- Article à la une -->
       {featured && (
         <div class="container pt-14 pb-0">
-          <a href={`/reports/${featured.slug}`} class="group relative flex flex-col lg:flex-row bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden mb-16">
+          <a href={`/reports/${featured.slug}`} class="group relative flex flex-col lg:flex-row bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden mb-24">
             <div class="absolute top-0 left-0 w-full lg:w-1 lg:h-full h-1 bg-blue-3 scale-x-0 lg:scale-x-100 lg:scale-y-0 group-hover:scale-x-100 group-hover:scale-y-100 transition-transform origin-left lg:origin-top z-10"></div>
             <div class="relative lg:w-[58%] overflow-hidden bg-bg-2" style="min-height:300px">
               <img
@@ -52,7 +54,7 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
             <div class="lg:w-[42%] p-8 lg:p-12 flex flex-col justify-between bg-white relative z-20">
               <div>
                 <div class="flex items-center gap-3 mb-6 flex-wrap pb-6 border-b border-border/50">
-                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">Rapport Hebdo</span>
+                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">{featured.data.category}</span>
                   <span class="text-[0.65rem] text-dim uppercase tracking-widest">{formatDateFull(featured.data.date)}</span>
                 </div>
                 <h2 class="font-head text-3xl lg:text-4xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">{featured.data.title}</h2>
@@ -74,15 +76,48 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
         </div>
       )}
 
-      <!-- Grille des publications -->
+      <!-- Section: Le Coup d'Oeil -->
+      {coupsDoeil.length > 0 && (
+        <div class="container pb-20">
+          <div class="section-rule mb-10">
+            <span class="section-label">Les Coups d'Oeil</span>
+            <div class="rule-line"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {coupsDoeil.map((rapport) => (
+              <a href={`/reports/${rapport.slug}`} class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
+                <div class="h-48 overflow-hidden border-b border-border relative">
+                  <img src={rapport.data.thumbnail || fallbackImg} alt={rapport.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" onerror={`this.src='${fallbackImg}'`} />
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                  <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
+                    <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">{rapport.data.category}</span>
+                    <span class="text-[0.65rem] text-dim uppercase tracking-widest">{formatDateShort(rapport.data.date)}</span>
+                  </div>
+                  <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">{rapport.data.title}</h3>
+                  <p class="text-off text-sm leading-relaxed mb-8 flex-1 font-sans">{rapport.data.description}</p>
+                  <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
+                      <span class="text-[0.7rem] font-bold text-text uppercase tracking-widest">Voir le focus</span>
+                      <span class="group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Section: Rapports Hebdomadaires -->
       <div class="container pb-[120px]">
         <div class="section-rule mb-10">
-          <span class="section-label">Toutes les publications</span>
+          <span class="section-label">Rapports Hebdomadaires</span>
           <div class="rule-line"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {grid.map((rapport) => (
+          {hebdos.map((rapport) => (
             <a href={`/reports/${rapport.slug}`} class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden">
               <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
               
@@ -117,6 +152,4 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
           ))}
         </div>
       </div>
-</BaseLayout>
- </div>
 </BaseLayout>

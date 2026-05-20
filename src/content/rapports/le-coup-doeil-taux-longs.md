@@ -42,32 +42,13 @@ Ainsi pour finir, une hausse du taux d'intérêt intérieur de long terme par ra
 
 Il est clair que la hausse des taux longs n’est pas anodine, l’impact demeure réel sur l’économie et les investissements en tout genre.
 
-### Schéma Simplificateur
-
-```text
-▲ TAUX LONGS (US 10Y/30Y)
-│
-├───► ▼ PRIX DES OBLIGATIONS (Corrélation inverse)
-│     └─► Pertes latentes sur les bilans (Effet de richesse négatif)
-│
-├───► ▲ TAUX D'ACTUALISATION (Gordon-Shapiro)
-│     └─► ▼ VALORISATION DES ACTIONS (Secteur Tech/Croissance)
-│
-├───► ▲ COÛT DU CRÉDIT (Ménages & Entreprises)
-│     ├─► ▼ Investissement productif (ROI < rf)
-│     └─► ▼ Consommation durable (Immo, Auto)
-│
-└───► ▲ ATTRACTIVITÉ DE LA DEVISE (USD)
-      └─► ▲ TAUX DE CHANGE RÉEL
-          └─► ▼ EXPORTATIONS NETTES
-              └─► ▼ PRODUCTION NATIONALE (PIB)
-```
-
 ## Comment en profiter ?
 *(Ceci n'est pas un conseil en investissement)*
 
 Mais alors, dans un contexte pareil, comment en profiter ?
 
-1.  **Le Carry Trade** : Déjà abordé dans plusieurs de nos rapports hebdomadaires, le carry trading consiste à emprunter dans une monnaie bénéficiant d’un taux faible (ex : Japon), à convertir l’emprunt en dollar et à acheter des obligations US. Le différentiel de rendement, en assumant un taux de change accommodant, permettra un gain pour l’emprunteur.
-2.  **Exposition aux T-Bonds** : En vertu de la corrélation négative entre le prix d'une obligation et son rendement, une hausse des taux longs fait chuter le prix des obligations existantes. Une augmentation contrôlée de votre exposition aux T-bonds US pourrait être une source de rendement sans risque très lucrative si les taux se stabilisent.
-3.  **Arbitrage Tech / Cycliques** : In fine, la hausse du taux sans risque majore le taux d'actualisation dans la méthode des flux de trésorerie actualisés (DCF). Les actions de croissance (secteur technologique), dont les flux de trésorerie sont éloignés dans le temps (investissement long terme), voient leur valeur fondamentale s'effondrer. Cela ouvre des opportunités de vente à découvert ou de sous-pondération stratégique de ces secteurs au profit d'actifs à horizon court terme ou de secteurs cycliques.
+Dans un premier temps, le carry trade serait de mise : déjà abordé dans plusieurs de nos rapports hebdomadaires, le carry trading consiste à emprunter dans une monnaie bénéficiant d’un taux faible (ex : Japon), à convertir l’emprunt en dollar et à acheter des obligations US. Le différentiel de rendement, en assumant un taux de change accommodant, permettra un gain pour l’emprunteur.
+
+En vertu de la corrélation négative entre le prix d'une obligation et son rendement, une hausse des taux longs fait chuter le prix des obligations existantes. Dans l’augmentation contrôlée de votre exposition aux T-bonds US pourrait être une source de rendement sans risque très lucrative.
+
+In fine, la hausse du taux sans risque majore le taux d'actualisation dans la méthode des flux de trésorerie actualisés. Les actions de croissance (secteur technologique), dont les flux de trésorerie sont éloignés dans le temps (investissement long terme), voient leur valeur fondamentale s'effondrer. Cela ouvre des opportunités de vente à découvert ou de sous-pondération stratégique de ces secteurs au profit d'actifs à horizon court terme ou de secteurs cycliques.
