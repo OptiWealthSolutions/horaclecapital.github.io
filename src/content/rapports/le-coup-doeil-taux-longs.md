@@ -1,20 +1,15 @@
 ---
-title: "Pourquoi les taux longs s'affolent ?"
-description: "Analyse de la remontée brutale des rendements obligataires US : causes techniques, mécanismes de hedge et impacts sur l'économie réelle."
+title: "Pourquoi les taux longs affolent ?"
+description: ""
 date: "2026-05-19"
-category: "Le Coup d'Oeil"
-issue: "Focus Taux"
+category: ""
+issue: ""
 ogImage: "/assets/img/lce_1_preview.jpg"
 thumbnail: "/assets/img/lce_1_preview.jpg"
 tags: ["Fixed Income", "Treasuries", "Macro", "Investissement"]
 ---
 
-<div class="exec-summary">
-<strong>>> En bref</strong>
-<p class="m-0">
-La remontée des taux longs US bouscule les valorisations mondiales. Entre hedge technique et anticipations inflationnistes, nous décryptons pourquoi ce mouvement n'est pas anodin pour votre portefeuille et l'économie réelle.
-</p>
-</div>
+
 
 ## La cause : Le hedge comme maître mot
 
@@ -27,6 +22,14 @@ Le prix d'une obligation existante varie à l'inverse des taux d'intérêt du ma
 
 ## Les conséquences : Pourquoi s’en inquiéter ?
 
+### 1. La compression de l'Equity Risk Premium (ERP)
+L'un des signaux les plus alarmants de la hausse des taux longs est la compression de l'**Equity Risk Premium**. L'ERP représente le rendement excédentaire que les investisseurs exigent pour détenir des actions par rapport à des obligations d'État sans risque.
+
+![Graphique de l'ERP S&P 500](/assets/img/sp500_erp_compression.png)
+
+Actuellement, l'ERP est proche de zéro. Cela signifie que le marché action n'offre quasiment plus de prime de risque par rapport aux Treasuries. Dans un tel scénario, l'arbitrage devient défavorable aux actions : pourquoi prendre le risque d'une volatilité actions pour un rendement que l'on peut obtenir avec la garantie de l'Oncle Sam ? C'est un moteur puissant pour une correction ou, au minimum, une stagnation des indices larges.
+
+### 2. Impact sur l'économie réelle
 Cette hausse brutale des taux longs a pour conséquence une diminution potentielle du PNB, des investissements, et de la croissance en général, voici pourquoi :
 
 Les investissements, qu’ils soient contractés par un ménage ou une entreprise, sont relativement sensibles aux différents taux, surtout les taux longs étant donnée la durée moyenne des crédits qui ne cesse d’augmenter. Dans le cas d’une entreprise, une augmentation du coût du crédit signifierait une diminution ex post du rendement d’un projet, ou bien alors l’abandon de ce dernier dans la mesure où le rendement de ce projet est inférieur au taux sans risque (noté rf). Cette contraction de l’investissement touche aussi les ménages, et donc évidemment les économies du crédit, comme l’immobilier, ou les achats lourds (électroménager, automobile).
