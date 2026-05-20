@@ -1,9 +1,9 @@
 ---
 title: "Pourquoi les taux longs affolent ?"
-description: ""
+description: "Analyse technique et fondamentale de la tension sur les rendements obligataires et de l'impact sur les portefeuilles multi-actifs."
 date: "2026-05-19"
-category: ""
-issue: ""
+category: "Le Coup d'Oeil"
+issue: "Edition : Taux"
 ogImage: "/assets/img/lce_1_preview.jpg"
 thumbnail: "/assets/img/lce_1_preview.jpg"
 tags: ["Fixed Income", "Treasuries", "Macro", "Investissement"]
