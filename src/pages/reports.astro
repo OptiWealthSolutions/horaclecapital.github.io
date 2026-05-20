@@ -7,10 +7,13 @@ const sortedRapports = allRapports.sort((a, b) =>
   new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 
-const hebdos = sortedRapports.filter(r => r.data.category === 'Macro Economics' || r.data.category === 'Analyses Hebdomadaires');
+const hebdos = sortedRapports.filter(r => r.data.category !== "Le Coup d'Oeil");
 const coupsDoeil = sortedRapports.filter(r => r.data.category === "Le Coup d'Oeil");
 
 const featured = hebdos[0];
+// Remaining hebdos for the grid (avoid showing the featured one again if you want, but user said 'all', so maybe keep it or skip it)
+// Let's skip the featured one in the grid to avoid redundancy
+const gridHebdos = hebdos.slice(1);
 
 function formatDateFull(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('fr-FR', {
@@ -116,9 +119,13 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
           <div class="rule-line"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {hebdos.map((rapport) => (
-            <a href={`/reports/${rapport.slug}`} class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="hebdos-grid">
+          {gridHebdos.map((rapport, index) => (
+            <a 
+              href={`/reports/${rapport.slug}`} 
+              class={`group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden ${index >= 6 ? 'hidden' : ''}`}
+              data-hebdo-item
+            >
               <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
               
               <div class="h-48 overflow-hidden border-b border-border relative">
@@ -151,5 +158,29 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
             </a>
           ))}
         </div>
+
+        {gridHebdos.length > 6 && (
+          <div class="mt-12 text-center">
+            <button 
+              id="show-all-hebdos" 
+              class="inline-flex items-center gap-2 px-8 py-4 border border-border bg-white text-text font-mono text-[0.7rem] uppercase tracking-widest hover:border-blue-3 hover:text-blue-3 transition-colors group"
+            >
+              Voir tous les articles
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-y-0.5 transition-transform"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </div>
+        )}
       </div>
+
+      <script is:inline>
+        const showAllBtn = document.getElementById('show-all-hebdos');
+        const hebdoItems = document.querySelectorAll('[data-hebdo-item]');
+        
+        if (showAllBtn) {
+          showAllBtn.addEventListener('click', () => {
+            hebdoItems.forEach(item => item.classList.remove('hidden'));
+            showAllBtn.parentElement.style.display = 'none';
+          });
+        }
+      </script>
 </BaseLayout>
