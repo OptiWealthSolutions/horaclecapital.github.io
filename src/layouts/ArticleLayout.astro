@@ -24,6 +24,20 @@ const {
 } = Astro.props;
 
 import TagList from '../components/TagList.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch suggestions
+const allRapports = await getCollection('rapports', ({ data }) => !data.draft);
+const allRecherches = await getCollection('recherches', ({ data }) => !data.draft);
+
+const allArticles = [
+  ...allRapports.map(item => ({ ...item, collectionType: 'rapports' })),
+  ...allRecherches.map(item => ({ ...item, collectionType: 'recherches' }))
+].sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const suggestions = allArticles
+  .filter(item => item.slug !== slug)
+  .slice(0, 3);
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://horaclecapital.com').toString();
 
@@ -172,29 +186,16 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
             <h3 class="font-mono text-[0.65rem] uppercase tracking-[0.2em] font-bold text-blue-3 mb-6 pb-4 border-b border-border">Lectures Recommandées</h3>
             
             <div class="flex flex-col gap-6">
-              
-              <a href="/recherches/microsoft-ai-infra" class="group block">
-                <span class="text-[0.55rem] font-bold uppercase tracking-widest text-dim mb-1.5 block">Equities / AI</span>
-                <h4 class="font-head text-xl text-text leading-tight group-hover:text-blue-3 transition-colors mb-2">Microsoft : La Verticale Infrastructurelle</h4>
-                <p class="text-[0.8rem] text-off line-clamp-2 font-sans font-light">Dominance sur le cycle de l'IA via Azure et l'intégration Copilot.</p>
-              </a>
-
-              <div class="w-full h-px bg-border/60"></div>
-              
-              <a href="/recherches/usd-macro-dominance" class="group block">
-                <span class="text-[0.55rem] font-bold uppercase tracking-widest text-dim mb-1.5 block">FX / Macro</span>
-                <h4 class="font-head text-xl text-text leading-tight group-hover:text-blue-3 transition-colors mb-2">USD : Taux Réels & Exceptionnalisme</h4>
-                <p class="text-[0.8rem] text-off line-clamp-2 font-sans font-light">Analyse de la persistance de la force du Dollar face aux flux de capitaux.</p>
-              </a>
-
-              <div class="w-full h-px bg-border/60"></div>
-              
-              <a href="/recherches/copper-electrification" class="group block">
-                <span class="text-[0.55rem] font-bold uppercase tracking-widest text-dim mb-1.5 block">Commodities</span>
-                <h4 class="font-head text-xl text-text leading-tight group-hover:text-blue-3 transition-colors mb-2">Cuivre : Le Signal de l'Électrification</h4>
-                <p class="text-[0.8rem] text-off line-clamp-2 font-sans font-light">Déficit structurel de l'offre vs demande exponentielle de la transition.</p>
-              </a>
-              
+              {suggestions.map((item, index) => (
+                <>
+                  <a href={item.collectionType === 'rapports' ? `/reports/${item.slug}` : `/recherches/${item.slug}`} class="group block">
+                    <span class="text-[0.55rem] font-bold uppercase tracking-widest text-dim mb-1.5 block">{item.data.category}</span>
+                    <h4 class="font-head text-xl text-text leading-tight group-hover:text-blue-3 transition-colors mb-2">{item.data.title}</h4>
+                    <p class="text-[0.8rem] text-off line-clamp-2 font-sans font-light">{item.data.description}</p>
+                  </a>
+                  {index < suggestions.length - 1 && <div class="w-full h-px bg-border/60"></div>}
+                </>
+              ))}
             </div>
             
             <a href="/portfolio" class="mt-8 pt-6 border-t border-border flex items-center justify-between text-[0.65rem] font-mono font-bold uppercase tracking-widest text-blue-3 hover:text-blue-400 transition-colors group">

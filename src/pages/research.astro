@@ -1,5 +1,39 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const allRecherches = await getCollection('recherches', ({ data }) => !data.draft);
+const recherches = allRecherches.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('fr-FR', {
+    month: 'short', year: 'numeric',
+  });
+}
+
+function getFormatLabel(type: string) {
+  const labels: Record<string, string> = {
+    pdf: 'Document PDF',
+    notebook: 'Jupyter Notebook',
+    code: 'Code Snippet',
+    video: 'Vidéo',
+    link: 'Lien Externe'
+  };
+  return labels[type] || 'Document';
+}
+
+function getCategoryLabel(type: string) {
+  const labels: Record<string, string> = {
+    pdf: 'PDF & Modèles',
+    notebook: 'Notebooks',
+    code: 'Code Snippets',
+    video: 'Vidéos',
+    link: 'Liens Externes'
+  };
+  return labels[type] || 'Recherche';
+}
 
 const title = 'Recherche Quantitative & Modélisation Financière | Horacle Capital';
 const description = "Explorez notre laboratoire d'analyses : modèles de scoring multifactoriels, algorithmes de trading (HMM) et recherche empirique sur la microstructure des marchés.";
@@ -34,118 +68,47 @@ const description = "Explorez notre laboratoire d'analyses : modèles de scoring
       <!-- Grille des publications -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="research-grid">
           
-          <!-- Scoring Report -->
-          <article class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden research-item" data-category="pdf">
-            <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
-            
-            <div class="h-48 overflow-hidden border-b border-border relative">
-              <img
-                src="/assets/img/report_banner.jpg"
-                alt="Modèle de Scoring Quantitatif"
-                class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                onerror="this.src='/assets/img/banner.jpg'"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
-            </div>
-            
-            <div class="p-8 flex flex-col flex-1">
-              <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
-                <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">PDF & Modèles</span>
-                <span class="text-[0.65rem] text-dim uppercase tracking-widest">Avr 2026</span>
+          {recherches.map((item) => (
+            <article class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden research-item" data-category={item.data.type}>
+              <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
+              
+              <div class="h-48 overflow-hidden border-b border-border relative">
+                <img
+                  src={item.data.ogImage || "/assets/img/banner.jpg"}
+                  alt={item.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                  onerror="this.src='/assets/img/banner.jpg'"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
               </div>
               
-              <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">Scoring Report : Modèle Quantitatif Multifactoriel</h3>
-              
-              <p class="research-description text-off text-sm leading-relaxed mb-8 flex-1 font-sans">Documentation technique du moteur de scoring macroéconomique. Architecture, méthodologie et validation du signal quantitatif d'Horacle Capital.</p>
-              
-              <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
-                  <div class="flex flex-col">
-                      <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Format</span>
-                      <span class="text-[0.7rem] font-bold text-text uppercase tracking-wide">Document PDF</span>
-                  </div>
-                  <a href="/recherches/scoring-report" class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-widest font-bold text-text group-hover:text-blue-3 transition-colors">
-                      Lire <span class="group-hover:translate-x-1 transition-transform">→</span>
-                  </a>
+              <div class="p-8 flex flex-col flex-1">
+                <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
+                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">{getCategoryLabel(item.data.type)}</span>
+                  <span class="text-[0.65rem] text-dim uppercase tracking-widest">{formatDate(item.data.date)}</span>
+                </div>
+                
+                <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">{item.data.title}</h3>
+                
+                <p class="research-description text-off text-sm leading-relaxed mb-8 flex-1 font-sans">{item.data.description}</p>
+                
+                <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
+                    <div class="flex flex-col">
+                        <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Format</span>
+                        <span class="text-[0.7rem] font-bold text-text uppercase tracking-wide">{getFormatLabel(item.data.type)}</span>
+                    </div>
+                    <a href={`/recherches/${item.slug}`} class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-widest font-bold text-text group-hover:text-blue-3 transition-colors">
+                        Lire <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
+                </div>
               </div>
-            </div>
-          </article>
-
-          <!-- Polymarket Paper -->
-          <article class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden research-item" data-category="pdf">
-            <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
-            
-            <div class="h-48 overflow-hidden border-b border-border relative">
-              <img
-                src="/assets/img/polymarket_paper.jpg"
-                alt="Polymarket Research Paper"
-                class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                onerror="this.src='/assets/img/banner.jpg'"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
-            </div>
-            
-            <div class="p-8 flex flex-col flex-1">
-              <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
-                <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">PDF & Modèles</span>
-                <span class="text-[0.65rem] text-dim uppercase tracking-widest">Avr 2026</span>
-              </div>
-              
-              <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">Microstructure, Market Making, and Algorithmic Arbitrage on Decentralised Prediction Markets</h3>
-              
-              <p class="research-description text-off text-sm leading-relaxed mb-8 flex-1 font-sans">Ce document développe un cadre quantitatif rigoureux pour la participation algorithmique sur les marchés de prédiction décentralisés, en utilisant Polymarket comme environnement empirique principal.</p>
-              
-              <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
-                  <div class="flex flex-col">
-                      <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Format</span>
-                      <span class="text-[0.7rem] font-bold text-text uppercase tracking-wide">Document PDF</span>
-                  </div>
-                  <a href="/recherches/polymarket-research" class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-widest font-bold text-text group-hover:text-blue-3 transition-colors">
-                      Lire <span class="group-hover:translate-x-1 transition-transform">→</span>
-                  </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- HMM Engine Notebook -->
-          <article class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden research-item" data-category="notebook">
-            <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
-            
-            <div class="h-48 overflow-hidden border-b border-border relative">
-              <img
-                src="/assets/img/notebook_banner.jpg"
-                alt="Notebook HMM Engine"
-                class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                onerror="this.src='/assets/img/banner.jpg'"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
-            </div>
-            
-            <div class="p-8 flex flex-col flex-1">
-              <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
-                <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">Notebooks</span>
-                <span class="text-[0.65rem] text-dim uppercase tracking-widest">Avr 2026</span>
-              </div>
-              
-              <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">HMM Engine - Détection de Régimes de Marché</h3>
-              
-              <p class="research-description text-off text-sm leading-relaxed mb-8 flex-1 font-sans">Moteur d'inférence basé sur les modèles de Markov cachés (Hidden Markov Models) pour identifier et modéliser les différents régimes de volatilité et de tendance sur les marchés financiers.</p>
-              
-              <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
-                  <div class="flex flex-col">
-                      <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Format</span>
-                      <span class="text-[0.7rem] font-bold text-text uppercase tracking-wide">Jupyter Notebook</span>
-                  </div>
-                  <a href="/recherches/hmm-engine" class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-widest font-bold text-text group-hover:text-blue-3 transition-colors">
-                      Lire <span class="group-hover:translate-x-1 transition-transform">→</span>
-                  </a>
-              </div>
-            </div>
-          </article>
+            </article>
+          ))}
 
           <!-- Message si aucune recherche trouvée -->
           <div class="no-results hidden col-span-full text-center p-10 border border-dashed border-border text-dim" id="no-results">
             <p class="font-mono text-sm uppercase tracking-widest">Aucun résultat trouvé pour votre recherche.</p>
           </div>
       </div>
-    </main>
+    </div>
 </BaseLayout>
