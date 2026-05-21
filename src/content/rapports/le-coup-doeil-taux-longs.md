@@ -13,7 +13,7 @@ tags: ["Fixed Income", "Treasuries", "Macro", "Investissement"]
 
 ## La cause : Le hedge comme maître mot
 
-Les rendements des Treasuries à long terme, en particulier le benchmark à 10 ans, ont bondi alors que les investisseurs recherchent des rendements plus élevés pour compenser les risques d'inflation. Les anticipations de la hausse des coûts de l’énergie ont eu pour impact la réduction des expositions sur les obligations de longue durée (pour combler les pertes relatives). Comme nous le savons, le prix d’une obligation est inversement corrélé à son taux, de ce fait ce facteur explique la montée en flèche des taux US.
+Les rendements des Treasuries à long terme, notamment le taux à 10 ans, ont fortement progressé. Face aux risques d'inflation alimentés par la hausse des coûts de l'énergie, les investisseurs exigent des primes de rendement plus élevées et ont ainsi réduit leur exposition aux obligations de longue durée pour limiter leurs pertes. Ce mouvement de vente massif explique la flambée des taux américains, le prix des obligations évoluant de manière inverse à leur rendement.
 
 ![Graphique des taux longs US](/assets/img/us_10y_yield_surge.png)
 
