@@ -7,7 +7,7 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
 ---
 
 <BaseLayout {title} {description} activeNav="home">
-    <header class="hero hero-index text-center flex flex-col items-center justify-center min-h-[90vh] bg-dark relative overflow-hidden border-b border-border-dk">
+    <header class="hero hero-index text-center flex flex-col items-center justify-center min-h-screen bg-dark relative overflow-hidden border-b border-border-dk !py-0">
       <h1 class="sr-only">Analyse Macroéconomique & Finance Quantitative | Horacle Capital</h1>
       
       <!-- Impeccable Aesthetic Background -->
@@ -22,16 +22,16 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
       <div class="hero-inner flex flex-col items-center justify-center relative z-10 w-full px-6">
         <div class="flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
           
-          <div class="mb-12 relative reveal">
-            <img src="/assets/img/logo_ban.svg" alt="HORACLE CAPITAL" class="w-full max-w-[360px] md:max-w-[650px] lg:max-w-[800px] min-[1500px]:max-w-[1000px] drop-shadow-2xl brightness-0 invert" />
+          <div class="mb-10 relative reveal">
+            <img src="/assets/img/logo_ban.svg" alt="HORACLE CAPITAL" class="w-full max-w-[320px] md:max-w-[550px] lg:max-w-[750px] min-[1500px]:max-w-[900px] drop-shadow-2xl brightness-0 invert" />
           </div>
           
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full px-4 sm:px-0 reveal reveal-delay-1">
-            <a href="/reports" class="btn-primary w-full sm:w-auto justify-center text-sm md:text-base lg:text-lg px-6 md:px-8 py-4 md:py-5 shadow-xl hover:shadow-blue-3/20 flex items-center gap-3">
+            <a href="/reports" class="btn-primary w-full sm:w-auto justify-center text-sm md:text-base px-5 md:px-7 py-3 md:py-3.5 shadow-xl hover:shadow-blue-3/20 flex items-center gap-3">
               Nos rapports macro
               <svg width="18" height="18" viewBox="0 0 14 14" fill="none" class="w-4 h-4 md:w-5 md:h-5"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="/research" class="w-full sm:w-auto justify-center text-sm md:text-base lg:text-lg px-6 md:px-8 py-4 md:py-5 shadow-xl flex items-center gap-3 border border-white/20 text-white hover:bg-white/5 transition-colors font-bold font-sans tracking-wide">
+            <a href="/research" class="w-full sm:w-auto justify-center text-sm md:text-base px-5 md:px-7 py-3 md:py-3.5 shadow-xl flex items-center gap-3 border border-white/20 text-white hover:bg-white/5 transition-colors font-bold font-sans tracking-wide">
               Nos recherches
               <svg width="18" height="18" viewBox="0 0 14 14" fill="none" class="w-4 h-4 md:w-5 md:h-5"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
@@ -184,7 +184,29 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
 
           <div class="grid lg:grid-cols-2 gap-6">
 
-            <a href="/reports/rapport_18_05_26" class="reveal group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
+            <a href="/reports/rapport_23_05_26" class="reveal group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
+              <div class="h-56 overflow-hidden relative border-b border-border">
+                <img
+                  src="/assets/img/banner_2.jpg"
+                  onerror="this.src='/assets/img/banner.jpg'"
+                  alt="Un dollar sous tension et des banques centrales indécises"
+                  class="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700">
+                <div class="absolute top-4 left-4 flex gap-2">
+                  <span class="bg-orange text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-none">Macro</span>
+                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1">Hebdo N°11</span>
+                </div>
+              </div>
+              <div class="p-8 flex-1 flex flex-col">
+                <div class="font-sans text-[0.6rem] text-dim mb-3 uppercase tracking-widest">23 Mai 2026</div>
+                <h3 class="font-head text-2xl font-semibold text-text mb-4 leading-tight group-hover:text-orange transition-colors">Un dollar sous tension &amp;<br>centrales indécises</h3>
+                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Analyse de la montée des taux longs américains, de la divergence monétaire Fed/BCE face à une inflation persistante, et de la résilience structurelle du Yen japonais.</p>
+                <div class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange mt-auto pt-6 border-t border-border">
+                  Lire le rapport <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+              </div>
+            </a>
+
+            <a href="/reports/rapport_18_05_26" class="reveal reveal-delay-1 group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
               <div class="h-56 overflow-hidden relative border-b border-border">
                 <img
                   src="/assets/img/cover_report_10.jpg"
@@ -199,29 +221,7 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
               <div class="p-8 flex-1 flex flex-col">
                 <div class="font-sans text-[0.6rem] text-dim mb-3 uppercase tracking-widest">18 Mai 2026</div>
                 <h3 class="font-head text-2xl font-semibold text-text mb-4 leading-tight group-hover:text-orange transition-colors">Entre inflation &amp;<br>ascension</h3>
-                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Analyse des tensions inflationnistes persistantes face à la résilience des marchés actions. Étude des divergences monétaires entre la Fed, la BCE et la dynamique au Japon, couplée au réveil des matières premières.</p>
-                <div class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange mt-auto pt-6 border-t border-border">
-                  Lire le rapport <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </div>
-              </div>
-            </a>
-
-            <a href="/reports/rapport_24_04_26" class="reveal reveal-delay-1 group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
-              <div class="h-56 overflow-hidden relative border-b border-border">
-                <img
-                  src="/assets/img/hormuz.jpg"
-                  onerror="this.src='/assets/img/banner.jpg'"
-                  alt="Tensions géopolitiques Détroit d'Ormuz"
-                  class="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700">
-                <div class="absolute top-4 left-4 flex gap-2">
-                  <span class="bg-orange text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-none">Macro</span>
-                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1">Hebdo N°9</span>
-                </div>
-              </div>
-              <div class="p-8 flex-1 flex flex-col">
-                <div class="font-sans text-[0.6rem] text-dim mb-3 uppercase tracking-widest">24 Avril 2026</div>
-                <h3 class="font-head text-2xl font-semibold text-text mb-4 leading-tight group-hover:text-orange transition-colors">Climat Tendu &amp;<br>Equities au Top</h3>
-                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Revue macro du 20 au 24 avril 2026 : tensions diplomatiques Iran–USA, résistance des marchés actions et lecture des données macroéconomiques clés.</p>
+                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Analyse des tensions inflationnistes persistantes face à la résilience des marchés actions. Étude des divergences monétaires entre la Fed, la BCE et la dynamique au Japon.</p>
                 <div class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange mt-auto pt-6 border-t border-border">
                   Lire le rapport <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </div>
