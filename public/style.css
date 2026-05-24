@@ -1245,7 +1245,16 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
 
 /* ─── INDEX-ONLY HERO MOBILE OVERRIDE ──────────────────────────── */
 @media (max-width: 960px) {
-  .hero-index { min-height: 75vh !important; }
+  .hero-index { min-height: 100vh !important; min-height: 100dvh !important; }
+  
+  .eco-card { padding: 32px 24px; text-align: center; align-items: center; }
+  .eco-title { font-size: 2rem; margin-bottom: 16px; }
+  .eco-desc { font-size: 0.9rem; margin-bottom: 24px; max-width: 100%; }
+  .eco-link { justify-content: center; width: 100%; }
+  
+  .section-rule { flex-direction: column; gap: 10px; text-align: center; }
+  .section-rule::before { width: 40px; height: 2px; background: linear-gradient(90deg, var(--blue-2), var(--blue-3)); }
+  .rule-line { width: 100%; }
 }
 
 /* ─── INSTITUTIONAL ECOSYSTEM (Asymmetric) ───────────────────────── */
