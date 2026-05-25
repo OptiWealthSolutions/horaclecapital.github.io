@@ -163,10 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  smClose.addEventListener('click', closeSearch);
-  searchModal.addEventListener('click', (e) => { if (e.target === searchModal) closeSearch(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && searchModal.classList.contains('active')) closeSearch(); });
-  smInput.addEventListener('input', (e) => renderResults(e.target.value));
+  if (smClose) smClose.addEventListener('click', closeSearch);
+  if (searchModal) searchModal.addEventListener('click', (e) => { if (e.target === searchModal) closeSearch(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && searchModal && searchModal.classList.contains('active')) closeSearch(); });
+  if (smInput) smInput.addEventListener('input', (e) => renderResults(e.target.value));
 
   // Ecoute du formulaire de recherche de la Navbar
   globalSearchForms.forEach(form => {
@@ -354,8 +354,8 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => cookieBanner.remove(), 300);
     };
 
-    document.getElementById('btn-accept-cookies').addEventListener('click', () => closeBanner('accepted'));
-    document.getElementById('btn-refuse-cookies').addEventListener('click', () => closeBanner('refused'));
+    if (document.getElementById('btn-accept-cookies')) document.getElementById('btn-accept-cookies').addEventListener('click', () => closeBanner('accepted'));
+    if (document.getElementById('btn-refuse-cookies')) document.getElementById('btn-refuse-cookies').addEventListener('click', () => closeBanner('refused'));
   }
 
   // --- REVEAL ANIMATIONS (Intersection Observer) ---
@@ -400,6 +400,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const authSwitchText = document.getElementById('auth-switch-text');
   const authError = document.getElementById('auth-error');
   
+  const githubAuthBtn = document.getElementById('github-auth-btn');
+  const confirmPasswordInput = document.getElementById('auth-confirm-password');
+  
   const userNav = document.getElementById('user-nav');
   const logoutBtn = document.getElementById('logout-btn');
 
@@ -439,6 +442,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   if (supabaseClient) {
+    window.supabaseClient = supabaseClient; // Expose for account page
+    
     // Check current session
     supabaseClient.auth.getSession().then(({ data: { session } }) => {
       updateAuthUI(session?.user);
@@ -457,6 +462,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (authSubmitBtn) authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
     if (authSwitchText) authSwitchText.textContent = isLogin ? 'Pas encore de compte ?' : 'Déjà un compte ?';
     if (authSwitchBtn) authSwitchBtn.textContent = isLogin ? 'S\'inscrire' : 'Se connecter';
+    
+    if (confirmPasswordInput) {
+      if (isLogin) confirmPasswordInput.classList.add('hidden');
+      else confirmPasswordInput.classList.remove('hidden');
+      confirmPasswordInput.required = !isLogin;
+    }
+
     if (authError) authError.classList.add('hidden');
     authModal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -479,16 +491,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Support custom events from Account page
+  window.addEventListener('open-auth-modal', (e) => {
+    openAuthModal(e.detail.mode || 'login');
+  });
+
+  if (githubAuthBtn && supabaseClient) {
+    githubAuthBtn.addEventListener('click', async () => {
+      const { error } = await supabaseClient.auth.signInWithOAuth({
+        provider: 'github',
+        options: {
+          redirectTo: window.location.origin + '/account'
+        }
+      });
+      if (error) {
+        authError.textContent = error.message;
+        authError.classList.remove('hidden');
+      }
+    });
+  }
+
   if (authForm && supabaseClient) {
     authForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const emailInput = document.getElementById('auth-email');
       const passwordInput = document.getElementById('auth-password');
+      const confirmPasswordInput = document.getElementById('auth-confirm-password');
       if (!emailInput || !passwordInput) return;
 
       const email = emailInput.value;
       const password = passwordInput.value;
       
+      if (!isLogin && confirmPasswordInput) {
+        if (password !== confirmPasswordInput.value) {
+          authError.textContent = "Les mots de passe ne correspondent pas.";
+          authError.classList.remove('hidden');
+          return;
+        }
+      }
+
       if (authError) authError.classList.add('hidden');
       if (authSubmitBtn) {
         authSubmitBtn.disabled = true;
@@ -513,7 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
             authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
           }
         } else {
-          if (!isLogin) {
+          if (!isLogin && result.data?.user && !result.data.session) {
             // Inscription réussie : Message pour la confirmation mail
             if (authError) {
               authError.textContent = "Inscription réussie ! Vérifiez votre boîte mail pour confirmer votre compte.";
@@ -531,13 +572,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Auth error:", err);
         if (authSubmitBtn) authSubmitBtn.disabled = false;
       }
-    });
-  }
-
-  if (logoutBtn && supabaseClient) {
-    logoutBtn.addEventListener('click', async (e) => {
-      e.preventDefault();
-      await supabaseClient.auth.signOut();
     });
   }
 

@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Mon Compte | Horacle Capital';
+const description = "Gérez votre profil, vos abonnements et accédez à vos recherches débloquées.";
+---
+
+<BaseLayout {title} {description} activeNav="account">
+    <header class="page-header relative py-20 overflow-hidden bg-dark">
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+      </div>
+      <div class="container relative z-10 text-center">
+        <span class="font-mono text-[0.65rem] uppercase tracking-[0.4em] text-blue-3 font-bold mb-4 block">Espace Membre</span>
+        <h1 class="font-head text-4xl md:text-6xl text-white mb-4">Votre Profil</h1>
+        <p id="user-email-display" class="text-white/40 font-mono text-sm tracking-widest">---</p>
+      </div>
+    </header>
+
+    <main class="py-24 bg-bg min-h-[60vh]">
+        <div class="container max-w-4xl">
+            <div id="account-loading" class="text-center py-20">
+                <div class="cs-pulse inline-block mb-4"></div>
+                <p class="font-mono text-xs uppercase tracking-widest text-dim">Chargement de vos données...</p>
+            </div>
+
+            <div id="account-content" class="hidden">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Sidebar -->
+                    <div class="md:col-span-1 flex flex-col gap-4">
+                        <div class="bg-dark border border-border-dk p-8">
+                            <h3 class="font-mono text-[0.6rem] uppercase tracking-widest text-blue-3 mb-6 border-b border-white/10 pb-4">Statut</h3>
+                            <div id="account-status" class="flex flex-col gap-4">
+                                <div>
+                                    <span class="text-[0.6rem] text-dim uppercase tracking-widest block mb-1">Plan actuel</span>
+                                    <span id="user-plan" class="text-white font-bold text-sm">Gratuit</span>
+                                </div>
+                                <div>
+                                    <span class="text-[0.6rem] text-dim uppercase tracking-widest block mb-1">Membre depuis</span>
+                                    <span id="user-joined" class="text-white/60 font-mono text-xs">---</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="account-logout-btn" class="w-full py-4 border border-white/10 text-white/40 hover:text-white hover:border-white/20 transition-all font-mono text-[0.65rem] uppercase tracking-widest">Se déconnecter</button>
+                    </div>
+
+                    <!-- Main -->
+                    <div class="md:col-span-2 flex flex-col gap-8">
+                        <div class="bg-white border border-border p-10">
+                            <h2 class="font-head text-3xl mb-8">Mes Recherches Débloquées</h2>
+                            
+                            <div id="purchases-list" class="flex flex-col gap-6">
+                                <!-- List populated by JS -->
+                                <div class="text-center py-12 border-2 border-dashed border-border">
+                                    <p class="text-dim text-sm italic mb-6">Vous n'avez pas encore débloqué de recherche.</p>
+                                    <a href="/research" class="btn-primary inline-flex px-8 py-3 text-xs">Explorer les recherches</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-bg-2 border border-border p-10">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="font-head text-2xl">Historique d'Achats</h3>
+                                <span id="purchase-count" class="bg-blue-3/10 text-blue-3 px-3 py-1 font-mono text-[0.65rem] font-bold">0 Achat</span>
+                            </div>
+                            <div id="billing-history" class="text-sm text-off font-sans">
+                                Aucune transaction enregistrée.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Access Denied -->
+            <div id="account-denied" class="hidden text-center py-20 bg-dark border border-white/5">
+                <h2 class="font-head text-4xl text-white mb-6">Accès Réservé</h2>
+                <p class="text-white/40 mb-10 max-w-md mx-auto">Veuillez vous connecter pour accéder à votre espace membre.</p>
+                <button onclick="window.dispatchEvent(new CustomEvent('open-auth-modal', {detail: {mode: 'login'}}))" class="btn-primary px-12 py-4">Se connecter</button>
+            </div>
+        </div>
+    </main>
+</BaseLayout>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const loading = document.getElementById('account-loading');
+        const content = document.getElementById('account-content');
+        const denied = document.getElementById('account-denied');
+        
+        const userEmail = document.getElementById('user-email-display');
+        const userPlan = document.getElementById('user-plan');
+        const userJoined = document.getElementById('user-joined');
+        const logoutBtn = document.getElementById('account-logout-btn');
+
+        // Check session
+        const checkUser = async () => {
+            if (!window.supabaseClient) {
+                setTimeout(checkUser, 200);
+                return;
+            }
+
+            const { data: { session } } = await window.supabaseClient.auth.getSession();
+            
+            if (session?.user) {
+                loading.classList.add('hidden');
+                content.classList.remove('hidden');
+                denied.classList.add('hidden');
+
+                userEmail.textContent = session.user.email;
+                userJoined.textContent = new Date(session.user.created_at).toLocaleDateString('fr-FR');
+                
+                // Get Metadata or custom profile if exists
+                const { data: profile } = await window.supabaseClient
+                    .from('profiles')
+                    .select('*')
+                    .single();
+                
+                if (profile) {
+                    userPlan.textContent = profile.plan === 'premium' ? 'Premium' : 'Gratuit';
+                    // We could populate purchases-list here from a table
+                }
+
+            } else {
+                loading.classList.add('hidden');
+                content.classList.add('hidden');
+                denied.classList.remove('hidden');
+            }
+        };
+
+        checkUser();
+
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', async () => {
+                await window.supabaseClient.auth.signOut();
+                window.location.href = '/';
+            });
+        }
+    });
+</script>
