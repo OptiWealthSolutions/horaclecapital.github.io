@@ -513,8 +513,19 @@ document.addEventListener('DOMContentLoaded', () => {
             authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
           }
         } else {
-          closeAuthModal();
-          if (authSubmitBtn) authSubmitBtn.disabled = false;
+          if (!isLogin) {
+            // Inscription réussie : Message pour la confirmation mail
+            if (authError) {
+              authError.textContent = "Inscription réussie ! Vérifiez votre boîte mail pour confirmer votre compte.";
+              authError.style.color = "var(--blue-3)";
+              authError.classList.remove('hidden');
+            }
+            authSubmitBtn.disabled = false;
+            authSubmitBtn.textContent = 'Continuer';
+          } else {
+            closeAuthModal();
+            if (authSubmitBtn) authSubmitBtn.disabled = false;
+          }
         }
       } catch (err) {
         console.error("Auth error:", err);

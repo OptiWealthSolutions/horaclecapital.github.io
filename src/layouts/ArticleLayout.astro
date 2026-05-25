@@ -11,6 +11,7 @@ export interface Props {
   slug: string;
   tags?: string[];
   isPremium?: boolean;
+  teaser?: string;
 }
 
 const {
@@ -23,6 +24,7 @@ const {
   slug,
   tags = [],
   isPremium = false,
+  teaser,
 } = Astro.props;
 
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://horaclecapital.com';
@@ -160,8 +162,12 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
           <div class="article-container !max-w-none !m-0 !p-0 font-sans [&>h2]:font-semibold [&>h3]:font-semibold [&>p]:leading-relaxed">
             {isPremium ? (
               <>
-                <div class="teaser-content">
-                  <slot name="teaser" />
+                <div class="teaser-content mb-8">
+                  {teaser ? (
+                    <div class="exec-summary" set:html={teaser} />
+                  ) : (
+                    <slot name="teaser" />
+                  )}
                 </div>
                 
                 <div id="premium-content" class="hidden">

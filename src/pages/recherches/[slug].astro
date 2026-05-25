@@ -24,8 +24,7 @@ const { Content } = await entry.render();
   slug={entry.slug}
   tags={entry.data.tags}
   isPremium={entry.data.isPremium}
+  teaser={entry.data.description}
 >
-  <div slot="teaser">
-     <Content />
-  </div>
+  <Content />
 </ArticleLayout>
