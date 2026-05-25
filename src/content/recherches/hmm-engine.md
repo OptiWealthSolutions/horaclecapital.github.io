@@ -12,6 +12,7 @@ tags:
 - Statistics
 - Engine
 - Détection
+isPremium: true
 ---
 <div class="exec-summary">
   <strong>Introduction au Projet</strong>

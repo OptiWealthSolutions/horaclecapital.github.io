@@ -78,6 +78,29 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--bg-2); }
 ::-webkit-scrollbar-thumb { background: var(--blue-2); border-radius: 0; }
 
+/* ─── MEMBERSTACK ────────────────────────────────────────────── */
+[data-ms-content] { display: none !important; }
+.ms-member [data-ms-content="all"],
+.ms-member-logged-in [data-ms-content="logged-in"],
+body:not(.ms-member-logged-in) [data-ms-content="!logged-in"] { 
+  display: flex !important; 
+}
+
+.nav-auth-btn {
+  background: var(--blue-3);
+  color: #fff !important;
+  font-weight: 700 !important;
+  padding: 8px 16px !important;
+  height: 34px !important;
+  margin: auto 10px;
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+.nav-auth-btn:hover {
+  background: var(--blue-2);
+  transform: translateY(-1px);
+}
+
 /* ─── NAV ─────────────────────────────────────────────────────── */
 nav {
   position: fixed;

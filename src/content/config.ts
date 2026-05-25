@@ -13,6 +13,7 @@ const rapports = defineCollection({
     thumbnail: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    isPremium: z.boolean().default(false),
   }),
 });
 
@@ -29,6 +30,7 @@ const recherches = defineCollection({
     ogImage: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    isPremium: z.boolean().default(false),
   }),
 });
 

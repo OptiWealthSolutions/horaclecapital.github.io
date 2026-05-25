@@ -23,6 +23,9 @@ const { Content } = await entry.render();
   ogImage={entry.data.ogImage}
   slug={entry.slug}
   tags={entry.data.tags}
+  isPremium={entry.data.isPremium}
 >
-  <Content />
+  <div slot="teaser">
+     <Content />
+  </div>
 </ArticleLayout>

@@ -23,6 +23,7 @@ const { Content } = await entry.render();
   ogImage={entry.data.ogImage}
   slug={entry.slug}
   tags={entry.data.tags}
+  isPremium={entry.data.isPremium}
 >
   {entry.data.issue && (
     <div class="exec-summary">

@@ -11,6 +11,7 @@ tags:
 - Statistics
 - Microstructure
 - Algorithmic
+isPremium: true
 ---
 <div class="exec-summary">
   <strong>Executive Summary</strong>

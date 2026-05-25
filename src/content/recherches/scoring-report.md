@@ -11,6 +11,7 @@ tags:
 - Statistics
 - Scoring
 - Report
+isPremium: true
 ---
 <div class="bg-bg-2 border-l-2 border-dim py-6 px-8 mb-12 text-[0.9rem] text-off">
   <strong class="font-mono text-dim uppercase block mb-3 text-[0.7rem] tracking-widest">Note d'Inspiration</strong>
