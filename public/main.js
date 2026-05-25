@@ -498,10 +498,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (githubAuthBtn && supabaseClient) {
     githubAuthBtn.addEventListener('click', async () => {
+      const siteUrl = window.location.origin.includes('localhost') ? window.location.origin : 'https://horaclecapital.com';
       const { error } = await supabaseClient.auth.signInWithOAuth({
         provider: 'github',
         options: {
-          redirectTo: window.location.origin + '/account'
+          redirectTo: siteUrl + '/account'
         }
       });
       if (error) {
@@ -538,10 +539,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let result;
       try {
+        const siteUrl = window.location.origin.includes('localhost') ? window.location.origin : 'https://horaclecapital.com';
         if (isLogin) {
           result = await supabaseClient.auth.signInWithPassword({ email, password });
         } else {
-          result = await supabaseClient.auth.signUp({ email, password });
+          result = await supabaseClient.auth.signUp({ 
+            email, 
+            password,
+            options: {
+              emailRedirectTo: siteUrl + '/account'
+            }
+          });
         }
 
         if (result.error) {
