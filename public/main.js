@@ -377,7 +377,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const SUPABASE_URL = 'https://svodjiuypokuvubwfkom.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_CanU4tYA8yh9_9Tbgib4Kw_ecQJtXcp'; // Remplacer par la clé réelle
 
-  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  let supabaseClient;
+  try {
+    if (window.supabase) {
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      console.log("Supabase client initialized successfully.");
+    } else {
+      console.error("Supabase library not found on window object.");
+    }
+  } catch (err) {
+    console.error("Error initializing Supabase client:", err);
+  }
 
   const authModal = document.getElementById('auth-modal');
   const authForm = document.getElementById('auth-form');
@@ -399,6 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isLogin = true;
 
   const updateAuthUI = (user) => {
+    console.log("Updating Auth UI for user:", user ? user.email : "Anonymous");
     if (user) {
       if (loginBtn) loginBtn.classList.add('hidden');
       if (signupBtn) signupBtn.classList.add('hidden');
@@ -427,36 +438,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Check current session
-  supabaseClient.auth.getSession().then(({ data: { session } }) => {
-    updateAuthUI(session?.user);
-  });
+  if (supabaseClient) {
+    // Check current session
+    supabaseClient.auth.getSession().then(({ data: { session } }) => {
+      updateAuthUI(session?.user);
+    }).catch(err => console.error("Error getting Supabase session:", err));
 
-  // Listen for auth changes
-  supabaseClient.auth.onAuthStateChange((_event, session) => {
-    updateAuthUI(session?.user);
-  });
+    // Listen for auth changes
+    supabaseClient.auth.onAuthStateChange((_event, session) => {
+      updateAuthUI(session?.user);
+    });
+  }
 
   const openAuthModal = (mode = 'login') => {
+    if (!authModal) return;
     isLogin = mode === 'login';
-    authModalTitle.textContent = isLogin ? 'Connexion' : 'S\'inscrire';
-    authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
-    authSwitchText.textContent = isLogin ? 'Pas encore de compte ?' : 'Déjà un compte ?';
-    authSwitchBtn.textContent = isLogin ? 'S\'inscrire' : 'Se connecter';
-    authError.classList.add('hidden');
+    if (authModalTitle) authModalTitle.textContent = isLogin ? 'Connexion' : 'S\'inscrire';
+    if (authSubmitBtn) authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
+    if (authSwitchText) authSwitchText.textContent = isLogin ? 'Pas encore de compte ?' : 'Déjà un compte ?';
+    if (authSwitchBtn) authSwitchBtn.textContent = isLogin ? 'S\'inscrire' : 'Se connecter';
+    if (authError) authError.classList.add('hidden');
     authModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   };
 
   const closeAuthModal = () => {
-    authModal.classList.remove('active');
+    if (authModal) authModal.classList.remove('active');
     document.body.style.overflow = '';
   };
 
-  if (loginBtn) loginBtn.addEventListener('click', () => openAuthModal('login'));
-  if (signupBtn) signupBtn.addEventListener('click', () => openAuthModal('signup'));
-  if (paywallLoginBtn) paywallLoginBtn.addEventListener('click', () => openAuthModal('login'));
-  if (paywallSignupBtn) paywallSignupBtn.addEventListener('click', () => openAuthModal('signup'));
+  if (loginBtn) loginBtn.addEventListener('click', (e) => { e.preventDefault(); openAuthModal('login'); });
+  if (signupBtn) signupBtn.addEventListener('click', (e) => { e.preventDefault(); openAuthModal('signup'); });
+  if (paywallLoginBtn) paywallLoginBtn.addEventListener('click', (e) => { e.preventDefault(); openAuthModal('login'); });
+  if (paywallSignupBtn) paywallSignupBtn.addEventListener('click', (e) => { e.preventDefault(); openAuthModal('signup'); });
   if (authModalClose) authModalClose.addEventListener('click', closeAuthModal);
   
   if (authSwitchBtn) {
@@ -465,36 +479,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (authForm) {
+  if (authForm && supabaseClient) {
     authForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const email = document.getElementById('auth-email').value;
-      const password = document.getElementById('auth-password').value;
-      authError.classList.add('hidden');
-      authSubmitBtn.disabled = true;
-      authSubmitBtn.textContent = 'Traitement...';
+      const emailInput = document.getElementById('auth-email');
+      const passwordInput = document.getElementById('auth-password');
+      if (!emailInput || !passwordInput) return;
 
-      let result;
-      if (isLogin) {
-        result = await supabaseClient.auth.signInWithPassword({ email, password });
-      } else {
-        result = await supabaseClient.auth.signUp({ email, password });
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      
+      if (authError) authError.classList.add('hidden');
+      if (authSubmitBtn) {
+        authSubmitBtn.disabled = true;
+        authSubmitBtn.textContent = 'Traitement...';
       }
 
-      if (result.error) {
-        authError.textContent = result.error.message;
-        authError.classList.remove('hidden');
-        authSubmitBtn.disabled = false;
-        authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
-      } else {
-        closeAuthModal();
-        authSubmitBtn.disabled = false;
+      let result;
+      try {
+        if (isLogin) {
+          result = await supabaseClient.auth.signInWithPassword({ email, password });
+        } else {
+          result = await supabaseClient.auth.signUp({ email, password });
+        }
+
+        if (result.error) {
+          if (authError) {
+            authError.textContent = result.error.message;
+            authError.classList.remove('hidden');
+          }
+          if (authSubmitBtn) {
+            authSubmitBtn.disabled = false;
+            authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
+          }
+        } else {
+          closeAuthModal();
+          if (authSubmitBtn) authSubmitBtn.disabled = false;
+        }
+      } catch (err) {
+        console.error("Auth error:", err);
+        if (authSubmitBtn) authSubmitBtn.disabled = false;
       }
     });
   }
 
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', async () => {
+  if (logoutBtn && supabaseClient) {
+    logoutBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
       await supabaseClient.auth.signOut();
     });
   }
