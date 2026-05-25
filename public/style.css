@@ -78,13 +78,20 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--bg-2); }
 ::-webkit-scrollbar-thumb { background: var(--blue-2); border-radius: 0; }
 
-/* ─── MEMBERSTACK ────────────────────────────────────────────── */
-[data-ms-content] { display: none !important; }
-.ms-member [data-ms-content="all"],
-.ms-member-logged-in [data-ms-content="logged-in"],
-body:not(.ms-member-logged-in) [data-ms-content="!logged-in"] { 
-  display: flex !important; 
+/* ─── AUTHENTICATION (Supabase) ────────────────────────────── */
+.hidden { display: none !important; }
+.nav-link-btn {
+  background: none;
+  border: none;
+  font-family: var(--ff-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0 14px;
+  cursor: pointer;
+  transition: color 0.25s ease;
 }
+.nav-link-btn:hover { color: #fff; }
 
 .nav-auth-btn {
   background: var(--blue-3);
@@ -94,11 +101,23 @@ body:not(.ms-member-logged-in) [data-ms-content="!logged-in"] {
   height: 34px !important;
   margin: auto 10px;
   border-radius: 0;
+  border: none;
+  cursor: pointer;
   transition: all 0.2s ease;
+  font-size: 0.8rem;
 }
 .nav-auth-btn:hover {
   background: var(--blue-2);
   transform: translateY(-1px);
+}
+
+/* Paywall */
+.paywall-container {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--dark);
+  border: 1px solid var(--blue-3);
+  text-align: center;
 }
 
 /* ─── NAV ─────────────────────────────────────────────────────── */
@@ -110,7 +129,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 clamp(24px, 5vw, 64px);
-  height: 60px;
+  height: 70px;
   background: rgba(15, 23, 42, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -118,13 +137,13 @@ nav {
 }
 
 .logo-container img { 
-  max-height: 28px; 
+  max-height: 32px; 
   display: block; 
   filter: none !important; 
   box-shadow: none !important; 
 }
 
-.nav-links { display: flex; align-items: center; gap: 2px; }
+.nav-links { display: flex; align-items: center; gap: 8px; }
 .nav-links a {
   position: relative;
   font-family: var(--ff-body);
@@ -132,12 +151,36 @@ nav {
   font-weight: 500;
   letter-spacing: 0.01em;
   color: rgba(255, 255, 255, 0.6);
-  padding: 0 14px;
-  height: 60px;
+  padding: 0 12px;
+  height: 70px;
   display: flex;
   align-items: center;
   transition: color 0.25s ease;
 }
+
+.nav-search { 
+  display: flex; 
+  align-items: center; 
+  background: rgba(255, 255, 255, 0.05); 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  padding: 0 12px; 
+  height: 36px; 
+  margin: 0 10px;
+}
+.nav-search input { 
+  background: transparent; 
+  border: none; 
+  color: #fff; 
+  font-size: 0.8rem; 
+  outline: none; 
+  width: 120px; 
+  transition: width 0.3s;
+}
+.nav-search input:focus { width: 180px; }
+
+#auth-nav { display: flex; align-items: center; gap: 4px; }
+.nav-link-btn { font-size: 0.75rem !important; }
+.nav-auth-btn { font-size: 0.75rem !important; padding: 6px 14px !important; height: 32px !important; }
 .nav-links a::after {
   content: '';
   position: absolute;

@@ -38,12 +38,34 @@ const {
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#0F172A" />
 
-  <!-- Memberstack Header Code -->
-  <script data-memberstack-app="pk_a94b9c3847594d0799bd" src="https://static.memberstack.com/scripts/v1/memberstack.js" type="text/javascript"></script>
+  <!-- Supabase JS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <slot name="head" />
 </head>
 <body class="bg-bg text-text font-body">
+  <!-- Auth Modals -->
+  <div id="auth-modal" class="search-modal-overlay">
+    <div class="search-modal auth-modal-content">
+      <div class="sm-header">
+        <h4 id="auth-modal-title">Connexion</h4>
+        <button class="sm-close" id="auth-modal-close">&times;</button>
+      </div>
+      <div class="sm-body">
+        <form id="auth-form" class="flex flex-col gap-4 p-6">
+          <input type="email" id="auth-email" placeholder="Email" required class="px-4 py-2 bg-white/5 border border-white/10 text-white outline-none">
+          <input type="password" id="auth-password" placeholder="Mot de passe" required class="px-4 py-2 bg-white/5 border border-white/10 text-white outline-none">
+          <button type="submit" id="auth-submit-btn" class="btn-primary py-3">Continuer</button>
+          <p class="text-xs text-dim text-center mt-2">
+            <span id="auth-switch-text">Pas encore de compte ?</span>
+            <button type="button" id="auth-switch-btn" class="text-blue-3 hover:underline">S'inscrire</button>
+          </p>
+          <div id="auth-error" class="text-xs text-red-500 mt-2 text-center hidden"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <nav>
     <div class="logo-container">
       <a href="/">
@@ -66,12 +88,14 @@ const {
         <input type="text" placeholder="Rechercher..." aria-label="Rechercher sur le site" />
       </form>
 
-      <!-- Memberstack Auth Links -->
-      <div class="flex items-center">
-        <a href="#/" data-ms-modal="login" data-ms-content="!logged-in">Connexion</a>
-        <a href="#/" data-ms-modal="signup" data-ms-content="!logged-in" class="nav-auth-btn">S'abonner</a>
-        <a href="#/" data-ms-modal="profile" data-ms-content="logged-in">Mon Compte</a>
-        <a href="#/" data-ms-action="logout" data-ms-content="logged-in">Déconnexion</a>
+      <!-- Auth Links -->
+      <div class="flex items-center" id="auth-nav">
+        <button id="login-btn" class="nav-link-btn">Connexion</button>
+        <button id="signup-btn" class="nav-auth-btn">S'abonner</button>
+        <div id="user-nav" class="hidden flex items-center">
+          <a href="/profile" class="nav-link">Mon Compte</a>
+          <button id="logout-btn" class="nav-link-btn">Déconnexion</button>
+        </div>
       </div>
     </div>
     <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">

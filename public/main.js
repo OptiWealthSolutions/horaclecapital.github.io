@@ -373,6 +373,132 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => observer.observe(el));
   }
 
+  // --- SUPABASE AUTHENTICATION ---
+  const SUPABASE_URL = 'https://svodjiuypokuvubwfkom.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_CanU4tYA8yh9_9Tbgib4Kw_ecQJtXcp'; // Remplacer par la clé réelle
+
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const authModal = document.getElementById('auth-modal');
+  const authForm = document.getElementById('auth-form');
+  const loginBtn = document.getElementById('login-btn');
+  const signupBtn = document.getElementById('signup-btn');
+  const authModalClose = document.getElementById('auth-modal-close');
+  const authSwitchBtn = document.getElementById('auth-switch-btn');
+  const authModalTitle = document.getElementById('auth-modal-title');
+  const authSubmitBtn = document.getElementById('auth-submit-btn');
+  const authSwitchText = document.getElementById('auth-switch-text');
+  const authError = document.getElementById('auth-error');
+  
+  const userNav = document.getElementById('user-nav');
+  const logoutBtn = document.getElementById('logout-btn');
+
+  const paywallLoginBtn = document.getElementById('paywall-login-btn');
+  const paywallSignupBtn = document.getElementById('paywall-signup-btn');
+
+  let isLogin = true;
+
+  const updateAuthUI = (user) => {
+    if (user) {
+      if (loginBtn) loginBtn.classList.add('hidden');
+      if (signupBtn) signupBtn.classList.add('hidden');
+      if (userNav) userNav.classList.remove('hidden');
+      
+      // Débloquer le contenu premium si l'utilisateur est connecté
+      const premiumContent = document.getElementById('premium-content');
+      const paywall = document.getElementById('paywall');
+      const printBtn = document.getElementById('print-btn');
+      
+      if (premiumContent) premiumContent.classList.remove('hidden');
+      if (paywall) paywall.classList.add('hidden');
+      if (printBtn) printBtn.classList.remove('hidden');
+    } else {
+      if (loginBtn) loginBtn.classList.remove('hidden');
+      if (signupBtn) signupBtn.classList.remove('hidden');
+      if (userNav) userNav.classList.add('hidden');
+      
+      const premiumContent = document.getElementById('premium-content');
+      const paywall = document.getElementById('paywall');
+      const printBtn = document.getElementById('print-btn');
+
+      if (premiumContent) premiumContent.classList.add('hidden');
+      if (paywall) paywall.classList.remove('hidden');
+      if (printBtn) printBtn.classList.add('hidden');
+    }
+  };
+
+  // Check current session
+  supabaseClient.auth.getSession().then(({ data: { session } }) => {
+    updateAuthUI(session?.user);
+  });
+
+  // Listen for auth changes
+  supabaseClient.auth.onAuthStateChange((_event, session) => {
+    updateAuthUI(session?.user);
+  });
+
+  const openAuthModal = (mode = 'login') => {
+    isLogin = mode === 'login';
+    authModalTitle.textContent = isLogin ? 'Connexion' : 'S\'inscrire';
+    authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
+    authSwitchText.textContent = isLogin ? 'Pas encore de compte ?' : 'Déjà un compte ?';
+    authSwitchBtn.textContent = isLogin ? 'S\'inscrire' : 'Se connecter';
+    authError.classList.add('hidden');
+    authModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeAuthModal = () => {
+    authModal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  if (loginBtn) loginBtn.addEventListener('click', () => openAuthModal('login'));
+  if (signupBtn) signupBtn.addEventListener('click', () => openAuthModal('signup'));
+  if (paywallLoginBtn) paywallLoginBtn.addEventListener('click', () => openAuthModal('login'));
+  if (paywallSignupBtn) paywallSignupBtn.addEventListener('click', () => openAuthModal('signup'));
+  if (authModalClose) authModalClose.addEventListener('click', closeAuthModal);
+  
+  if (authSwitchBtn) {
+    authSwitchBtn.addEventListener('click', () => {
+      openAuthModal(isLogin ? 'signup' : 'login');
+    });
+  }
+
+  if (authForm) {
+    authForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('auth-email').value;
+      const password = document.getElementById('auth-password').value;
+      authError.classList.add('hidden');
+      authSubmitBtn.disabled = true;
+      authSubmitBtn.textContent = 'Traitement...';
+
+      let result;
+      if (isLogin) {
+        result = await supabaseClient.auth.signInWithPassword({ email, password });
+      } else {
+        result = await supabaseClient.auth.signUp({ email, password });
+      }
+
+      if (result.error) {
+        authError.textContent = result.error.message;
+        authError.classList.remove('hidden');
+        authSubmitBtn.disabled = false;
+        authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
+      } else {
+        closeAuthModal();
+        authSubmitBtn.disabled = false;
+      }
+    });
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', async () => {
+      await supabaseClient.auth.signOut();
+    });
+  }
+
   // --- HERO VISUAL CARD PARALLAX ON MOUSE MOVE ---
   const heroCard = document.querySelector('.hero-visual-card');
   const heroVisual = document.querySelector('.hero-visual');

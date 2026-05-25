@@ -134,7 +134,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
               <button 
                 onclick="window.print()" 
                 class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-dark border border-border-dk text-white hover:text-blue-3 hover:border-blue-3 transition-colors font-mono text-[0.6rem] uppercase tracking-widest cursor-pointer"
-                data-ms-content={isPremium ? "premium-plan-id" : "all"}
+                id="print-btn"
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 Imprimer / PDF
@@ -164,11 +164,11 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
                   <slot name="teaser" />
                 </div>
                 
-                <div data-ms-content="premium-plan-id">
+                <div id="premium-content" class="hidden">
                   <slot />
                 </div>
                 
-                <div data-ms-content="!premium-plan-id" class="mt-12 p-8 md:p-12 bg-dark border border-blue-3/30 relative overflow-hidden text-center">
+                <div id="paywall" class="mt-12 p-8 md:p-12 bg-dark border border-blue-3/30 relative overflow-hidden text-center">
                   <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(var(--blue-3) 1px, transparent 1px); background-size: 20px 20px;"></div>
                   
                   <div class="relative z-10">
@@ -179,8 +179,8 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
                     </p>
                     
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                      <a href="#/" data-ms-modal="signup" class="btn-primary px-8 py-4 w-full sm:w-auto">Débloquer la recherche</a>
-                      <a href="#/" data-ms-modal="login" class="text-white/40 hover:text-white transition-colors font-mono text-xs uppercase tracking-widest">Déjà membre ? Se connecter</a>
+                      <button id="paywall-signup-btn" class="btn-primary px-8 py-4 w-full sm:w-auto">Débloquer la recherche</button>
+                      <button id="paywall-login-btn" class="text-white/40 hover:text-white transition-colors font-mono text-xs uppercase tracking-widest">Déjà membre ? Se connecter</button>
                     </div>
                   </div>
                 </div>
