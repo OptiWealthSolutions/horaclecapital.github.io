@@ -562,21 +562,27 @@ document.addEventListener('DOMContentLoaded', () => {
             authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
           }
         } else {
+          // Succès
           if (!isLogin && result.data?.user && !result.data.session) {
-            // Inscription réussie : Message pour la confirmation mail
+            // Si la confirmation email est activée côté Supabase
             if (authError) {
-              authError.textContent = "Inscription réussie ! Vérifiez votre boîte mail pour confirmer votre compte.";
+              authError.textContent = "Vérifiez votre boîte mail pour confirmer votre compte.";
               authError.style.color = "var(--blue-3)";
               authError.classList.remove('hidden');
             }
             authSubmitBtn.disabled = false;
-            authSubmitBtn.textContent = 'Continuer';
+            authSubmitBtn.textContent = 'En attente de confirmation...';
           } else {
+            // Connexion auto ou session déjà active
             closeAuthModal();
             if (authSubmitBtn) authSubmitBtn.disabled = false;
+
+            // Mise à jour immédiate si session présente
+            if (result.data?.session) {
+               updateAuthUI(result.data.session.user);
+            }
           }
-        }
-      } catch (err) {
+        }      } catch (err) {
         console.error("Auth error:", err);
         if (authSubmitBtn) authSubmitBtn.disabled = false;
       }
