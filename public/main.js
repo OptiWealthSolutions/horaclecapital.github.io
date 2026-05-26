@@ -107,8 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const q = query.toLowerCase().trim();
     const filtered = siteData.filter(item => item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q) || item.shortDesc.toLowerCase().includes(q) || item.category.toLowerCase().includes(q));
 
+    const escapeHTML = (str) => {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    };
+
     if (filtered.length === 0) {
-      smResults.innerHTML = '<div class="sm-empty">Aucun résultat trouvé pour "'+query+'"</div>';
+      smResults.innerHTML = '<div class="sm-empty">Aucun résultat trouvé pour "' + escapeHTML(query) + '"</div>';
       return;
     }
 
@@ -131,14 +137,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const safeQ = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const regex = new RegExp(`(${safeQ})`, 'gi');
-      const highlightedTitle = item.title.replace(regex, '<strong style="color: var(--orange)">$1</strong>');
-      const highlightedSnippet = snippet.replace(regex, '<strong style="color: var(--orange)">$1</strong>');
+      
+      // Escape before highlighting to prevent XSS
+      const escapedTitle = escapeHTML(item.title);
+      const escapedSnippet = escapeHTML(snippet);
+      const escapedCategory = escapeHTML(item.category);
+      
+      const highlightedTitle = escapedTitle.replace(regex, '<strong style="color: var(--orange)">$1</strong>');
+      const highlightedSnippet = escapedSnippet.replace(regex, '<strong style="color: var(--orange)">$1</strong>');
 
       return `
         <a href="${finalUrl}" class="sm-result" ${item.url.startsWith('http') ? 'target="_blank"' : ''}>
           <div class="sm-result-meta">
-            <span class="sm-result-tag">${item.category}</span>
-            ${item.date ? `<span>•</span><span>${item.date}</span>` : ''}
+            <span class="sm-result-tag">${escapedCategory}</span>
+            ${item.date ? `<span>•</span><span>${escapeHTML(item.date)}</span>` : ''}
           </div>
           <h4>${highlightedTitle}</h4>
           <p>${highlightedSnippet}</p>
@@ -411,35 +423,121 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let isLogin = true;
 
-  const updateAuthUI = (user) => {
+  const updateAuthUI = async (user) => {
     console.log("Updating Auth UI for user:", user ? user.email : "Anonymous");
+    
+    const premiumContent = document.getElementById('premium-content');
+    const paywall = document.getElementById('paywall');
+    const printBtn = document.getElementById('print-btn');
+    const emailPdfBtn = document.getElementById('email-pdf-btn');
+
     if (user) {
       if (loginBtn) loginBtn.classList.add('hidden');
       if (signupBtn) signupBtn.classList.add('hidden');
       if (userNav) userNav.classList.remove('hidden');
       
-      // Débloquer le contenu premium si l'utilisateur est connecté
-      const premiumContent = document.getElementById('premium-content');
-      const paywall = document.getElementById('paywall');
-      const printBtn = document.getElementById('print-btn');
-      
-      if (premiumContent) premiumContent.classList.remove('hidden');
-      if (paywall) paywall.classList.add('hidden');
-      if (printBtn) printBtn.classList.remove('hidden');
+      // Check if user has premium plan in profiles table
+      try {
+        const { data: profile, error } = await supabaseClient
+          .from('profiles')
+          .select('plan')
+          .eq('id', user.id)
+          .single();
+
+        const isPremiumUser = profile && profile.plan === 'premium';
+        
+        if (premiumContent) {
+          if (isPremiumUser) {
+            premiumContent.classList.remove('hidden');
+            if (paywall) paywall.classList.add('hidden');
+            if (printBtn) printBtn.classList.remove('hidden');
+            
+            if (emailPdfBtn) {
+              emailPdfBtn.classList.remove('hidden');
+              emailPdfBtn.onclick = async () => {
+                emailPdfBtn.disabled = true;
+                const originalText = emailPdfBtn.innerHTML;
+                emailPdfBtn.innerHTML = "Envoi...";
+                
+                try {
+                  const { data, error } = await supabaseClient.functions.invoke('send-premium-pdf', {
+                    body: { 
+                      articleTitle: document.querySelector('h1')?.textContent,
+                      articleUrl: window.location.href,
+                      userEmail: user.email
+                    }
+                  });
+                  
+                  if (error) throw error;
+                  
+                  emailPdfBtn.innerHTML = "Envoyé !";
+                  setTimeout(() => {
+                    emailPdfBtn.innerHTML = originalText;
+                    emailPdfBtn.disabled = false;
+                  }, 3000);
+                } catch (err) {
+                  console.error("Error sending email:", err);
+                  emailPdfBtn.innerHTML = "Erreur";
+                  setTimeout(() => {
+                    emailPdfBtn.innerHTML = originalText;
+                    emailPdfBtn.disabled = false;
+                  }, 3000);
+                }
+              };
+            }
+          } else {
+            premiumContent.classList.add('hidden');
+            if (paywall) paywall.classList.remove('hidden');
+            if (printBtn) printBtn.classList.add('hidden');
+            if (emailPdfBtn) emailPdfBtn.classList.add('hidden');
+            
+            // Update paywall text for logged in but non-premium users
+            const paywallTitle = paywall.querySelector('h3');
+            if (paywallTitle) paywallTitle.textContent = "Abonnez-vous pour accéder à cette recherche";
+            const signupBtn = document.getElementById('paywall-signup-btn');
+            if (signupBtn) {
+              signupBtn.textContent = "S'abonner maintenant";
+              signupBtn.onclick = () => window.location.href = '/account';
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Error checking profile:", err);
+      }
     } else {
       if (loginBtn) loginBtn.classList.remove('hidden');
       if (signupBtn) signupBtn.classList.remove('hidden');
       if (userNav) userNav.classList.add('hidden');
       
-      const premiumContent = document.getElementById('premium-content');
-      const paywall = document.getElementById('paywall');
-      const printBtn = document.getElementById('print-btn');
-
       if (premiumContent) premiumContent.classList.add('hidden');
       if (paywall) paywall.classList.remove('hidden');
       if (printBtn) printBtn.classList.add('hidden');
     }
   };
+
+  // --- INACTIVITY LOGOUT (15 MIN) ---
+  let inactivityTimer;
+  const INACTIVITY_LIMIT = 15 * 60 * 1000; // 15 minutes
+
+  const resetInactivityTimer = () => {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(async () => {
+      if (supabaseClient) {
+        const { data: { session } } = await supabaseClient.auth.getSession();
+        if (session) {
+          console.log("Inactivity detected. Logging out...");
+          await supabaseClient.auth.signOut();
+          window.location.href = '/?reason=inactivity';
+        }
+      }
+    }, INACTIVITY_LIMIT);
+  };
+
+  // Events to track activity
+  ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'].forEach(name => {
+    document.addEventListener(name, resetInactivityTimer, true);
+  });
+  resetInactivityTimer();
 
   if (supabaseClient) {
     window.supabaseClient = supabaseClient; // Expose for account page

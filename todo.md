@@ -16,5 +16,3 @@ Solution : Ajouter un petit encart "S'abonner à la Newsletter" sur la page d'ac
 Tu partages probablement tes rapports sur LinkedIn ou Twitter. Actuellement, l'en-tête de tes fichiers HTML manque de balises <meta> spécifiques (Open Graph).
 
 Résultat actuel : Quand tu partages un lien, les réseaux sociaux affichent peut-être un rendu par défaut peu esthétique.
-Solution : Ajouter les balises meta qui permettent d'afficher automatiquement ta belle bannière, un titre clair et une description accrocheuse dès que quelqu'un colle ton lien sur un réseau social ou Discord.
-

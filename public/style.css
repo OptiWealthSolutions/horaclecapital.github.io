@@ -144,6 +144,112 @@ nav {
 }
 
 .nav-links { display: flex; align-items: center; gap: 8px; }
+
+/* Dropdown */
+.nav-dropdown {
+  position: relative;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-dropdown-trigger {
+  background: none;
+  border: none;
+  font-family: var(--ff-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0 12px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.nav-dropdown-trigger:hover { color: #fff; }
+
+.nav-dropdown-content {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--dark-2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 200px;
+  padding: 12px 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-content a {
+  height: auto !important;
+  padding: 12px 24px !important;
+  font-size: 0.78rem !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  display: block !important;
+}
+
+.nav-dropdown-content a:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--blue-3) !important;
+}
+
+.nav-dropdown-content a::after { display: none; }
+
+/* Divider & Icons */
+.nav-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 12px;
+}
+
+.nav-icon-link {
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.nav-icon-link:hover { color: #FF0000; } /* YouTube Red */
+
+.nav-link-account {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.nav-link-account:hover, .nav-link-account.active { color: #fff; }
+
+.nav-logout-icon {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logout-icon:hover { color: #ef4444; }
+
 .nav-links a {
   position: relative;
   font-family: var(--ff-body);
