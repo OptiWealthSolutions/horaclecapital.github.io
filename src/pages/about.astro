@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SubscribeCTA from '../components/SubscribeCTA.astro';
 
 const title = 'À Propos de Horacle Capital | Expertise Macro & Recherche Indépendante';
 const description = "Découvrez la vision d'Horacle Capital. Fondée par Léo Lombardini, notre structure allie analyse macroéconomique de pointe et finance quantitative pour une recherche d'excellence.";
@@ -43,6 +44,14 @@ const description = "Découvrez la vision d'Horacle Capital. Fondée par Léo Lo
                 </form>
                 <p id="form-status" class="mt-5 font-mono text-center min-h-[1.2em] text-[0.9rem]"></p>
             </div>
+        </div>
+        
+        <div class="mt-24">
+            <SubscribeCTA 
+                title="Soutenez la recherche indépendante"
+                description="Accédez à l'intégralité de nos analyses macroéconomiques et modèles quantitatifs en devenant membre premium."
+                buttonText="Rejoindre Horacle Premium"
+            />
         </div>
     </div>
 

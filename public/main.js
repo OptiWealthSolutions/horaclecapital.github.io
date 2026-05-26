@@ -446,6 +446,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const isPremiumUser = profile && profile.plan === 'premium';
         
+        // Show/Hide a dedicated Subscribe button for logged in but non-premium users
+        const headerSubscribeBtn = document.getElementById('header-subscribe-btn');
+        const allCtaSubscribeBtns = document.querySelectorAll('#cta-subscribe-btn');
+        
+        const stripeUrl = 'https://buy.stripe.com/test_00w5kC0BL5Dlczs8mv97G01';
+
+        if (headerSubscribeBtn) {
+          if (!isPremiumUser) {
+            headerSubscribeBtn.classList.remove('hidden');
+            headerSubscribeBtn.onclick = () => window.location.href = stripeUrl;
+          } else {
+            headerSubscribeBtn.classList.add('hidden');
+          }
+        }
+
+        allCtaSubscribeBtns.forEach(btn => {
+          if (!isPremiumUser) {
+            btn.href = stripeUrl;
+          } else {
+            btn.textContent = "Accéder à ma recherche";
+            btn.href = "/research";
+          }
+        });
+        
         if (premiumContent) {
           if (isPremiumUser) {
             premiumContent.classList.remove('hidden');
@@ -497,7 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const signupBtn = document.getElementById('paywall-signup-btn');
             if (signupBtn) {
               signupBtn.textContent = "S'abonner maintenant";
-              signupBtn.onclick = () => window.location.href = '/account';
+              signupBtn.onclick = () => window.location.href = 'https://buy.stripe.com/test_00w5kC0BL5Dlczs8mv97G01';
             }
           }
         }
