@@ -11,11 +11,12 @@
   "repository": {},
   "license": "UNLICENSED",
   "dependencies": {
-    "@remotion/google-fonts": "4.0.155",
-    "@remotion/cli": "4.0.155",
+    "@remotion/cli": "4.0.467",
+    "@remotion/google-fonts": "4.0.467",
+    "@remotion/media": "4.0.467",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "remotion": "4.0.155"
+    "remotion": "4.0.467"
   },
   "devDependencies": {
     "@remotion/eslint-config": "4.0.155",

@@ -1,5 +1,6 @@
 ---
 import SEO from '../components/SEO.astro';
+import FeedbackForm from '../components/FeedbackForm.astro';
 
 export interface Props {
   title: string;
@@ -11,6 +12,7 @@ export interface Props {
   slug: string;
   tags?: string[];
   isPremium?: boolean;
+  pdfStoragePath?: string;
   teaser?: string;
 }
 
@@ -24,6 +26,7 @@ const {
   slug,
   tags = [],
   isPremium = false,
+  pdfStoragePath,
   teaser,
 } = Astro.props;
 
@@ -43,10 +46,25 @@ const allRecherches = await getCollection('recherches', ({ data }) => !data.draf
 const allArticles = [
   ...allRapports.map(item => ({ ...item, collectionType: 'rapports' })),
   ...allRecherches.map(item => ({ ...item, collectionType: 'recherches' }))
-].sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+].sort((a, b) => {
+  const dateA = new Date(a.data.date).getTime() || 0;
+  const dateB = new Date(b.data.date).getTime() || 0;
+  return dateB - dateA;
+});
 
+// Use a more robust filter to exclude current article
 const suggestions = allArticles
-  .filter(item => item.slug !== slug)
+  .filter(item => {
+    // Both slug and collectionType should be checked to be safe
+    // We check for both 'reports' and 'rapports' in the URL to be robust
+    const isReportMatch = item.collectionType === 'rapports' && 
+                         (Astro.url.pathname.includes('/reports/') || Astro.url.pathname.includes('/rapports/'));
+    const isResearchMatch = item.collectionType === 'recherches' && 
+                           Astro.url.pathname.includes('/recherches/');
+    
+    const isCurrent = item.slug === slug && (isReportMatch || isResearchMatch);
+    return !isCurrent;
+  })
   .slice(0, 3);
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://horaclecapital.com').toString();
@@ -227,10 +245,10 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
 
     <!-- Article Body & Sidebar -->
     <main class="container mx-auto px-5 lg:px-8 py-16">
-      <div class="lg:grid lg:grid-cols-[1fr_320px] lg:gap-16 items-start">
+      <div class="flex flex-col lg:flex-row lg:gap-16 items-start">
         
         <!-- Main Content Column -->
-        <article class="article-content min-w-0">
+        <article class="article-content flex-1 min-w-0 w-full">
           <!-- Toolbar: reading time, share, download -->
           <div class="flex flex-wrap items-center justify-between gap-4 mb-8 border-b border-border pb-4">
             <div class="flex flex-wrap items-center gap-3">
@@ -246,8 +264,9 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 Imprimer / PDF
               </button>
-              <button 
+              <button
                 id="email-pdf-btn"
+                data-pdf-storage-path={pdfStoragePath || ''}
                 class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-dark border border-border-dk text-white hover:text-blue-3 hover:border-blue-3 transition-colors font-mono text-[0.6rem] uppercase tracking-widest cursor-pointer hidden"
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -344,13 +363,13 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
           </div>
         </article>
 
-        <!-- Right Sidebar (Sticky) -->
-        <aside class="hidden lg:block sticky top-24 self-start mt-8 lg:mt-0 w-[320px]">
+        <!-- Sidebar / Suggestions -->
+        <aside class="w-full lg:w-[320px] mt-16 lg:mt-0 sticky top-24 lg:self-start">
           <div class="bg-white border border-border p-8 shadow-sm">
             <h3 class="font-mono text-[0.65rem] uppercase tracking-[0.2em] font-bold text-blue-3 mb-6 pb-4 border-b border-border">Lectures Recommandées</h3>
             
             <div class="flex flex-col gap-6">
-              {suggestions.map((item, index) => (
+              {suggestions.length > 0 ? suggestions.map((item, index) => (
                 <>
                   <a href={item.collectionType === 'rapports' ? `/reports/${item.slug}` : `/recherches/${item.slug}`} class="group block">
                     <span class="text-[0.55rem] font-bold uppercase tracking-widest text-dim mb-1.5 block">{item.data.category}</span>
@@ -359,7 +378,9 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
                   </a>
                   {index < suggestions.length - 1 && <div class="w-full h-px bg-border/60"></div>}
                 </>
-              ))}
+              )) : (
+                <p class="text-[0.8rem] text-dim italic">Aucune autre lecture pour le moment.</p>
+              )}
             </div>
             
             <a href="/portfolio" class="mt-8 pt-6 border-t border-border flex items-center justify-between text-[0.65rem] font-mono font-bold uppercase tracking-widest text-blue-3 hover:text-blue-400 transition-colors group">
@@ -368,12 +389,12 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
             </a>
           </div>
 
-          <!-- Optional: Newsletter mini-block in sidebar -->
+          <!-- Newsletter mini-block in sidebar -->
           <div class="mt-8 bg-dark p-8 border border-border-dk">
             <h4 class="font-head text-xl text-white mb-3">Newsletter</h4>
             <p class="text-white/60 text-xs mb-5 font-sans leading-relaxed">Ne manquez aucun point d'inflexion macroéconomique.</p>
             <form action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="flex flex-col gap-3">
-              <input type="email" placeholder="Email..." required class="w-full px-4 py-2 bg-white/5 border border-white/10 text-white font-mono text-xs focus:border-blue-3 focus:outline-none" />
+              <input type="email" name="EMAIL" placeholder="Email..." required class="w-full px-4 py-2 bg-white/5 border border-white/10 text-white font-mono text-xs focus:border-blue-3 focus:outline-none" />
               <button type="submit" class="w-full bg-blue-3 text-white font-mono text-[0.6rem] uppercase tracking-widest py-2 hover:bg-blue-400 transition-colors">S'abonner</button>
             </form>
           </div>
@@ -415,6 +436,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
       </div>
     </footer>
 
+    <FeedbackForm />
     <script is:inline src="/main.js"></script>
   </body>
 </html>

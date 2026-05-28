@@ -27,6 +27,7 @@ const recherches = defineCollection({
     category: z.string().default('Finance Quantitative'),
     type: z.enum(['pdf', 'notebook', 'code', 'video', 'link']).default('pdf'),
     fileUrl: z.string().optional(),
+    pdfStoragePath: z.string().optional(), // nom du fichier dans le bucket "premium-pdfs"
     ogImage: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),

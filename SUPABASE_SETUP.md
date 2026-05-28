@@ -1,90 +1,64 @@
 # Configuration de Sécurité et Automatisation - Horacle Capital
 
-Ce document détaille les étapes nécessaires pour sécuriser votre contenu premium et activer l'envoi de PDF par email, conformément aux exigences de cybersécurité.
+Ce document détaille les étapes pour finaliser l'infrastructure Supabase de votre projet.
 
-## 1. Sécurisation de la Base de Données (Supabase RLS)
+## 1. Déploiement du Schéma SQL (Migrations)
 
-Pour éviter que n'importe qui puisse modifier son propre plan ou lire les profils des autres, vous devez activer le **Row Level Security (RLS)** sur la table `profiles`.
+J'ai préparé un fichier de migration dans `supabase/migrations/20260526000000_init_schema.sql`. Il contient :
+- La création de la table `profiles`.
+- L'activation du **Row Level Security (RLS)**.
+- Les politiques d'accès (Policies).
+- Le **Trigger automatique** qui crée un profil dès qu'un utilisateur s'inscrit.
 
-### Table `profiles`
-Exécutez ce SQL dans votre console Supabase :
+### Comment l'appliquer :
+1. Liez votre projet local à votre instance Supabase :
+   ```bash
+   supabase link --project-ref svodjiuypokuvubwfkom
+   ```
+2. Poussez la migration :
+   ```bash
+   supabase db push
+   ```
 
-```sql
--- Activer RLS
-ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+## 2. Déploiement des Edge Functions
 
--- Autoriser les utilisateurs à lire UNIQUEMENT leur propre profil
-CREATE POLICY "Les utilisateurs peuvent voir leur propre profil" 
-ON profiles FOR SELECT 
-USING (auth.uid() = id);
+Trois fonctions sont prêtes à être déployées :
+- `send-premium-pdf` : Pour envoyer les rapports PDF par mail aux abonnés.
+- `send-feedback` : Pour recevoir les retours utilisateurs directement par mail.
+- `stripe-webhook` : Pour automatiser le passage au plan "premium" après paiement.
 
--- Empêcher les utilisateurs de modifier leur propre plan (doit être fait via webhook Stripe)
-CREATE POLICY "Les utilisateurs peuvent modifier leur profil sauf le plan"
-ON profiles FOR UPDATE
-USING (auth.uid() = id)
-WITH CHECK (auth.uid() = id);
+### Commande de déploiement :
+```bash
+supabase functions deploy send-premium-pdf send-feedback stripe-webhook
 ```
 
-## 2. Automatisation des Emails (Supabase Edge Function)
+## 3. Configuration des Secrets (Variables d'environnement)
 
-Le bouton "Recevoir par email" appelle une fonction nommée `send-premium-pdf`. Vous devez la créer et configurer un service d'envoi comme **Resend** ou **SendGrid**.
+Pour que les emails et les paiements fonctionnent, vous devez configurer vos clés secrètes dans Supabase.
 
-### Exemple de fonction `send-premium-pdf` (Deno/Supabase)
+### Liste des secrets à configurer :
 
-1. Installez le CLI Supabase.
-2. `supabase functions new send-premium-pdf`.
-3. Utilisez le code suivant (adapté pour Resend) :
+| Secret | Description | Source |
+|---|---|---|
+| `RESEND_API_KEY` | Clé API pour l'envoi d'emails | [Resend Dashboard](https://resend.com) |
+| `STRIPE_SECRET_KEY` | Clé secrète Stripe (sk_...) | [Stripe Dashboard](https://dashboard.stripe.com/apikeys) |
+| `STRIPE_WEBHOOK_SECRET` | Secret de signature du Webhook (whsec_...) | [Stripe Webhooks](https://dashboard.stripe.com/webhooks) |
 
-```typescript
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-
-const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
-
-serve(async (req) => {
-  const { articleTitle, articleUrl, userEmail } = await req.json()
-
-  // 1. Vérifier que l'utilisateur est Premium en base (Sécurité)
-  const authHeader = req.headers.get('Authorization')!
-  const supabaseClient = createClient(
-    Deno.env.get('SUPABASE_URL') ?? '',
-    Deno.env.get('SUPABASE_ANON_KEY') ?? '',
-    { global: { headers: { Authorization: authHeader } } }
-  )
-  
-  const { data: profile } = await supabaseClient
-    .from('profiles')
-    .select('plan')
-    .single()
-
-  if (profile?.plan !== 'premium') {
-    return new Response(JSON.stringify({ error: 'Accès non autorisé' }), { status: 403 })
-  }
-
-  // 2. Envoyer l'email via Resend
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${RESEND_API_KEY}`,
-    },
-    body: JSON.stringify({
-      from: 'Horacle Capital <llombardini.leo@gmail.com>',
-      to: [userEmail],
-      subject: `Votre recherche : ${articleTitle}`,
-      html: `<p>Bonjour,</p><p>Voici le lien vers votre recherche premium : <a href="${articleUrl}">${articleTitle}</a></p>`,
-    }),
-  })
-
-  return new Response(JSON.stringify({ success: true }), { status: 200 })
-})
+### Comment les définir :
+Exécutez ces commandes en remplaçant les valeurs par vos vraies clés :
+```bash
+supabase secrets set RESEND_API_KEY=re_your_key
+supabase secrets set STRIPE_SECRET_KEY=sk_test_your_key
+supabase secrets set STRIPE_WEBHOOK_SECRET=whsec_your_key
 ```
 
-**Note :** Vous devrez vérifier votre adresse `llombardini.leo@gmail.com` dans le tableau de bord de Resend pour pouvoir envoyer des emails depuis celle-ci.
+## 4. Configuration finale Stripe
 
-## 3. Webhook Stripe
+1. Allez dans **Stripe > Developers > Webhooks**.
+2. Ajoutez un point de terminaison (Endpoint).
+3. URL : `https://svodjiuypokuvubwfkom.supabase.co/functions/v1/stripe-webhook`
+4. Événements à écouter : `checkout.session.completed` et `customer.subscription.deleted`.
+5. Récupérez le **Signing Secret** et mettez-le à jour dans Supabase (voir étape 3).
 
-Pour que le plan passe automatiquement à "premium" après le paiement :
-1. Créez une Edge Function `stripe-webhook`.
-2. Configurez Stripe pour envoyer l'événement `checkout.session.completed` à cette URL.
-3. La fonction doit mettre à jour la table `profiles` pour l'utilisateur correspondant (via le `client_reference_id` qui doit être l'ID Supabase de l'utilisateur).
+---
+**Note :** Assurez-vous que l'adresse email `llombardini.leo@gmail.com` est bien vérifiée dans votre compte Resend pour pouvoir envoyer des emails.

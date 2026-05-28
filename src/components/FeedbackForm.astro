@@ -1,0 +1,212 @@
+---
+---
+<!-- Floating Toggle Button -->
+<button id="fb-toggle" class="feedback-toggle" aria-label="Donner un feedback">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+  </svg>
+  <span>Feedback</span>
+</button>
+
+<!-- Feedback Modal Overlay -->
+<div id="fb-modal" class="fb-modal-overlay">
+  <div class="fb-modal-content">
+    <div class="fb-modal-header">
+      <h3 class="font-head text-2xl text-white">Votre Feedback</h3>
+      <button id="fb-close" class="fb-close-btn">&times;</button>
+    </div>
+    
+    <div class="fb-modal-body">
+      <p class="text-white/60 text-xs mb-6 font-sans leading-relaxed">
+        Une suggestion ? Une question ? Votre retour est essentiel pour l'évolution d'Horacle.
+      </p>
+      
+      <form id="feedback-form" class="flex flex-col gap-4">
+        <div class="flex flex-col gap-4">
+          <input 
+            type="email" 
+            id="fb-email" 
+            placeholder="Votre email..." 
+            required 
+            class="px-4 py-3 bg-white/5 border border-white/10 text-white font-sans text-sm focus:border-blue-3 outline-none transition-colors"
+          />
+          <div class="relative">
+            <select 
+              id="fb-type" 
+              class="w-full px-4 py-3 bg-[#1e293b] border border-white/10 text-white font-sans text-sm focus:border-blue-3 outline-none appearance-none transition-colors"
+            >
+              <option value="suggestion">Suggestion</option>
+              <option value="bug">Bug technique</option>
+              <option value="content">Contenu / Analyse</option>
+              <option value="other">Autre</option>
+            </select>
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+        </div>
+        
+        <textarea 
+          id="fb-message" 
+          placeholder="Comment pouvons-nous nous améliorer ?" 
+          required 
+          rows="4"
+          class="px-4 py-3 bg-white/5 border border-white/10 text-white font-sans text-sm focus:border-blue-3 outline-none transition-colors resize-none"
+        ></textarea>
+        
+        <button 
+          type="submit" 
+          id="fb-submit"
+          class="btn-primary w-full py-3 text-[0.65rem] uppercase tracking-widest font-bold"
+        >
+          Envoyer le feedback
+        </button>
+        
+        <p id="fb-status" class="font-mono text-[0.55rem] uppercase tracking-widest min-h-[1.2em] text-center"></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Floating Toggle Button */
+  .feedback-toggle {
+    position: fixed;
+    bottom: 32px;
+    left: 32px;
+    z-index: 100;
+    background: var(--dark);
+    border: 1px solid var(--border-dk);
+    color: var(--white);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--ff-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  
+  .feedback-toggle:hover {
+    background: var(--blue-2);
+    border-color: var(--blue-2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
+  }
+
+  .feedback-toggle span {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .feedback-toggle span {
+      display: inline;
+    }
+  }
+
+  /* Modal Overlay */
+  .fb-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 10001;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 32px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fb-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Modal Content */
+  .fb-modal-content {
+    background: var(--dark);
+    border: 1px solid var(--border-dk);
+    width: 100%;
+    max-width: 400px;
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .fb-modal-overlay.active .fb-modal-content {
+    transform: translateY(0);
+  }
+
+  .fb-modal-header {
+    padding: 24px 24px 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .fb-modal-body {
+    padding: 0 24px 24px 24px;
+  }
+
+  .fb-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--dim);
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    transition: color 0.2s;
+  }
+
+  .fb-close-btn:hover {
+    color: var(--white);
+  }
+
+  /* Status message styles */
+  #fb-status {
+    margin-top: 12px;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('fb-toggle');
+    const modal = document.getElementById('fb-modal');
+    const close = document.getElementById('fb-close');
+    
+    if (toggle && modal && close) {
+      toggle.addEventListener('click', () => {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+      
+      const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+      
+      close.addEventListener('click', closeModal);
+      
+      // Close on clicking overlay
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    }
+  });
+</script>

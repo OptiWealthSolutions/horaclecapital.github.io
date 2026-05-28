@@ -1,5 +1,6 @@
 ---
 import SEO from '../components/SEO.astro';
+import FeedbackForm from '../components/FeedbackForm.astro';
 
 export interface Props {
 	title?: string;
@@ -212,6 +213,7 @@ const {
     </div>
   </footer>
 
+  <FeedbackForm />
   <script is:inline src="/main.js"></script>
 </body>
 </html>

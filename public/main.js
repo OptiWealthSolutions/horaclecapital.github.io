@@ -28,36 +28,78 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- RECHERCHE GLOBALE (NAVBAR) ---
-  // Auto-injection de la barre de recherche dans les anciens rapports si elle n'existe pas
-  if (navLinks && !document.querySelector('.nav-search')) {
-    const searchHTML = `
-      <form class="nav-search" id="global-search-form" action="#">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" placeholder="Rechercher..." aria-label="Rechercher sur le site" />
-      </form>
-    `;
-    navLinks.insertAdjacentHTML('beforeend', searchHTML);
+  // On déduit le chemin relatif vers la racine
+  let rootUrl = '/';
+  const logoLink = document.querySelector('.logo-container a');
+  if (logoLink) {
+    const href = logoLink.getAttribute('href');
+    if (href && href !== '/') {
+      rootUrl = href.endsWith('/') ? href : href + '/';
+    }
   }
 
+  // --- RECHERCHE GLOBALE (NAVBAR) ---
   const globalSearchForms = document.querySelectorAll('.nav-search');
   
-  // On déduit le chemin relatif vers la racine (pratique pour naviguer depuis un sous-dossier comme /reports/)
-  const rootUrlMatch = document.querySelector('.logo-container a')?.getAttribute('href');
-  const rootUrl = rootUrlMatch ? rootUrlMatch.replace('index.html', '') : '';
+  function forceCloseMobileMenu() {
+    const navLinks = document.getElementById('nav-links');
+    const navOverlay = document.getElementById('nav-overlay');
+    if (navLinks) navLinks.classList.remove('active');
+    if (navOverlay) navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Keyboard shortcut (Cmd+K or Ctrl+K)
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      openSearch();
+    }
+  });
+
+  // Ecoute du formulaire de recherche de la Navbar
+  globalSearchForms.forEach(form => {
+    const input = form.querySelector('input');
+    if (input) {
+      const triggerSearch = (e) => {
+        const query = input.value;
+        input.value = '';
+        input.blur();
+        forceCloseMobileMenu();
+        openSearch(query);
+      };
+      input.addEventListener('focus', triggerSearch);
+      input.addEventListener('click', triggerSearch);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = form.querySelector('input');
+      const query = input ? input.value.trim() : '';
+      forceCloseMobileMenu();
+      openSearch(query);
+      if (input) input.value = '';
+    });
+  });
 
   // Injection du HTML du Modal de recherche
   const modalHTML = `
-    <div class="search-modal-overlay" id="search-modal">
+    <div class="search-modal-overlay" id="search-modal" style="z-index: 10000;">
       <div class="search-modal">
         <div class="sm-header">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 12px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <input type="text" id="sm-input" placeholder="Rechercher un rapport, un modèle..." autocomplete="off">
-          <button class="sm-close" id="sm-close" aria-label="Fermer">
+          <div class="hidden md:block text-[10px] text-dim border border-border px-1.5 py-0.5 rounded ml-2">ESC</div>
+          <button class="sm-close" id="sm-close" aria-label="Fermer" style="margin-left: 12px;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
         <div class="sm-body" id="sm-results"></div>
+        <div class="sm-footer hidden md:flex p-3 border-t border-border bg-bg-2 gap-4 text-[10px] text-dim uppercase tracking-widest">
+            <span><strong>↑↓</strong> pour naviguer</span>
+            <span><strong>Enter</strong> pour ouvrir</span>
+            <span><strong>Cmd+K</strong> pour chercher</span>
+        </div>
       </div>
     </div>
   `;
@@ -74,38 +116,37 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchSiteData() {
     if (siteData.length > 0 || isFetching) return;
     
-    if (window.location.protocol === 'file:') {
-      console.warn("La recherche globale nécessite un serveur web pour fonctionner.");
-      return;
+    isFetching = true;
+    try {
+      const indexPath = rootUrl === '/' ? 'search-index.json' : rootUrl + 'search-index.json';
+      const response = await fetch(indexPath);
+      if (response.ok) {
+        siteData = await response.json();
+      } else {
+        console.error("Erreur HTTP lors du chargement de l'index de recherche :", response.status);
+      }
+    } catch (error) { 
+      console.error('Erreur réseau lors du fetch des données:', error); 
     }
+    isFetching = false;
+  }
 
-  isFetching = true;
-  try {
-    const response = await fetch(rootUrl + 'search-index.json');
-    if (response.ok) {
-      siteData = await response.json();
-    } else {
-      console.error("Erreur HTTP lors du chargement de l'index de recherche :", response.status);
-    }
-  } catch (error) { 
-    console.error('Erreur réseau lors du fetch des données:', error); 
-  }
-  isFetching = false;
-  }
+  let selectedIdx = -1;
 
   function renderResults(query) {
-    if (window.location.protocol === 'file:') {
-      smResults.innerHTML = '<div class="sm-empty">Impossible de charger la recherche en local (file://).<br><br>Ouvrez ce site via un serveur (ex: Live Server) ou testez-le sur GitHub Pages.</div>';
-      return;
-    }
-    
+    selectedIdx = -1;
     if (!query.trim()) {
       smResults.innerHTML = '<div class="sm-empty">Entrez un mot-clé pour rechercher (ex: Macro, Taux, Modèle...)</div>';
       return;
     }
 
     const q = query.toLowerCase().trim();
-    const filtered = siteData.filter(item => item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q) || item.shortDesc.toLowerCase().includes(q) || item.category.toLowerCase().includes(q));
+    const filtered = siteData.filter(item => 
+      item.title.toLowerCase().includes(q) || 
+      item.desc.toLowerCase().includes(q) || 
+      item.shortDesc.toLowerCase().includes(q) || 
+      item.category.toLowerCase().includes(q)
+    );
 
     const escapeHTML = (str) => {
       const div = document.createElement('div');
@@ -118,15 +159,16 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    smResults.innerHTML = filtered.map(item => {
-      const finalUrl = item.url.startsWith('http') ? item.url : rootUrl + item.url;
+    smResults.innerHTML = filtered.map((item, idx) => {
+      let finalUrl = item.url;
+      if (!item.url.startsWith('http')) {
+         finalUrl = (rootUrl + item.url).replace(/\/+/g, '/');
+      }
       
-      // Surlignage intelligent et extrait pertinent
-      let snippet = item.shortDesc;
-      const lowerDesc = item.desc.toLowerCase();
+      let snippet = item.shortDesc || '';
+      const lowerDesc = (item.desc || '').toLowerCase();
       const matchIdx = lowerDesc.indexOf(q);
       
-      // Si le mot est trouvé plus loin dans le texte profond (et pas dans le résumé)
       if (matchIdx !== -1 && !snippet.toLowerCase().includes(q)) {
         const start = Math.max(0, matchIdx - 60);
         const end = Math.min(item.desc.length, matchIdx + 60);
@@ -138,18 +180,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const safeQ = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const regex = new RegExp(`(${safeQ})`, 'gi');
       
-      // Escape before highlighting to prevent XSS
-      const escapedTitle = escapeHTML(item.title);
-      const escapedSnippet = escapeHTML(snippet);
-      const escapedCategory = escapeHTML(item.category);
-      
-      const highlightedTitle = escapedTitle.replace(regex, '<strong style="color: var(--orange)">$1</strong>');
-      const highlightedSnippet = escapedSnippet.replace(regex, '<strong style="color: var(--orange)">$1</strong>');
+      const highlightedTitle = escapeHTML(item.title).replace(regex, '<strong style="color: var(--blue-3)">$1</strong>');
+      const highlightedSnippet = escapeHTML(snippet).replace(regex, '<strong style="color: var(--blue-3)">$1</strong>');
 
       return `
-        <a href="${finalUrl}" class="sm-result" ${item.url.startsWith('http') ? 'target="_blank"' : ''}>
+        <a href="${finalUrl}" class="sm-result" data-idx="${idx}" ${item.url.startsWith('http') ? 'target="_blank"' : ''}>
           <div class="sm-result-meta">
-            <span class="sm-result-tag">${escapedCategory}</span>
+            <span class="sm-result-tag">${escapeHTML(item.category)}</span>
             ${item.date ? `<span>•</span><span>${escapeHTML(item.date)}</span>` : ''}
           </div>
           <h4>${highlightedTitle}</h4>
@@ -158,11 +195,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
   }
 
+  function updateSelection(newIdx) {
+    const results = smResults.querySelectorAll('.sm-result');
+    results.forEach(r => r.classList.remove('selected'));
+    
+    if (newIdx >= 0 && newIdx < results.length) {
+      selectedIdx = newIdx;
+      results[selectedIdx].classList.add('selected');
+      results[selectedIdx].scrollIntoView({ block: 'nearest' });
+    }
+  }
+
+  // Keyboard navigation for results
+  smInput.addEventListener('keydown', (e) => {
+    const results = smResults.querySelectorAll('.sm-result');
+    if (results.length === 0) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      selectedIdx = (selectedIdx + 1) % results.length;
+      updateSelection(selectedIdx);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      selectedIdx = (selectedIdx - 1 + results.length) % results.length;
+      updateSelection(selectedIdx);
+    } else if (e.key === 'Enter' && selectedIdx >= 0) {
+      e.preventDefault();
+      results[selectedIdx].click();
+    }
+  });
+
   function openSearch(query = '') {
     searchModal.classList.add('active');
     document.body.style.overflow = 'hidden';
     smInput.value = query;
-    setTimeout(() => smInput.focus(), 50); // Petit délai pour l'animation
+    setTimeout(() => smInput.focus(), 50);
     
     if (window.location.protocol !== 'file:') {
       smResults.innerHTML = '<div class="sm-loading"><div class="cs-pulse" style="display:inline-block; margin-right:12px; transform:translateY(1px);"></div>Recherche en cours...</div>';
@@ -179,23 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (searchModal) searchModal.addEventListener('click', (e) => { if (e.target === searchModal) closeSearch(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && searchModal && searchModal.classList.contains('active')) closeSearch(); });
   if (smInput) smInput.addEventListener('input', (e) => renderResults(e.target.value));
-
-  // Ecoute du formulaire de recherche de la Navbar
-  globalSearchForms.forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const input = form.querySelector('input');
-      if (input && input.value.trim() !== '') {
-        const navLinks = document.getElementById('nav-links');
-        const navOverlay = document.getElementById('nav-overlay');
-        if (navLinks) navLinks.classList.remove('active');
-        if (navOverlay) navOverlay.classList.remove('active');
-        
-        openSearch(input.value.trim());
-        input.value = '';
-      }
-    });
-  });
 
   // Logique pour la page Research (Filtres et Recherche)
   const searchInput = document.getElementById('research-search');
@@ -299,7 +349,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- OUTILS DE LECTURE & PARTAGE (Articles Uniquement) ---
   const isArticle = document.querySelector('.article-container') && !document.querySelector('.research-grid');
   if (isArticle) {
-    // 1. Barre de progression de lecture
     const progressBar = document.getElementById('reading-progress');
     if (progressBar) {
       window.addEventListener('scroll', () => {
@@ -314,7 +363,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 2. Barre de partage (avec bouton Copier)
     const shareUrl = encodeURIComponent(window.location.href);
     const shareTitle = encodeURIComponent(document.title);
     const shareLi = document.getElementById('share-li');
@@ -387,15 +435,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- SUPABASE AUTHENTICATION ---
   const SUPABASE_URL = 'https://svodjiuypokuvubwfkom.supabase.co';
-  const SUPABASE_ANON_KEY = 'sb_publishable_CanU4tYA8yh9_9Tbgib4Kw_ecQJtXcp'; // Remplacer par la clé réelle
+  const SUPABASE_ANON_KEY = 'sb_publishable_CanU4tYA8yh9_9Tbgib4Kw_ecQJtXcp';
 
   let supabaseClient;
   try {
     if (window.supabase) {
       supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      console.log("Supabase client initialized successfully.");
-    } else {
-      console.error("Supabase library not found on window object.");
     }
   } catch (err) {
     console.error("Error initializing Supabase client:", err);
@@ -424,8 +469,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let isLogin = true;
 
   const updateAuthUI = async (user) => {
-    console.log("Updating Auth UI for user:", user ? user.email : "Anonymous");
-    
     const premiumContent = document.getElementById('premium-content');
     const paywall = document.getElementById('paywall');
     const printBtn = document.getElementById('print-btn');
@@ -436,21 +479,17 @@ document.addEventListener('DOMContentLoaded', () => {
       if (signupBtn) signupBtn.classList.add('hidden');
       if (userNav) userNav.classList.remove('hidden');
       
-      // Check if user has premium plan in profiles table
       try {
-        const { data: profile, error } = await supabaseClient
+        const { data: profile } = await supabaseClient
           .from('profiles')
           .select('plan')
           .eq('id', user.id)
           .single();
 
         const isPremiumUser = profile && profile.plan === 'premium';
-        
-        // Show/Hide a dedicated Subscribe button for logged in but non-premium users
         const headerSubscribeBtn = document.getElementById('header-subscribe-btn');
         const allCtaSubscribeBtns = document.querySelectorAll('#cta-subscribe-btn');
-        
-        const stripeUrl = 'https://buy.stripe.com/test_00w5kC0BL5Dlczs8mv97G01';
+        const stripeUrl = `https://buy.stripe.com/live_4gw9Bf06L7nRe7S3ce?client_reference_id=${user.id}`;
 
         if (headerSubscribeBtn) {
           if (!isPremiumUser) {
@@ -482,25 +521,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 emailPdfBtn.disabled = true;
                 const originalText = emailPdfBtn.innerHTML;
                 emailPdfBtn.innerHTML = "Envoi...";
-                
+                const pdfStoragePath = emailPdfBtn.dataset.pdfStoragePath || null;
+
                 try {
-                  const { data, error } = await supabaseClient.functions.invoke('send-premium-pdf', {
-                    body: { 
+                  const { error } = await supabaseClient.functions.invoke('send-premium-pdf', {
+                    body: {
                       articleTitle: document.querySelector('h1')?.textContent,
                       articleUrl: window.location.href,
+                      pdfStoragePath: pdfStoragePath,
                       userEmail: user.email
                     }
                   });
-                  
                   if (error) throw error;
-                  
                   emailPdfBtn.innerHTML = "Envoyé !";
                   setTimeout(() => {
                     emailPdfBtn.innerHTML = originalText;
                     emailPdfBtn.disabled = false;
                   }, 3000);
                 } catch (err) {
-                  console.error("Error sending email:", err);
                   emailPdfBtn.innerHTML = "Erreur";
                   setTimeout(() => {
                     emailPdfBtn.innerHTML = originalText;
@@ -514,14 +552,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (paywall) paywall.classList.remove('hidden');
             if (printBtn) printBtn.classList.add('hidden');
             if (emailPdfBtn) emailPdfBtn.classList.add('hidden');
-            
-            // Update paywall text for logged in but non-premium users
             const paywallTitle = paywall.querySelector('h3');
             if (paywallTitle) paywallTitle.textContent = "Abonnez-vous pour accéder à cette recherche";
             const signupBtn = document.getElementById('paywall-signup-btn');
             if (signupBtn) {
               signupBtn.textContent = "S'abonner maintenant";
-              signupBtn.onclick = () => window.location.href = 'https://buy.stripe.com/test_00w5kC0BL5Dlczs8mv97G01';
+              signupBtn.onclick = () => window.location.href = stripeUrl;
             }
           }
         }
@@ -532,7 +568,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (loginBtn) loginBtn.classList.remove('hidden');
       if (signupBtn) signupBtn.classList.remove('hidden');
       if (userNav) userNav.classList.add('hidden');
-      
       if (premiumContent) premiumContent.classList.add('hidden');
       if (paywall) paywall.classList.remove('hidden');
       if (printBtn) printBtn.classList.add('hidden');
@@ -541,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- INACTIVITY LOGOUT (15 MIN) ---
   let inactivityTimer;
-  const INACTIVITY_LIMIT = 15 * 60 * 1000; // 15 minutes
+  const INACTIVITY_LIMIT = 15 * 60 * 1000;
 
   const resetInactivityTimer = () => {
     clearTimeout(inactivityTimer);
@@ -549,7 +584,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (supabaseClient) {
         const { data: { session } } = await supabaseClient.auth.getSession();
         if (session) {
-          console.log("Inactivity detected. Logging out...");
           await supabaseClient.auth.signOut();
           window.location.href = '/?reason=inactivity';
         }
@@ -557,21 +591,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }, INACTIVITY_LIMIT);
   };
 
-  // Events to track activity
   ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'].forEach(name => {
     document.addEventListener(name, resetInactivityTimer, true);
   });
   resetInactivityTimer();
 
   if (supabaseClient) {
-    window.supabaseClient = supabaseClient; // Expose for account page
-    
-    // Check current session
+    window.supabaseClient = supabaseClient;
     supabaseClient.auth.getSession().then(({ data: { session } }) => {
       updateAuthUI(session?.user);
-    }).catch(err => console.error("Error getting Supabase session:", err));
-
-    // Listen for auth changes
+    });
     supabaseClient.auth.onAuthStateChange((_event, session) => {
       updateAuthUI(session?.user);
     });
@@ -613,7 +642,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Support custom events from Account page
   window.addEventListener('open-auth-modal', (e) => {
     openAuthModal(e.detail.mode || 'login');
   });
@@ -621,16 +649,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (githubAuthBtn && supabaseClient) {
     githubAuthBtn.addEventListener('click', async () => {
       const siteUrl = window.location.origin.includes('localhost') ? window.location.origin : 'https://horaclecapital.com';
-      const { error } = await supabaseClient.auth.signInWithOAuth({
+      await supabaseClient.auth.signInWithOAuth({
         provider: 'github',
-        options: {
-          redirectTo: siteUrl + '/account'
-        }
+        options: { redirectTo: siteUrl + '/account' }
       });
-      if (error) {
-        authError.textContent = error.message;
-        authError.classList.remove('hidden');
-      }
     });
   }
 
@@ -639,79 +661,51 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const emailInput = document.getElementById('auth-email');
       const passwordInput = document.getElementById('auth-password');
-      const confirmPasswordInput = document.getElementById('auth-confirm-password');
       if (!emailInput || !passwordInput) return;
-
       const email = emailInput.value;
       const password = passwordInput.value;
       
-      if (!isLogin && confirmPasswordInput) {
-        if (password !== confirmPasswordInput.value) {
-          authError.textContent = "Les mots de passe ne correspondent pas.";
-          authError.classList.remove('hidden');
-          return;
-        }
+      if (!isLogin && confirmPasswordInput && password !== confirmPasswordInput.value) {
+        authError.textContent = "Les mots de passe ne correspondent pas.";
+        authError.classList.remove('hidden');
+        return;
       }
 
       if (authError) authError.classList.add('hidden');
-      if (authSubmitBtn) {
-        authSubmitBtn.disabled = true;
-        authSubmitBtn.textContent = 'Traitement...';
-      }
+      authSubmitBtn.disabled = true;
+      authSubmitBtn.textContent = 'Traitement...';
 
-      let result;
       try {
         const siteUrl = window.location.origin.includes('localhost') ? window.location.origin : 'https://horaclecapital.com';
-        if (isLogin) {
-          result = await supabaseClient.auth.signInWithPassword({ email, password });
-        } else {
-          result = await supabaseClient.auth.signUp({ 
-            email, 
-            password,
-            options: {
-              emailRedirectTo: siteUrl + '/account'
-            }
-          });
-        }
+        let result;
+        if (isLogin) result = await supabaseClient.auth.signInWithPassword({ email, password });
+        else result = await supabaseClient.auth.signUp({ email, password, options: { emailRedirectTo: siteUrl + '/account' } });
 
         if (result.error) {
-          if (authError) {
-            authError.textContent = result.error.message;
-            authError.classList.remove('hidden');
-          }
-          if (authSubmitBtn) {
-            authSubmitBtn.disabled = false;
-            authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
-          }
+          authError.textContent = result.error.message;
+          authError.classList.remove('hidden');
+          authSubmitBtn.disabled = false;
+          authSubmitBtn.textContent = isLogin ? 'Se connecter' : 'Créer un compte';
         } else {
-          // Succès
           if (!isLogin && result.data?.user && !result.data.session) {
-            // Si la confirmation email est activée côté Supabase
-            if (authError) {
-              authError.textContent = "Vérifiez votre boîte mail pour confirmer votre compte.";
-              authError.style.color = "var(--blue-3)";
-              authError.classList.remove('hidden');
-            }
+            authError.textContent = "Vérifiez votre boîte mail pour confirmer votre compte.";
+            authError.style.color = "var(--blue-3)";
+            authError.classList.remove('hidden');
             authSubmitBtn.disabled = false;
-            authSubmitBtn.textContent = 'En attente de confirmation...';
+            authSubmitBtn.textContent = 'En attente...';
           } else {
-            // Connexion auto ou session déjà active
             closeAuthModal();
-            if (authSubmitBtn) authSubmitBtn.disabled = false;
-
-            // Mise à jour immédiate si session présente
-            if (result.data?.session) {
-               updateAuthUI(result.data.session.user);
-            }
+            authSubmitBtn.disabled = false;
+            if (result.data?.session) updateAuthUI(result.data.session.user);
           }
-        }      } catch (err) {
+        }
+      } catch (err) {
         console.error("Auth error:", err);
-        if (authSubmitBtn) authSubmitBtn.disabled = false;
+        authSubmitBtn.disabled = false;
       }
     });
   }
 
-  // --- HERO VISUAL CARD PARALLAX ON MOUSE MOVE ---
   const heroCard = document.querySelector('.hero-visual-card');
   const heroVisual = document.querySelector('.hero-visual');
   if (heroCard && heroVisual) {
@@ -723,6 +717,59 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     heroVisual.addEventListener('mouseleave', () => {
       heroCard.style.transform = 'rotateY(-6deg) rotateX(3deg)';
+    });
+  }
+
+  // --- FEEDBACK FORM SUBMISSION ---
+  const feedbackForm = document.getElementById('feedback-form');
+  if (feedbackForm) {
+    feedbackForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('fb-email').value;
+      const type = document.getElementById('fb-type').value;
+      const message = document.getElementById('fb-message').value;
+      const status = document.getElementById('fb-status');
+      const submitBtn = document.getElementById('fb-submit');
+      
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "ENVOI EN COURS...";
+      status.textContent = "";
+
+      try {
+        const response = await fetch('https://svodjiuypokuvubwfkom.supabase.co/functions/v1/send-feedback', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // No auth required for public feedback
+          },
+          body: JSON.stringify({
+            userEmail: email,
+            feedbackType: type,
+            message: message,
+            pageUrl: window.location.href
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          status.style.color = "var(--blue-3)";
+          status.textContent = "> Merci ! Votre feedback a été envoyé avec succès.";
+          feedbackForm.reset();
+        } else {
+          status.style.color = "var(--orange)";
+          status.textContent = "> Erreur : " + (data.error || "Impossible d'envoyer le feedback.");
+        }
+      } catch (err) {
+        console.error("Feedback error:", err);
+        status.style.color = "var(--orange)";
+        status.textContent = "> Erreur réseau. Veuillez réessayer plus tard.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
     });
   }
 });
