@@ -1291,6 +1291,61 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
     height: 16px;
     background: var(--blue-3);
   }
+
+  /* Correction Dropdown Mobile */
+  .nav-dropdown {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-dropdown-trigger {
+    width: 100%;
+    height: auto;
+    padding: 18px 32px;
+    border-bottom: 1px solid var(--border-dk);
+    justify-content: flex-start;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .nav-dropdown-content {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    width: 100%;
+    min-width: 0;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    display: none; /* Masqué par défaut sur mobile, s'affiche au clic ou via JS */
+  }
+  .nav-dropdown:hover .nav-dropdown-content,
+  .nav-dropdown:focus-within .nav-dropdown-content {
+    display: block;
+  }
+  .nav-dropdown-content a {
+    padding: 14px 48px !important;
+    background: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+  .nav-dropdown-trigger svg {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+  }
+  .nav-dropdown:hover .nav-dropdown-trigger svg {
+    transform: rotate(180deg);
+  }
+
+  /* Badge Mobile */
+  .nav-badge-new {
+    font-size: 0.45rem;
+    padding: 1px 4px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
   .nav-search { margin: 20px 32px; width: calc(100% - 64px); height: 44px; border-radius: 0; padding: 0 16px; }
   .nav-search input { width: 100%; }
   .nav-search input:focus { width: 100%; }
