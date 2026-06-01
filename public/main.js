@@ -289,40 +289,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- NEWSLETTER FORM ---
   const newsletterForm = document.getElementById('api-newsletter-form');
   if (newsletterForm) {
-    newsletterForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const statusText = document.getElementById('subscription-status');
-      const btn = document.getElementById('submit-btn');
-      
-      btn.disabled = true;
-      btn.textContent = "[ TRAITEMENT... ]";
-      statusText.textContent = "";
-      
-      const formData = new FormData(form);
-      
-      try {
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-          });
-          
-          if (response.ok) {
-            statusText.style.color = "var(--white)";
-            statusText.textContent = "> Inscription validée. Vérifiez votre boîte de réception.";
-            form.reset();
-          } else {
-            const data = await response.json().catch(() => ({}));
-            statusText.style.color = "var(--orange)";
-            statusText.textContent = data.message ? "> " + data.message : "> Erreur : l'email est invalide ou déjà inscrit.";
-          }
-      } catch (err) {
-          statusText.style.color = "var(--orange)";
-          statusText.textContent = "> Requête bloquée ou problème de réseau. Veuillez réessayer.";
-      } finally {
-          btn.disabled = false;
-          btn.textContent = "S'abonner";
+    newsletterForm.addEventListener('submit', () => {
+      const btn = newsletterForm.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "[ TRAITEMENT... ]";
       }
     });
   }
