@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Newsletter Horacle Capital | Veille Macro & Signaux Quantitatifs';
+const description = "Rejoignez plus de 1000 investisseurs et recevez chaque semaine nos analyses sur les cycles de liquidité, les banques centrales et nos thèses de marché.";
+---
+
+<BaseLayout {title} {description}>
+    <header class="page-header relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <img src="/assets/img/banner.jpg" alt="Horacle Capital Newsletter" class="header-bg scale-110" aria-hidden="true" />
+      <div class="absolute inset-0 bg-dark/60 backdrop-blur-[2px]"></div>
+      <div class="relative z-10 text-center px-6">
+        <span class="font-mono text-[0.7rem] uppercase tracking-[0.4em] text-blue-3 mb-4 block reveal">Intelligence Stratégique</span>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-head text-white mb-6 tracking-tight reveal reveal-delay-1">The Note</h1>
+        <p class="text-lg md:text-xl text-white/80 font-light max-w-2xl mx-auto leading-relaxed reveal reveal-delay-2">Chaque lundi, le signal pur extrait de la complexité des marchés.</p>
+      </div>
+    </header>
+
+    <main class="bg-white">
+        <section class="py-24 md:py-32">
+            <div class="container max-w-6xl">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <!-- Left: Social Proof & Benefits -->
+                    <div class="reveal">
+                        <h2 class="font-head text-4xl md:text-5xl text-text mb-8 leading-tight">Ne subissez plus les marchés. <br/><span class="text-blue-2">Anticipez-les.</span></h2>
+                        
+                        <div class="space-y-8">
+                            <div class="flex gap-6">
+                                <div class="w-12 h-12 flex-shrink-0 bg-blue-3/10 flex items-center justify-center rounded-full">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-3)" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-head text-xl text-text mb-2">Veille Macro-Globale</h3>
+                                    <p class="text-off leading-relaxed">Décryptage des cycles de liquidité et des politiques monétaires avant qu'ils ne fassent la une.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex gap-6">
+                                <div class="w-12 h-12 flex-shrink-0 bg-blue-3/10 flex items-center justify-center rounded-full">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-3)" stroke-width="2"><path d="M12 2v20M2 12h20M12 2l10 10-10 10L2 12z"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-head text-xl text-text mb-2">Signaux Quantitatifs</h3>
+                                    <p class="text-off leading-relaxed">Accès exclusif à nos modèles de scoring (HMM, Volatilité) pour valider vos thèses.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-6">
+                                <div class="w-12 h-12 flex-shrink-0 bg-blue-3/10 flex items-center justify-center rounded-full">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-3)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-head text-xl text-text mb-2">Zéro Bruit</h3>
+                                    <p class="text-off leading-relaxed">Pas de publicité, pas de spam. Uniquement de la recherche actionnable à haute valeur ajoutée.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-12 p-8 bg-bg-2 border border-border italic text-off text-sm leading-relaxed">
+                            "Une lecture indispensable pour comprendre les flux de capitaux mondiaux. La rigueur d'Horacle Capital est exceptionnelle."
+                        </div>
+                    </div>
+
+                    <!-- Right: Form -->
+                    <div class="reveal reveal-delay-1">
+                        <div class="bg-dark p-10 md:p-16 shadow-2xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-3/5 blur-[100px] rounded-full"></div>
+                            
+                            <h3 class="font-head text-3xl text-white mb-6 relative z-10">Rejoindre la liste</h3>
+                            <p class="text-white/60 mb-10 relative z-10 leading-relaxed">Inscrivez-vous gratuitement pour recevoir la prochaine note hebdomadaire directement dans votre terminal.</p>
+                            
+                            <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFAMsHK_ThjVdJrUwMK-YVva9D-V6Sy5_qwv9w7R-BSFNofF9FNnLIyHrejN60zuHn5ieeNlyQVcktmVWsY-2KSC0nROM37etiiX9ed1ETcuRNeIhUyctsmaKrhiHSvrzJtm_m8HdQ1S02yREYcYi1T6MdyApQ7JoRB9uQGp5pxRVZJ5dQVG0mKqPhTYnuL3OM9bVMjFyWNwReeg==" method="POST" class="relative z-10">
+                                <div class="flex flex-col gap-6">
+                                    <div class="group">
+                                        <label class="block font-mono text-[0.6rem] uppercase tracking-widest text-white/40 mb-2 group-focus-within:text-blue-3 transition-colors">Votre adresse e-mail</label>
+                                        <input type="email" name="EMAIL" placeholder="votre@email.com" required 
+                                               class="w-full p-4 bg-white/5 border border-white/10 text-white font-mono outline-none transition-all duration-300 focus:border-blue-3 focus:bg-white/10">
+                                    </div>
+                                    <button type="submit" class="btn-primary border-none cursor-pointer justify-center w-full py-5 text-sm uppercase tracking-[0.2em]">
+                                        S'inscrire à la veille
+                                    </button>
+                                </div>
+                                <p id="subscription-status" class="mt-6 font-mono text-center min-h-[1.2em] text-[0.7rem] uppercase tracking-widest text-white/40"></p>
+                            </form>
+                            
+                            <p class="mt-10 text-[0.65rem] text-white/20 text-center font-mono uppercase tracking-widest">
+                                100% Recherche — Désinscription en 1 clic
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Past Issues Preview -->
+        <section class="py-24 bg-bg-2 border-t border-border">
+            <div class="container text-center">
+                <span class="font-mono text-[0.6rem] uppercase tracking-[0.4em] text-blue-3 mb-6 block">Archives</span>
+                <h2 class="font-head text-4xl text-text mb-12">Ils ont reçu ces analyses</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-8 border border-border shadow-sm text-left">
+                        <span class="text-xs font-mono text-dim mb-4 block">Note N°12</span>
+                        <h4 class="font-head text-xl mb-3">Tous Hawkish ?</h4>
+                        <p class="text-off text-sm">Analyse de la divergence monétaire Fed/BCE et impact sur le G7 FX.</p>
+                    </div>
+                    <div class="bg-white p-8 border border-border shadow-sm text-left">
+                        <span class="text-xs font-mono text-dim mb-4 block">Note N°11</span>
+                        <h4 class="font-head text-xl mb-3">Dollar sous tension</h4>
+                        <p class="text-off text-sm">La montée des taux longs US et la résilience du Yen japonais.</p>
+                    </div>
+                    <div class="bg-white p-8 border border-border shadow-sm text-left">
+                        <span class="text-xs font-mono text-dim mb-4 block">Note N°10</span>
+                        <h4 class="font-head text-xl mb-3">Stagflation attendue</h4>
+                        <p class="text-off text-sm">Anticipation des points d'inflexion sur les marchés actions EU.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</BaseLayout>
