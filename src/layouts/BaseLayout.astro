@@ -93,8 +93,8 @@ const {
       
       <a href="/" class:list={[ { 'active': activeNav === 'home' } ]}>Home</a>
       
-      <!-- Dropdown for Content -->
-      <div class="nav-dropdown">
+      <!-- Desktop Dropdown / Mobile Direct Links -->
+      <div class="nav-dropdown hide-mobile">
         <button class="nav-dropdown-trigger">
           Analyses
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -105,6 +105,11 @@ const {
           <a href="/portfolio" class:list={[ { 'active': activeNav === 'portfolio' } ]}>Thèses & Portfolio</a>
         </div>
       </div>
+
+      <!-- Mobile Only Direct Links -->
+      <a href="/reports" class="show-mobile" class:list={[ { 'active': activeNav === 'reports' } ]}>Rapports Macro</a>
+      <a href="/research" class="show-mobile" class:list={[ { 'active': activeNav === 'research' } ]}>Recherche Quant</a>
+      <a href="/portfolio" class="show-mobile" class:list={[ { 'active': activeNav === 'portfolio' } ]}>Thèses & Portfolio</a>
 
       <a href="/academy" class:list={[ "flex items-center gap-1", { 'active': activeNav === 'academy' } ]}>Academy <span class="nav-badge-new">NEW</span></a>
       <a href="/about" class:list={[ { 'active': activeNav === 'about' } ]}>À Propos</a>
@@ -212,6 +217,52 @@ const {
       <p class="footer-disclaimer">Avertissement sur les risques : Le trading et l'investissement sur les marchés financiers comportent un niveau de risque élevé et peuvent ne pas convenir à tous les investisseurs. Les performances passées ne préjugent pas des performances futures. Le contenu de ce site est fourni à titre exclusivement informatif et ne constitue en aucun cas un conseil en investissement. Horacle Capital ne saurait être tenu responsable de toute perte ou dommage découlant de la confiance accordée aux informations contenues sur ce site.</p>
     </div>
   </footer>
+
+  <!-- Newsletter Popup -->
+  <div id="newsletter-popup" class="newsletter-popup-overlay">
+    <div class="newsletter-popup">
+      <button id="close-popup" class="popup-close">&times;</button>
+      <div class="popup-content">
+        <div class="popup-header">
+          <span class="popup-tag">Intelligence Hebdomadaire</span>
+          <h2 class="font-head">Rejoignez la veille</h2>
+          <p>Recevez nos analyses macro et signaux quantitatifs chaque lundi directement dans votre boîte mail.</p>
+        </div>
+        <form action="https://fcfd001f.sibforms.com/serve/MUIFAMsHK_ThjVdJrUwMK-YVva9D-V6Sy5_qwv9w7R-BSFNofF9FNnLIyHrejN60zuHn5ieeNlyQVcktmVWsY-2KSC0nROM37etiiX9ed1ETcuRNeIhUyctsmaKrhiHSvrzJtm_m8HdQ1S02yREYcYi1T6MdyApQ7JoRB9uQGp5pxRVZJ5dQVG0mKqPhTYnuL3OM9bVMjFyWNwReeg==" method="POST" class="popup-form">
+          <input type="email" name="EMAIL" placeholder="votre@email.com" required class="popup-input" />
+          <button type="submit" class="btn-primary w-full justify-center py-4 uppercase tracking-widest text-xs">S'abonner</button>
+        </form>
+        <p class="popup-footer">100% Recherche. Désinscription en 1 clic.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Newsletter Popup Logic
+    window.addEventListener('load', () => {
+      const popup = document.getElementById('newsletter-popup');
+      const closeBtn = document.getElementById('close-popup');
+      const hasClosed = localStorage.getItem('newsletter_popup_closed');
+      
+      if (!hasClosed) {
+        setTimeout(() => {
+          popup.classList.add('active');
+        }, 10000); // Show after 10 seconds
+      }
+
+      closeBtn.addEventListener('click', () => {
+        popup.classList.remove('active');
+        localStorage.setItem('newsletter_popup_closed', 'true');
+      });
+
+      popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+          popup.classList.remove('active');
+          localStorage.setItem('newsletter_popup_closed', 'true');
+        }
+      });
+    });
+  </script>
 
   <FeedbackForm />
   <script is:inline src="/main.js"></script>
