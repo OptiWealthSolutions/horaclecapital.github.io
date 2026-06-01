@@ -7,53 +7,191 @@ const description = "Découvrez la vision d'Horacle Capital. Fondée par Léo Lo
 ---
 
 <BaseLayout {title} {description} activeNav="about">
-    <header class="page-header">
-      <img src="/assets/img/banner.jpg" alt="L'expertise Horacle Capital : analyse fondamentale et précision statistique" class="header-bg" aria-hidden="true" />
-      <span>Structure de Recherche</span>
-      <h1>À Propos</h1>
-      <p>L'expertise Horacle Capital : du signal fondamental à la précision statistique.</p>
+    <header class="page-header relative h-[45vh] flex items-center justify-center overflow-hidden">
+      <img src="/assets/img/banner.jpg" alt="L'expertise Horacle Capital : analyse fondamentale et précision statistique" class="header-bg scale-110" aria-hidden="true" />
+      <div class="absolute inset-0 bg-dark/40 backdrop-blur-[1px]"></div>
+      <div class="relative z-10 text-center px-6">
+        <span class="font-mono text-[0.7rem] uppercase tracking-[0.4em] text-blue-3 mb-4 block reveal">The Intelligence Edge</span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-head text-white mb-6 tracking-tight reveal reveal-delay-1">À Propos</h1>
+        <p class="text-lg md:text-xl text-white/80 font-light max-w-2xl mx-auto leading-relaxed reveal reveal-delay-2">Le signal pur, extrait à l'intersection de la macroéconomie et des mathématiques.</p>
+      </div>
     </header>
 
-    <div class="container pt-[80px] pb-[120px]">
-        <div class="about-grid items-start gap-20">
-            <div class="about-body">
-                <h2 class="section-title text-[2.2rem] mb-5">Léo Lombardini</h2>
-                <p class="text-off leading-relaxed">
-                    Analyste financier spécialisé dans les dynamiques macro-globales, mon parcours s'est structuré à l'EDHEC Business School. Horacle Capital est né d'une conviction : la recherche indépendante doit allier rigueur académique et réactivité opérationnelle.
-                </p>
-
-                <h3 class="font-head text-text mt-10 mb-4 text-[1.6rem]">La Méthodologie Horacle</h3>
-                <p class="text-off leading-relaxed">
-                    Notre approche repose sur un double moteur. L'<strong>Analyse Macroéconomique</strong> définit le cadre directionnel (politiques monétaires, cycles de liquidité, tensions géopolitiques). La <strong>Finance Quantitative</strong> assure la précision via des modèles statistiques avancés (HMM, scoring multifactoriel). Cette synergie permet d'extraire le signal pur au milieu du bruit des marchés financiers.
-                </p>
-            </div>
-
-            <div class="about-body">
-                <h2 class="section-title text-[2.2rem] mb-5">Contact</h2>
-                <p class="text-off mb-8">Pour toute question relative à nos recherches, propositions de collaboration ou accès à nos modèles, utilisez ce canal sécurisé.</p>
-                
-                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="c455f599-cf43-4be4-9835-019ffa3330db">
-                    
-                    <div class="flex flex-col gap-4">
-                        <input type="text" name="Nom" placeholder="Nom Complet" required class="p-4 bg-white border border-border text-text font-sans outline-none transition-colors duration-200 focus:border-orange rounded-none">
-                        <input type="email" name="Email" placeholder="Adresse E-mail" required class="p-4 bg-white border border-border text-text font-sans outline-none transition-colors duration-200 focus:border-orange rounded-none">
-                        <textarea name="Message" rows="5" placeholder="Votre message..." required class="p-4 bg-white border border-border text-text font-sans resize-y outline-none transition-colors duration-200 focus:border-orange rounded-none"></textarea>
-                        <button type="submit" class="btn-primary border-none cursor-pointer justify-center w-full">Envoyer le message</button>
+    <main class="bg-white">
+        <!-- Vision Section (Enhanced) -->
+        <section class="py-24 md:py-32 border-b border-border relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-bg-2/50 -skew-x-12 translate-x-1/4 pointer-events-none"></div>
+            <div class="container max-w-6xl relative z-10">
+                <div class="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+                    <div class="lg:col-span-6">
+                        <span class="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-blue-3 mb-6 block reveal">Notre Raison d'Être</span>
+                        <h2 class="font-head text-5xl md:text-6xl lg:text-7xl text-text leading-[1.1] tracking-tight mb-8 reveal reveal-delay-1">
+                            Horacle Capital : <br/>
+                            <span class="text-blue-2">L'indépendance</span><br/>comme standard.
+                        </h2>
+                        <div class="w-24 h-1.5 bg-blue-3 reveal reveal-delay-2"></div>
                     </div>
-                </form>
-                <p id="form-status" class="mt-5 font-mono text-center min-h-[1.2em] text-[0.9rem]"></p>
+                    <div class="lg:col-span-6 flex flex-col gap-10 text-xl text-off font-sans leading-relaxed font-light reveal reveal-delay-3">
+                        <p class="border-l-4 border-blue-3/20 pl-8">
+                            Horacle Capital n'est pas un média financier. C'est une cellule de recherche conçue pour les investisseurs exigeants qui refusent le bruit médiatique et la complaisance des analyses consensuelles.
+                        </p>
+                        <div class="space-y-6">
+                            <p>
+                                Notre approche repose sur une synergie unique : l'<strong>Analyse Macroéconomique</strong> définit nos convictions directionnelles, tandis que la <strong>Finance Quantitative</strong> vient éprouver ces thèses par la rigueur statistique.
+                            </p>
+                            <p>
+                                Nous transformons la complexité des cycles mondiaux en signaux actionnables, offrant à nos partenaires un avantage informationnel décisif dans un environnement saturé.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="py-32 bg-bg-2 overflow-hidden">
+            <div class="container">
+                <div class="text-center mb-24 reveal">
+                    <span class="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-blue-3 mb-4 block">Les Acteurs</span>
+                    <h2 class="font-head text-5xl text-text tracking-tight">L'Intelligence derrière la recherche</h2>
+                </div>
+
+                <div class="flex flex-col gap-32">
+                    <!-- Léo Lombardini -->
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div class="relative group reveal">
+                            <div class="absolute -inset-4 bg-blue-3/5 rounded-2xl blur-2xl group-hover:bg-blue-3/10 transition-colors"></div>
+                            <img src="/assets/img/profil_leo_HD.jpeg" alt="Léo Lombardini" class="relative z-10 w-full aspect-[4/5] object-cover shadow-2xl transition-all duration-700" />
+                            <div class="absolute bottom-8 right-8 z-20 bg-white p-6 shadow-xl hidden md:block">
+                                <span class="font-mono text-xs text-blue-3 font-bold block mb-1">STRATÉGIE & QUANT</span>
+                                <p class="text-text font-head text-lg italic">"Le signal est asymétrique."</p>
+                            </div>
+                        </div>
+                        <div class="reveal reveal-delay-1">
+                            <span class="font-mono text-[0.7rem] text-blue-3 font-bold tracking-widest uppercase mb-4 block">Fondateur & CEO</span>
+                            <h3 class="font-head text-4xl md:text-5xl text-text mb-8">Léo Lombardini</h3>
+                            <div class="flex flex-col gap-6 text-lg text-off font-sans leading-relaxed">
+                                <p>
+                                    Trader et passionné d'économie, Léo a structuré Horacle Capital autour d'une obsession : la détection des points d'inflexion macroéconomiques avant qu'ils ne soient pricés par le marché.
+                                </p>
+                                <p>
+                                    Passionné d'analyse des marchés et de modélisation statistique, il supervise l'allocation stratégique du portefeuille modèle et le développement des frameworks quantitatifs de la structure, ainsi que la rédaction d'articles hebdomadaires.
+                                </p>
+                            </div>
+                            <div class="mt-10 pt-10 border-t border-border flex gap-8">
+                                <div>
+                                    <span class="block text-text font-bold text-2xl">EDHEC</span>
+                                    <span class="text-xs font-mono uppercase text-dim">ENS D2 (Prépa)</span>
+                                </div>
+                                <div class="w-px h-full bg-border"></div>
+                                <div>
+                                    <span class="block text-text font-bold text-2xl">Macro-Quant</span>
+                                    <span class="text-xs font-mono uppercase text-dim">Spécialisation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Raphaël Chouraqui -->
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div class="order-2 lg:order-1 reveal reveal-delay-1">
+                            <span class="font-mono text-[0.7rem] text-blue-3 font-bold tracking-widest uppercase mb-4 block">Research Analyst</span>
+                            <h3 class="font-head text-4xl md:text-5xl text-text mb-8">Raphaël Chouraqui</h3>
+                            <div class="flex flex-col gap-6 text-lg text-off font-sans leading-relaxed">
+                                <p>
+                                    Diplômé de l'ESCP Business School après une classe préparatoire ECG, Raphaël apporte une expertise analytique rigoureuse au service de la recherche macro-financière. Passionné par les dynamiques des marchés globaux, il se spécialise en finance de marché.
+                                </p>
+                                <p>
+                                    Au sein d'Horacle Capital, il décrypte les tendances structurelles pour transformer les données économiques complexes en thèses d'investissement cohérentes, alliant profondeur académique et pragmatisme de marché.
+                                </p>
+                            </div>
+                            <div class="mt-10 pt-10 border-t border-border flex gap-8">
+                                <div>
+                                    <span class="block text-text font-bold text-2xl">ESCP</span>
+                                    <span class="text-xs font-mono uppercase text-dim">ECG (Prépa)</span>
+                                </div>
+                                <div class="w-px h-full bg-border"></div>
+                                <div>
+                                    <span class="block text-text font-bold text-2xl">Market Analysis</span>
+                                    <span class="text-xs font-mono uppercase text-dim">Focus</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-1 lg:order-2 relative group reveal">
+                            <div class="absolute -inset-4 bg-blue-3/5 rounded-2xl blur-2xl group-hover:bg-blue-3/10 transition-colors"></div>
+                            <img src="/assets/img/photo_profil_raphael.jpg" alt="Raphaël Chouraqui" class="relative z-10 w-full aspect-[4/5] object-cover shadow-2xl transition-all duration-700" />
+                            <div class="absolute bottom-8 left-8 z-20 bg-white p-6 shadow-xl hidden md:block">
+                                <span class="font-mono text-xs text-blue-3 font-bold block mb-1">ECON & FINANCE</span>
+                                <p class="text-text font-head text-lg italic">"La rigueur est le socle de l'alpha."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-32 border-t border-border bg-white">
+            <div class="container max-w-6xl">
+                <div class="grid lg:grid-cols-2 gap-24">
+                    <div class="reveal">
+                        <span class="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-blue-3 mb-6 block">Inquiries</span>
+                        <h2 class="font-head text-5xl text-text mb-8 tracking-tight">Collaborons.</h2>
+                        <p class="text-lg text-off leading-relaxed mb-10 max-w-md">
+                            Que vous soyez un investisseur institutionnel, un trader indépendant ou un partenaire potentiel, notre canal de communication direct est à votre disposition.
+                        </p>
+                        <div class="flex flex-col gap-4 text-sm font-mono text-text">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-px bg-blue-3"></div>
+                                <span>RECHERCHE SUR MESURE</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-px bg-blue-3"></div>
+                                <span>ACCÈS MODÈLES QUANT</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-px bg-blue-3"></div>
+                                <span>PARTENARIATS STRATÉGIQUES</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal reveal-delay-1">
+                        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="bg-bg-2 p-10 shadow-sm border border-border">
+                            <input type="hidden" name="access_key" value="c455f599-cf43-4be4-9835-019ffa3330db">
+                            
+                            <div class="flex flex-col gap-6">
+                                <div class="group">
+                                    <label class="block font-mono text-[0.6rem] uppercase tracking-widest text-dim mb-2 group-focus-within:text-blue-3 transition-colors">Nom Complet</label>
+                                    <input type="text" name="Nom" required class="w-full p-4 bg-white border border-border text-text font-sans outline-none transition-all duration-300 focus:border-blue-3 focus:ring-4 focus:ring-blue-3/5">
+                                </div>
+                                <div class="group">
+                                    <label class="block font-mono text-[0.6rem] uppercase tracking-widest text-dim mb-2 group-focus-within:text-blue-3 transition-colors">Adresse E-mail</label>
+                                    <input type="email" name="Email" required class="w-full p-4 bg-white border border-border text-text font-sans outline-none transition-all duration-300 focus:border-blue-3 focus:ring-4 focus:ring-blue-3/5">
+                                </div>
+                                <div class="group">
+                                    <label class="block font-mono text-[0.6rem] uppercase tracking-widest text-dim mb-2 group-focus-within:text-blue-3 transition-colors">Message</label>
+                                    <textarea name="Message" rows="5" required class="w-full p-4 bg-white border border-border text-text font-sans resize-y outline-none transition-all duration-300 focus:border-blue-3 focus:ring-4 focus:ring-blue-3/5"></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary border-none cursor-pointer justify-center w-full py-5 text-sm uppercase tracking-[0.2em]">Envoyer le message</button>
+                            </div>
+                            <p id="form-status" class="mt-6 font-mono text-center min-h-[1.2em] text-[0.7rem] uppercase tracking-widest"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="py-24 bg-dark">
+            <div class="container">
+                <SubscribeCTA 
+                    title="Soutenez la recherche indépendante"
+                    description="Accédez à l'intégralité de nos analyses macroéconomiques et modèles quantitatifs en devenant membre premium."
+                    buttonText="Rejoindre Horacle Premium"
+                />
             </div>
         </div>
-        
-        <div class="mt-24">
-            <SubscribeCTA 
-                title="Soutenez la recherche indépendante"
-                description="Accédez à l'intégralité de nos analyses macroéconomiques et modèles quantitatifs en devenant membre premium."
-                buttonText="Rejoindre Horacle Premium"
-            />
-        </div>
-    </div>
+    </main>
 
     <script is:inline>
       // Script pour le formulaire de contact

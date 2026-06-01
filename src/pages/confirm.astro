@@ -6,25 +6,56 @@ const description = "Votre abonnement à la newsletter Horacle Capital est confi
 ---
 
 <BaseLayout {title} {description}>
-    <header class="hero min-h-[40vh] md:min-h-[80vh] border-b-0 justify-center text-center">
-      <img src="/assets/img/banner.jpg" alt="" class="hero-bg opacity-5" aria-hidden="true" />
-      
-      <div class="hero-inner">
-        <div class="hero-tag">Succès</div>
-        <h1 class="text-[clamp(2.5rem,6vw,4.5rem)]">
-          INSCRIPTION<br>
-          <span class="o">CONFIRMÉE</span>
-        </h1>
-        <p class="hero-sub font-sans normal-case tracking-normal text-[1.15rem] max-w-[650px] mb-10 leading-relaxed">
-          Merci de rejoindre la newsletter Horacle Capital. Vous recevrez désormais nos dernières analyses macroéconomiques et nos recherches directement dans votre boîte mail.
-        </p>
-        <div class="hero-actions justify-center">
-          <a href="/" class="btn-primary">
-            Retourner à l'accueil
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
+    <header class="page-header relative h-[45vh] flex items-center justify-center overflow-hidden">
+      <img src="/assets/img/banner.jpg" alt="Horacle Capital Confirmation" class="header-bg scale-110" aria-hidden="true" />
+      <div class="absolute inset-0 bg-dark/60 backdrop-blur-[2px]"></div>
+      <div class="relative z-10 text-center px-6">
+        <span class="font-mono text-[0.7rem] uppercase tracking-[0.4em] text-blue-3 mb-4 block reveal">Subscription Successful</span>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-head text-white mb-6 tracking-tight reveal reveal-delay-1">Bienvenue</h1>
+        <p class="text-lg md:text-xl text-white/80 font-light max-w-2xl mx-auto leading-relaxed reveal reveal-delay-2">Votre accès à la veille stratégique Horacle Capital est activé.</p>
       </div>
     </header>
+
+    <main class="bg-white">
+        <section class="py-24 md:py-32">
+            <div class="container max-w-4xl text-center">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-3/10 mb-10 reveal">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--blue-3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                
+                <h2 class="font-head text-4xl text-text mb-8 tracking-tight reveal reveal-delay-1">Vous faites désormais partie de la cellule.</h2>
+                
+                <p class="text-xl text-off font-sans leading-relaxed mb-12 max-w-2xl mx-auto reveal reveal-delay-2">
+                    Vous recevrez chaque semaine nos analyses sur les cycles de liquidité, les banques centrales et nos thèses de marché. En attendant la prochaine note, explorez nos dernières publications.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 reveal reveal-delay-3">
+                    <a href="/reports" class="btn-primary px-10 py-5 text-sm uppercase tracking-widest w-full sm:w-auto">
+                        Lire les derniers rapports
+                    </a>
+                    <a href="/portfolio" class="font-mono text-xs uppercase tracking-widest text-text hover:text-blue-3 transition-colors py-5 px-10 border border-border group w-full sm:w-auto">
+                        Voir nos convictions <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Hygiene Tip -->
+        <section class="py-20 bg-bg-2 border-y border-border">
+            <div class="container max-w-3xl">
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="w-16 h-16 flex-shrink-0 bg-white border border-border flex items-center justify-center shadow-sm">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue-3)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-head text-2xl text-text mb-2">Un dernier conseil</h3>
+                        <p class="text-off text-sm leading-relaxed">
+                            Pour éviter que nos analyses ne soient classées en "Promotions", glissez notre premier email vers votre boîte **Principale** dès réception. Cela garantit une délivrabilité optimale.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
 </BaseLayout>

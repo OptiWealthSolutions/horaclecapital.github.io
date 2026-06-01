@@ -345,21 +345,48 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
           <!-- Author bio -->
           <div class="mt-20 bg-bg-2 border border-border p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center md:items-start relative overflow-hidden">
             <div class="absolute top-0 left-0 w-1 h-full bg-blue-2"></div>
-            <img 
-              src="/assets/img/image_profil_leo.jpeg" 
-              alt={author} 
-              class="w-28 h-28 object-cover rounded-full border-4 border-white shadow-md flex-shrink-0"
-            />
-            <div class="text-center md:text-left">
-              <h4 class="font-head text-2xl text-text mb-2">{author}</h4>
-              <p class="font-mono text-[0.65rem] text-blue-3 uppercase tracking-widest mb-4 font-bold">Analyste Macroéconomique & Quantitatif</p>
-              <p class="text-sm text-off leading-relaxed mb-6 font-sans">
-                Spécialiste de la microstructure des marchés et de la modélisation statistique (HMM). Léo développe les moteurs d'inférence d'Horacle Capital et rédige les notes de synthèse hebdomadaires sur la liquidité mondiale.
-              </p>
-              <a href="/about" class="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-text hover:text-blue-3 transition-colors">
-                En savoir plus sur l'auteur <span class="hover:translate-x-1 transition-transform">→</span>
-              </a>
-            </div>
+            
+            {author === 'Léo Lombardini' && (
+              <>
+                <img 
+                  src="/assets/img/profil_leo_HD.jpeg" 
+                  alt="Léo Lombardini" 
+                  class="w-28 h-28 object-cover rounded-full border-4 border-white shadow-md flex-shrink-0"
+                />
+                <div class="text-center md:text-left">
+                  <h4 class="font-head text-2xl text-text mb-2">Léo Lombardini</h4>
+                  <p class="font-mono text-[0.65rem] text-blue-3 uppercase tracking-widest mb-4 font-bold">Trader, Économie & Quant</p>
+                  <p class="text-sm text-off leading-relaxed mb-6 font-sans">
+                    Passionné d'analyse des marchés et de modélisation statistique, Léo supervise l'allocation stratégique du portefeuille modèle et le développement des frameworks quantitatifs d'Horacle Capital, ainsi que la rédaction d'articles hebdomadaires.
+                  </p>
+                  <a href="/about" class="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-text hover:text-blue-3 transition-colors">
+                    En savoir plus sur l'auteur <span class="hover:translate-x-1 transition-transform">→</span>
+                  </a>
+                </div>
+              </>
+            )}
+
+            {/* 
+            {author === 'Raphaël Chouraqui' && (
+              <>
+                <img 
+                  src="/assets/img/photo_profil_raphael.jpg" 
+                  alt="Raphaël Chouraqui" 
+                  class="w-28 h-28 object-cover rounded-full border-4 border-white shadow-md flex-shrink-0"
+                />
+                <div class="text-center md:text-left">
+                  <h4 class="font-head text-2xl text-text mb-2">Raphaël Chouraqui</h4>
+                  <p class="font-mono text-[0.65rem] text-blue-3 uppercase tracking-widest mb-4 font-bold">Writer</p>
+                  <p class="text-sm text-off leading-relaxed mb-6 font-sans">
+                    Passionné d’économie et de finance de marché. Raphaël apporte son expertise dans le décryptage des cycles macroéconomiques et participe à la rédaction des analyses d'Horacle Capital.
+                  </p>
+                  <a href="/about" class="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-text hover:text-blue-3 transition-colors">
+                    En savoir plus sur l'auteur <span class="hover:translate-x-1 transition-transform">→</span>
+                  </a>
+                </div>
+              </>
+            )}
+            */}
           </div>
         </article>
 
@@ -410,7 +437,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
         
         <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFACcPg2uWGNBAbU4cSDprnElbk1FRV2qwGwIxfu8WogfqGAXSolvDvkbxEJWPch_qaBrUcpsJZw05rutTpZXGsO7NyU4u3KIv1PMY0Kh5ktXIqooAEmA1HDMlHA_hvlNcg0DT492kAYvqOyZArsMV5tUnWgvrl5i0LgCv2U2mfMW79aZTHZPlAWOrFZ81eecgVmzuzpvO98G45Q==" method="POST" class="max-w-[500px] mx-auto">
           <div class="flex flex-col sm:flex-row">
-            <input type="email" name="EMAIL" placeholder="terminal@access.com" required
+            <input type="email" name="EMAIL" placeholder="votre@email.com" required
                    class="flex-1 px-6 py-4 bg-white/5 border border-white/10 text-white font-mono outline-none rounded-none text-sm focus:border-blue-3" />
             <button type="submit" class="btn-primary border-none cursor-pointer px-8 py-4 font-mono text-[0.7rem] uppercase tracking-[0.2em] sm:border-l-0" style="border-radius:0;">S'abonner</button>
           </div>
