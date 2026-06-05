@@ -84,18 +84,18 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
             {latestReports.map((rapport, index) => (
               <a href={`/reports/${rapport.slug}`} class={`reveal reveal-delay-${index} group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden`}>
                 <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
-                <div class="h-48 overflow-hidden border-b border-border relative">
+                <div class="h-32 md:h-48 overflow-hidden border-b border-border relative">
                   <img src={rapport.data.thumbnail || '/assets/img/banner.jpg'} alt={rapport.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" onerror="this.src='/assets/img/banner.jpg'" />
                   <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
                   <div class="absolute top-4 left-4 flex gap-2">
                     <span class="bg-blue-3 text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-none shadow-md">{rapport.data.category}</span>
                   </div>
                 </div>
-                <div class="p-8 flex flex-col flex-1">
-                  <div class="font-sans text-[0.6rem] text-dim mb-3 uppercase tracking-widest">{new Date(rapport.data.date).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
-                  <h3 class="font-head text-2xl font-semibold text-text mb-4 leading-tight group-hover:text-blue-3 transition-colors">{rapport.data.title}</h3>
-                  <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1 font-sans">{rapport.data.description}</p>
-                  <div class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-bold text-text mt-auto pt-6 border-t border-border/50 group-hover:text-blue-3 transition-colors">
+                <div class="p-5 md:p-8 flex flex-col flex-1">
+                  <div class="font-sans text-[0.55rem] md:text-[0.6rem] text-dim mb-2 md:mb-3 uppercase tracking-widest">{new Date(rapport.data.date).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
+                  <h3 class="font-head text-lg md:text-2xl font-semibold text-text mb-3 md:mb-4 leading-tight group-hover:text-blue-3 transition-colors line-clamp-2">{rapport.data.title}</h3>
+                  <p class="text-off text-xs md:text-[0.9rem] leading-relaxed line-clamp-2 md:line-clamp-3 mb-4 md:mb-6 flex-1 font-sans">{rapport.data.description}</p>
+                  <div class="inline-flex items-center gap-2 font-sans text-[0.65rem] md:text-[0.75rem] font-bold text-text mt-auto pt-4 md:pt-6 border-t border-border/50 group-hover:text-blue-3 transition-colors">
                     Lire le rapport <span class="group-hover:translate-x-1 transition-transform">→</span>
                   </div>
                 </div>

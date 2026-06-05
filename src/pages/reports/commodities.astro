@@ -45,18 +45,18 @@ const description = "Retrouvez toutes nos analyses hebdomadaires dédiées aux m
           {rapportsCommo.map((rapport) => (
             <a href={`/reports/${rapport.slug}`} class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden">
               <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
-              <div class="h-48 overflow-hidden border-b border-border relative">
+              <div class="h-32 md:h-48 overflow-hidden border-b border-border relative">
                 <img src={rapport.data.thumbnail || fallbackImg} alt={rapport.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" onerror={`this.src='${fallbackImg}'`} />
                 <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
               </div>
-              <div class="p-8 flex flex-col flex-1">
-                <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
-                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">{rapport.data.category}</span>
-                  <span class="text-[0.65rem] text-dim uppercase tracking-widest">{formatDateShort(rapport.data.date)}</span>
+              <div class="p-5 md:p-8 flex flex-col flex-1">
+                <div class="flex items-center justify-between mb-4 md:mb-6 pb-4 md:pb-6 border-b border-border/50">
+                  <span class="text-[0.6rem] md:text-[0.65rem] font-bold uppercase tracking-widest text-blue-3 line-clamp-1">{rapport.data.category}</span>
+                  <span class="text-[0.6rem] md:text-[0.65rem] text-dim uppercase tracking-widest whitespace-nowrap">{formatDateShort(rapport.data.date)}</span>
                 </div>
-                <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">{rapport.data.title}</h3>
-                <p class="text-off text-sm leading-relaxed mb-8 flex-1 font-sans">{rapport.data.description}</p>
-                <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
+                <h3 class="font-head text-xl md:text-2xl text-text mb-4 md:mb-6 leading-tight group-hover:text-blue-3 transition-colors line-clamp-2 md:line-clamp-none">{rapport.data.title}</h3>
+                <p class="text-off text-xs md:text-sm leading-relaxed mb-6 md:mb-8 flex-1 font-sans line-clamp-2 md:line-clamp-none">{rapport.data.description}</p>
+                <div class="mt-auto pt-4 md:pt-6 flex justify-between items-center border-t border-border/50">
                     <span class="text-[0.7rem] font-bold text-text uppercase tracking-widest">Lire le rapport</span>
                     <span class="group-hover:translate-x-1 transition-transform">→</span>
                 </div>
