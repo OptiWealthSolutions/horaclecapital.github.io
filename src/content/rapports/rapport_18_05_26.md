@@ -3,7 +3,7 @@ title: 'Entre inflation et ascension'
 description: Analyse des tensions inflationnistes persistantes face à la résilience des marchés actions. Étude des divergences monétaires entre la Fed, la BCE et la dynamique au Japon, couplée au réveil des matières premières.
 author: 'Léo Lombardini'
 date: '2026-05-18'
-category: 'Macro Economics'
+category: 'FX & Macro'
 issue: 'N°10'
 thumbnail: '/assets/img/cover_report_10.jpg'
 tags: ['Macro', 'Inflation', 'FED', 'BCE', 'Equities', 'Commodities']

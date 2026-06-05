@@ -3,7 +3,7 @@ title: 'Choc Institutionnel : Trump, la Fed & Liquidités'
 description: Inauguration et premières mesures. Impact sur les conditions financières
   mondiales et les flux de liquidités.
 date: '2026-01-17'
-category: Géopolitique
+category: 'FX & Macro'
 issue: N°2
 thumbnail: https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=800&q=80&auto=format&fit=crop
 tags:

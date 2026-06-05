@@ -531,6 +531,9 @@ document.addEventListener('DOMContentLoaded', () => {
               signupBtn.onclick = () => window.location.href = stripeUrl;
             }
           }
+        } else {
+          // Public article, always show print button
+          if (printBtn) printBtn.classList.remove('hidden');
         }
       } catch (err) {
         console.error("Error checking profile:", err);
@@ -539,9 +542,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (loginBtn) loginBtn.classList.remove('hidden');
       if (signupBtn) signupBtn.classList.remove('hidden');
       if (userNav) userNav.classList.add('hidden');
-      if (premiumContent) premiumContent.classList.add('hidden');
-      if (paywall) paywall.classList.remove('hidden');
-      if (printBtn) printBtn.classList.add('hidden');
+      if (premiumContent) {
+        premiumContent.classList.add('hidden');
+        if (paywall) paywall.classList.remove('hidden');
+        if (printBtn) printBtn.classList.add('hidden');
+      } else {
+        // Public article, show print button even if not logged in
+        if (printBtn) printBtn.classList.remove('hidden');
+      }
     }
   };
 

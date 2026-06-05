@@ -10,6 +10,10 @@ const portfolios = await getCollection('portfolios');
 
 <BaseLayout {title} {description} activeNav="portfolio">
     <header class="portfolio-hero relative py-24 md:py-32 overflow-hidden bg-dark">
+        <div class="print-only container" style="margin-bottom: 30px; text-align: left;">
+            <img src="/assets/img/logo.png" alt="HORACLE CAPITAL" style="width: 50px; height: 50px;" />
+            <hr style="margin-top: 15px; border: 0; border-top: 1px solid #000;" />
+        </div>
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
             <img 
@@ -27,6 +31,17 @@ const portfolios = await getCollection('portfolios');
                 <p class="text-off text-lg md:text-xl leading-relaxed font-light reveal reveal-delay-1 max-w-2xl mx-auto">
                     Transparence totale et rigueur analytique. Nos allocations reflètent nos moteurs de scoring et notre lecture des cycles macroéconomiques.
                 </p>
+
+                <div class="mt-8 flex justify-center reveal reveal-delay-2 no-print">
+                  <button 
+                    onclick="window.print()" 
+                    class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/5 border border-white/10 text-white hover:text-blue-3 hover:border-blue-3 transition-colors font-mono text-[0.65rem] uppercase tracking-widest cursor-pointer"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+                    Imprimer le portfolio
+                  </button>
+                </div>
+
                 <div class="mt-12 flex justify-center gap-8 reveal reveal-delay-2">
                     <div class="flex flex-col items-center">
                         <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Mise à jour</span>

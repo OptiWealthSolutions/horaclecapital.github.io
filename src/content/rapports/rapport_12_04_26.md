@@ -3,7 +3,7 @@ title: Trêve Annoncée et Résistance de l'Inflation
 description: Débrief de la semaine et prévisions. Focus sur les signaux de pause des
   banques centrales face à l'inflation persistante.
 date: '2026-04-12'
-category: Politique Monétaire
+category: 'FX & Macro'
 issue: N°8
 thumbnail: https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?w=800&q=80&auto=format&fit=crop
 tags:

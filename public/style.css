@@ -1441,6 +1441,8 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
 .reveal-delay-3 { transition-delay: 0.24s; }
 .reveal-delay-4 { transition-delay: 0.32s; }
 
+.print-only { display: none; }
+
 /* ─── PRINT ──────────────────────────────────────────────────────── */
 @media print {
   @page { margin: 2cm 1.5cm; }
@@ -1448,8 +1450,10 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
   body::before, .header-bg, .hero-bg, .absolute { display: none !important; }
   nav, footer, .newsletter-section, .cookie-banner, .scroll-top-btn,
   #reading-progress, .nav-overlay, .hero-actions, .socials, .nav-search,
-  button, #copy-link-btn, #share-li, #share-tw, .research-toolbar { display: none !important; }
+  button, #copy-link-btn, #share-li, #share-tw, .research-toolbar, .no-print { display: none !important; }
   * { background-color: transparent !important; color: #000 !important; box-shadow: none !important; }
+
+  .print-only { display: block !important; visibility: visible !important; }
   
   .exec-summary { border: none !important; border-left: 3px solid #000 !important; padding: 10px 15px !important; margin: 20px 0 !important; }
   .strategy-box, blockquote, .report-table, .disclaimer { border: 1px solid #ccc !important; }

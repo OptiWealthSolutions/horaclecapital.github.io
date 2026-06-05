@@ -3,7 +3,7 @@ title: 'Un dollar sous tension et des banques centrales indécises'
 description: Analyse de la montée des taux longs américains, de l’inflation persistante, et des enjeux monétaires entre la Fed, la BCE, le Japon et le Royaume-Uni.
 author: 'Léo Lombardini'
 date: '2026-05-23'
-category: 'Macro Economics'
+category: 'FX & Macro'
 issue: 'N°11'
 thumbnail: '/assets/img/banner_article_11.jpg'
 tags: ['USD', 'FED', 'BCE', 'JPY', 'GBP', 'Equities']

@@ -15,7 +15,7 @@ Passionnés de marchés financiers, étudiants en finance/économie, traders ind
 ## Core Offering
 
 - **Rapports macro hebdomadaires** : décryptage de l'environnement macro-financier mondial (banques centrales, cycles, géopolitique, marchés)
-- **Recherche quantitative** : modèles statistiques (HMM, scoring multifactoriel), notebooks Python, papiers de recherche
+- **Recherche quantitative** : modèles statistiques (scoring multifactoriel, détection de régimes), notebooks Python, papiers de recherche
 - **Capitalis** (SaaS bêta) : application d'investissement — Screening, Scoring, Allocation, Reporting
 - **Horacle Academy** : cours particuliers en macroéconomie, statistiques et finance quantitative
 

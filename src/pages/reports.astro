@@ -7,13 +7,16 @@ const sortedRapports = allRapports.sort((a, b) =>
   new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 
-const hebdos = sortedRapports.filter(r => r.data.category !== "Le Coup d'Oeil");
+const rapportsFX = sortedRapports.filter(r => r.data.category === "FX & Macro");
+const rapportsCommo = sortedRapports.filter(r => r.data.category === "Commodities & Stocks");
+const rapportsAutres = sortedRapports.filter(r => 
+  r.data.category !== "FX & Macro" && 
+  r.data.category !== "Commodities & Stocks" &&
+  r.data.category !== "Le Coup d'Oeil"
+);
 const coupsDoeil = sortedRapports.filter(r => r.data.category === "Le Coup d'Oeil");
 
-const featured = hebdos[0];
-// Remaining hebdos for the grid (avoid showing the featured one again if you want, but user said 'all', so maybe keep it or skip it)
-// Let's skip the featured one in the grid to avoid redundancy
-const gridHebdos = hebdos.slice(1);
+const featured = sortedRapports[0];
 
 function formatDateFull(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('fr-FR', {
@@ -34,10 +37,24 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
 
 <BaseLayout {title} {description} activeNav="reports">
     <header class="page-header">
+      <div class="print-only" style="margin-bottom: 30px;">
+        <img src="/assets/img/logo.png" alt="HORACLE CAPITAL" style="width: 50px; height: 50px;" />
+        <hr style="margin-top: 15px; border: 0; border-top: 1px solid #000;" />
+      </div>
       <img src="/assets/img/banner.jpg" alt="Rapports d'analyses macroéconomiques hebdomadaires" class="header-bg" aria-hidden="true" />
       <span>Veille Stratégique</span>
       <h1>Nos Rapports</h1>
       <p>Décryptage des cycles monétaires et des fondamentaux de l'économie mondiale.</p>
+      
+      <div class="mt-6 no-print">
+        <button 
+          onclick="window.print()" 
+          class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/5 border border-white/10 text-white hover:text-blue-3 hover:border-blue-3 transition-colors font-mono text-[0.65rem] uppercase tracking-widest cursor-pointer"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          Imprimer la liste
+        </button>
+      </div>
     </header>
 
       <!-- Article à la une -->
@@ -85,15 +102,93 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
         </div>
       )}
 
+      <!-- Section: FX & Macro -->
+      {rapportsFX.length > 0 && (
+        <div class="container pb-20">
+          <div class="section-rule mb-10">
+            <span class="section-label">Analyses FX & Macro</span>
+            <div class="rule-line"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {rapportsFX.slice(0, 3).map((rapport) => (
+              <a href={`/reports/${rapport.slug}`} class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
+                <div class="h-48 overflow-hidden border-b border-border relative">
+                  <img src={rapport.data.thumbnail || fallbackImg} alt={rapport.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" onerror={`this.src='${fallbackImg}'`} />
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                  <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
+                    <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">{rapport.data.category}</span>
+                    <span class="text-[0.65rem] text-dim uppercase tracking-widest">{formatDateShort(rapport.data.date)}</span>
+                  </div>
+                  <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">{rapport.data.title}</h3>
+                  <p class="text-off text-sm leading-relaxed mb-8 flex-1 font-sans">{rapport.data.description}</p>
+                  <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
+                      <span class="text-[0.7rem] font-bold text-text uppercase tracking-widest">Lire le rapport</span>
+                      <span class="group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+          <div class="mt-12 text-center">
+              <a href="/reports/fx" class="inline-flex items-center gap-2 px-8 py-4 border border-border bg-white text-text font-mono text-[0.7rem] uppercase tracking-widest hover:border-blue-3 hover:text-blue-3 transition-colors group">
+                  Voir toutes les analyses FX
+                  <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+          </div>
+        </div>
+      )}
+
+      <!-- Section: Commodities & Stocks -->
+      {rapportsCommo.length > 0 && (
+        <div class="container pb-20">
+          <div class="section-rule mb-10">
+            <span class="section-label">Commodities & Stocks</span>
+            <div class="rule-line"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {rapportsCommo.slice(0, 3).map((rapport) => (
+              <a href={`/reports/${rapport.slug}`} class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
+                <div class="h-48 overflow-hidden border-b border-border relative">
+                  <img src={rapport.data.thumbnail || fallbackImg} alt={rapport.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" onerror={`this.src='${fallbackImg}'`} />
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                  <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
+                    <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">{rapport.data.category}</span>
+                    <span class="text-[0.65rem] text-dim uppercase tracking-widest">{formatDateShort(rapport.data.date)}</span>
+                  </div>
+                  <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">{rapport.data.title}</h3>
+                  <p class="text-off text-sm leading-relaxed mb-8 flex-1 font-sans">{rapport.data.description}</p>
+                  <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
+                      <span class="text-[0.7rem] font-bold text-text uppercase tracking-widest">Lire le rapport</span>
+                      <span class="group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+          <div class="mt-12 text-center">
+              <a href="/reports/commodities" class="inline-flex items-center gap-2 px-8 py-4 border border-border bg-white text-text font-mono text-[0.7rem] uppercase tracking-widest hover:border-blue-3 hover:text-blue-3 transition-colors group">
+                  Voir toutes les analyses Commo & Stocks
+                  <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+          </div>
+        </div>
+      )}
+
       <!-- Section: Nos coups d'oeil -->
       {coupsDoeil.length > 0 && (
-        <div class="container pb-20">
+        <div class="container pb-[120px]">
           <div class="section-rule mb-10">
             <span class="section-label">Nos coups d'oeil</span>
             <div class="rule-line"></div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {coupsDoeil.map((rapport) => (
+            {coupsDoeil.slice(0, 3).map((rapport) => (
               <a href={`/reports/${rapport.slug}`} class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
                 <div class="h-48 overflow-hidden border-b border-border relative">
@@ -122,76 +217,4 @@ const description = "Rapports macroéconomiques hebdomadaires d'Horacle Capital 
           </div>
         </div>
       )}
-
-      <!-- Section: Rapports Hebdomadaires -->
-      <div class="container pb-[120px]">
-        <div class="section-rule mb-10">
-          <span class="section-label">Rapports Hebdomadaires</span>
-          <div class="rule-line"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="hebdos-grid">
-          {gridHebdos.map((rapport, index) => (
-            <a 
-              href={`/reports/${rapport.slug}`} 
-              class={`group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden ${index >= 6 ? 'hidden' : ''}`}
-              data-hebdo-item
-            >
-              <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
-              
-              <div class="h-48 overflow-hidden border-b border-border relative">
-                <img
-                  src={rapport.data.thumbnail || fallbackImg}
-                  alt={rapport.data.title}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                  onerror={`this.src='${fallbackImg}'`}
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
-              </div>
-              <div class="p-8 flex flex-col flex-1">
-                <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
-                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3 line-clamp-1">{rapport.data.category}</span>
-                  <span class="text-[0.65rem] text-dim uppercase tracking-widest whitespace-nowrap">{formatDateShort(rapport.data.date)}</span>
-                </div>
-                <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">{rapport.data.title}</h3>
-                <p class="text-off text-sm leading-relaxed mb-8 flex-1 font-sans">{rapport.data.description}</p>
-                
-                <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
-                    <div class="flex flex-col">
-                        <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Édition</span>
-                        <span class="text-[0.7rem] font-bold text-text uppercase tracking-wide">{rapport.data.issue || 'Archive'}</span>
-                    </div>
-                    <span class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-widest font-bold text-text group-hover:text-blue-3 transition-colors">
-                        Lire <span class="group-hover:translate-x-1 transition-transform">→</span>
-                    </span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        {gridHebdos.length > 6 && (
-          <div class="mt-12 text-center">
-            <button 
-              id="show-all-hebdos" 
-              class="inline-flex items-center gap-2 px-8 py-4 border border-border bg-white text-text font-mono text-[0.7rem] uppercase tracking-widest hover:border-blue-3 hover:text-blue-3 transition-colors group"
-            >
-              Voir tous les articles
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-y-0.5 transition-transform"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-          </div>
-        )}
-      </div>
-
-      <script is:inline>
-        const showAllBtn = document.getElementById('show-all-hebdos');
-        const hebdoItems = document.querySelectorAll('[data-hebdo-item]');
-        
-        if (showAllBtn) {
-          showAllBtn.addEventListener('click', () => {
-            hebdoItems.forEach(item => item.classList.remove('hidden'));
-            showAllBtn.parentElement.style.display = 'none';
-          });
-        }
-      </script>
 </BaseLayout>

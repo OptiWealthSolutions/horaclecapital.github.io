@@ -13,6 +13,10 @@ const description = "Accompagnement stratégique sur mesure pour maîtriser les 
         </video>
       </div>
       <div class="hero-inner relative z-10">
+        <div class="print-only" style="margin-bottom: 30px; text-align: left;">
+            <img src="/assets/img/logo.png" alt="HORACLE CAPITAL" style="width: 50px; height: 50px;" />
+            <hr style="margin-top: 15px; border: 0; border-top: 1px solid rgba(255,255,255,0.3);" />
+        </div>
         <div class="hero-tag">Mentorat de Haute Précision</div>
         <h1 class="font-head max-w-[900px] mx-auto mb-8 text-white">
           Horacle Academy
@@ -20,14 +24,17 @@ const description = "Accompagnement stratégique sur mesure pour maîtriser les 
         <p class="hero-sub font-sans normal-case tracking-normal text-lg max-w-[700px] mb-10 leading-relaxed">
           Un accompagnement stratégique sur mesure pour transformer votre compréhension des marchés en un avantage compétitif durable.
         </p>
-        <div class="hero-actions">
+        <div class="hero-actions no-print">
+          <button 
+            onclick="window.print()" 
+            class="btn-ghost flex items-center justify-center gap-2"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+            Imprimer la page
+          </button>
           <a href="#calendly" class="btn-primary">
             Réserver un appel de diagnostic
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#benefices" class="btn-ghost">
-            Bénéfices & Méthode
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3v8M3 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
       </div>

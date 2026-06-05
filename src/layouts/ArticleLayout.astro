@@ -237,6 +237,10 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
 
     <!-- Article Header -->
     <header class="page-header">
+      <div class="print-only" style="margin-bottom: 30px;">
+        <img src="/assets/img/logo.png" alt="HORACLE CAPITAL" style="width: 50px; height: 50px;" />
+        <hr style="margin-top: 15px; border: 0; border-top: 1px solid #000;" />
+      </div>
       <img src="/assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
       <span>{category}</span>
       <h1>{title}</h1>
@@ -250,7 +254,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
         <!-- Main Content Column -->
         <article class="article-content flex-1 min-w-0 w-full">
           <!-- Toolbar: reading time, share, download -->
-          <div class="flex flex-wrap items-center justify-between gap-4 mb-8 border-b border-border pb-4">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-8 border-b border-border pb-4 no-print">
             <div class="flex flex-wrap items-center gap-3">
               <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-dark border border-border-dk text-white font-mono text-[0.6rem] uppercase tracking-widest">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -261,8 +265,8 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
                 class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-dark border border-border-dk text-white hover:text-blue-3 hover:border-blue-3 transition-colors font-mono text-[0.6rem] uppercase tracking-widest cursor-pointer"
                 id="print-btn"
               >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                Imprimer / PDF
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+                Imprimer l'article
               </button>
               <button
                 id="email-pdf-btn"
@@ -328,13 +332,13 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
           </div>
 
           {tags && tags.length > 0 && (
-            <div class="mt-12 pt-8 border-t border-border">
+            <div class="mt-12 pt-8 border-t border-border no-print">
               <span class="font-mono text-[0.6rem] text-dim uppercase tracking-widest block mb-4">Mots-clés :</span>
               <TagList {tags} />
             </div>
           )}
 
-          <div class="mt-16">
+          <div class="mt-16 no-print">
             <SubscribeCTA 
               title="Prêt pour l'étape suivante ?"
               description="Ne manquez aucun signal. Rejoignez notre communauté de recherche pour des analyses macro et des modèles quantitatifs sans équivalent."
@@ -343,7 +347,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
           </div>
 
           <!-- Author bio -->
-          <div class="mt-20 bg-bg-2 border border-border p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center md:items-start relative overflow-hidden">
+          <div class="mt-20 bg-bg-2 border border-border p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center md:items-start relative overflow-hidden no-print">
             <div class="absolute top-0 left-0 w-1 h-full bg-blue-2"></div>
             
             {author === 'Léo Lombardini' && (
@@ -391,7 +395,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
         </article>
 
         <!-- Sidebar / Suggestions -->
-        <aside class="w-full lg:w-[320px] mt-16 lg:mt-0 sticky top-24 lg:self-start">
+        <aside class="w-full lg:w-[320px] mt-16 lg:mt-0 sticky top-24 lg:self-start no-print">
           <div class="bg-white border border-border p-8 shadow-sm">
             <h3 class="font-mono text-[0.65rem] uppercase tracking-[0.2em] font-bold text-blue-3 mb-6 pb-4 border-b border-border">Lectures Recommandées</h3>
             

@@ -3,7 +3,7 @@ title: 'Tous hawkish ?'
 description: 'Analyse hebdomadaire des devises : renforcement du dollar, pressions stagflationnistes en zone euro et interventions massives sur le yen.'
 author: 'Léo Lombardini'
 date: '2026-05-31'
-category: 'Macro Economics'
+category: 'FX & Macro'
 issue: 'N°12'
 thumbnail: '/assets/img/central_bank_report_12.jpg'
 tags: ['USD', 'EUR', 'GBP', 'JPY', 'CAD', 'NZD']

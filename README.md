@@ -2,7 +2,7 @@
 
 Bienvenue sur le dépôt officiel du site web **Horacle Capital**.
 
-Horacle Capital est une cellule de recherche indépendante spécialisée dans l'analyse macroéconomique et la finance quantitative. Notre mission est de cartographier les flux de liquidités mondiaux et d'anticiper les cycles structurels en combinant analyse fondamentale et modélisation mathématique (HMM, scoring multifactoriel).
+Horacle Capital est une cellule de recherche indépendante spécialisée dans l'analyse macroéconomique et la finance quantitative. Notre mission est de cartographier les flux de liquidités mondiaux et d'anticiper les cycles structurels en combinant analyse fondamentale et modélisation mathématique (scoring multifactoriel, détection de régimes).
 
 ## 🚀 Architecture & Technologies
 

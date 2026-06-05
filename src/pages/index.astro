@@ -1,7 +1,27 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MacroFAQ from '../components/MacroFAQ.astro';
 import SubscribeCTA from '../components/SubscribeCTA.astro';
+
+const allRapports = await getCollection('rapports', ({ data }) => !data.draft);
+const sortedRapports = allRapports.sort((a, b) =>
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const latestFX = sortedRapports.find(r => r.data.category === 'FX & Macro');
+const latestCommo = sortedRapports.find(r => r.data.category === 'Commodities & Stocks');
+const latestCoupDoeil = sortedRapports.find(r => r.data.category === "Le Coup d'Oeil");
+
+let latestReports = [latestFX, latestCommo, latestCoupDoeil].filter(Boolean);
+
+// S'il manque des articles (ex: pas encore d'article Commodities), on complète avec les plus récents
+if (latestReports.length < 3) {
+  const existingSlugs = latestReports.map(r => r.slug);
+  const remaining = sortedRapports.filter(r => !existingSlugs.includes(r.slug));
+  const needed = 3 - latestReports.length;
+  latestReports = [...latestReports, ...remaining.slice(0, needed)];
+}
 
 const title = 'HORACLE CAPITAL | Analyse Macroéconomique & Finance Quantitative';
 const description = "Horacle Capital : Recherche indépendante en macroéconomie et finance quantitative. Analyses hebdomadaires, modèles de scoring et mentorat stratégique pour investisseurs.";
@@ -51,6 +71,40 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
     </header>
 
     <main>
+      <!-- DERNIÈRES PUBLICATIONS -->
+      <section class="py-12 border-t border-border bg-white">
+        <div class="container">
+          <div class="section-rule mb-12">
+            <h2 class="section-label">Dernières Publications</h2>
+            <div class="rule-line"></div>
+            <a href="/reports" class="rule-link">Tout voir <span>→</span></a>
+          </div>
+
+          <div class="grid lg:grid-cols-3 gap-6 lg:gap-8">
+            {latestReports.map((rapport, index) => (
+              <a href={`/reports/${rapport.slug}`} class={`reveal reveal-delay-${index} group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden`}>
+                <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
+                <div class="h-48 overflow-hidden border-b border-border relative">
+                  <img src={rapport.data.thumbnail || '/assets/img/banner.jpg'} alt={rapport.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" onerror="this.src='/assets/img/banner.jpg'" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
+                  <div class="absolute top-4 left-4 flex gap-2">
+                    <span class="bg-blue-3 text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-none shadow-md">{rapport.data.category}</span>
+                  </div>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                  <div class="font-sans text-[0.6rem] text-dim mb-3 uppercase tracking-widest">{new Date(rapport.data.date).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
+                  <h3 class="font-head text-2xl font-semibold text-text mb-4 leading-tight group-hover:text-blue-3 transition-colors">{rapport.data.title}</h3>
+                  <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1 font-sans">{rapport.data.description}</p>
+                  <div class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-bold text-text mt-auto pt-6 border-t border-border/50 group-hover:text-blue-3 transition-colors">
+                    Lire le rapport <span class="group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <!-- ÉCOSYSTÈME ASYMÉTRIQUE -->
       <section class="py-12 border-t border-border" style="background:var(--bg-2);">
         <div class="container">
@@ -174,65 +228,6 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
         </div>
       </section>
 
-      <!-- DERNIÈRES PUBLICATIONS (Restore Grid) -->
-      <section class="py-12 border-t border-border">
-        <div class="container">
-          <div class="section-rule mb-12">
-            <h2 class="section-label">Dernières Publications</h2>
-            <div class="rule-line"></div>
-            <a href="/reports" class="rule-link">Tout voir <span>→</span></a>
-          </div>
-
-          <div class="grid lg:grid-cols-2 gap-6">
-
-            <a href="/reports/2026-06-01-tous-hawkish-usd" class="reveal group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
-              <div class="h-56 overflow-hidden relative border-b border-border">
-                <img
-                  src="/assets/img/central_bank_report_12.jpg"
-                  onerror="this.src='/assets/img/banner.jpg'"
-                  alt="Tous hawkish ? Analyse des devises et des banques centrales"
-                  class="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700">
-                <div class="absolute top-4 left-4 flex gap-2">
-                  <span class="bg-orange text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-none">Macro</span>
-                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1">Hebdo N°12</span>
-                </div>
-              </div>
-              <div class="p-8 flex-1 flex flex-col">
-                <div class="font-sans text-[0.6rem] text-dim mb-3 uppercase tracking-widest">01 Juin 2026</div>
-                <h3 class="font-head text-2xl font-semibold text-text mb-4 leading-tight group-hover:text-orange transition-colors">Tous hawkish ?</h3>
-                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Analyse hebdomadaire des devises : renforcement du dollar face aux pressions stagflationnistes en zone euro et aux interventions massives sur le yen.</p>
-                <div class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange mt-auto pt-6 border-t border-border">
-                  Lire le rapport <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </div>
-              </div>
-            </a>
-
-            <a href="/reports/rapport_23_05_26" class="reveal reveal-delay-1 group flex flex-col bg-white border border-border hover:border-orange transition-all duration-300 shadow-sm hover:shadow-md">
-              <div class="h-56 overflow-hidden relative border-b border-border">
-                <img
-                  src="/assets/img/banner_2.jpg"
-                  onerror="this.src='/assets/img/banner.jpg'"
-                  alt="Un dollar sous tension et des banques centrales indécises"
-                  class="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700">
-                <div class="absolute top-4 left-4 flex gap-2">
-                  <span class="bg-orange text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-none">Macro</span>
-                  <span class="bg-white text-text border border-border font-sans text-[0.55rem] uppercase tracking-[0.1em] px-2 py-1">Hebdo N°11</span>
-                </div>
-              </div>
-              <div class="p-8 flex-1 flex flex-col">
-                <div class="font-sans text-[0.6rem] text-dim mb-3 uppercase tracking-widest">23 Mai 2026</div>
-                <h3 class="font-head text-2xl font-semibold text-text mb-4 leading-tight group-hover:text-orange transition-colors">Un dollar sous tension &amp;<br>centrales indécises</h3>
-                <p class="text-off text-[0.9rem] leading-relaxed line-clamp-3 mb-6 flex-1">Analyse de la montée des taux longs américains, de la divergence monétaire Fed/BCE face à une inflation persistante, et de la résilience structurelle du Yen japonais.</p>
-                <div class="inline-flex items-center gap-2 font-sans text-[0.75rem] font-semibold text-orange mt-auto pt-6 border-t border-border">
-                  Lire le rapport <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </div>
-              </div>
-            </a>
-
-          </div>
-        </div>
-      </section>
-
       <!-- CTA SECTION -->
       <section class="py-12">
         <div class="container">
@@ -248,28 +243,4 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
       <MacroFAQ />
 
     </main>
-
-    <script is:inline>
-    (function() {
-      var vids = document.querySelectorAll('.hero-vid');
-      if (!vids.length) return;
-      var cur = 0;
-      function tryPlay(v) {
-        if (v.readyState === 0) v.load();
-        v.play().catch(function() {});
-      }
-      tryPlay(vids[0]);
-      function advance() {
-        var prev = cur;
-        cur = (cur + 1) % vids.length;
-        tryPlay(vids[cur]);
-        vids[cur].classList.add('active');
-        setTimeout(function() { vids[prev].classList.remove('active'); }, 1800);
-        setTimeout(advance, 15000);
-      }
-      setTimeout(advance, 15000);
-    })();
-    </script>
-</BaseLayout>
-    </script>
 </BaseLayout>

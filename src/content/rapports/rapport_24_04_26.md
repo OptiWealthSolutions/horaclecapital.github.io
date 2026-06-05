@@ -2,7 +2,7 @@
 title: "Climat Tendu et Equities au Top"
 description: "Persistance des tensions géopolitiques, rebond technique des indices actions et repositionnement institutionnel sur les marchés de taux."
 date: "2026-04-24"
-category: "Macro Economics"
+category: 'FX & Macro'
 issue: "N°9"
 ogImage: "/assets/img/hormuz.jpg"
 thumbnail: "/assets/img/hormuz.jpg"
