@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://horaclecapital.com/',
+  site: 'https://horaclecapital.com',
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],
@@ -13,7 +13,9 @@ export default defineConfig({
     }
   },
   integrations: [
-    sitemap(),
+    sitemap({
+      i18n: false
+    }),
     tailwind()
   ],
   build: {
