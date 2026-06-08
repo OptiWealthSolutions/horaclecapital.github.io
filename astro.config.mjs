@@ -13,7 +13,7 @@ export default defineConfig({
     }
   },
   integrations: [
-    // sitemap(),
+    sitemap(),
     tailwind()
   ],
   build: {
