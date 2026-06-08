@@ -24,6 +24,11 @@ Starlink, qui représente 61 % des revenus et l'intégralité du profit opérati
 
 ### NVIDIA : une nouvelle puce IA 
 
+<div class="my-6 md:float-right md:w-[45%] md:ml-8 relative">
+  <img src="/assets/img/nvidia_rtx_spark.png" alt="Jensen Huang dévoile le superchip RTX Spark de NVIDIA" class="w-full border border-border shadow-sm rounded-sm" />
+  <span class="text-[0.6rem] text-dim block text-center mt-2 font-mono uppercase tracking-widest">Source : NVIDIA / Computex 2026</span>
+</div>
+
 La semaine dernière, NVIDIA a publié des résultats qui continuent de défier l'entendement. C'est sur ce socle que s'inscrit l'annonce de cette semaine au Computex de Taipei. Jensen Huang a dévoilé le RTX Spark, un superchip conçu pour réinventer le PC Windows à l'ère de l'IA agentique, une rupture nette avec le positionnement historique de la société, jusqu'ici cantonnée aux data centers. 
 
 Le message est clair : NVIDIA ne veut plus seulement vendre un composant, elle veut tout posséder : du cloud jusqu'au laptop. 
