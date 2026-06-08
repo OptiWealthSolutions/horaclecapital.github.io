@@ -1,6 +1,6 @@
 ---
-title: 'Un dollar sous tension et des banques centrales indécises'
-description: Analyse de la montée des taux longs américains, de l’inflation persistante, et des enjeux monétaires entre la Fed, la BCE, le Japon et le Royaume-Uni.
+title: "Montée des Taux Longs US et Inflation : Quel Impact sur les Marchés FX ?"
+description: "Analyse hebdomadaire : Enjeux monétaires entre la Fed et la BCE, interventions sur le Yen (JPY) et ralentissement de l'inflation au Royaume-Uni."
 author: 'Léo Lombardini'
 date: '2026-05-23'
 category: 'FX & Macro'

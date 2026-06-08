@@ -1,6 +1,6 @@
 ---
-title: "Marché de l'emploi US en pleine forme"
-description: "Analyse hebdomadaire : Résilience de l'emploi américain, inflation croissante en zone euro, dynamique saisonnière du yen et faiblesse du loonie canadien."
+title: "Rapport NFP Juin 2026 : Résilience de l'Emploi US et Impact sur le Dollar"
+description: "Analyse Macro : Décryptage du choc NFP, de l'inflation persistante en Zone Euro et des prévisions de la Fed pour 2026."
 author: 'Léo Lombardini'
 date: '2026-06-07'
 category: 'FX & Macro'

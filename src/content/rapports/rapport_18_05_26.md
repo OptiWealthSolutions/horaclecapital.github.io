@@ -1,6 +1,6 @@
 ---
-title: 'Entre inflation et ascension'
-description: Analyse des tensions inflationnistes persistantes face à la résilience des marchés actions. Étude des divergences monétaires entre la Fed, la BCE et la dynamique au Japon, couplée au réveil des matières premières.
+title: "Politique de la Fed et Rebond de l'Inflation : Analyse des Cycles Macro 2026"
+description: "Veille Stratégique : Étude des divergences Fed/BCE, résilience des marchés actions et réveil des matières premières (Commodities)."
 author: 'Léo Lombardini'
 date: '2026-05-18'
 category: 'FX & Macro'

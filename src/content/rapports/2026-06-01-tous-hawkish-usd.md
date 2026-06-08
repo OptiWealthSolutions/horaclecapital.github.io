@@ -1,6 +1,6 @@
 ---
-title: 'Tous hawkish ?'
-description: 'Analyse hebdomadaire des devises : renforcement du dollar, pressions stagflationnistes en zone euro et interventions massives sur le yen.'
+title: "Divergence Fed vs BCE : Pourquoi le Dollar (USD) écrase le Marché FX"
+description: "Note Macro Hebdomadaire : Analyse de la posture Hawkish globale, de la crise du Yen (JPY) et des tensions inflationnistes en Zone Euro."
 author: 'Léo Lombardini'
 date: '2026-05-31'
 category: 'FX & Macro'

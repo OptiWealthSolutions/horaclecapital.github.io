@@ -1,6 +1,6 @@
 ---
-title: "SpaceX en Bourse, NVIDIA à l'offensive et le choc de l'emploi"
-description: "IPO record de SpaceX, le superchip RTX Spark de NVIDIA, le crash de vendredi déclenché par un emploi US trop solide, et des matières premières prises en ontage par la géopolitique."
+title: "Analyse SpaceX IPO & NVIDIA : Asymétries de Marché et Choc sur le Nasdaq"
+description: "Analyse Actions & Commodities : L'IPO record de SpaceX, le superchip RTX Spark de NVIDIA et le crash du Nasdaq face au choc de l'emploi US."
 author: 'Raphaël Chouraqui'
 category: 'Commodities & Stocks'
 date: '2026-06-06'
