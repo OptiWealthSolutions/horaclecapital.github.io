@@ -25,6 +25,13 @@ const image = imageProp
 const siteName = 'Horacle Capital';
 const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 
+// hreflang alternates: derive the FR (default, no prefix) and EN (/en) paths
+const rawPath = Astro.url.pathname;
+const frPath = rawPath.replace(/^\/en(\/|$)/, '/').replace(/\/$/, '') || '/';
+const enPath = frPath === '/' ? '/en' : `/en${frPath}`;
+const frHref = `${siteUrl}${frPath}`;
+const enHref = `${siteUrl}${enPath}`;
+
 // Structured Data (JSON-LD)
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -88,6 +95,11 @@ const articleSchema = type === 'article' ? {
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+
+<!-- hreflang alternates -->
+<link rel="alternate" hreflang="fr" href={frHref} />
+<link rel="alternate" hreflang="en" href={enHref} />
+<link rel="alternate" hreflang="x-default" href={frHref} />
 
 <!-- Primary Meta Tags -->
 <title>{fullTitle}</title>

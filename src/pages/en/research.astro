@@ -1,0 +1,135 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allRecherches = await getCollection('recherches', ({ data }) => !data.draft && (data.lang ?? 'fr') === 'en');
+const recherches = allRecherches.sort((a, b) =>
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const slugBase = (s) => s.replace(/^en\//, '');
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    month: 'short', year: 'numeric',
+  });
+}
+
+function getFormatLabel(type: string) {
+  const labels: Record<string, string> = {
+    pdf: 'PDF Document',
+    notebook: 'Jupyter Notebook',
+    code: 'Code Snippet',
+    video: 'Video',
+    link: 'External Link'
+  };
+  return labels[type] || 'Document';
+}
+
+function getCategoryLabel(type: string) {
+  const labels: Record<string, string> = {
+    pdf: 'PDFs & Models',
+    notebook: 'Notebooks',
+    code: 'Code Snippets',
+    video: 'Videos',
+    link: 'External Links'
+  };
+  return labels[type] || 'Research';
+}
+
+const title = 'Quantitative Research & Financial Modeling | Horacle Capital';
+const description = "Explore our analysis lab: multifactor scoring models, trading algorithms, and empirical research on market microstructure.";
+---
+
+<BaseLayout {title} {description} activeNav="research">
+    <header class="page-header">
+      <div class="print-only" style="margin-bottom: 30px;">
+        <img src="/assets/img/logo.png" alt="HORACLE CAPITAL" style="width: 50px; height: 50px;" />
+        <hr style="margin-top: 15px; border: 0; border-top: 1px solid #000;" />
+      </div>
+      <img src="/assets/img/banner.jpg" alt="Horacle Capital quantitative research lab" class="header-bg" aria-hidden="true" />
+      <span>Quantitative Lab</span>
+      <h1>Our Research</h1>
+      <p>Predictive models, regime detection, and empirical research on financial markets.</p>
+
+      <div class="mt-6 no-print">
+        <button
+          onclick="window.print()"
+          class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/5 border border-white/10 text-white hover:text-blue-3 hover:border-blue-3 transition-colors font-mono text-[0.65rem] uppercase tracking-widest cursor-pointer"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          Print the list
+        </button>
+      </div>
+    </header>
+
+    <div class="container pt-[60px] pb-[120px] min-h-[60vh]">
+
+      <!-- Toolbar: Search and Filters -->
+      <div class="research-toolbar">
+        <div class="rt-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="research-search" placeholder="Search for a model, a video, a keyword..." />
+        </div>
+        <div class="rt-filters" id="research-filters">
+          <button class="rt-filter active" data-filter="all">All</button>
+          <button class="rt-filter" data-filter="pdf">PDFs & Models</button>
+          <button class="rt-filter" data-filter="notebook">Notebooks</button>
+          <button class="rt-filter" data-filter="code">Code Snippets</button>
+          <button class="rt-filter" data-filter="video">Videos</button>
+          <button class="rt-filter" data-filter="link">External Links</button>
+        </div>
+      </div>
+
+      <!-- Publications grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="research-grid">
+
+          {recherches.map((item) => (
+            <article class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden research-item" data-category={item.data.type}>
+              <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
+
+              <div class="h-48 overflow-hidden border-b border-border relative">
+                <img
+                  src={item.data.ogImage || "/assets/img/banner.jpg"}
+                  alt={item.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                  onerror="this.src='/assets/img/banner.jpg'"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
+              </div>
+
+              <div class="p-8 flex flex-col flex-1">
+                <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">{getCategoryLabel(item.data.type)}</span>
+                    {item.data.isPremium && (
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-amber-500"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    )}
+                  </div>
+                  <span class="text-[0.65rem] text-dim uppercase tracking-widest">{formatDate(item.data.date)}</span>
+                </div>
+
+                <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">{item.data.title}</h3>
+
+                <p class="research-description text-off text-sm leading-relaxed mb-8 flex-1 font-sans">{item.data.description}</p>
+
+                <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
+                    <div class="flex flex-col">
+                        <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Format</span>
+                        <span class="text-[0.7rem] font-bold text-text uppercase tracking-wide">{getFormatLabel(item.data.type)}</span>
+                    </div>
+                    <a href={`/en/recherches/${slugBase(item.slug)}`} class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-widest font-bold text-text group-hover:text-blue-3 transition-colors">
+                        Read <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
+                </div>
+              </div>
+            </article>
+          ))}
+
+          <!-- Message if no research found -->
+          <div class="no-results hidden col-span-full text-center p-10 border border-dashed border-border text-dim" id="no-results">
+            <p class="font-mono text-sm uppercase tracking-widest">No results found for your search.</p>
+          </div>
+      </div>
+    </div>
+</BaseLayout>

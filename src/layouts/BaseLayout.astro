@@ -1,6 +1,13 @@
 ---
 import SEO from '../components/SEO.astro';
 import FeedbackForm from '../components/FeedbackForm.astro';
+import LanguagePicker from '../components/LanguagePicker.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const l = (path: string) => getRelativeLocaleUrl(lang, path);
 
 export interface Props {
 	title?: string;
@@ -22,7 +29,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -49,20 +56,20 @@ const {
   <div id="auth-modal" class="search-modal-overlay">
     <div class="search-modal auth-modal-content">
       <div class="sm-header">
-        <h4 id="auth-modal-title">Connexion</h4>
+        <h4 id="auth-modal-title">{t('auth.title')}</h4>
         <button class="sm-close" id="auth-modal-close">&times;</button>
       </div>
       <div class="sm-body">
         <form id="auth-form" class="flex flex-col gap-4 p-6">
-          <input type="email" id="auth-email" placeholder="Email" required class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors">
-          <input type="password" id="auth-password" placeholder="Mot de passe" required class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors">
-          <input type="password" id="auth-confirm-password" placeholder="Confirmer le mot de passe" class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors hidden">
+          <input type="email" id="auth-email" placeholder={t('auth.email')} required class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors">
+          <input type="password" id="auth-password" placeholder={t('auth.password')} required class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors">
+          <input type="password" id="auth-confirm-password" placeholder={t('auth.confirmPassword')} class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors hidden">
           
-          <button type="submit" id="auth-submit-btn" class="btn-primary py-3 font-bold tracking-wide">Continuer</button>
+          <button type="submit" id="auth-submit-btn" class="btn-primary py-3 font-bold tracking-wide">{t('auth.continue')}</button>
           
           <div class="relative my-2">
             <div class="absolute inset-0 flex items-center"><span class="w-full border-t border-white/10"></span></div>
-            <div class="relative flex justify-center text-xs uppercase"><span class="bg-[#0f172a] px-2 text-dim">Ou continuer avec</span></div>
+            <div class="relative flex justify-center text-xs uppercase"><span class="bg-[#0f172a] px-2 text-dim">{t('auth.or')}</span></div>
           </div>
 
           <button type="button" id="github-auth-btn" class="flex items-center justify-center gap-3 py-3 bg-white text-black font-bold hover:bg-white/90 transition-colors">
@@ -71,8 +78,8 @@ const {
           </button>
 
           <p class="text-xs text-dim text-center mt-2">
-            <span id="auth-switch-text">Pas encore de compte ?</span>
-            <button type="button" id="auth-switch-btn" class="text-blue-3 hover:underline">S'inscrire</button>
+            <span id="auth-switch-text">{t('auth.noAccount')}</span>
+            <button type="button" id="auth-switch-btn" class="text-blue-3 hover:underline">{t('auth.signup')}</button>
           </p>
           <div id="auth-error" class="text-xs text-red-500 mt-2 text-center hidden"></div>
         </form>
@@ -91,28 +98,28 @@ const {
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
       
-      <a href="/" class:list={[ { 'active': activeNav === 'home' } ]}>Home</a>
+      <a href={l("/")} class:list={[ { 'active': activeNav === 'home' } ]}>{t('nav.home')}</a>
       
       <!-- Desktop Dropdown / Mobile Direct Links -->
       <div class="nav-dropdown hide-mobile">
         <button class="nav-dropdown-trigger">
-          Analyses
+          {t('nav.analyses')}
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="nav-dropdown-content">
-          <a href="/reports" class:list={[ { 'active': activeNav === 'reports' } ]}>Nos rapports macro</a>
-          <a href="/research" class:list={[ { 'active': activeNav === 'research' } ]}>Recherche Quant</a>
-          <a href="/portfolio" class:list={[ { 'active': activeNav === 'portfolio' } ]}>Thèses & Portfolio</a>
+          <a href={l("/reports")} class:list={[ { 'active': activeNav === 'reports' } ]}>{t('nav.reports')}</a>
+          <a href={l("/research")} class:list={[ { 'active': activeNav === 'research' } ]}>{t('nav.research')}</a>
+          <a href={l("/portfolio")} class:list={[ { 'active': activeNav === 'portfolio' } ]}>{t('nav.portfolio')}</a>
         </div>
       </div>
 
       <!-- Mobile Only Direct Links -->
-      <a href="/reports" class="show-mobile" class:list={[ { 'active': activeNav === 'reports' } ]}>Rapports Macro</a>
-      <a href="/research" class="show-mobile" class:list={[ { 'active': activeNav === 'research' } ]}>Recherche Quant</a>
-      <a href="/portfolio" class="show-mobile" class:list={[ { 'active': activeNav === 'portfolio' } ]}>Thèses & Portfolio</a>
+      <a href={l("/reports")} class="show-mobile" class:list={[ { 'active': activeNav === 'reports' } ]}>{t('nav.reports')}</a>
+      <a href={l("/research")} class="show-mobile" class:list={[ { 'active': activeNav === 'research' } ]}>{t('nav.research')}</a>
+      <a href={l("/portfolio")} class="show-mobile" class:list={[ { 'active': activeNav === 'portfolio' } ]}>{t('nav.portfolio')}</a>
 
-      <a href="/academy" class:list={[ "flex items-center gap-1", { 'active': activeNav === 'academy' } ]}>Academy <span class="nav-badge-new">NEW</span></a>
-      <a href="/about" class:list={[ { 'active': activeNav === 'about' } ]}>À Propos</a>
+      <a href={l("/academy")} class:list={[ "flex items-center gap-1", { 'active': activeNav === 'academy' } ]}>{t('nav.academy')} <span class="nav-badge-new">NEW</span></a>
+      <a href={l("/about")} class:list={[ { 'active': activeNav === 'about' } ]}>{t('nav.about')}</a>
       
       <div class="nav-divider"></div>
       
@@ -122,20 +129,25 @@ const {
 
       <form class="nav-search" id="global-search-form" action="#">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" placeholder="Rechercher..." aria-label="Rechercher sur le site" />
+        <input type="text" placeholder={t('nav.search')} aria-label={t('nav.search')} />
       </form>
+
+      <!-- Language Picker -->
+      <div class="ml-4 flex items-center">
+        <LanguagePicker />
+      </div>
 
       <!-- Auth Links -->
       <div class="flex items-center gap-2 ml-4" id="auth-nav">
-        <button id="login-btn" class="nav-link-btn">Connexion</button>
-        <button id="signup-btn" class="nav-auth-btn">S'abonner</button>
+        <button id="login-btn" class="nav-link-btn">{t('nav.login')}</button>
+        <button id="signup-btn" class="nav-auth-btn">{t('nav.signup')}</button>
         <div id="user-nav" class="hidden flex items-center gap-4">
-          <button id="header-subscribe-btn" class="nav-auth-btn hidden">S'abonner</button>
-          <a href="/account" class:list={[ "nav-link-account", { 'active': activeNav === 'account' } ]}>
+          <button id="header-subscribe-btn" class="nav-auth-btn hidden">{t('nav.signup')}</button>
+          <a href={l("/account")} class:list={[ "nav-link-account", { 'active': activeNav === 'account' } ]}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            Compte
+            {t('nav.account')}
           </a>
-          <button id="logout-btn" class="nav-logout-icon" title="Déconnexion">
+          <button id="logout-btn" class="nav-logout-icon" title={t('nav.logout')}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
           </button>
         </div>
@@ -159,7 +171,7 @@ const {
     <slot />
   </main>
 
-  <script is:inline>
+  <script define:vars={{ inactivityMsg: t('toast.inactivity') }}>
     // Handle inactivity logout message
     window.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -167,7 +179,7 @@ const {
         const toast = document.getElementById('notification-toast');
         const message = document.getElementById('notification-message');
         if (toast && message) {
-          message.textContent = "Déconnexion pour inactivité (15 min)";
+          message.textContent = inactivityMsg;
           toast.classList.remove('translate-y-20', 'opacity-0');
           toast.classList.add('translate-y-0', 'opacity-100');
           
@@ -185,15 +197,15 @@ const {
 
   <section class="newsletter-section py-24 px-5 border-t border-border-dk bg-dark">
       <div class="container max-w-[800px] text-center">
-        <h2 class="font-head text-4xl md:text-5xl text-white mb-6 tracking-tight">S'inscrire à notre newsletter</h2>
-        <p class="mb-12 text-lg max-w-2xl mx-auto text-white/60">Recevez nos rapports hebdomadaires, nos thèses d'investissement et nos papiers de recherche.</p>
+        <h2 class="font-head text-4xl md:text-5xl text-white mb-6 tracking-tight">{t('newsletter.title')}</h2>
+        <p class="mb-12 text-lg max-w-2xl mx-auto text-white/60">{t('newsletter.description')}</p>
         
         <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFAMsHK_ThjVdJrUwMK-YVva9D-V6Sy5_qwv9w7R-BSFNofF9FNnLIyHrejN60zuHn5ieeNlyQVcktmVWsY-2KSC0nROM37etiiX9ed1ETcuRNeIhUyctsmaKrhiHSvrzJtm_m8HdQ1S02yREYcYi1T6MdyApQ7JoRB9uQGp5pxRVZJ5dQVG0mKqPhTYnuL3OM9bVMjFyWNwReeg==" method="POST" class="max-w-[500px] mx-auto">
           <div class="flex flex-col sm:flex-row gap-0">
-            <input type="email" name="EMAIL" id="subscriber-email" placeholder="votre@email.com" required
+            <input type="email" name="EMAIL" id="subscriber-email" placeholder={t('newsletter.placeholder')} required
                    class="flex-1 px-6 py-4 bg-white/5 border border-white/10 text-white font-mono outline-none rounded-none text-sm transition-all focus:border-blue-3 focus:bg-white/10">
             <button type="submit" id="submit-btn" class="btn-primary border-none cursor-pointer px-10 py-5 font-mono text-[0.7rem] uppercase tracking-[0.2em] sm:border-l-0" style="border-radius:0;">
-              S'abonner
+              {t('newsletter.button')}
             </button>
           </div>
           <p id="subscription-status" class="mt-6 font-mono text-[0.55rem] uppercase tracking-widest text-dim min-h-[1.2em]"></p>
@@ -205,16 +217,16 @@ const {
     <div class="footer-top">
       <p>&copy; {new Date().getFullYear()} HORACLE CAPITAL</p>
       <div class="footer-links">
-        <a href="/about">À Propos</a>
-        <a href="/mentions-legales">Mentions Légales</a>
-        <a href="/reports">Rapports</a>
+        <a href={l("/about")}>{t('footer.about')}</a>
+        <a href={l("/mentions-legales")}>{t('footer.legal')}</a>
+        <a href={l("/reports")}>{t('footer.reports')}</a>
         <a href="https://www.instagram.com/horacle_capital" target="_blank">Instagram</a>
         <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank">LinkedIn</a>
         <a href="https://youtube.com/@lbrd_leo" target="_blank">YouTube</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer">Avertissement sur les risques : Le trading et l'investissement sur les marchés financiers comportent un niveau de risque élevé et peuvent ne pas convenir à tous les investisseurs. Les performances passées ne préjugent pas des performances futures. Le contenu de ce site est fourni à titre exclusivement informatif et ne constitue en aucun cas un conseil en investissement. Horacle Capital ne saurait être tenu responsable de toute perte ou dommage découlant de la confiance accordée aux informations contenues sur ce site.</p>
+      <p class="footer-disclaimer">{t('footer.disclaimer')}</p>
     </div>
   </footer>
 
@@ -224,15 +236,15 @@ const {
       <button id="close-popup" class="popup-close">&times;</button>
       <div class="popup-content">
         <div class="popup-header">
-          <span class="popup-tag">Intelligence Hebdomadaire</span>
-          <h2 class="font-head">Rejoignez la veille</h2>
-          <p>Recevez nos analyses macro et signaux quantitatifs chaque lundi directement dans votre boîte mail.</p>
+          <span class="popup-tag">{t('popup.tag')}</span>
+          <h2 class="font-head">{t('popup.title')}</h2>
+          <p>{t('popup.desc')}</p>
         </div>
         <form action="https://fcfd001f.sibforms.com/serve/MUIFAMsHK_ThjVdJrUwMK-YVva9D-V6Sy5_qwv9w7R-BSFNofF9FNnLIyHrejN60zuHn5ieeNlyQVcktmVWsY-2KSC0nROM37etiiX9ed1ETcuRNeIhUyctsmaKrhiHSvrzJtm_m8HdQ1S02yREYcYi1T6MdyApQ7JoRB9uQGp5pxRVZJ5dQVG0mKqPhTYnuL3OM9bVMjFyWNwReeg==" method="POST" class="popup-form">
-          <input type="email" name="EMAIL" placeholder="votre@email.com" required class="popup-input" />
-          <button type="submit" class="btn-primary w-full justify-center py-4 uppercase tracking-widest text-xs">S'abonner</button>
+          <input type="email" name="EMAIL" placeholder={t('newsletter.placeholder')} required class="popup-input" />
+          <button type="submit" class="btn-primary w-full justify-center py-4 uppercase tracking-widest text-xs">{t('newsletter.button')}</button>
         </form>
-        <p class="popup-footer">100% Recherche. Désinscription en 1 clic.</p>
+        <p class="popup-footer">{t('popup.footer')}</p>
       </div>
     </div>
   </div>

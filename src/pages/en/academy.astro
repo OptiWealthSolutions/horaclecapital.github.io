@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Horacle Academy | Mentorship in Macroeconomic Analysis & Strategy';
+const description = "Tailored strategic guidance to master the Financial Markets. Private sessions grounded in statistical modeling and fundamental analysis.";
+---
+
+<BaseLayout {title} {description} activeNav="academy">
+    <header class="hero min-h-[40vh] md:min-h-[80vh] border-b border-border relative overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <video class="w-full h-full object-cover opacity-20 grayscale" muted loop playsinline autoplay>
+          <source src="https://videos.pexels.com/video-files/3130182/3130182-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-inner relative z-10">
+        <div class="print-only" style="margin-bottom: 30px; text-align: left;">
+            <img src="/assets/img/logo.png" alt="HORACLE CAPITAL" style="width: 50px; height: 50px;" />
+            <hr style="margin-top: 15px; border: 0; border-top: 1px solid rgba(255,255,255,0.3);" />
+        </div>
+        <div class="hero-tag">High-Precision Mentorship</div>
+        <h1 class="font-head max-w-[900px] mx-auto mb-8 text-white">
+          Horacle Academy
+        </h1>
+        <p class="hero-sub font-sans normal-case tracking-normal text-lg max-w-[700px] mb-10 leading-relaxed">
+          Tailored strategic guidance to turn your understanding of the markets into a durable competitive edge.
+        </p>
+        <div class="hero-actions no-print">
+          <button
+            onclick="window.print()"
+            class="btn-ghost flex items-center justify-center gap-2"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+            Print the page
+          </button>
+          <a href="#calendly" class="btn-primary">
+            Book a diagnostic call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container pt-[100px] pb-[120px]">
+
+        <!-- Benefits -->
+        <div id="benefices" class="section-rule scroll-mt-[100px]">
+            <h2 class="section-label">Why choose this mentorship?</h2>
+            <div class="rule-line"></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-[120px] mt-12">
+            <div class="p-8 bg-bg-2 border border-border hover:border-blue-3 transition-colors">
+                <div class="w-10 h-10 bg-blue-3/10 flex items-center justify-center text-blue-3 mb-6">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <h3 class="font-head text-2xl mb-4">Institutional Reading</h3>
+                <p class="text-off text-sm leading-relaxed">Learn to think like central banks and fund managers. Stop enduring the news — anticipate the flows.</p>
+            </div>
+            <div class="p-8 bg-bg-2 border border-border hover:border-blue-3 transition-colors">
+                <div class="w-10 h-10 bg-blue-3/10 flex items-center justify-center text-blue-3 mb-6">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <h3 class="font-head text-2xl mb-4">Structured Framework</h3>
+                <p class="text-off text-sm leading-relaxed">Move from informational chaos to a rigorous, reproducible research methodology every week.</p>
+            </div>
+            <div class="p-8 bg-bg-2 border border-border hover:border-blue-3 transition-colors">
+                <div class="w-10 h-10 bg-blue-3/10 flex items-center justify-center text-blue-3 mb-6">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
+                </div>
+                <h3 class="font-head text-2xl mb-4">Asymmetric Decision-Making</h3>
+                <p class="text-off text-sm leading-relaxed">Identify the moments when the odds are in your favor through the convergence of macro and data.</p>
+            </div>
+        </div>
+
+        <!-- Curriculum -->
+        <div class="section-rule">
+            <h2 class="section-label">The Guidance</h2>
+            <div class="rule-line"></div>
+        </div>
+
+        <div class="group relative bg-bg-2 border border-border hover:border-blue-3 transition-all duration-300 p-8 md:p-12 flex flex-col lg:flex-row gap-10 overflow-hidden mb-24 mt-12">
+          <div class="flex-1 flex flex-col relative z-10">
+            <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+              <div class="flex items-center gap-3">
+                <span class="bg-blue-3 text-white font-mono text-[0.6rem] uppercase tracking-widest px-3 py-1 font-bold rounded-none">Elite Program</span>
+                <span class="border border-border font-mono text-text text-[0.6rem] uppercase tracking-widest px-3 py-1">Macro Analysis</span>
+              </div>
+              <span class="font-mono text-text text-xl font-bold">€450</span>
+            </div>
+
+            <h3 class="font-head text-text mb-5 leading-tight" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400">
+              Mastering the Macroeconomic Ecosystem
+            </h3>
+
+            <p class="text-off text-[0.95rem] leading-relaxed mb-8 max-w-lg">
+              Our mentorship is not a simple theoretical course. It is a real-time transfer of market skills. We study current conditions to forge your financial intuition.
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-6 mb-10">
+                <div class="flex flex-col gap-2">
+                    <span class="font-mono text-blue-3 text-xs uppercase font-bold tracking-widest">01. Applied Theory</span>
+                    <p class="text-xs text-dim leading-relaxed">Understanding the deep mechanisms without getting lost in them, always with an eye on the charts.</p>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="font-mono text-blue-3 text-xs uppercase font-bold tracking-widest">02. Live Analysis</span>
+                    <p class="text-xs text-dim leading-relaxed">Decoding the week's news (CPI, FOMC) and its immediate impact on the theses.</p>
+                </div>
+            </div>
+
+            <div class="mt-auto flex flex-wrap gap-4">
+              <a href="/academy/mentorship-details" class="btn-primary">
+                Discover the program
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" class="ml-2 transform group-hover:translate-x-1 transition-transform"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="#calendly" class="btn-ghost">
+                Apply
+              </a>
+            </div>
+          </div>
+
+          <div class="flex-1 bg-bg border border-border p-8 relative z-10 flex flex-col shadow-xl">
+            <div class="mb-6 border-b border-border pb-3 flex justify-between items-center">
+              <span class="font-mono text-[0.62rem] uppercase tracking-widest text-dim">Specialization Modules</span>
+            </div>
+
+            <div class="flex flex-col gap-8 font-mono">
+              <div class="flex items-start gap-4">
+                <span class="text-blue-3 text-[0.7rem] font-bold">M1</span>
+                <div>
+                  <h4 class="text-text text-[0.8rem] uppercase tracking-wider mb-1">Monetary Architecture</h4>
+                  <p class="text-dim text-[0.65rem] leading-relaxed">Central banks, interest rates, and global liquidity. The bedrock of any analysis.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <span class="text-blue-3 text-[0.7rem] font-bold">M2</span>
+                <div>
+                  <h4 class="text-text text-[0.8rem] uppercase tracking-wider mb-1">Inflation Dynamics</h4>
+                  <p class="text-dim text-[0.65rem] leading-relaxed">CPI, PPI, PCE. Learning to read between the lines of official reports.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <span class="text-blue-3 text-[0.7rem] font-bold">M3</span>
+                <div>
+                  <h4 class="text-text text-[0.8rem] uppercase tracking-wider mb-1">Cycles & Sentiment</h4>
+                  <p class="text-dim text-[0.65rem] leading-relaxed">Institutional positioning (COT), the psychology of cycles, and risk management.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <span class="text-blue-3 text-[0.7rem] font-bold">M4</span>
+                <div>
+                  <h4 class="text-text text-[0.8rem] uppercase tracking-wider mb-1">Strategic Synthesis</h4>
+                  <p class="text-dim text-[0.65rem] leading-relaxed">Building a portfolio and writing professional investment theses.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Consulting -->
+        <div class="border border-border bg-dark p-8 md:p-12 mb-[120px] flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden group">
+            <div class="absolute inset-0 z-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+            <div class="flex-1 text-center md:text-left relative z-10">
+                <div class="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-blue-3 mb-4">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Flash Session
+                </div>
+                <h3 class="font-head text-3xl text-white mb-4">Hourly Macro Consulting</h3>
+                <p class="font-sans text-off text-[0.95rem] leading-relaxed m-0 max-w-[500px] mx-auto md:mx-0">
+                    Need immediate insight on a market situation? Book a one-off session to unblock your analysis or validate a conviction.
+                </p>
+            </div>
+            <div class="shrink-0 text-center md:text-right flex flex-col items-center md:items-end relative z-10">
+                <div class="font-mono text-white text-4xl font-bold tracking-tight mb-2">€40 <span class="text-dim text-lg">/ hour</span></div>
+                <div class="font-mono text-blue-3 text-[0.65rem] uppercase tracking-[0.2em] mb-8 font-bold">Expertise on demand</div>
+                <a href="#calendly" class="btn-primary" style="padding: 12px 24px; font-size: 0.75rem;">
+                    Book an appointment
+                </a>
+            </div>
+        </div>
+
+        <!-- Calendly CTA -->
+        <div id="calendly" class="text-center scroll-mt-[100px] max-w-[900px] mx-auto">
+            <h2 class="font-head text-[2.8rem] text-text mb-6">APPLY FOR THE MENTORSHIP</h2>
+            <p class="text-off mb-12 text-lg">Let's build your decision framework together. Book your free diagnostic call below.</p>
+
+            <div class="calendly-inline-widget" data-url="https://calendly.com/llombardini-leo/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0f172a&text_color=ffffff&primary_color=2563eb" style="min-width:320px;height:750px;border:1px solid var(--border)"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+
+    </main>
+</BaseLayout>

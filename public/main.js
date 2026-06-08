@@ -365,16 +365,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- COOKIE BANNER (RGPD) ---
   if (!localStorage.getItem('cookieConsent')) {
+    const isEN = (document.documentElement.lang || 'fr').toLowerCase().startsWith('en');
+    const cookieText = isEN ? {
+      title: 'Cookie Management',
+      body: "We use cookies to ensure the proper functioning of the site (notably for Calendly appointment booking) and to analyze our traffic anonymously via Umami. By continuing to browse, you accept the use of these cookies.",
+      refuse: 'Decline',
+      accept: 'Accept all',
+    } : {
+      title: 'Gestion des Cookies',
+      body: "Nous utilisons des cookies pour assurer le bon fonctionnement du site (notamment pour la prise de rendez-vous Calendly) et analyser notre trafic de manière anonyme via Umami. En poursuivant votre navigation, vous acceptez l'utilisation de ces cookies.",
+      refuse: 'Refuser',
+      accept: 'Accepter tout',
+    };
     const cookieBanner = document.createElement('div');
     cookieBanner.className = 'cookie-banner';
     cookieBanner.innerHTML = `
       <div class="cookie-content">
-        <h4>Gestion des Cookies</h4>
-        <p>Nous utilisons des cookies pour assurer le bon fonctionnement du site (notamment pour la prise de rendez-vous Calendly) et analyser notre trafic de manière anonyme via Umami. En poursuivant votre navigation, vous acceptez l'utilisation de ces cookies.</p>
+        <h4>${cookieText.title}</h4>
+        <p>${cookieText.body}</p>
       </div>
       <div class="cookie-actions">
-        <button id="btn-refuse-cookies" class="cookie-btn-refuse">Refuser</button>
-        <button id="btn-accept-cookies" class="cookie-btn-accept">Accepter tout</button>
+        <button id="btn-refuse-cookies" class="cookie-btn-refuse">${cookieText.refuse}</button>
+        <button id="btn-accept-cookies" class="cookie-btn-accept">${cookieText.accept}</button>
       </div>
     `;
     document.body.appendChild(cookieBanner);

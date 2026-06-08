@@ -1,6 +1,9 @@
 ---
 import SEO from '../components/SEO.astro';
 import FeedbackForm from '../components/FeedbackForm.astro';
+import LanguagePicker from '../components/LanguagePicker.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 export interface Props {
   title: string;
@@ -14,6 +17,7 @@ export interface Props {
   isPremium?: boolean;
   pdfStoragePath?: string;
   teaser?: string;
+  lang?: 'fr' | 'en';
 }
 
 const {
@@ -28,7 +32,12 @@ const {
   isPremium = false,
   pdfStoragePath,
   teaser,
+  lang: langProp,
 } = Astro.props;
+
+const lang = langProp ?? getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const l = (path: string) => getRelativeLocaleUrl(lang, path);
 
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://horaclecapital.com';
 const ogImage = ogImageProp 
@@ -39,9 +48,9 @@ import TagList from '../components/TagList.astro';
 import SubscribeCTA from '../components/SubscribeCTA.astro';
 import { getCollection } from 'astro:content';
 
-// Fetch suggestions
-const allRapports = await getCollection('rapports', ({ data }) => !data.draft);
-const allRecherches = await getCollection('recherches', ({ data }) => !data.draft);
+// Fetch suggestions (same language as the current article)
+const allRapports = await getCollection('rapports', ({ data }) => !data.draft && (data.lang ?? 'fr') === lang);
+const allRecherches = await getCollection('recherches', ({ data }) => !data.draft && (data.lang ?? 'fr') === lang);
 
 const allArticles = [
   ...allRapports.map(item => ({ ...item, collectionType: 'rapports' })),
@@ -69,13 +78,19 @@ const suggestions = allArticles
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://horaclecapital.com').toString();
 
-const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
+const dateFormatted = new Date(date).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', {
   day: 'numeric', month: 'long', year: 'numeric',
 });
+
+// Build a locale-aware, prefix-stripped article href for suggestions
+const articleHref = (collectionType: string, itemSlug: string) => {
+  const base = itemSlug.replace(/^en\//, '');
+  return l(`/${collectionType === 'rapports' ? 'reports' : 'recherches'}/${base}`);
+};
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -107,20 +122,20 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
     <div id="auth-modal" class="search-modal-overlay">
       <div class="search-modal auth-modal-content">
         <div class="sm-header">
-          <h4 id="auth-modal-title">Connexion</h4>
+          <h4 id="auth-modal-title">{t('auth.title')}</h4>
           <button class="sm-close" id="auth-modal-close">&times;</button>
         </div>
         <div class="sm-body">
           <form id="auth-form" class="flex flex-col gap-4 p-6">
-            <input type="email" id="auth-email" placeholder="Email" required class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors">
-            <input type="password" id="auth-password" placeholder="Mot de passe" required class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors">
-            <input type="password" id="auth-confirm-password" placeholder="Confirmer le mot de passe" class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors hidden">
-            
-            <button type="submit" id="auth-submit-btn" class="btn-primary py-3 font-bold tracking-wide">Continuer</button>
-            
+            <input type="email" id="auth-email" placeholder={t('auth.email')} required class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors">
+            <input type="password" id="auth-password" placeholder={t('auth.password')} required class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors">
+            <input type="password" id="auth-confirm-password" placeholder={t('auth.confirmPassword')} class="px-4 py-3 bg-white/5 border border-white/10 text-white outline-none focus:border-blue-3 transition-colors hidden">
+
+            <button type="submit" id="auth-submit-btn" class="btn-primary py-3 font-bold tracking-wide">{t('auth.continue')}</button>
+
             <div class="relative my-2">
               <div class="absolute inset-0 flex items-center"><span class="w-full border-t border-white/10"></span></div>
-              <div class="relative flex justify-center text-xs uppercase"><span class="bg-[#0f172a] px-2 text-dim">Ou continuer avec</span></div>
+              <div class="relative flex justify-center text-xs uppercase"><span class="bg-[#0f172a] px-2 text-dim">{t('auth.or')}</span></div>
             </div>
 
             <button type="button" id="github-auth-btn" class="flex items-center justify-center gap-3 py-3 bg-white text-black font-bold hover:bg-white/90 transition-colors">
@@ -129,8 +144,8 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
             </button>
 
             <p class="text-xs text-dim text-center mt-2">
-              <span id="auth-switch-text">Pas encore de compte ?</span>
-              <button type="button" id="auth-switch-btn" class="text-blue-3 hover:underline">S'inscrire</button>
+              <span id="auth-switch-text">{t('auth.noAccount')}</span>
+              <button type="button" id="auth-switch-btn" class="text-blue-3 hover:underline">{t('auth.signup')}</button>
             </p>
             <div id="auth-error" class="text-xs text-red-500 mt-2 text-center hidden"></div>
           </form>
@@ -149,55 +164,60 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
         </a>
       </div>
       <div class="nav-links" id="nav-links">
-        <button class="menu-close" id="menu-close" aria-label="Fermer le menu">
+        <button class="menu-close" id="menu-close" aria-label="Close menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
-        
-        <a href="/">Home</a>
-        
+
+        <a href={l("/")}>{t('nav.home')}</a>
+
         <!-- Dropdown for Content -->
         <div class="nav-dropdown">
           <button class="nav-dropdown-trigger">
-            Analyses
+            {t('nav.analyses')}
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
           <div class="nav-dropdown-content">
-            <a href="/reports">Nos rapports macro</a>
-            <a href="/research">Recherche Quant</a>
-            <a href="/portfolio">Thèses & Portfolio</a>
+            <a href={l("/reports")}>{t('nav.reports')}</a>
+            <a href={l("/research")}>{t('nav.research')}</a>
+            <a href={l("/portfolio")}>{t('nav.portfolio')}</a>
           </div>
         </div>
 
-        <a href="/academy" class="flex items-center gap-1">Academy <span class="nav-badge-new">NEW</span></a>
-        <a href="/about">À Propos</a>
-        
+        <a href={l("/academy")} class="flex items-center gap-1">{t('nav.academy')} <span class="nav-badge-new">NEW</span></a>
+        <a href={l("/about")}>{t('nav.about')}</a>
+
         <div class="nav-divider"></div>
-        
+
         <a href="https://youtube.com/@lbrd_leo?si=t6s5xkQprmXiBvE7" target="_blank" class="nav-icon-link" title="YouTube">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         </a>
 
         <form class="nav-search" id="global-search-form" action="#">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" placeholder="Rechercher..." aria-label="Rechercher sur le site" />
+          <input type="text" placeholder={t('nav.search')} aria-label={t('nav.search')} />
         </form>
+
+        <!-- Language Picker -->
+        <div class="ml-4 flex items-center">
+          <LanguagePicker />
+        </div>
 
         <!-- Auth Links -->
         <div class="flex items-center gap-2 ml-4" id="auth-nav">
-          <button id="login-btn" class="nav-link-btn">Connexion</button>
-          <button id="signup-btn" class="nav-auth-btn">S'abonner</button>
+          <button id="login-btn" class="nav-link-btn">{t('nav.login')}</button>
+          <button id="signup-btn" class="nav-auth-btn">{t('nav.signup')}</button>
           <div id="user-nav" class="hidden flex items-center gap-4">
-            <a href="/account" class="nav-link-account">
+            <a href={l("/account")} class="nav-link-account">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              Compte
+              {t('nav.account')}
             </a>
-            <button id="logout-btn" class="nav-logout-icon" title="Déconnexion">
+            <button id="logout-btn" class="nav-logout-icon" title={t('nav.logout')}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
             </button>
           </div>
         </div>
       </div>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
     </nav>
@@ -211,7 +231,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
       </div>
     </div>
 
-    <script is:inline>
+    <script define:vars={{ inactivityMsg: t('toast.inactivity') }}>
       // Handle inactivity logout message
       window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -219,7 +239,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
           const toast = document.getElementById('notification-toast');
           const message = document.getElementById('notification-message');
           if (toast && message) {
-            message.textContent = "Déconnexion pour inactivité (15 min)";
+            message.textContent = inactivityMsg;
             toast.classList.remove('translate-y-20', 'opacity-0');
             toast.classList.add('translate-y-0', 'opacity-100');
             
@@ -244,7 +264,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
       <img src="/assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
       <span>{category}</span>
       <h1>{title}</h1>
-      <p>Publié le {dateFormatted} &bull; Par {author}</p>
+      <p>{t('article.publishedOn')} {dateFormatted} &bull; {t('article.by')} {author}</p>
     </header>
 
     <!-- Article Body & Sidebar -->
@@ -258,7 +278,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
             <div class="flex flex-wrap items-center gap-3">
               <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-dark border border-border-dk text-white font-mono text-[0.6rem] uppercase tracking-widest">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                5 min de lecture
+                {t('article.readingTime')}
               </span>
               <button 
                 onclick="window.print()" 
@@ -266,7 +286,7 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
                 id="print-btn"
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
-                Imprimer l'article
+                {t('article.print')}
               </button>
               <button
                 id="email-pdf-btn"
@@ -274,17 +294,17 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
                 class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-dark border border-border-dk text-white hover:text-blue-3 hover:border-blue-3 transition-colors font-mono text-[0.6rem] uppercase tracking-widest cursor-pointer hidden"
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                Recevoir par email
+                {t('article.emailPdf')}
               </button>
             </div>
 
             <div class="flex items-center gap-2">
-              <span class="font-mono text-[0.55rem] text-dim uppercase tracking-widest mr-1">Partager :</span>
-              <button id="copy-link-btn" class="w-8 h-8 bg-bg-2 border border-border flex items-center justify-center text-off hover:text-blue-3 hover:border-blue-3 transition-colors relative group" title="Copier le lien">
+              <span class="font-mono text-[0.55rem] text-dim uppercase tracking-widest mr-1">{t('article.share')}</span>
+              <button id="copy-link-btn" class="w-8 h-8 bg-bg-2 border border-border flex items-center justify-center text-off hover:text-blue-3 hover:border-blue-3 transition-colors relative group" title={t('article.share')}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                <span id="copy-tooltip" class="absolute -top-8 bg-dark text-white text-[0.65rem] font-mono px-2 py-1 rounded-none opacity-0 transition-opacity pointer-events-none whitespace-nowrap">Copié !</span>
+                <span id="copy-tooltip" class="absolute -top-8 bg-dark text-white text-[0.65rem] font-mono px-2 py-1 rounded-none opacity-0 transition-opacity pointer-events-none whitespace-nowrap">{t('article.copied')}</span>
               </button>
-              <a href="#" id="share-li" target="_blank" class="w-8 h-8 bg-bg-2 border border-border flex items-center justify-center text-off hover:text-blue-3 hover:border-blue-3 transition-colors" title="Partager sur LinkedIn">
+              <a href="#" id="share-li" target="_blank" class="w-8 h-8 bg-bg-2 border border-border flex items-center justify-center text-off hover:text-blue-3 hover:border-blue-3 transition-colors" title="LinkedIn">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               </a>
               <a href="#" id="share-tw" target="_blank" class="w-8 h-8 bg-bg-2 border border-border flex items-center justify-center text-off hover:text-blue-3 hover:border-blue-3 transition-colors" title="Partager sur X">
@@ -313,15 +333,15 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
                   <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(var(--blue-3) 1px, transparent 1px); background-size: 20px 20px;"></div>
                   
                   <div class="relative z-10">
-                    <span class="inline-block px-3 py-1 bg-blue-3/20 border border-blue-3/50 text-blue-3 font-mono text-[0.6rem] uppercase tracking-widest mb-6">Recherche Premium — 10€</span>
-                    <h3 class="font-head text-3xl md:text-4xl text-white mb-6">Accédez à l'intégralité de cette recherche</h3>
+                    <span class="inline-block px-3 py-1 bg-blue-3/20 border border-blue-3/50 text-blue-3 font-mono text-[0.6rem] uppercase tracking-widest mb-6">{t('article.paywall.badge')}</span>
+                    <h3 class="font-head text-3xl md:text-4xl text-white mb-6">{t('article.paywall.title')}</h3>
                     <p class="text-white/60 mb-10 max-w-xl mx-auto text-base">
-                      Ce papier de recherche détaillé est disponible à l'unité ou via abonnement. Débloquez nos modèles quantitatifs et nos thèses d'investissement exclusives pour 10€.
+                      {t('article.paywall.desc')}
                     </p>
-                    
+
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                      <button id="paywall-signup-btn" class="btn-primary px-8 py-4 w-full sm:w-auto">Débloquer la recherche</button>
-                      <button id="paywall-login-btn" class="text-white/40 hover:text-white transition-colors font-mono text-xs uppercase tracking-widest">Déjà membre ? Se connecter</button>
+                      <button id="paywall-signup-btn" class="btn-primary px-8 py-4 w-full sm:w-auto">{t('article.paywall.cta')}</button>
+                      <button id="paywall-login-btn" class="text-white/40 hover:text-white transition-colors font-mono text-xs uppercase tracking-widest">{t('article.paywall.login')}</button>
                     </div>
                   </div>
                 </div>
@@ -333,16 +353,16 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
 
           {tags && tags.length > 0 && (
             <div class="mt-12 pt-8 border-t border-border no-print">
-              <span class="font-mono text-[0.6rem] text-dim uppercase tracking-widest block mb-4">Mots-clés :</span>
+              <span class="font-mono text-[0.6rem] text-dim uppercase tracking-widest block mb-4">{t('article.tags')}</span>
               <TagList {tags} />
             </div>
           )}
 
           <div class="mt-16 no-print">
-            <SubscribeCTA 
-              title="Prêt pour l'étape suivante ?"
-              description="Ne manquez aucun signal. Rejoignez notre communauté de recherche pour des analyses macro et des modèles quantitatifs sans équivalent."
-              buttonText="S'abonner maintenant"
+            <SubscribeCTA
+              title={t('article.cta.title')}
+              description={t('article.cta.desc')}
+              buttonText={t('article.cta.button')}
             />
           </div>
 
@@ -352,57 +372,55 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
             
             {author === 'Léo Lombardini' && (
               <>
-                <img 
-                  src="/assets/img/profil_leo_HD.jpeg" 
-                  alt="Léo Lombardini" 
+                <img
+                  src="/assets/img/profil_leo_HD.jpeg"
+                  alt="Léo Lombardini"
                   class="w-28 h-28 object-cover rounded-full border-4 border-white shadow-md flex-shrink-0"
                 />
                 <div class="text-center md:text-left">
                   <h4 class="font-head text-2xl text-text mb-2">Léo Lombardini</h4>
-                  <p class="font-mono text-[0.65rem] text-blue-3 uppercase tracking-widest mb-4 font-bold">Trader, Économie & Quant</p>
+                  <p class="font-mono text-[0.65rem] text-blue-3 uppercase tracking-widest mb-4 font-bold">{t('article.bio.leo.role')}</p>
                   <p class="text-sm text-off leading-relaxed mb-6 font-sans">
-                    Passionné d'analyse des marchés et de modélisation statistique, Léo supervise l'allocation stratégique du portefeuille modèle et le développement des frameworks quantitatifs d'Horacle Capital, ainsi que la rédaction d'articles hebdomadaires.
+                    {t('article.bio.leo.text')}
                   </p>
-                  <a href="/about" class="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-text hover:text-blue-3 transition-colors">
-                    En savoir plus sur l'auteur <span class="hover:translate-x-1 transition-transform">→</span>
+                  <a href={l("/about")} class="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-text hover:text-blue-3 transition-colors">
+                    {t('article.bio.more')} <span class="hover:translate-x-1 transition-transform">→</span>
                   </a>
                 </div>
               </>
             )}
 
-            {/* 
             {author === 'Raphaël Chouraqui' && (
               <>
-                <img 
-                  src="/assets/img/photo_profil_raphael.jpg" 
-                  alt="Raphaël Chouraqui" 
+                <img
+                  src="/assets/img/photo_profil_raphael.jpg"
+                  alt="Raphaël Chouraqui"
                   class="w-28 h-28 object-cover rounded-full border-4 border-white shadow-md flex-shrink-0"
                 />
                 <div class="text-center md:text-left">
                   <h4 class="font-head text-2xl text-text mb-2">Raphaël Chouraqui</h4>
-                  <p class="font-mono text-[0.65rem] text-blue-3 uppercase tracking-widest mb-4 font-bold">Writer</p>
+                  <p class="font-mono text-[0.65rem] text-blue-3 uppercase tracking-widest mb-4 font-bold">{t('article.bio.raphael.role')}</p>
                   <p class="text-sm text-off leading-relaxed mb-6 font-sans">
-                    Passionné d’économie et de finance de marché. Raphaël apporte son expertise dans le décryptage des cycles macroéconomiques et participe à la rédaction des analyses d'Horacle Capital.
+                    {t('article.bio.raphael.text')}
                   </p>
-                  <a href="/about" class="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-text hover:text-blue-3 transition-colors">
-                    En savoir plus sur l'auteur <span class="hover:translate-x-1 transition-transform">→</span>
+                  <a href={l("/about")} class="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-text hover:text-blue-3 transition-colors">
+                    {t('article.bio.more')} <span class="hover:translate-x-1 transition-transform">→</span>
                   </a>
                 </div>
               </>
             )}
-            */}
           </div>
         </article>
 
         <!-- Sidebar / Suggestions -->
         <aside class="w-full lg:w-[320px] mt-16 lg:mt-0 sticky top-24 lg:self-start no-print">
           <div class="bg-white border border-border p-8 shadow-sm">
-            <h3 class="font-mono text-[0.65rem] uppercase tracking-[0.2em] font-bold text-blue-3 mb-6 pb-4 border-b border-border">Lectures Recommandées</h3>
-            
+            <h3 class="font-mono text-[0.65rem] uppercase tracking-[0.2em] font-bold text-blue-3 mb-6 pb-4 border-b border-border">{t('article.suggestions')}</h3>
+
             <div class="flex flex-col gap-6">
               {suggestions.length > 0 ? suggestions.map((item, index) => (
                 <>
-                  <a href={item.collectionType === 'rapports' ? `/reports/${item.slug}` : `/recherches/${item.slug}`} class="group block">
+                  <a href={articleHref(item.collectionType, item.slug)} class="group block">
                     <span class="text-[0.55rem] font-bold uppercase tracking-widest text-dim mb-1.5 block">{item.data.category}</span>
                     <h4 class="font-head text-xl text-text leading-tight group-hover:text-blue-3 transition-colors mb-2">{item.data.title}</h4>
                     <p class="text-[0.8rem] text-off line-clamp-2 font-sans font-light">{item.data.description}</p>
@@ -410,23 +428,23 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
                   {index < suggestions.length - 1 && <div class="w-full h-px bg-border/60"></div>}
                 </>
               )) : (
-                <p class="text-[0.8rem] text-dim italic">Aucune autre lecture pour le moment.</p>
+                <p class="text-[0.8rem] text-dim italic">{t('article.noSuggestions')}</p>
               )}
             </div>
-            
-            <a href="/portfolio" class="mt-8 pt-6 border-t border-border flex items-center justify-between text-[0.65rem] font-mono font-bold uppercase tracking-widest text-blue-3 hover:text-blue-400 transition-colors group">
-              Voir le portefeuille
+
+            <a href={l("/portfolio")} class="mt-8 pt-6 border-t border-border flex items-center justify-between text-[0.65rem] font-mono font-bold uppercase tracking-widest text-blue-3 hover:text-blue-400 transition-colors group">
+              {t('article.viewPortfolio')}
               <span class="group-hover:translate-x-1 transition-transform">→</span>
             </a>
           </div>
 
           <!-- Newsletter mini-block in sidebar -->
           <div class="mt-8 bg-dark p-8 border border-border-dk">
-            <h4 class="font-head text-xl text-white mb-3">Newsletter</h4>
-            <p class="text-white/60 text-xs mb-5 font-sans leading-relaxed">Ne manquez aucun point d'inflexion macroéconomique.</p>
+            <h4 class="font-head text-xl text-white mb-3">{t('article.sidebarNewsletter.title')}</h4>
+            <p class="text-white/60 text-xs mb-5 font-sans leading-relaxed">{t('article.sidebarNewsletter.desc')}</p>
             <form action="https://fcfd001f.sibforms.com/serve/MUIFAMsHK_ThjVdJrUwMK-YVva9D-V6Sy5_qwv9w7R-BSFNofF9FNnLIyHrejN60zuHn5ieeNlyQVcktmVWsY-2KSC0nROM37etiiX9ed1ETcuRNeIhUyctsmaKrhiHSvrzJtm_m8HdQ1S02yREYcYi1T6MdyApQ7JoRB9uQGp5pxRVZJ5dQVG0mKqPhTYnuL3OM9bVMjFyWNwReeg==" method="POST" class="flex flex-col gap-3">
-              <input type="email" name="EMAIL" placeholder="Email..." required class="w-full px-4 py-2 bg-white/5 border border-white/10 text-white font-mono text-xs focus:border-blue-3 focus:outline-none" />
-              <button type="submit" class="w-full bg-blue-3 text-white font-mono text-[0.6rem] uppercase tracking-widest py-2 hover:bg-blue-400 transition-colors">S'abonner</button>
+              <input type="email" name="EMAIL" placeholder={t('article.emailPlaceholder')} required class="w-full px-4 py-2 bg-white/5 border border-white/10 text-white font-mono text-xs focus:border-blue-3 focus:outline-none" />
+              <button type="submit" class="w-full bg-blue-3 text-white font-mono text-[0.6rem] uppercase tracking-widest py-2 hover:bg-blue-400 transition-colors">{t('newsletter.button')}</button>
             </form>
           </div>
         </aside>
@@ -436,14 +454,14 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
     <!-- Newsletter -->
     <section class="newsletter-section py-24 px-5 border-t border-border-dk bg-dark">
       <div class="container max-w-[850px] text-center px-0">
-        <h2 class="font-head text-4xl md:text-5xl text-white mb-6 tracking-tight">S'inscrire à notre newsletter</h2>
-        <p class="mb-10 text-lg max-w-2xl mx-auto text-white/60">Recevez nos rapports hebdomadaires, nos thèses d'investissement et nos papiers de recherche.</p>
-        
+        <h2 class="font-head text-4xl md:text-5xl text-white mb-6 tracking-tight">{t('newsletter.title')}</h2>
+        <p class="mb-10 text-lg max-w-2xl mx-auto text-white/60">{t('newsletter.description')}</p>
+
         <form id="api-newsletter-form" action="https://fcfd001f.sibforms.com/serve/MUIFAMsHK_ThjVdJrUwMK-YVva9D-V6Sy5_qwv9w7R-BSFNofF9FNnLIyHrejN60zuHn5ieeNlyQVcktmVWsY-2KSC0nROM37etiiX9ed1ETcuRNeIhUyctsmaKrhiHSvrzJtm_m8HdQ1S02yREYcYi1T6MdyApQ7JoRB9uQGp5pxRVZJ5dQVG0mKqPhTYnuL3OM9bVMjFyWNwReeg==" method="POST" class="max-w-[500px] mx-auto">
           <div class="flex flex-col sm:flex-row">
-            <input type="email" name="EMAIL" placeholder="votre@email.com" required
+            <input type="email" name="EMAIL" placeholder={t('newsletter.placeholder')} required
                    class="flex-1 px-6 py-4 bg-white/5 border border-white/10 text-white font-mono outline-none rounded-none text-sm focus:border-blue-3" />
-            <button type="submit" class="btn-primary border-none cursor-pointer px-8 py-4 font-mono text-[0.7rem] uppercase tracking-[0.2em] sm:border-l-0" style="border-radius:0;">S'abonner</button>
+            <button type="submit" class="btn-primary border-none cursor-pointer px-8 py-4 font-mono text-[0.7rem] uppercase tracking-[0.2em] sm:border-l-0" style="border-radius:0;">{t('newsletter.button')}</button>
           </div>
           <p id="subscription-status" class="mt-4 font-mono text-[0.55rem] uppercase tracking-[0.15em] min-h-[1.2em] text-white/40"></p>
         </form>
@@ -454,16 +472,16 @@ const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
       <div class="footer-top">
         <p>&copy; 2026 HORACLE CAPITAL</p>
         <div class="footer-links">
-          <a href="/about">À Propos</a>
-          <a href="/mentions-legales">Mentions Légales</a>
-          <a href="/reports">Rapports</a>
+          <a href={l("/about")}>{t('footer.about')}</a>
+          <a href={l("/mentions-legales")}>{t('footer.legal')}</a>
+          <a href={l("/reports")}>{t('footer.reports')}</a>
           <a href="https://www.instagram.com/horacle_capital" target="_blank">Instagram</a>
           <a href="https://www.linkedin.com/in/l%C3%A9o-lombardini-418018280/" target="_blank">LinkedIn</a>
           <a href="https://youtube.com/@lbrd_leo" target="_blank">YouTube</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-disclaimer">Avertissement sur les risques : Le trading et l'investissement sur les marchés financiers comportent un niveau de risque élevé. Le contenu de ce site est fourni à titre exclusivement informatif et ne constitue en aucun cas un conseil en investissement.</p>
+        <p class="footer-disclaimer">{t('article.footerDisclaimer')}</p>
       </div>
     </footer>
 

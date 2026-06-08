@@ -14,6 +14,8 @@ const rapports = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     isPremium: z.boolean().default(false),
+    lang: z.enum(['fr', 'en']).default('fr'),
+    translationKey: z.string().optional(),     // base slug linking FR <-> EN pairs
   }),
 });
 
@@ -32,6 +34,8 @@ const recherches = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     isPremium: z.boolean().default(false),
+    lang: z.enum(['fr', 'en']).default('fr'),
+    translationKey: z.string().optional(),
   }),
 });
 
@@ -57,6 +61,8 @@ const portfolios = defineCollection({
       thesis: z.string().optional(),
     })).default([]),
     draft: z.boolean().default(false),
+    lang: z.enum(['fr', 'en']).default('fr'),
+    translationKey: z.string().optional(),
   }),
 });
 

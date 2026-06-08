@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
-  const recherches = await getCollection('recherches', ({ data }) => !data.draft);
+  const recherches = await getCollection('recherches', ({ data }) => !data.draft && (data.lang ?? 'fr') !== 'en');
   return recherches.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },

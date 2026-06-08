@@ -3,8 +3,14 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MacroFAQ from '../components/MacroFAQ.astro';
 import SubscribeCTA from '../components/SubscribeCTA.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
-const allRapports = await getCollection('rapports', ({ data }) => !data.draft);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const l = (path: string) => getRelativeLocaleUrl(lang, path);
+
+const allRapports = await getCollection('rapports', ({ data }) => !data.draft && (data.lang ?? 'fr') !== 'en');
 const sortedRapports = allRapports.sort((a, b) =>
   new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
@@ -12,6 +18,14 @@ const sortedRapports = allRapports.sort((a, b) =>
 const latestFX = sortedRapports.find(r => r.data.category === 'FX & Macro');
 const latestCommo = sortedRapports.find(r => r.data.category === 'Commodities & Stocks');
 const latestCoupDoeil = sortedRapports.find(r => r.data.category === "Le Coup d'Oeil");
+
+const isNewReport = (date: string) => {
+  const today = new Date();
+  const reportDate = new Date(date);
+  const diffTime = Math.abs(today.getTime() - reportDate.getTime());
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  return diffDays <= 7;
+};
 
 let latestReports = [latestFX, latestCommo, latestCoupDoeil].filter(Boolean);
 
@@ -23,13 +37,13 @@ if (latestReports.length < 3) {
   latestReports = [...latestReports, ...remaining.slice(0, needed)];
 }
 
-const title = 'HORACLE CAPITAL | Analyse Macroéconomique & Finance Quantitative';
+const title = t('home.hero.title');
 const description = "Horacle Capital : Recherche indépendante en macroéconomie et finance quantitative. Analyses hebdomadaires, modèles de scoring et mentorat stratégique pour investisseurs.";
 ---
 
 <BaseLayout {title} {description} activeNav="home">
     <header class="hero hero-index text-center flex flex-col items-center justify-center min-h-screen min-h-[100dvh] bg-dark relative overflow-hidden border-b border-border-dk !py-0">
-      <h1 class="sr-only">Analyse Macroéconomique & Finance Quantitative | Horacle Capital</h1>
+      <h1 class="sr-only">{t('home.hero.title')}</h1>
       
       <!-- Impeccable Aesthetic Background -->
       <div class="absolute inset-0 pointer-events-none z-0">
@@ -48,22 +62,22 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
           </div>
           
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full px-4 sm:px-0 reveal reveal-delay-1">
-            <a href="/reports" class="btn-primary w-full sm:w-auto justify-center text-sm md:text-base px-5 md:px-7 py-3 md:py-3.5 shadow-xl hover:shadow-blue-3/20 flex items-center gap-3">
-              Nos rapports macro
+            <a href={l("/reports")} class="btn-primary w-full sm:w-auto justify-center text-sm md:text-base px-5 md:px-7 py-3 md:py-3.5 shadow-xl hover:shadow-blue-3/20 flex items-center gap-3">
+              {t('home.hero.reportsBtn')}
               <svg width="18" height="18" viewBox="0 0 14 14" fill="none" class="w-4 h-4 md:w-5 md:h-5"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="/research" class="w-full sm:w-auto justify-center text-sm md:text-base px-5 md:px-7 py-3 md:py-3.5 shadow-xl flex items-center gap-3 border border-white/20 text-white hover:bg-white/5 transition-colors font-bold font-sans tracking-wide">
-              Nos recherches
+            <a href={l("/research")} class="w-full sm:w-auto justify-center text-sm md:text-base px-5 md:px-7 py-3 md:py-3.5 shadow-xl flex items-center gap-3 border border-white/20 text-white hover:bg-white/5 transition-colors font-bold font-sans tracking-wide">
+              {t('home.hero.researchBtn')}
               <svg width="18" height="18" viewBox="0 0 14 14" fill="none" class="w-4 h-4 md:w-5 md:h-5"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
 
           <p class="hero-sub hidden md:flex items-center justify-center gap-4 text-xs md:text-sm lg:text-base mt-16 font-mono text-white/40 tracking-[0.2em] uppercase reveal reveal-delay-2">
-            <span>Analyse Macroéconomique</span>
+            <span>{t('home.hero.tag1')}</span>
             <span class="w-1 h-1 rounded-full bg-blue-3"></span>
-            <span>Finance Quantitative</span>
+            <span>{t('home.hero.tag2')}</span>
             <span class="w-1 h-1 rounded-full bg-blue-3"></span>
-            <span>Stratégie de Marché</span>
+            <span>{t('home.hero.tag3')}</span>
           </p>
           
         </div>
@@ -75,14 +89,14 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
       <section class="py-12 border-t border-border bg-white">
         <div class="container">
           <div class="section-rule mb-12">
-            <h2 class="section-label">Dernières Publications</h2>
+            <h2 class="section-label">{t('home.latest.title')}</h2>
             <div class="rule-line"></div>
-            <a href="/reports" class="rule-link">Tout voir <span>→</span></a>
+            <a href={l("/reports")} class="rule-link">{t('home.latest.viewAll')} <span>→</span></a>
           </div>
 
           <div class="grid lg:grid-cols-3 gap-6 lg:gap-8">
             {latestReports.map((rapport, index) => (
-              <a href={`/reports/${rapport.slug}`} class={`reveal reveal-delay-${index} group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden`}>
+              <a href={l(`/reports/${rapport.slug}`)} class={`reveal reveal-delay-${index} group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden`}>
                 <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
                 <div class="h-32 md:h-48 overflow-hidden border-b border-border relative">
                   <img src={rapport.data.thumbnail || '/assets/img/banner.jpg'} alt={rapport.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" onerror="this.src='/assets/img/banner.jpg'" />
@@ -90,13 +104,18 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
                   <div class="absolute top-4 left-4 flex gap-2">
                     <span class="bg-blue-3 text-white font-sans text-[0.58rem] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-none shadow-md">{rapport.data.category}</span>
                   </div>
+                  {isNewReport(rapport.data.date) && (
+                    <div class="absolute top-4 right-4 z-20">
+                      <span class="bg-blue-2 text-white font-sans text-[0.6rem] uppercase tracking-[0.2em] px-3 py-1 font-bold shadow-xl border border-white/10">New</span>
+                    </div>
+                  )}
                 </div>
                 <div class="p-5 md:p-8 flex flex-col flex-1">
-                  <div class="font-sans text-[0.55rem] md:text-[0.6rem] text-dim mb-2 md:mb-3 uppercase tracking-widest">{new Date(rapport.data.date).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
+                  <div class="font-sans text-[0.55rem] md:text-[0.6rem] text-dim mb-2 md:mb-3 uppercase tracking-widest">{new Date(rapport.data.date).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
                   <h3 class="font-head text-lg md:text-2xl font-semibold text-text mb-3 md:mb-4 leading-tight group-hover:text-blue-3 transition-colors line-clamp-2">{rapport.data.title}</h3>
                   <p class="text-off text-xs md:text-[0.9rem] leading-relaxed line-clamp-2 md:line-clamp-3 mb-4 md:mb-6 flex-1 font-sans">{rapport.data.description}</p>
                   <div class="inline-flex items-center gap-2 font-sans text-[0.65rem] md:text-[0.75rem] font-bold text-text mt-auto pt-4 md:pt-6 border-t border-border/50 group-hover:text-blue-3 transition-colors">
-                    Lire le rapport <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    {t('home.latest.readMore')} <span class="group-hover:translate-x-1 transition-transform">→</span>
                   </div>
                 </div>
               </a>
@@ -109,35 +128,35 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
       <section class="py-12 border-t border-border" style="background:var(--bg-2);">
         <div class="container">
           <div class="section-rule mb-12">
-            <h2 class="section-label">L'Écosystème Horacle</h2>
+            <h2 class="section-label">{t('home.eco.title')}</h2>
             <div class="rule-line"></div>
           </div>
 
           <div class="eco-grid">
             <!-- Portfolio (Replaces Academy) -->
-            <a href="/portfolio" class="eco-card academy reveal">
+            <a href={l("/portfolio")} class="eco-card academy reveal">
               <div class="eco-image-bg" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80');"></div>
-              <span class="eco-label">Exécution Stratégique</span>
-              <h3 class="eco-title">Nos thèses d'investissement</h3>
-              <p class="eco-desc">L'application directe de notre recherche macroéconomique. Des convictions asymétriques sur les actions, devises et matières premières, avec une gestion stricte du risque.</p>
-              <span class="eco-link">Voir nos convictions <span>→</span></span>
+              <span class="eco-label">{t('home.eco.portfolio.label')}</span>
+              <h3 class="eco-title">{t('home.eco.portfolio.title')}</h3>
+              <p class="eco-desc">{t('home.eco.portfolio.desc')}</p>
+              <span class="eco-link">{t('home.eco.portfolio.link')} <span>→</span></span>
             </a>
 
             <!-- Research -->
-            <a href="/research" class="eco-card featured dark reveal reveal-delay-1">
+            <a href={l("/research")} class="eco-card featured dark reveal reveal-delay-1">
               <div class="eco-image-bg" style="background-image: url('/assets/img/notebook_banner.jpg');"></div>
-              <span class="eco-label">Finance Quantitative</span>
-              <h3 class="eco-title">Nos recherches</h3>
-              <p class="eco-desc">Modélisation statistique et analyse fondamentale. Découvrez nos cadres mathématiques pour anticiper les régimes de volatilité et les cycles structurels.</p>
-              <span class="eco-link">Consulter nos recherches <span>→</span></span>
+              <span class="eco-label">{t('home.eco.research.label')}</span>
+              <h3 class="eco-title">{t('home.eco.research.title')}</h3>
+              <p class="eco-desc">{t('home.eco.research.desc')}</p>
+              <span class="eco-link">{t('home.eco.research.link')} <span>→</span></span>
             </a>
 
             <!-- Reports -->
-            <a href="/reports" class="eco-card mission reveal reveal-delay-2">
-              <span class="eco-label">Veille Stratégique</span>
-              <h3 class="eco-title">Nos rapports</h3>
-              <p class="eco-desc">Recevez chaque semaine nos analyses de haute précision sur l'actualité macroéconomique. Un éclairage indépendant pour comprendre les enjeux financiers globaux.</p>
-              <span class="eco-link">Accéder aux rapports <span>→</span></span>
+            <a href={l("/reports")} class="eco-card mission reveal reveal-delay-2">
+              <span class="eco-label">{t('home.eco.reports.label')}</span>
+              <h3 class="eco-title">{t('home.eco.reports.title')}</h3>
+              <p class="eco-desc">{t('home.eco.reports.desc')}</p>
+              <span class="eco-link">{t('home.eco.reports.link')} <span>→</span></span>
             </a>
           </div>
         </div>
@@ -232,9 +251,10 @@ const description = "Horacle Capital : Recherche indépendante en macroéconomie
       <section class="py-12">
         <div class="container">
           <SubscribeCTA 
-            title="Maîtrisez les cycles, capturez l'alpha."
-            description="Rejoignez Horacle Premium pour accéder à nos modèles de scoring quantitatifs, nos thèses d'investissement asymétriques et nos analyses macroéconomiques de haute précision."
-            buttonText="Débloquer l'accès Premium"
+            title={t('home.cta.title')}
+            description={t('home.cta.description')}
+            buttonText={t('home.cta.button')}
+            secondaryButtonText={t('home.cta.secondary')}
           />
         </div>
       </section>

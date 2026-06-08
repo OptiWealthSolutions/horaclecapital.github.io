@@ -1,0 +1,90 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const flags: Record<string, string> = {
+  fr: '🇫🇷',
+  en: '🇬🇧',
+};
+const labels: Record<string, string> = {
+  fr: 'FR',
+  en: 'EN',
+};
+
+// Function to generate the URL for the other language
+const getLocalizedPath = (l: string) => {
+  // Strip a trailing ".html" (build.format:'file') so the `/en` root resolves correctly.
+  const path = Astro.url.pathname.replace(/\.html$/, '');
+  const segments = path.split('/');
+
+  // If the current path already has a locale prefix
+  if (segments[1] in languages) {
+    if (l === 'fr') {
+        // Remove 'en' prefix for default language
+        return path.replace(/^\/en/, '') || '/';
+    }
+    segments[1] = l;
+    return segments.join('/');
+  } else {
+    // If it's the default language (no prefix)
+    if (l === 'fr') return path || '/';
+    return `/${l}${path === '/' ? '' : path}`;
+  }
+};
+---
+
+<div class="lang-picker">
+  {Object.entries(flags).map(([l, flag]) => (
+    <a
+      href={getLocalizedPath(l)}
+      class:list={["lang-link", { active: lang === l }]}
+      title={l === 'fr' ? 'Français' : 'English'}
+      aria-label={l === 'fr' ? 'Passer en français' : 'Switch to English'}
+    >
+      <span class="lang-flag">{flag}</span>
+      <span class="lang-code">{labels[l]}</span>
+    </a>
+  ))}
+</div>
+
+<style>
+  .lang-picker {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+  }
+  .lang-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: all 0.2s;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .lang-flag {
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .lang-code {
+    font-size: 0.6rem;
+  }
+  .lang-link:hover {
+    color: var(--blue-3);
+    border-color: rgba(37, 99, 235, 0.3);
+    background: rgba(37, 99, 235, 0.05);
+  }
+  .lang-link.active {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.07);
+  }
+</style>

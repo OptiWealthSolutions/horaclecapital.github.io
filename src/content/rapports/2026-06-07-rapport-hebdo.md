@@ -5,7 +5,7 @@ author: 'Léo Lombardini'
 date: '2026-06-07'
 category: 'FX & Macro'
 issue: 'N°13'
-thumbnail: '/assets/img/euro_zone_CPI_07_06_26.png'
+thumbnail: '/assets/img/cover_06-07.jpg'
 tags: ['USD', 'EUR', 'JPY', 'CAD', 'NFP']
 ---
 **Contexte Global :**
@@ -61,43 +61,3 @@ Le loonie a connu son niveau le plus bas depuis 8 semaines à la suite de l'inte
 L'économie canadienne valide une phase de contraction de sa production réelle, marquée par un recul de -0,1 % en taux annualisé au premier trimestre, confirmant la fragilité conjoncturelle ouverte par la baisse de -1,0 % enregistrée au trimestre précédent.
 
 L'imposition de droits de douane de 12,5 % par l'administration Trump, conjuguée à l'escalade des tensions géopolitiques au Moyen-Orient, agit comme un double choc externe altérant directement les flux commerciaux et les perspectives industrielles du pays.
-
-***
-
-<div class="mt-16 pt-8 border-t border-border no-print">
-  <div class="flex items-center gap-3 mb-6">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-3"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
-    <h4 class="font-head text-xl text-text m-0">Bibliographie & Données</h4>
-  </div>
-  <div class="grid md:grid-cols-2 gap-4">
-    <a href="https://www.federalreserve.gov/monetarypolicy/files/BeigeBook_20260603.pdf" target="_blank" class="group flex items-start gap-4 p-4 border border-border bg-white hover:border-blue-3 hover:shadow-md transition-all duration-300 no-underline">
-      <div class="w-10 h-10 flex-shrink-0 bg-bg-2 border border-border flex items-center justify-center text-dim group-hover:text-blue-3 group-hover:bg-blue-3/5 transition-colors">
-        <span class="font-mono text-xs">FED</span>
-      </div>
-      <div>
-        <span class="block text-sm font-bold text-text mb-1 group-hover:text-blue-3 transition-colors">Beige Book Report</span>
-        <span class="block text-xs text-off font-sans">Federal Reserve Board</span>
-      </div>
-    </a>
-    
-    <a href="https://fr.investing.com/news/forex-news/le-dollar-canadien-chute-a-son-plus-bas-niveau-en-huit-semaines-93CH-3446998" target="_blank" class="group flex items-start gap-4 p-4 border border-border bg-white hover:border-blue-3 hover:shadow-md transition-all duration-300 no-underline">
-      <div class="w-10 h-10 flex-shrink-0 bg-bg-2 border border-border flex items-center justify-center text-dim group-hover:text-blue-3 group-hover:bg-blue-3/5 transition-colors">
-        <span class="font-mono text-xs">INV</span>
-      </div>
-      <div>
-        <span class="block text-sm font-bold text-text mb-1 group-hover:text-blue-3 transition-colors">Dynamique du CAD</span>
-        <span class="block text-xs text-off font-sans">Investing.com Macro</span>
-      </div>
-    </a>
-
-    <a href="https://think.ing.com/" target="_blank" class="group flex items-start gap-4 p-4 border border-border bg-white hover:border-blue-3 hover:shadow-md transition-all duration-300 no-underline">
-      <div class="w-10 h-10 flex-shrink-0 bg-bg-2 border border-border flex items-center justify-center text-dim group-hover:text-blue-3 group-hover:bg-blue-3/5 transition-colors">
-        <span class="font-mono text-xs">ING</span>
-      </div>
-      <div>
-        <span class="block text-sm font-bold text-text mb-1 group-hover:text-blue-3 transition-colors">Research & Strategy</span>
-        <span class="block text-xs text-off font-sans">ING Think Economics</span>
-      </div>
-    </a>
-  </div>
-</div>

@@ -4,9 +4,9 @@ import { getCollection } from 'astro:content';
 import TagList from '../../components/TagList.astro';
 
 export async function getStaticPaths() {
-  const rapports = await getCollection('rapports');
-  const recherches = await getCollection('recherches');
-  
+  const rapports = await getCollection('rapports', ({ data }) => (data.lang ?? 'fr') !== 'en');
+  const recherches = await getCollection('recherches', ({ data }) => (data.lang ?? 'fr') !== 'en');
+
   const allContent = [...rapports, ...recherches];
   const tags = [...new Set(allContent.flatMap(post => post.data.tags || []))];
 

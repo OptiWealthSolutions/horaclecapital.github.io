@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const allRecherches = await getCollection('recherches', ({ data }) => !data.draft);
-const recherches = allRecherches.sort((a, b) => 
+const allRecherches = await getCollection('recherches', ({ data }) => !data.draft && (data.lang ?? 'fr') !== 'en');
+const recherches = allRecherches.sort((a, b) =>
   new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 

@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const allRapports = await getCollection('rapports', ({ data }) => !data.draft && (data.lang ?? 'fr') === 'en');
+const sortedRapports = allRapports.sort((a, b) =>
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const slugBase = (s) => s.replace(/^en\//, '');
+const rapportsAutres = sortedRapports.filter(r =>
+  r.data.category !== "FX & Macro" &&
+  r.data.category !== "Commodities & Stocks" &&
+  r.data.category !== "Le Coup d'Oeil"
+);
+
+function formatDateShort(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    day: '2-digit', month: 'short', year: 'numeric',
+  });
+}
+
+const fallbackImg = '/assets/img/banner.jpg';
+const title = 'Archives & Other Analysis | Horacle Capital';
+const description = "Browse the history of our macroeconomic analysis and reports.";
+---
+
+<BaseLayout {title} {description} activeNav="reports">
+    <header class="page-header">
+      <div class="print-only" style="margin-bottom: 30px;">
+        <img src="/assets/img/logo.png" alt="HORACLE CAPITAL" style="width: 50px; height: 50px;" />
+        <hr style="margin-top: 15px; border: 0; border-top: 1px solid #000;" />
+      </div>
+      <img src="/assets/img/banner.jpg" alt="Report archives" class="header-bg" aria-hidden="true" />
+      <span>Strategic Intelligence</span>
+      <h1>Archives</h1>
+      <p>History of our analysis and research notes.</p>
+
+      <div class="mt-6 no-print">
+        <a href="/en/reports" class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-widest font-bold text-white/60 hover:text-white transition-colors">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            Back to reports
+        </a>
+      </div>
+    </header>
+
+    <div class="container py-24">
+      {rapportsAutres.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {rapportsAutres.map((rapport) => (
+            <a href={`/en/reports/${slugBase(rapport.slug)}`} class="group relative flex flex-col bg-white border border-border hover:border-blue-3 transition-colors shadow-sm hover:shadow-md overflow-hidden">
+              <div class="absolute top-0 left-0 w-full h-1 bg-blue-3 scale-x-0 group-hover:scale-x-100 transition-transform origin-left z-10"></div>
+              <div class="h-48 overflow-hidden border-b border-border relative">
+                <img src={rapport.data.thumbnail || fallbackImg} alt={rapport.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" onerror={`this.src='${fallbackImg}'`} />
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent"></div>
+              </div>
+              <div class="p-8 flex flex-col flex-1">
+                <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
+                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">{rapport.data.category}</span>
+                  <span class="text-[0.65rem] text-dim uppercase tracking-widest">{formatDateShort(rapport.data.date)}</span>
+                </div>
+                <h3 class="font-head text-2xl text-text mb-6 leading-tight group-hover:text-blue-3 transition-colors">{rapport.data.title}</h3>
+                <p class="text-off text-sm leading-relaxed mb-8 flex-1 font-sans">{rapport.data.description}</p>
+                <div class="mt-auto pt-6 flex justify-between items-center border-t border-border/50">
+                    <span class="text-[0.7rem] font-bold text-text uppercase tracking-widest">Read report</span>
+                    <span class="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20 border border-dashed border-border">
+          <p class="text-dim italic">No archived report for now.</p>
+        </div>
+      )}
+    </div>
+</BaseLayout>

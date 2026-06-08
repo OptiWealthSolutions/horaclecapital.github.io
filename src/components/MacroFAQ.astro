@@ -1,5 +1,10 @@
 ---
-const faqs = [
+export interface Props {
+  lang?: 'fr' | 'en';
+}
+const { lang = 'fr' } = Astro.props;
+
+const faqsFR = [
   {
     question: "Qu'est-ce que l'analyse macroéconomique ?",
     answer: "L'analyse macroéconomique consiste à étudier les indicateurs économiques globaux tels que le PIB, l'inflation (CPI), le chômage et les taux d'intérêt pour comprendre la santé d'une économie et anticiper les mouvements des marchés financiers."
@@ -17,6 +22,28 @@ const faqs = [
     answer: "Non. Horacle Capital fournit des recherches et des analyses à but éducatif et informatif. Chaque investisseur doit effectuer ses propres recherches ou consulter un conseiller financier agréé avant de prendre des décisions d'investissement."
   }
 ];
+
+const faqsEN = [
+  {
+    question: "What is macroeconomic analysis?",
+    answer: "Macroeconomic analysis consists of studying global economic indicators such as GDP, inflation (CPI), unemployment, and interest rates to understand the health of an economy and anticipate movements in financial markets."
+  },
+  {
+    question: "How does Horacle Capital use quantitative models?",
+    answer: "We use advanced mathematical models and multifactor scoring to filter market noise and identify specific market regimes where the probabilities of success are asymmetric."
+  },
+  {
+    question: "What is the difference between Horacle Academy and your reports?",
+    answer: "Reports are weekly analyses of current market events, while the Academy is a structured mentorship program designed to teach core competencies in macroeconomics and quantitative finance."
+  },
+  {
+    question: "Do your analyses constitute investment advice?",
+    answer: "No. Horacle Capital provides research and analysis for educational and informational purposes. Each investor must conduct their own research or consult a licensed financial advisor before making investment decisions."
+  }
+];
+
+const faqs = lang === 'en' ? faqsEN : faqsFR;
+const sectionLabel = lang === 'en' ? 'Frequently Asked Questions' : 'Questions Fréquentes';
 
 const schema = {
   "@context": "https://schema.org",
@@ -37,7 +64,7 @@ const schema = {
 <section class="faq-section py-16 bg-bg-2 border-t border-border">
     <div class="container">
         <div class="section-rule mb-12">
-            <h2 class="section-label">Questions Fréquentes</h2>
+            <h2 class="section-label">{sectionLabel}</h2>
             <div class="rule-line"></div>
         </div>
         

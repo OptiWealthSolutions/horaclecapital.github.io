@@ -1,8 +1,8 @@
 import { getCollection } from 'astro:content';
 
 export async function GET() {
-  const allRapports = await getCollection('rapports', ({ data }) => !data.draft);
-  const allRecherches = await getCollection('recherches', ({ data }) => !data.draft);
+  const allRapports = await getCollection('rapports', ({ data }) => !data.draft && (data.lang ?? 'fr') !== 'en');
+  const allRecherches = await getCollection('recherches', ({ data }) => !data.draft && (data.lang ?? 'fr') !== 'en');
 
   const reportsIndex = allRapports.map(item => ({
     title: item.data.title,

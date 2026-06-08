@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Legal Notice & Privacy Policy | Horacle Capital';
+const description = "Site publisher, hosting, personal data protection (GDPR), and financial risk warnings.";
+---
+
+<BaseLayout {title} {description}>
+    <header class="page-header">
+      <img src="/assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
+      <span>Compliance & GDPR</span>
+      <h1>Legal Notice</h1>
+      <p>Privacy policy and terms of use</p>
+    </header>
+
+    <main class="article-container">
+      <h2>1. Site publisher</h2>
+      <p>
+        The site <strong>Horacle Capital</strong> (horaclecapital.com) is a personal showcase site published independently by:<br>
+        <strong>Léo Lombardini</strong><br>
+        Contact: via the form on the "About" page or by private LinkedIn message.
+      </p>
+
+      <h2>2. Hosting</h2>
+      <p>
+        The site is hosted by:<br>
+        <strong>GitHub, Inc.</strong> (GitHub Pages)<br>
+        88 Colin P Kelly Jr St, San Francisco, CA 94107, United States.
+      </p>
+
+      <h2>3. Personal data & GDPR</h2>
+      <p>
+        In compliance with the General Data Protection Regulation (GDPR), we make sure to limit data collection to what is strictly necessary:
+      </p>
+      <ul>
+        <li><strong>Newsletter:</strong> If you subscribe to our newsletter, your email is collected and processed by our partner <em>Brevo (Sendinblue)</em>. You can unsubscribe at any time via the link at the bottom of each email.</li>
+        <li><strong>Contact form:</strong> Your data is transmitted via <em>Web3Forms</em> and used only to get back to you. It is never resold.</li>
+        <li><strong>Analytics:</strong> We use <em>Umami</em>, a privacy-respecting open-source analytics tool that places no cross-site tracking cookies and anonymizes your IP address.</li>
+      </ul>
+
+      <h2>4. Cookies</h2>
+      <p>
+        The integration of third-party tools (such as the <em>Calendly</em> appointment-booking widget) may result in technical and analytical cookies being placed on your browser. You can accept or refuse these cookies via the banner that appears on your first visit.
+      </p>
+
+      <h2>5. Intellectual property</h2>
+      <p>
+        All elements present on this site (texts, macroeconomic analyses, quantitative models, source code, charts) are the exclusive property of Léo Lombardini, unless otherwise stated. Any reproduction, representation, or distribution, partial or total, is strictly prohibited without prior authorization.
+      </p>
+
+      <h2>6. Risk Warning (Disclaimer)</h2>
+      <p>
+        All analyses and information shared on this site are provided <strong>for strictly educational and informational purposes</strong>. They in no way constitute a solicitation, an offer, or a recommendation to buy or sell any financial instrument.
+      </p>
+      <p>
+        Investing and trading in the markets (equities, currencies, cryptocurrencies, options) carry a <strong>high risk of capital loss</strong>. Past performance is not indicative of future results. Horacle Capital and its publisher cannot be held liable for any financial loss or damage arising from the use of this information.
+      </p>
+    </main>
+</BaseLayout>

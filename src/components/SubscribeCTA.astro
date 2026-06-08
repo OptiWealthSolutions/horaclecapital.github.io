@@ -1,8 +1,16 @@
 ---
+import { getLangFromUrl } from '../i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const l = (path: string) => getRelativeLocaleUrl(lang, path);
+const exclusiveSignalLabel = lang === 'en' ? 'Exclusive Signal' : 'Signal Exclusif';
+
 interface Props {
   title?: string;
   description?: string;
   buttonText?: string;
+  secondaryButtonText?: string;
   class?: string;
 }
 
@@ -10,6 +18,7 @@ const {
   title = "Passez à la vitesse supérieure", 
   description = "Accédez à l'intégralité de nos modèles quantitatifs et rapports macro exclusifs.",
   buttonText = "S'abonner à Horacle Premium",
+  secondaryButtonText = "Voir nos modèles",
   class: className = ""
 } = Astro.props;
 ---
@@ -18,18 +27,18 @@ const {
   <div class="absolute top-0 right-0 w-64 h-64 bg-blue-3/5 blur-[120px] rounded-full -mr-32 -mt-32"></div>
   
   <div class="relative z-10 max-w-2xl">
-    <span class="font-mono text-[0.6rem] uppercase tracking-[0.4em] text-blue-3 font-bold mb-4 block">Signal Exclusif</span>
+    <span class="font-mono text-[0.6rem] uppercase tracking-[0.4em] text-blue-3 font-bold mb-4 block">{exclusiveSignalLabel}</span>
     <h2 class="font-head text-3xl md:text-4xl text-white mb-6 leading-tight">{title}</h2>
     <p class="text-white/60 mb-10 text-lg leading-relaxed font-light">
       {description}
     </p>
     
     <div class="flex flex-wrap gap-4">
-      <a href="/account" id="cta-subscribe-btn" class="btn-primary px-8 py-4 text-xs tracking-[0.2em]">
+      <a href={l("/account")} id="cta-subscribe-btn" class="btn-primary px-8 py-4 text-xs tracking-[0.2em]">
         {buttonText}
       </a>
-      <a href="/research" class="px-8 py-4 text-xs tracking-[0.2em] border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-all uppercase font-mono">
-        Voir nos modèles
+      <a href={l("/research")} class="px-8 py-4 text-xs tracking-[0.2em] border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-all uppercase font-mono">
+        {secondaryButtonText}
       </a>
     </div>
   </div>

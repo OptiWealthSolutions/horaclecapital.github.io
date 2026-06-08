@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Portfolio & Convictions | Horacle Capital';
+const description = "Follow our model portfolios and market convictions based on our macroeconomic and quantitative analysis.";
+---
+
+<BaseLayout {title} {description} activeNav="portfolio">
+    <header class="portfolio-hero relative py-24 md:py-32 overflow-hidden bg-dark">
+        <div class="print-only container" style="margin-bottom: 30px; text-align: left;">
+            <img src="/assets/img/logo.png" alt="HORACLE CAPITAL" style="width: 50px; height: 50px;" />
+            <hr style="margin-top: 15px; border: 0; border-top: 1px solid #000;" />
+        </div>
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img
+                src="/assets/img/report_banner.jpg"
+                alt=""
+                class="w-full h-full object-cover opacity-10 grayscale"
+                aria-hidden="true"
+            />
+        </div>
+
+        <div class="container relative z-10 text-center">
+            <div class="max-w-4xl mx-auto">
+                <span class="font-sans text-[0.65rem] uppercase tracking-[0.4em] text-blue-3 font-bold mb-6 block reveal">Strategy & Convictions</span>
+                <h1 class="font-head text-5xl md:text-8xl mb-8 text-white leading-[1.1] reveal"><strong>Our Portfolios</strong></h1>
+                <p class="text-off text-lg md:text-xl leading-relaxed font-light reveal reveal-delay-1 max-w-2xl mx-auto">
+                    Total transparency and analytical rigor. Our allocations reflect our scoring engines and our reading of macroeconomic cycles.
+                </p>
+
+                <div class="mt-8 flex justify-center reveal reveal-delay-2 no-print">
+                  <button
+                    onclick="window.print()"
+                    class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/5 border border-white/10 text-white hover:text-blue-3 hover:border-blue-3 transition-colors font-mono text-[0.65rem] uppercase tracking-widest cursor-pointer"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+                    Print the portfolio
+                  </button>
+                </div>
+
+                <div class="mt-12 flex justify-center gap-8 reveal reveal-delay-2">
+                    <div class="flex flex-col items-center">
+                        <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Updated</span>
+                        <span class="text-white font-mono text-xs">Weekly</span>
+                    </div>
+                    <div class="w-px h-10 bg-white/10"></div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Universe</span>
+                        <span class="text-white font-mono text-xs">Multi-Assets</span>
+                    </div>
+                    <div class="w-px h-10 bg-white/10"></div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Source</span>
+                        <span class="text-white font-mono text-xs">yFinance Live</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-12 bg-bg">
+        <div class="container mb-24">
+            <div class="section-rule mb-12">
+                <h2 class="section-label">High-Conviction Theses</h2>
+                <div class="rule-line"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+                <!-- Thesis Card 1: AI Photonics -->
+                <article class="group relative flex flex-col bg-white border border-border opacity-90 transition-all overflow-hidden">
+                    <div class="h-48 overflow-hidden border-b border-border relative">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Photonics AI" class="w-full h-full object-cover grayscale opacity-40" />
+                        <div class="absolute inset-0 flex items-center justify-center bg-dark/60 backdrop-blur-[2px]">
+                            <span class="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-white border border-white/30 px-4 py-2">Coming Soon</span>
+                        </div>
+                    </div>
+
+                    <div class="p-8 flex flex-col flex-1">
+                        <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
+                            <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">Deep Tech / AI</span>
+                            <span class="text-[0.65rem] text-dim uppercase tracking-widest">Q3 2026</span>
+                        </div>
+
+                        <h3 class="font-head text-3xl text-text mb-6 leading-tight opacity-60">Photonic AI: Beyond Silicon</h3>
+
+                        <p class="text-off text-base leading-relaxed mb-8 flex-1 opacity-60">Analysis of AI's next hardware breakthrough. How light will replace electrons to multiply energy efficiency.</p>
+
+                        <div class="mt-auto pt-6 flex justify-between items-center">
+                            <div class="flex flex-col">
+                                <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Research</span>
+                                <span class="text-[0.75rem] font-bold text-dim uppercase tracking-wide">Scheduled</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Thesis Card 2: Quantum Computing -->
+                <article class="group relative flex flex-col bg-white border border-border opacity-90 transition-all overflow-hidden">
+                    <div class="h-48 overflow-hidden border-b border-border relative">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80" alt="Quantum Computing" class="w-full h-full object-cover grayscale opacity-40" />
+                        <div class="absolute inset-0 flex items-center justify-center bg-dark/60 backdrop-blur-[2px]">
+                            <span class="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-white border border-white/30 px-4 py-2">Coming Soon</span>
+                        </div>
+                    </div>
+
+                    <div class="p-8 flex flex-col flex-1">
+                        <div class="flex items-center justify-between mb-6 pb-6 border-b border-border/50">
+                            <span class="text-[0.65rem] font-bold uppercase tracking-widest text-blue-3">Quantum / Security</span>
+                            <span class="text-[0.65rem] text-dim uppercase tracking-widest">Q4 2026</span>
+                        </div>
+
+                        <h3 class="font-head text-3xl text-text mb-6 leading-tight opacity-60">The Post-Quantum Era</h3>
+
+                        <p class="text-off text-base leading-relaxed mb-8 flex-1 opacity-60">Decoding the strategic stakes of quantum computing on global cybersecurity and cryptography.</p>
+
+                        <div class="mt-auto pt-6 flex justify-between items-center">
+                            <div class="flex flex-col">
+                                <span class="text-[0.6rem] text-dim uppercase tracking-widest mb-1">Research</span>
+                                <span class="text-[0.75rem] font-bold text-dim uppercase tracking-wide">Scheduled</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section-rule mb-12">
+                <h2 class="section-label">Our Model Portfolios</h2>
+                <div class="rule-line"></div>
+            </div>
+
+            <div class="py-20 text-center border border-dashed border-border bg-bg-2">
+                <h3 class="font-head text-2xl text-text mb-4">Horacle 1</h3>
+                <p class="text-off italic">The technical deployment and detailed allocation of this portfolio will be available soon.</p>
+                <div class="mt-8 flex justify-center">
+                    <span class="px-4 py-2 bg-blue-3 text-white font-mono text-[0.6rem] uppercase tracking-widest font-bold">Initialization in progress</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</BaseLayout>
