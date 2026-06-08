@@ -1,5 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const l = (path: string) => getRelativeLocaleUrl(lang, path);
 
 const title = 'Horacle Academy | Mentorship in Macroeconomic Analysis & Strategy';
 const description = "Tailored strategic guidance to master the Financial Markets. Private sessions grounded in statistical modeling and fundamental analysis.";
@@ -168,7 +174,7 @@ const description = "Tailored strategic guidance to master the Financial Markets
                     Want to enter the markets but don't know where to start? We've designed a comprehensive guide to help you build your foundations: psychology, risk management, and macroeconomic fundamentals.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="/academy/guide-investir" class="btn-primary">
+                    <a href={l("/academy/guide-investir")} class="btn-primary">
                         Access the guide for free
                     </a>
                 </div>
