@@ -6,110 +6,189 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
 ---
 
 <BaseLayout {title} {description} activeNav="academy">
-    <main class="bg-bg min-h-screen pt-24 pb-32">
-        <div class="container max-w-5xl">
+    <main class="bg-[#F8FAFC] min-h-screen">
+        <!-- Persistent Trust Bar -->
+        <div class="bg-dark py-3 border-b border-white/5 no-print">
+            <div class="container flex justify-center items-center gap-8 text-[0.6rem] font-mono text-white/40 uppercase tracking-[0.2em]">
+                <span class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-3 rounded-full"></span> 40+ Pages de Stratégie</span>
+                <span class="hidden md:flex items-center gap-2"><span class="w-1 h-1 bg-blue-3 rounded-full"></span> 0% Jargon Marketing</span>
+                <span class="flex items-center gap-2"><span class="w-1 h-1 bg-blue-3 rounded-full"></span> Mise à jour Juin 2026</span>
+            </div>
+        </div>
+
+        <div class="container max-w-6xl pt-16 md:pt-24 pb-32">
             
-            <div class="flex flex-col lg:flex-row gap-16 items-center lg:items-start mb-24">
-                <!-- Left: Visual -->
-                <div class="w-full lg:w-2/5 shrink-0">
-                    <div class="relative group">
-                        <!-- Shadow Glow -->
-                        <div class="absolute -inset-4 bg-blue-3/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <!-- Hero Section: Persuasive & Minimalist -->
+            <div class="flex flex-col lg:flex-row gap-16 lg:items-center mb-32">
+                <div class="flex-1 order-2 lg:order-1">
+                    <span class="inline-block px-3 py-1 bg-blue-600 text-white font-mono text-[0.65rem] uppercase tracking-widest font-bold mb-8 shadow-lg shadow-blue-600/20">Accès Libre</span>
+                    <h1 class="font-head text-5xl md:text-7xl text-dark mb-8 leading-[1.05] tracking-tight">
+                        L'investissement <br/> n'est pas un <span class="text-blue-600 italic">jeu.</span>
+                    </h1>
+                    <p class="text-slate-600 text-xl md:text-2xl leading-relaxed mb-10 font-sans font-light max-w-2xl">
+                        Internet est saturé de bruit. Nous avons extrait le <strong class="text-dark font-semibold">signal pur</strong> pour vous aider à construire un patrimoine robuste, fondé sur la macroéconomie et la rigueur institutionnelle.
+                    </p>
+
+                    <!-- Qualified Form -->
+                    <div class="bg-white border border-slate-200 p-8 md:p-10 shadow-2xl shadow-slate-200/50 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1.5 bg-blue-600"></div>
+                        <div class="relative z-10">
+                            <h3 class="font-head text-2xl mb-2 text-dark">Recevoir votre exemplaire</h3>
+                            <p class="text-slate-400 text-sm mb-8 font-sans">Le PDF haute résolution sera envoyé immédiatement à votre adresse.</p>
+                            
+                            <form id="guide-form" class="flex flex-col md:flex-row gap-4">
+                                <div class="flex-1">
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        placeholder="Votre email professionnel..." 
+                                        required
+                                        class="w-full px-6 py-4 bg-slate-50 border border-slate-200 focus:border-blue-600 focus:bg-white focus:ring-4 focus:ring-blue-600/5 outline-none transition-all font-sans text-dark"
+                                    />
+                                </div>
+                                <button 
+                                    type="submit" 
+                                    id="submit-btn"
+                                    class="bg-blue-600 text-white font-sans font-bold px-10 py-4 uppercase tracking-[0.1em] text-xs hover:bg-dark transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
+                                >
+                                    Télécharger le Guide
+                                </button>
+                            </form>
+                            <p class="text-[0.6rem] text-slate-400 mt-4 font-sans italic italic">En téléchargeant ce guide, vous rejoignez notre liste de diffusion stratégique. Désinscription possible à tout moment.</p>
+                        </div>
+
+                        <div id="success-msg" class="hidden text-center py-10">
+                            <div class="w-16 h-16 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <h4 class="font-head text-3xl mb-3 text-dark">Vérifiez vos emails</h4>
+                            <p class="text-slate-500 text-lg">Votre guide "L'Investissement" est en route.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual: The Ebook -->
+                <div class="w-full lg:w-2/5 order-1 lg:order-2">
+                    <div class="relative">
+                        <!-- Decorative elements -->
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-600/5 rounded-full blur-3xl animate-pulse"></div>
+                        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-600/5 rounded-full blur-3xl"></div>
                         
-                        <!-- Ebook Cover -->
-                        <div class="relative bg-dark border border-white/10 p-12 aspect-[3/4] flex flex-col justify-between shadow-2xl overflow-hidden">
-                            <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+                        <!-- The Ebook Mockup -->
+                        <div class="relative bg-dark border border-white/10 p-12 aspect-[3/4.2] flex flex-col justify-between shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] overflow-hidden transform lg:rotate-3 hover:rotate-0 transition-all duration-700">
+                            <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
                             
                             <div class="relative z-10">
-                                <div class="font-mono text-blue-3 text-[0.6rem] uppercase tracking-[0.3em] font-bold mb-8">Horacle Academy</div>
-                                <h1 class="font-head text-4xl text-white leading-tight mb-4">L’investissement.</h1>
-                                <p class="text-white/60 font-sans text-sm leading-relaxed">Le guide honnête pour passer à l'action</p>
+                                <img src="/assets/img/logo.png" alt="" class="w-10 h-10 mb-12 opacity-80" />
+                                <div class="font-mono text-blue-500 text-[0.65rem] uppercase tracking-[0.4em] font-bold mb-6">Strategy Paper</div>
+                                <h2 class="font-head text-5xl text-white leading-tight mb-6">L’investisse-<br/>ment.</h2>
+                                <p class="text-white/40 font-sans text-base leading-relaxed max-w-[200px]">Le guide honnête pour passer à l'action</p>
                             </div>
 
                             <div class="relative z-10">
-                                <div class="h-1 w-12 bg-blue-3 mb-6"></div>
-                                <div class="flex flex-wrap gap-2 text-[0.55rem] font-mono text-white/40 uppercase tracking-widest">
-                                    <span>ETF</span> • <span>DCA</span> • <span>Stock Picking</span>
+                                <div class="h-1.5 w-16 bg-blue-600 mb-8"></div>
+                                <div class="flex flex-col gap-3">
+                                    <span class="text-[0.6rem] font-mono text-white/30 uppercase tracking-[0.2em]">Par Léo Lombardini</span>
+                                    <span class="text-[0.6rem] font-mono text-white/30 uppercase tracking-[0.2em]">Horacle Academy © 2026</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Right: Content & Form -->
-                <div class="flex-1">
-                    <span class="inline-block px-3 py-1 bg-blue-3/10 text-blue-3 font-mono text-[0.65rem] uppercase tracking-widest font-bold mb-6">Ressource Gratuite</span>
-                    <h2 class="font-head text-4xl md:text-5xl text-text mb-8 leading-tight">Sortez du chaos informationnel.</h2>
-                    
-                    <div class="text-off text-lg leading-relaxed mb-10 space-y-6 font-sans">
-                        <p>Internet est saturé de conseils contradictoires et de promesses de richesse rapide. Nous avons écrit ce guide pour rétablir une vérité simple : <strong>l'investissement est une question de méthode, pas de chance.</strong></p>
-                        <p>En 40 pages, apprenez à construire un portefeuille robuste adapté à votre psychologie, sans jargon complexe ni raccourcis dangereux.</p>
+            <!-- Value Comparison: Noise vs Signal -->
+            <div class="mb-32">
+                <div class="section-rule mb-16">
+                    <h2 class="section-label text-dark">Pourquoi ce guide est différent</h2>
+                    <div class="rule-line border-slate-200"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-px bg-slate-200 border border-slate-200 shadow-sm">
+                    <div class="bg-white p-12">
+                        <h4 class="font-head text-xl text-slate-400 mb-10 uppercase tracking-widest flex items-center gap-3">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-300"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                            Le Bruit (Internet)
+                        </h4>
+                        <ul class="space-y-8">
+                            <li class="flex items-start gap-4">
+                                <span class="w-6 h-6 rounded-full bg-slate-100 flex-shrink-0 flex items-center justify-center text-[0.6rem] font-bold">1</span>
+                                <p class="text-slate-500 text-sm">Promesses de "liberté financière" immédiate et rendements irréalistes.</p>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="w-6 h-6 rounded-full bg-slate-100 flex-shrink-0 flex items-center justify-center text-[0.6rem] font-bold">2</span>
+                                <p class="text-slate-500 text-sm">Complexité inutile pour justifier la vente de formations à 2 000€.</p>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="w-6 h-6 rounded-full bg-slate-100 flex-shrink-0 flex items-center justify-center text-[0.6rem] font-bold">3</span>
+                                <p class="text-slate-500 text-sm">Contenu générique recopié sans aucune expérience réelle du marché.</p>
+                            </li>
+                        </ul>
                     </div>
-
-                    <!-- Lead Capture Form -->
-                    <div class="bg-white border border-border p-8 md:p-10 shadow-xl relative">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-blue-3"></div>
-                        <h3 class="font-head text-xl mb-6">Recevoir le guide par email</h3>
-                        
-                        <form id="guide-form" class="space-y-4">
-                            <div>
-                                <label for="email" class="sr-only">Email</label>
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
-                                    placeholder="Votre adresse email professionnelle..." 
-                                    required
-                                    class="w-full px-6 py-4 bg-bg border border-border focus:border-blue-3 focus:ring-1 focus:ring-blue-3 outline-none transition-all font-sans"
-                                />
-                            </div>
-                            <button 
-                                type="submit" 
-                                id="submit-btn"
-                                class="w-full bg-dark text-white font-sans font-bold py-4 uppercase tracking-[0.2em] text-xs hover:bg-blue-3 transition-colors shadow-lg"
-                            >
-                                Obtenir l'accès gratuit
-                            </button>
-                            <p class="text-[0.65rem] text-dim text-center mt-4">En vous inscrivant, vous recevrez également notre veille macro hebdomadaire. Désinscription en 1 clic.</p>
-                        </form>
-
-                        <div id="success-msg" class="hidden text-center py-6">
-                            <div class="w-12 h-12 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                            <h4 class="font-head text-xl mb-2 text-text">Demande enregistrée !</h4>
-                            <p class="text-off text-sm">Vérifiez votre boîte de réception d'ici quelques instants.</p>
-                        </div>
+                    <div class="bg-dark p-12">
+                        <h4 class="font-head text-xl text-blue-500 mb-10 uppercase tracking-widest flex items-center gap-3">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-blue-600"><polyline points="20 6 9 17 4 12"/></svg>
+                            Le Signal (Horacle)
+                        </h4>
+                        <ul class="space-y-8">
+                            <li class="flex items-start gap-4">
+                                <span class="w-6 h-6 rounded-full bg-blue-600/20 text-blue-500 flex-shrink-0 flex items-center justify-center text-[0.6rem] font-bold">1</span>
+                                <p class="text-white/70 text-sm">Approche institutionnelle basée sur les cycles de liquidité et la donnée.</p>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="w-6 h-6 rounded-full bg-blue-600/20 text-blue-500 flex-shrink-0 flex items-center justify-center text-[0.6rem] font-bold">2</span>
+                                <p class="text-white/70 text-sm">Méthodologie simplifiée mais rigoureuse : ETF, DCA, et Stock Picking sélectif.</p>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="w-6 h-6 rounded-full bg-blue-600/20 text-blue-500 flex-shrink-0 flex items-center justify-center text-[0.6rem] font-bold">3</span>
+                                <p class="text-white/70 text-sm">Un avis d'expert indépendant, sans conflit d'intérêt ni promesses trompeuses.</p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Preview Sections -->
-            <div class="section-rule mb-12">
-                <h2 class="section-label">Au programme du guide</h2>
-                <div class="rule-line"></div>
+            <!-- Program Grid -->
+            <div class="grid md:grid-cols-3 gap-12 mb-32">
+                <div class="group">
+                    <div class="w-12 h-12 bg-white border border-slate-200 shadow-sm flex items-center justify-center mb-8 group-hover:border-blue-600 transition-colors">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h4 class="font-head text-2xl text-dark mb-4 tracking-tight">Vaincre la psychologie</h4>
+                    <p class="text-slate-500 text-base leading-relaxed font-sans font-light">Comprenez pourquoi l'investisseur moyen sous-performe le marché de 5% par an et comment ne pas devenir une statistique.</p>
+                </div>
+                <div class="group">
+                    <div class="w-12 h-12 bg-white border border-slate-200 shadow-sm flex items-center justify-center mb-8 group-hover:border-blue-600 transition-colors">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4-4-4 4M12 16V9"/></svg>
+                    </div>
+                    <h4 class="font-head text-2xl text-dark mb-4 tracking-tight">Le moteur indiciel (ETF)</h4>
+                    <p class="text-slate-500 text-base leading-relaxed font-sans font-light">Maîtrisez l'outil le plus puissant de l'investisseur moderne : frais réduits, diversification maximale et performance historique.</p>
+                </div>
+                <div class="group">
+                    <div class="w-12 h-12 bg-white border border-slate-200 shadow-sm flex items-center justify-center mb-8 group-hover:border-blue-600 transition-colors">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <h4 class="font-head text-2xl text-dark mb-4 tracking-tight">L'arbitrage Stratégique</h4>
+                    <p class="text-slate-500 text-base leading-relaxed font-sans font-light">DCA vs Lump Sum. Découvrez quand il est mathématiquement et psychologiquement préférable d'investir progressivement ou massivement.</p>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="space-y-4">
-                    <div class="font-mono text-blue-3 text-lg font-bold">01.</div>
-                    <h4 class="font-head text-xl">Profilage & Psychologie</h4>
-                    <p class="text-off text-sm leading-relaxed">Pourquoi la meilleure stratégie du monde ne vaut rien si vous ne pouvez pas la tenir lors d'une chute de 30%.</p>
+            <!-- Final CTA -->
+            <div class="bg-dark rounded-none p-12 md:p-20 text-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+                <div class="relative z-10">
+                    <h3 class="font-head text-4xl md:text-5xl text-white mb-10 max-w-3xl mx-auto leading-tight">
+                        Prêt à passer du côté de ceux qui <span class="text-blue-500 italic">comprennent</span> ?
+                    </h3>
+                    <a href="#guide-form" class="btn-primary px-12 py-5 text-sm uppercase tracking-widest shadow-2xl shadow-blue-600/40">
+                        Obtenir mon accès maintenant
+                    </a>
+                    <p class="text-white/30 text-[0.7rem] mt-10 font-mono uppercase tracking-widest italic">
+                        "La meilleure stratégie que tu tiens vaut plus que la stratégie parfaite que tu abandonnes."
+                    </p>
                 </div>
-                <div class="space-y-4">
-                    <div class="font-mono text-blue-3 text-lg font-bold">02.</div>
-                    <h4 class="font-head text-xl">La puissance des ETF</h4>
-                    <p class="text-off text-sm leading-relaxed">Comprendre pourquoi 90% des gérants actifs échouent et comment "acheter la botte de foin" avec les bons indices.</p>
-                </div>
-                <div class="space-y-4">
-                    <div class="font-mono text-blue-3 text-lg font-bold">03.</div>
-                    <h4 class="font-head text-xl">DCA vs Lump Sum</h4>
-                    <p class="text-off text-sm leading-relaxed">L'arbitrage mathématique et psychologique entre investir d'un coup ou lisser ses entrées sur le marché.</p>
-                </div>
-            </div>
-
-            <div class="mt-24 p-12 border border-border bg-bg-2 text-center italic text-off leading-relaxed font-sans">
-                "Ce guide ne va pas vous promettre de devenir riche rapidement. Il s'adresse à ceux qui veulent construire un avantage compétitif durable sur les marchés." — Léo Lombardini
             </div>
 
         </div>
@@ -122,6 +201,7 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
     const form = document.getElementById('guide-form') as HTMLFormElement;
     const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
     const successMsg = document.getElementById('success-msg');
+    const formContent = form?.parentElement;
 
     if (form) {
         form.addEventListener('submit', async (e) => {
@@ -130,7 +210,7 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
             const email = formData.get('email');
 
             submitBtn.disabled = true;
-            submitBtn.textContent = "Traitement en cours...";
+            submitBtn.textContent = "Traitement...";
 
             try {
                 const { data, error } = await supabase.functions.invoke('send-investor-guide', {
@@ -140,12 +220,21 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
                 if (error) throw error;
 
                 form.classList.add('hidden');
+                if (formContent) {
+                   const title = formContent.querySelector('h3');
+                   const desc = formContent.querySelector('p');
+                   if (title) title.classList.add('hidden');
+                   if (desc) desc.classList.add('hidden');
+                }
                 successMsg?.classList.remove('hidden');
+                
+                // Scroll to success message
+                successMsg?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } catch (err) {
                 console.error("Erreur:", err);
                 alert("Une erreur est survenue. Veuillez réessayer.");
                 submitBtn.disabled = false;
-                submitBtn.textContent = "Obtenir l'accès gratuit";
+                submitBtn.textContent = "Télécharger le Guide";
             }
         });
     }
