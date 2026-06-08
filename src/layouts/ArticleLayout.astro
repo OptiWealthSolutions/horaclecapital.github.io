@@ -12,6 +12,7 @@ export interface Props {
   author?: string;
   category?: string;
   ogImage?: string;
+  thumbnail?: string;
   slug: string;
   tags?: string[];
   isPremium?: boolean;
@@ -27,6 +28,7 @@ const {
   author = 'Léo Lombardini',
   category = 'Macro Economics',
   ogImage: ogImageProp,
+  thumbnail,
   slug,
   tags = [],
   isPremium = false,
@@ -40,8 +42,8 @@ const t = useTranslations(lang);
 const l = (path: string) => getRelativeLocaleUrl(lang, path);
 
 const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://horaclecapital.com';
-const ogImage = ogImageProp 
-  ? (ogImageProp.startsWith('http') ? ogImageProp : `${siteUrl}${ogImageProp}`)
+const resolvedOgImage = (ogImageProp || thumbnail)
+  ? ((ogImageProp || thumbnail).startsWith('http') ? (ogImageProp || thumbnail) : `${siteUrl}${ogImageProp || thumbnail}`)
   : `${siteUrl}/assets/img/banner.jpg`;
 
 import TagList from '../components/TagList.astro';
@@ -105,7 +107,7 @@ const articleHref = (collectionType: string, itemSlug: string) => {
     <SEO 
       title={title} 
       description={description} 
-      image={ogImage} 
+      image={resolvedOgImage} 
       type="article" 
       articleDate={date} 
       canonicalURL={canonicalUrl}
@@ -261,7 +263,7 @@ const articleHref = (collectionType: string, itemSlug: string) => {
         <img src="/assets/img/logo.png" alt="HORACLE CAPITAL" style="width: 50px; height: 50px;" />
         <hr style="margin-top: 15px; border: 0; border-top: 1px solid #000;" />
       </div>
-      <img src="/assets/img/banner.jpg" alt="" class="header-bg" aria-hidden="true" />
+      <img src={thumbnail || ogImageProp || '/assets/img/banner.jpg'} alt="" class="header-bg" aria-hidden="true" />
       <span>{category}</span>
       <h1>{title}</h1>
       <p>{t('article.publishedOn')} {dateFormatted} &bull; {t('article.by')} {author}</p>
