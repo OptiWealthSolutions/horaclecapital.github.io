@@ -141,9 +141,7 @@ const {
         <!-- Auth Links -->
         <div class="nav-auth" id="auth-nav">
           <button id="login-btn" class="nav-auth-btn">{t('nav.login')}</button>
-          <button id="signup-btn" class="nav-auth-btn hidden">{t('nav.signup')}</button>
           <div id="user-nav" class="hidden flex items-center gap-4">
-            <button id="header-subscribe-btn" class="nav-auth-btn hidden">{t('nav.signup')}</button>
             <a href={l("/account")} class:list={[ "nav-link-account", { 'active': activeNav === 'account' } ]}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
               {t('nav.account')}

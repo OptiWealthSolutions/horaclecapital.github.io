@@ -250,7 +250,7 @@ nav {
 
 .nav-logout-icon:hover { color: #ef4444; }
 
-.nav-links a {
+.nav-center > a {
   position: relative;
   font-family: var(--ff-body);
   font-size: 0.82rem;
@@ -287,7 +287,7 @@ nav {
 #auth-nav { display: flex; align-items: center; gap: 4px; }
 .nav-link-btn { font-size: 0.75rem !important; }
 .nav-auth-btn { font-size: 0.75rem !important; padding: 6px 14px !important; height: 32px !important; }
-.nav-links a::after {
+.nav-center > a::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -299,10 +299,10 @@ nav {
   transition: width 0.25s ease;
   border-radius: 0;
 }
-.nav-links a:hover { color: #ffffff; }
-.nav-links a:hover::after,
-.nav-links a.active::after { width: calc(100% - 28px); }
-.nav-links a.active { color: #ffffff; }
+.nav-center > a:hover { color: #ffffff; }
+.nav-center > a:hover::after,
+.nav-center > a.active::after { width: calc(100% - 28px); }
+.nav-center > a.active { color: #ffffff; }
 
 .nav-badge {
   display: inline-block;
@@ -1297,21 +1297,45 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
     background: var(--dark-2); border-left: 1px solid var(--border-dk);
     flex-direction: column; align-items: flex-start; z-index: 100;
     transition: right 0.3s ease;
+    overflow-y: auto;
   }
   .nav-links.active { right: 0; }
   .nav-links { gap: 0; }
-  .nav-links a {
+  
+  .nav-center, .nav-right {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    gap: 0;
+  }
+  
+  .nav-right {
+    margin-top: 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-dk);
+    gap: 16px;
+    padding-left: 32px;
+    padding-bottom: 40px;
+  }
+
+  .nav-search {
+    margin-left: 0;
+    margin-bottom: 12px;
+    width: calc(100% - 32px);
+  }
+
+  .nav-center > a {
     width: 100%; height: auto; padding: 18px 32px;
     border-bottom: 1px solid var(--border-dk); font-size: 0.9rem; color: rgba(255,255,255,0.7);
   }
-  .nav-links a::after { display: none; }
-  .nav-links a.active { 
+  .nav-center > a::after { display: none; }
+  .nav-center > a.active { 
     background: var(--blue-d);
     color: var(--blue-3);
     padding-left: 24px;
     position: relative;
   }
-  .nav-links a.active::before {
+  .nav-center > a.active::before {
     content: '';
     position: absolute;
     left: 0;
