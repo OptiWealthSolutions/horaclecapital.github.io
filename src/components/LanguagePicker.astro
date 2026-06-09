@@ -3,6 +3,7 @@ import { languages } from '../i18n/ui';
 import { getLangFromUrl } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
+const targetLang = lang === 'fr' ? 'en' : 'fr';
 
 const flags: Record<string, string> = {
   fr: '🇫🇷',
@@ -36,30 +37,27 @@ const getLocalizedPath = (l: string) => {
 ---
 
 <div class="lang-picker">
-  {Object.entries(flags).map(([l, flag]) => (
-    <a
-      href={getLocalizedPath(l)}
-      class:list={["lang-link", { active: lang === l }]}
-      title={l === 'fr' ? 'Français' : 'English'}
-      aria-label={l === 'fr' ? 'Passer en français' : 'Switch to English'}
-    >
-      <span class="lang-flag">{flag}</span>
-      <span class="lang-code">{labels[l]}</span>
-    </a>
-  ))}
+  <a
+    href={getLocalizedPath(targetLang)}
+    class="lang-link"
+    title={targetLang === 'fr' ? 'Passer en français' : 'Switch to English'}
+    aria-label={targetLang === 'fr' ? 'Passer en français' : 'Switch to English'}
+  >
+    <span class="lang-flag">{flags[targetLang]}</span>
+    <span class="lang-code">{labels[targetLang]}</span>
+  </a>
 </div>
 
 <style>
   .lang-picker {
     display: flex;
-    gap: 0.25rem;
     align-items: center;
   }
   .lang-link {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    color: var(--text-dim);
+    color: var(--dim);
     text-decoration: none;
     transition: all 0.2s;
     padding: 0.25rem 0.5rem;
@@ -78,13 +76,8 @@ const getLocalizedPath = (l: string) => {
     font-size: 0.6rem;
   }
   .lang-link:hover {
-    color: var(--blue-3);
-    border-color: rgba(37, 99, 235, 0.3);
-    background: rgba(37, 99, 235, 0.05);
-  }
-  .lang-link.active {
     color: var(--white);
     border-color: rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.05);
   }
 </style>
