@@ -43,8 +43,8 @@ const getLocalizedPath = (l: string) => {
     title={targetLang === 'fr' ? 'Passer en français' : 'Switch to English'}
     aria-label={targetLang === 'fr' ? 'Passer en français' : 'Switch to English'}
   >
-    <span class="lang-flag">{flags[targetLang]}</span>
-    <span class="lang-code">{labels[targetLang]}</span>
+    <svg class="lang-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+    <span class="lang-text">{targetLang === 'fr' ? 'Français' : 'English'}</span>
   </a>
 </div>
 
@@ -56,28 +56,26 @@ const getLocalizedPath = (l: string) => {
   .lang-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    color: var(--dim);
+    gap: 0.4rem;
+    color: var(--white);
     text-decoration: none;
-    transition: all 0.2s;
-    padding: 0.25rem 0.5rem;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    font-weight: 600;
+    transition: color 0.2s;
+    padding: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
   }
-  .lang-flag {
-    font-size: 1rem;
-    line-height: 1;
+  .lang-icon {
+    color: var(--dim);
+    transition: color 0.2s;
   }
-  .lang-code {
-    font-size: 0.6rem;
+  .lang-text {
+    /* Optional: hidden on very small screens if needed, but keeping it visible to match reference */
   }
   .lang-link:hover {
-    color: var(--white);
-    border-color: rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.05);
+    color: var(--blue-3);
+  }
+  .lang-link:hover .lang-icon {
+    color: var(--blue-3);
   }
 </style>

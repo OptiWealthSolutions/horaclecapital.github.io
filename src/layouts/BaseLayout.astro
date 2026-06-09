@@ -140,8 +140,8 @@ const {
 
         <!-- Auth Links -->
         <div class="nav-auth" id="auth-nav">
-          <button id="login-btn" class="nav-link-btn hidden">{t('nav.login')}</button>
-          <button id="signup-btn" class="nav-auth-btn">{t('nav.signup')}</button>
+          <button id="login-btn" class="nav-auth-btn">{t('nav.login')}</button>
+          <button id="signup-btn" class="nav-auth-btn hidden">{t('nav.signup')}</button>
           <div id="user-nav" class="hidden flex items-center gap-4">
             <button id="header-subscribe-btn" class="nav-auth-btn hidden">{t('nav.signup')}</button>
             <a href={l("/account")} class:list={[ "nav-link-account", { 'active': activeNav === 'account' } ]}>

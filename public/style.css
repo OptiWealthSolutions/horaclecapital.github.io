@@ -94,20 +94,20 @@ body::before {
 .nav-link-btn:hover { color: #fff; }
 
 .nav-auth-btn {
-  background: #f97316; /* Orange color matching the reference */
+  background: var(--blue-3);
   color: #fff !important;
   font-weight: 700 !important;
   padding: 8px 24px !important;
   height: 38px !important;
   margin: auto 10px;
-  border-radius: 20px; /* Pill shape */
+  border-radius: 20px;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.85rem;
 }
 .nav-auth-btn:hover {
-  background: #ea580c;
+  background: var(--blue-2);
   transform: translateY(-1px);
 }
 
