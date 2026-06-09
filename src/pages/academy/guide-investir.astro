@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = "Guide : Commencer à Investir en 2026 | Horacle Academy";
-const description = "Téléchargez notre guide honnête pour passer à l'action. ETF, Stock Picking, DCA et psychologie de l'investisseur.";
+const description = "Rejoignez la liste d'attente pour notre guide stratégique. ETF, Stock Picking, DCA et psychologie de l'investisseur.";
 ---
 
 <style>
@@ -11,8 +11,8 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
         perspective: 1000px;
     }
     .book {
-        width: 280px;
-        height: 400px;
+        width: 320px;
+        height: 460px;
         position: relative;
         transform-style: preserve-3d;
         transform: rotateY(-20deg) rotateX(5deg);
@@ -23,22 +23,22 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
     }
     .book-front {
         position: absolute;
-        width: 280px;
-        height: 400px;
+        width: 320px;
+        height: 460px;
         background: #0F172A;
-        border: 1px solid rgba(255,255,255,0.1);
+        border: 4px solid rgba(255,255,255,0.15);
         z-index: 2;
         transform: translateZ(15px);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 30px;
-        box-shadow: 10px 10px 40px rgba(0,0,0,0.5);
+        padding: 0;
+        box-shadow: 20px 20px 60px rgba(0,0,0,0.6);
     }
     .book-spine {
         position: absolute;
         width: 30px;
-        height: 400px;
+        height: 460px;
         background: #1C2236;
         left: -15px;
         transform: rotateY(-90deg);
@@ -46,7 +46,7 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
     }
     .book-top {
         position: absolute;
-        width: 280px;
+        width: 320px;
         height: 30px;
         background: #e5e7eb;
         top: -15px;
@@ -54,58 +54,56 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
     }
     .book-shadow {
         position: absolute;
-        width: 280px;
+        width: 320px;
         height: 30px;
         background: rgba(0,0,0,0.3);
         bottom: -50px;
         filter: blur(20px);
         transform: rotateX(90deg);
     }
+
+    /* Fix Button Contrast */
+    .btn-primary-fix {
+        background-color: #2563EB !important;
+        color: white !important;
+        border: none !important;
+    }
+    .btn-primary-fix:hover {
+        background-color: #1D4ED8 !important;
+        color: white !important;
+    }
 </style>
 
 <BaseLayout {title} {description} activeNav="academy">
     <main class="bg-white min-h-screen">
         
-        <!-- HERO SECTION (Dark) -->
-        <header class="bg-dark text-white pt-32 pb-32 overflow-hidden border-b border-white/5 relative">
+        <!-- HERO SECTION -->
+        <header class="bg-dark text-white pt-48 pb-48 overflow-hidden border-b border-white/5 relative">
             <div class="absolute inset-0 opacity-20 bg-[url('/assets/img/banner.jpg')] bg-cover bg-center"></div>
             <div class="absolute inset-0 bg-dark/80"></div>
-            <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
-
             <div class="container flex flex-col lg:flex-row items-center gap-20 relative z-10">
-                <!-- Text Content -->
-                <div class="flex-1 text-center lg:text-left z-10">
+                <div class="flex-1 text-center lg:text-left">
                     <h1 class="font-head text-5xl md:text-7xl mb-8 leading-tight tracking-tight">
-                        Construisez un patrimoine <span class="text-blue-500">stratégique.</span>
+                        L'investissement <span class="text-blue-500">honnête.</span>
+                        <span class="block text-2xl md:text-3xl mt-4 text-white/40 font-sans font-light italic">Bientôt Disponible</span>
                     </h1>
                     <p class="text-white/60 text-lg md:text-xl mb-12 max-w-2xl font-sans leading-relaxed">
-                        Le guide honnête pour sortir du bruit de marché et passer à l'action avec la rigueur d'un investisseur institutionnel.
+                        Sortez du bruit de marché. Apprenez à investir avec la rigueur d'un institutionnel. Inscrivez-vous pour être prévenu de la sortie.
                     </p>
-                    
                     <div class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center">
-                        <a href="#download" class="btn-primary px-10 py-4 shadow-2xl shadow-blue-600/30">Accéder au guide gratuitement</a>
+                        <a href="#download" class="btn-primary-fix px-10 py-4 shadow-2xl shadow-blue-600/30 inline-block font-sans font-bold uppercase tracking-widest text-sm">S'inscrire sur la liste</a>
                         <div class="flex items-center gap-4 text-white/40 font-mono text-[0.6rem] uppercase tracking-widest">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                            <span>1,500+ Downloads</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <span>1,500+ Investisseurs en attente</span>
                         </div>
                     </div>
-
-                    <!-- Tags -->
-                    <div class="mt-16 flex flex-wrap justify-center lg:justify-start gap-8 opacity-40 grayscale">
-                        <span class="text-[0.6rem] font-mono uppercase tracking-[0.2em]">ETF Strategy</span>
-                        <span class="text-[0.6rem] font-mono uppercase tracking-[0.2em]">Macro Analysis</span>
-                        <span class="text-[0.6rem] font-mono uppercase tracking-[0.2em]">Portfolio Design</span>
-                        <span class="text-[0.6rem] font-mono uppercase tracking-[0.2em]">Risk Management</span>
-                    </div>
                 </div>
-
-                <!-- 3D Book Mockup -->
-                <div class="flex-shrink-0 book-container z-10 py-10 lg:py-0">
+                <div class="flex-shrink-0 book-container z-10">
                     <div class="book">
                         <div class="book-spine"></div>
                         <div class="book-top"></div>
                         <div class="book-front p-0 overflow-hidden">
-                            <img src="/assets/img/cover_guide.png" alt="Couverture du Guide d'Investissement" class="w-full h-full object-cover" />
+                            <img src="/assets/img/cover_guide.png" alt="Couverture du Guide" class="w-full h-full object-cover" />
                         </div>
                         <div class="book-shadow"></div>
                     </div>
@@ -113,127 +111,124 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
             </div>
         </header>
 
-        <!-- POUR QUI SECTION -->
+        <!-- SECTION BESOIN / POURQUOI -->
         <section class="py-32 bg-white">
-            <div class="container">
-                <div class="text-center mb-20">
-                    <span class="text-blue-600 font-mono text-[0.65rem] uppercase tracking-[0.3em] font-bold mb-4 block">Target Profiling</span>
-                    <h2 class="font-head text-4xl text-dark mb-6">À qui s'adresse ce guide ?</h2>
-                    <p class="text-slate-500 max-w-2xl mx-auto font-sans">
-                        Nous n'avons pas écrit ce guide pour tout le monde. Il est conçu pour ceux qui valorisent la méthode sur la chance.
-                    </p>
+            <div class="container max-w-4xl">
+                <div class="text-center mb-16">
+                    <span class="text-blue-600 font-mono text-[0.65rem] uppercase tracking-[0.3em] font-bold mb-4 block">The Problem</span>
+                    <h2 class="font-head text-4xl text-dark mb-6">Pourquoi ce guide ?</h2>
                 </div>
-
-                <div class="grid md:grid-cols-3 gap-12">
-                    <div class="p-10 border border-slate-100 bg-slate-50/50 hover:border-blue-600 transition-all group">
-                        <div class="w-10 h-10 bg-blue-600 text-white flex items-center justify-center mb-8">01</div>
-                        <h3 class="font-head text-2xl text-dark mb-4 tracking-tight">Le Débutant</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed font-sans font-light">
-                            Vous savez que vous devriez investir mais le trop-plein d'informations vous paralyse. Nous posons vos bases.
-                        </p>
-                    </div>
-                    <div class="p-10 border border-slate-100 bg-slate-50/50 hover:border-blue-600 transition-all group">
-                        <div class="w-10 h-10 bg-blue-600 text-white flex items-center justify-center mb-8">02</div>
-                        <h3 class="font-head text-2xl text-dark mb-4 tracking-tight">L'Intermédiaire</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed font-sans font-light">
-                            Vous avez déjà un compte mais pas de stratégie claire. Nous structurons votre allocation et votre gestion du risque.
-                        </p>
-                    </div>
-                    <div class="p-10 border border-slate-100 bg-slate-50/50 hover:border-blue-600 transition-all group">
-                        <div class="w-10 h-10 bg-blue-600 text-white flex items-center justify-center mb-8">03</div>
-                        <h3 class="font-head text-2xl text-dark mb-4 tracking-tight">Le Confirmé</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed font-sans font-light">
-                            Vous voulez challenger vos convictions face à une vision macro institutionnelle et optimiser vos frais.
-                        </p>
-                    </div>
+                <div class="space-y-8 text-slate-600 text-lg font-sans font-light leading-relaxed">
+                    <p>Internet est saturé de "conseils" financiers. Entre les vendeurs de rêves qui promettent la fortune en 3 clics et les banquiers qui vous enferment dans des produits aux frais cachés, l'investisseur particulier est souvent la proie du système.</p>
+                    <p><strong class="text-dark font-medium">Nous avons créé ce guide pour briser ce cycle.</strong></p>
+                    <p>La vérité est simple : investir n'est pas censé être un casino. C'est un processus rigoureux, mathématique et psychologique. Nous voulons transmettre les codes des institutionnels (gestion de risque, allocation dynamique, analyse macro) pour que vous puissiez enfin reprendre le contrôle de votre capital, sans dépendre du bruit ambiant.</p>
                 </div>
             </div>
         </section>
 
-        <!-- AUTHOR NOTE SECTION -->
+        <!-- SECTION EXPERTISE (Léo & Raphaël) -->
         <section class="py-32 bg-slate-50 border-y border-slate-200">
-            <div class="container max-w-5xl">
-                <div class="flex flex-col lg:flex-row gap-16 items-center">
-                    <div class="w-48 h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden border-8 border-white shadow-2xl flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-700">
-                        <img src="/assets/img/profil_leo_HD.jpeg" alt="Léo Lombardini" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="flex-1 text-center lg:text-left">
-                        <span class="text-blue-600 font-mono text-[0.6rem] uppercase tracking-[0.3em] font-bold mb-4 block">Note de l'auteur</span>
-                        <h3 class="font-head text-3xl text-dark mb-8 italic leading-snug">"Ce guide ne va pas vous promettre de devenir riche rapidement..."</h3>
-                        <div class="space-y-6 text-slate-700 font-sans font-light leading-relaxed text-lg">
-                            <p>Je ne suis pas un de ces influ-voleurs d'internet. Ce guide a été écrit à la main, avec un vrai avis, pas une compilation de Wikipédia.</p>
-                            <p>Des dizaines de personnes m'ont posé la même question : « Je sais que je devrais investir. Mais je ne sais pas comment, ni quand, ni dans quoi. »</p>
-                        </div>
-                        <div class="mt-10 pt-10 border-t border-slate-200 flex flex-col items-center lg:items-start">
-                            <p class="text-dark font-bold uppercase tracking-[0.2em] text-xs">Léo Lombardini</p>
-                            <p class="text-blue-600 text-[0.6rem] uppercase tracking-[0.2em] mt-2 font-mono">Fondateur @ Horacle Capital</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CURRICULUM PREVIEW -->
-        <section class="py-32 bg-white">
             <div class="container">
                 <div class="text-center mb-20">
-                    <span class="text-blue-600 font-mono text-[0.65rem] uppercase tracking-[0.3em] font-bold mb-4 block">Contenu du Guide</span>
-                    <h2 class="font-head text-4xl text-dark">Sortir du chaos informationnel</h2>
+                    <span class="text-blue-600 font-mono text-[0.65rem] uppercase tracking-[0.3em] font-bold mb-4 block">Our Expertise</span>
+                    <h2 class="font-head text-4xl text-dark">Qui sommes-nous ?</h2>
                 </div>
-
-                <div class="max-w-4xl mx-auto space-y-12">
-                    <!-- Module 1 -->
-                    <div class="flex flex-col md:flex-row gap-12 items-center group">
-                        <div class="w-full md:w-1/3 aspect-[4/3] bg-dark relative overflow-hidden flex items-center justify-center p-8 shadow-xl">
-                            <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-                            <div class="text-blue-600/20 font-head text-7xl absolute -top-4 -left-4">01</div>
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="1.5" class="relative z-10"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <div class="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
+                    <!-- Léo -->
+                    <div class="flex flex-col items-center text-center lg:flex-row lg:text-left gap-8">
+                        <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-xl flex-shrink-0 grayscale">
+                            <img src="/assets/img/profil_leo_HD.jpeg" alt="Léo Lombardini" class="w-full h-full object-cover" />
                         </div>
-                        <div class="flex-1">
-                            <h4 class="font-head text-2xl text-dark mb-4 group-hover:text-blue-600 transition-colors">La Psychologie de l'Investisseur</h4>
-                            <p class="text-slate-600 font-sans font-light leading-relaxed">Apprenez à gérer les chutes de 30% sans paniquer. Découvrez pourquoi l'investisseur moyen est son propre pire ennemi et comment vaincre vos biais cognitifs.</p>
+                        <div>
+                            <h3 class="font-head text-2xl text-dark mb-2">Léo Lombardini</h3>
+                            <p class="text-blue-600 font-mono text-[0.6rem] uppercase tracking-widest mb-4">Fondateur & Stratégiste Quant</p>
+                            <p class="text-slate-600 text-sm leading-relaxed font-light font-sans">Spécialisé en modélisation quantitative et macro-économie, Léo a conçu les frameworks d'analyse qu'Horacle Capital utilise aujourd'hui pour son propre portefeuille.</p>
                         </div>
                     </div>
-
-                    <!-- Module 2 -->
-                    <div class="flex flex-col md:flex-row-reverse gap-12 items-center group">
-                        <div class="w-full md:w-1/3 aspect-[4/3] bg-dark relative overflow-hidden flex items-center justify-center p-8 shadow-xl">
-                            <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-                            <div class="text-blue-600/20 font-head text-7xl absolute -top-4 -right-4 text-right">02</div>
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="1.5" class="relative z-10"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4-4-4 4M12 16V9"/></svg>
+                    <!-- Raphaël -->
+                    <div class="flex flex-col items-center text-center lg:flex-row lg:text-left gap-8">
+                        <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-xl flex-shrink-0 grayscale">
+                             <img src="/assets/img/photo_profil_raphael.jpg" alt="Raphaël Chouraqui" class="w-full h-full object-cover" />
                         </div>
-                        <div class="flex-1 text-right md:text-left">
-                            <h4 class="font-head text-2xl text-dark mb-4 group-hover:text-blue-600 transition-colors">Le Moteur ETF & Actions</h4>
-                            <p class="text-slate-600 font-sans font-light leading-relaxed">90% des gérants actifs échouent. Nous vous expliquons comment "acheter la botte de foin" avec les bons ETF et quand le Stock Picking redevient une arme stratégique.</p>
-                        </div>
-                    </div>
-
-                    <!-- Module 3 -->
-                    <div class="flex flex-col md:flex-row gap-12 items-center group">
-                        <div class="w-full md:w-1/3 aspect-[4/3] bg-dark relative overflow-hidden flex items-center justify-center p-8 shadow-xl">
-                            <img src="/assets/img/efficient_frontier_horacle.png" alt="Frontière Efficiente de Markowitz" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" />
-                            <div class="absolute inset-0 bg-dark/40"></div>
-                            <div class="text-blue-600/20 font-head text-7xl absolute -top-4 -left-4">03</div>
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="1.5" class="relative z-10"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-head text-2xl text-dark mb-4 group-hover:text-blue-600 transition-colors">DCA, Lump Sum & Allocation</h4>
-                            <p class="text-slate-600 font-sans font-light leading-relaxed">Découvrez l'arbitrage mathématique entre investir massivement ou progressivement. Nous détaillons les allocations types (Défensif, Modéré, Dynamique) basées sur la théorie de la frontière efficiente.</p>
+                        <div>
+                            <h3 class="font-head text-2xl text-dark mb-2">Raphaël Chouraqui</h3>
+                            <p class="text-blue-600 font-mono text-[0.6rem] uppercase tracking-widest mb-4">Analyste Recherche & Macro</p>
+                            <p class="text-slate-600 text-sm leading-relaxed font-light font-sans">Diplômé de l'ESCP, Raphaël décrypte les tendances structurelles pour transformer les données économiques complexes en thèses d'investissement cohérentes.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- DOWNLOAD FORM SECTION -->
+        <!-- SECTION TEMOIGNAGES -->
+        <section class="py-32 bg-white overflow-hidden">
+            <div class="container">
+                <div class="text-center mb-20">
+                    <span class="text-blue-600 font-mono text-[0.65rem] uppercase tracking-[0.3em] font-bold mb-4 block">Feedback</span>
+                    <h2 class="font-head text-4xl text-dark">Ils nous font confiance</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Témoignage 1 -->
+                    <div class="p-8 border border-slate-100 bg-slate-50/30">
+                        <div class="flex gap-1 text-blue-500 mb-6">
+                            {[1, 2, 3, 4, 5].map(() => (
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            ))}
+                        </div>
+                        <p class="text-slate-600 italic mb-8 font-sans font-light">"Enfin une approche qui ne repose pas sur de l'espoir mais sur des données concrètes. Léo et son équipe m'ont aidé à restructurer mon PEA avec une vision long terme claire."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-slate-200"></div>
+                            <div>
+                                <p class="text-dark font-bold text-xs uppercase tracking-widest">Thomas R.</p>
+                                <p class="text-slate-400 text-[0.6rem] uppercase tracking-widest">Entrepreneur</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Témoignage 2 -->
+                    <div class="p-8 border border-slate-100 bg-slate-50/30">
+                        <div class="flex gap-1 text-blue-500 mb-6">
+                            {[1, 2, 3, 4, 5].map(() => (
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            ))}
+                        </div>
+                        <p class="text-slate-600 italic mb-8 font-sans font-light">"Leur capacité à vulgariser des concepts macro complexes est impressionnante. Ce guide va devenir la bible de tout investisseur sérieux."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-slate-200"></div>
+                            <div>
+                                <p class="text-dark font-bold text-xs uppercase tracking-widest">Marc A.</p>
+                                <p class="text-slate-400 text-[0.6rem] uppercase tracking-widest">Cadre Supérieur</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Témoignage 3 -->
+                    <div class="p-8 border border-slate-100 bg-slate-50/30">
+                        <div class="flex gap-1 text-blue-500 mb-6">
+                            {[1, 2, 3, 4, 5].map(() => (
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            ))}
+                        </div>
+                        <p class="text-slate-600 italic mb-8 font-sans font-light">"Grâce à leurs conseils, j'ai enfin compris comment utiliser les ETF pour battre l'inflation sans prendre des risques inconsidérés."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-slate-200"></div>
+                            <div>
+                                <p class="text-dark font-bold text-xs uppercase tracking-widest">Sarah L.</p>
+                                <p class="text-slate-400 text-[0.6rem] uppercase tracking-widest">Investisseuse Particulière</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMULAIRE (WAITLIST) -->
         <section id="download" class="py-32 bg-dark text-white relative overflow-hidden">
             <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
             <div class="container max-w-3xl relative z-10">
                 <div class="bg-white text-dark p-12 md:p-20 shadow-2xl relative">
                     <div class="absolute top-0 left-0 w-full h-2 bg-blue-600"></div>
                     <div class="text-center mb-12">
-                        <h2 class="font-head text-4xl mb-4">Recevoir le Guide Gratuit</h2>
-                        <p class="text-slate-500 font-sans text-sm">Le PDF sera envoyé immédiatement à votre adresse email.</p>
+                        <h2 class="font-head text-4xl mb-4">Rejoindre la liste d'attente</h2>
+                        <p class="text-slate-500 font-sans text-sm">Soyez informé en priorité dès que le guide est disponible.</p>
                     </div>
 
                     <form id="guide-form-final" class="space-y-6">
@@ -251,9 +246,9 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
                         <button 
                             type="submit" 
                             id="submit-btn-final"
-                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-sans font-bold py-5 uppercase tracking-[0.2em] text-sm shadow-xl transition-all"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-sans font-bold py-5 uppercase tracking-[0.2em] text-sm shadow-xl transition-all btn-primary-fix"
                         >
-                            Obtenir mon accès instantané
+                            S'inscrire sur la liste
                         </button>
                     </form>
 
@@ -261,14 +256,10 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
                         <div class="w-16 h-16 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
                         </div>
-                        <h4 class="font-head text-3xl mb-2 text-dark">Demande confirmée</h4>
-                        <p class="text-slate-700">Vérifiez votre boîte mail d'ici quelques secondes.</p>
+                        <h4 class="font-head text-3xl mb-2 text-dark">Inscription confirmée</h4>
+                        <p class="text-slate-700">Vous recevrez un email de confirmation d'ici quelques secondes.</p>
                     </div>
                 </div>
-                
-                <p class="text-center text-white/30 text-[0.6rem] mt-12 uppercase tracking-[0.2em] font-mono italic">
-                    Horacle Academy — Mentoring Stratégique pour Investisseurs Exigeants
-                </p>
             </div>
         </section>
 
@@ -286,11 +277,11 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
         if (form) {
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const formData = new FormData(form);
                 const emailInput = form.querySelector('input[type="email"]') as HTMLInputElement;
                 const email = emailInput?.value;
 
                 submitBtn.disabled = true;
+                const originalText = submitBtn.textContent;
                 submitBtn.textContent = "Chargement...";
 
                 try {
@@ -307,12 +298,11 @@ const description = "Téléchargez notre guide honnête pour passer à l'action.
                     console.error("Erreur:", err);
                     alert("Une erreur est survenue. Veuillez réessayer.");
                     submitBtn.disabled = false;
-                    submitBtn.textContent = "Réessayer";
+                    submitBtn.textContent = originalText;
                 }
             });
         }
     };
 
-    setupForm('guide-form', 'submit-btn', 'success-msg');
     setupForm('guide-form-final', 'submit-btn-final', 'success-msg-final');
 </script>

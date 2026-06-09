@@ -733,7 +733,7 @@ document.addEventListener('DOMContentLoaded', () => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            // No auth required for public feedback
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
           },
           body: JSON.stringify({
             userEmail: email,
@@ -749,6 +749,14 @@ document.addEventListener('DOMContentLoaded', () => {
           status.style.color = "var(--blue-3)";
           status.textContent = "> Merci ! Votre feedback a été envoyé avec succès.";
           feedbackForm.reset();
+          
+          setTimeout(() => {
+            const modal = document.getElementById('fb-modal');
+            if (modal) {
+              modal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          }, 3000);
         } else {
           status.style.color = "var(--orange)";
           status.textContent = "> Erreur : " + (data.error || "Impossible d'envoyer le feedback.");

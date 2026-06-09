@@ -43,16 +43,20 @@ serve(async (req) => {
       from: 'Horacle Capital <newsletter@horaclecapital.com>',
       reply_to: 'llombardini.leo@gmail.com',
       to: [email],
-      subject: `Votre Guide : Commencer à Investir en 2026`,
+      subject: `Confirmation d'inscription : Liste d'attente Guide 2026`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #1a1a2e; line-height: 1.6;">
           <h2 style="border-bottom: 2px solid #2563EB; padding-bottom: 12px; color: #2563EB;">Horacle Academy</h2>
           <p>Bonjour,</p>
-          <p>Merci pour votre intérêt. Comme promis, voici votre guide stratégique <strong>"L’investissement : Le guide honnête pour passer à l'action"</strong>.</p>
-          <div style="text-align: center; margin: 40px 0;">
-            <a href="https://horaclecapital.com/assets/pdf/guide_investisseur_2026.pdf" style="background-color: #2563EB; color: #ffffff; padding: 14px 28px; text-decoration: none; font-weight: bold; border-radius: 4px; font-size: 16px;">📥 Télécharger le Guide (PDF)</a>
-          </div>
-          <p>Bonne lecture,<br><strong>Léo Lombardini</strong></p>
+          <p>C'est confirmé ! Vous êtes bien inscrit sur la liste d'attente pour recevoir notre guide stratégique : <strong>"L’investissement : Le guide honnête pour passer à l'action"</strong>.</p>
+          <p>Nous sommes actuellement en train de finaliser les dernières sections pour vous offrir une ressource de la plus haute qualité possible.</p>
+          <p><strong>Que va-t-il se passer ensuite ?</strong></p>
+          <ul>
+            <li>Vous serez parmi les premiers à recevoir le guide directement dans votre boîte mail dès sa sortie.</li>
+            <li>Vous recevrez également nos analyses hebdomadaires pour commencer à vous familiariser avec notre approche macroéconomique.</li>
+          </ul>
+          <p>Merci pour votre patience et votre confiance.</p>
+          <p>À très vite,<br><strong>Léo Lombardini</strong></p>
           <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 24px 0;" />
           <p style="font-size: 0.8rem; color: #64748b;">© 2026 Horacle Capital. Tous droits réservés.</p>
         </div>

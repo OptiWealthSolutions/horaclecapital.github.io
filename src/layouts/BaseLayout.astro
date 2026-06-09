@@ -120,17 +120,15 @@ const {
         <a href={l("/research")} class="show-mobile" class:list={[ { 'active': activeNav === 'research' } ]}>{t('nav.research')}</a>
         <a href={l("/portfolio")} class="show-mobile" class:list={[ { 'active': activeNav === 'portfolio' } ]}>{t('nav.portfolio')}</a>
 
-        <a href={l("/academy")} class:list={[ "flex items-center gap-1", { 'active': activeNav === 'academy' } ]}>{t('nav.academy')} <span class="nav-badge-new">NEW</span></a>
+        <a href={l("/academy")} class:list={[ "flex items-center gap-1", { 'active': activeNav === 'academy' } ]}>{t('nav.academy')}</a>
         <a href={l("/about")} class:list={[ { 'active': activeNav === 'about' } ]}>{t('nav.about')}</a>
       </div>
       
       <!-- Secondary Actions (Right) -->
       <div class="nav-right">
         <form class="nav-search" id="global-search-form" action="#">
+          <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <input type="text" placeholder={t('nav.search')} aria-label={t('nav.search')} />
-          <button type="submit" aria-label="Search" class="nav-search-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          </button>
         </form>
 
         <!-- Language Picker -->
@@ -140,7 +138,9 @@ const {
 
         <!-- Auth Links -->
         <div class="nav-auth" id="auth-nav">
-          <button id="login-btn" class="nav-auth-btn">{t('nav.login')}</button>
+          <button id="login-btn" class="nav-link-btn">{t('nav.login')}</button>
+          <button id="signup-btn" class="nav-auth-btn-primary">{t('nav.signup')}</button>
+          
           <div id="user-nav" class="hidden flex items-center gap-4">
             <a href={l("/account")} class:list={[ "nav-link-account", { 'active': activeNav === 'account' } ]}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>

@@ -30,30 +30,30 @@ Les émissions de dette corporate libellée en USD affichent un volume de 89 mds
 Le constat de la Fed semble être celui du consensus. L’inflation en zone US gagne du terrain, et les dépenses des ménages changent de manière structurelle. En effet, le rapport illustre une bifurcation des dépenses des ménages vers des dépenses dites moins "discrétionnaires". Selon le rapport, l'activité économique américaine progresse à un rythme faible à modéré dans 10 districts sur 12.
 
 ### EUR
-Encore une fois, la zone euro est sujette à une inflation qui gagne du terrain. L'inflation globale flash est attendue en hausse à 3,2 % en mai (contre 3,0 % précédemment) et l'inflation sous-jacente (core) progresse à 2,4 %, tandis que l'indice des prix à la production d'avril bondit à 5 % YoY.
+Encore une fois, la zone euro est sujette à une inflation qui gagne du terrain. L'inflation globale s'établit à 3,0 % en avril (YoY) et l'inflation sous-jacente (core) progresse à 2,4 %, tandis que l'indice des prix à la production d'avril bondit à 5 % YoY.
 
-<div class="my-6 md:float-left md:w-[45%] md:mr-8 relative">
-  <img src="/assets/img/euro_zone_CPI_07_06_26.png" alt="Graphique inflation zone EURO" class="w-full border border-border shadow-sm rounded-sm" />
-  <span class="text-[0.6rem] text-dim block text-center mt-2 font-mono uppercase tracking-widest">Source : FRED / Analyse Horacle Capital</span>
-</div>
+<figure>
+  <img src="/assets/img/euro_zone_CPI_07_06_26.png" alt="Graphique inflation zone EURO" />
+  <figcaption>Source : FRED / Analyse Horacle Capital</figcaption>
+</figure>
 
 De plus, le marché intègre pleinement un resserrement de 25 bps pour la réunion du 11 juin ainsi qu'une deuxième hausse en septembre, bien que les attentes d'inflation à 3 ans de l'enquête des ménages aient décéléré à 2,9 % en avril. La paire EUR/USD enfonce la borne psychologique des 1,1600 cette semaine pour venir chercher les 1.1520 le vendredi en fin de journée à la suite des annonces des données NFP (Non-Farm Payrolls).
 
-<div class="clear-both mb-8"></div>
+
 
 ### JPY
 Comme nous l’avons déjà souligné la semaine dernière, les actions menées par les autorités japonaises et la BoJ n’ont pas eu les effets escomptés sur le yen qui a continué sa dépréciation cette semaine encore, avec la paire USD/JPY qui a atteint les niveaux des 160.
 
-<div class="my-6 md:float-right md:w-[45%] md:ml-8 relative">
-  <img src="/assets/img/usdjpy_seasonality_10y.png" alt="Graphique saisonnalité USDJPY" class="w-full border border-border shadow-sm rounded-sm" />
-  <span class="text-[0.6rem] text-dim block text-center mt-2 font-mono uppercase tracking-widest">Source : Yahoo Finance</span>
-</div>
+<figure>
+  <img src="/assets/img/usdjpy_seasonality_10y.png" alt="Graphique saisonnalité USDJPY" />
+  <figcaption>Source : Yahoo Finance</figcaption>
+</figure>
 
 **Saisonnalité structurelle :** La saisonnalité prime sur la dépréciation du yen. Afin de comprendre plus en détail, voici une brève explication : en mars se termine l'exercice comptable japonais, de ce fait les capitaux sont rapatriés au pays. À la suite de ce mouvement acheteur de yen, vers mai, juin et juillet, les liquidités fraîches sont déployées sur les marchés obligataires et autres, et donc la vente du yen devient la nouvelle tendance pour les gros fonds et infrastructures similaires. De facto, la dépréciation structurelle du yen a un caractère saisonnier et comptable, pour rester simple.
 
 Pour finir, le COT (Commitment of Traders) suggère une forte tendance vendeuse du yen et acheteuse du dollar, brillamment illustrée par l'appréciation du change dollar/yen.
 
-<div class="clear-both mb-8"></div>
+
 
 ### CAD
 Le loonie a connu son niveau le plus bas depuis 8 semaines à la suite de l'intensification des tensions au Moyen-Orient.
