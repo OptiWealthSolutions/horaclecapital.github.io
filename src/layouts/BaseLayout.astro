@@ -98,54 +98,60 @@ const {
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
       
-      <a href={l("/")} class:list={[ { 'active': activeNav === 'home' } ]}>{t('nav.home')}</a>
-      
-      <!-- Desktop Dropdown / Mobile Direct Links -->
-      <div class="nav-dropdown hide-mobile">
-        <button class="nav-dropdown-trigger">
-          {t('nav.analyses')}
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="nav-dropdown-content">
-          <a href={l("/reports")} class:list={[ { 'active': activeNav === 'reports' } ]}>{t('nav.reports')}</a>
-          <a href={l("/research")} class:list={[ { 'active': activeNav === 'research' } ]}>{t('nav.research')}</a>
-          <a href={l("/portfolio")} class:list={[ { 'active': activeNav === 'portfolio' } ]}>{t('nav.portfolio')}</a>
-        </div>
-      </div>
-
-      <!-- Mobile Only Direct Links -->
-      <a href={l("/reports")} class="show-mobile" class:list={[ { 'active': activeNav === 'reports' } ]}>{t('nav.reports')}</a>
-      <a href={l("/research")} class="show-mobile" class:list={[ { 'active': activeNav === 'research' } ]}>{t('nav.research')}</a>
-      <a href={l("/portfolio")} class="show-mobile" class:list={[ { 'active': activeNav === 'portfolio' } ]}>{t('nav.portfolio')}</a>
-
-      <a href={l("/academy")} class:list={[ "flex items-center gap-1", { 'active': activeNav === 'academy' } ]}>{t('nav.academy')} <span class="nav-badge-new">NEW</span></a>
-      <a href={l("/about")} class:list={[ { 'active': activeNav === 'about' } ]}>{t('nav.about')}</a>
-      
-      <div class="nav-divider"></div>
-      
-      <form class="nav-search" id="global-search-form" action="#">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" placeholder={t('nav.search')} aria-label={t('nav.search')} />
-      </form>
-
-      <!-- Language Picker -->
-      <div class="ml-4 flex items-center">
-        <LanguagePicker />
-      </div>
-
-      <!-- Auth Links -->
-      <div class="flex items-center gap-2 ml-4" id="auth-nav">
-        <button id="login-btn" class="nav-link-btn">{t('nav.login')}</button>
-        <button id="signup-btn" class="nav-auth-btn">{t('nav.signup')}</button>
-        <div id="user-nav" class="hidden flex items-center gap-4">
-          <button id="header-subscribe-btn" class="nav-auth-btn hidden">{t('nav.signup')}</button>
-          <a href={l("/account")} class:list={[ "nav-link-account", { 'active': activeNav === 'account' } ]}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            {t('nav.account')}
-          </a>
-          <button id="logout-btn" class="nav-logout-icon" title={t('nav.logout')}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+      <!-- Primary Navigation (Center) -->
+      <div class="nav-center">
+        <a href={l("/")} class:list={[ { 'active': activeNav === 'home' } ]}>{t('nav.home')}</a>
+        
+        <!-- Desktop Dropdown / Mobile Direct Links -->
+        <div class="nav-dropdown hide-mobile">
+          <button class="nav-dropdown-trigger">
+            {t('nav.analyses')}
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
+          <div class="nav-dropdown-content">
+            <a href={l("/reports")} class:list={[ { 'active': activeNav === 'reports' } ]}>{t('nav.reports')}</a>
+            <a href={l("/research")} class:list={[ { 'active': activeNav === 'research' } ]}>{t('nav.research')}</a>
+            <a href={l("/portfolio")} class:list={[ { 'active': activeNav === 'portfolio' } ]}>{t('nav.portfolio')}</a>
+          </div>
+        </div>
+
+        <!-- Mobile Only Direct Links -->
+        <a href={l("/reports")} class="show-mobile" class:list={[ { 'active': activeNav === 'reports' } ]}>{t('nav.reports')}</a>
+        <a href={l("/research")} class="show-mobile" class:list={[ { 'active': activeNav === 'research' } ]}>{t('nav.research')}</a>
+        <a href={l("/portfolio")} class="show-mobile" class:list={[ { 'active': activeNav === 'portfolio' } ]}>{t('nav.portfolio')}</a>
+
+        <a href={l("/academy")} class:list={[ "flex items-center gap-1", { 'active': activeNav === 'academy' } ]}>{t('nav.academy')} <span class="nav-badge-new">NEW</span></a>
+        <a href={l("/about")} class:list={[ { 'active': activeNav === 'about' } ]}>{t('nav.about')}</a>
+      </div>
+      
+      <!-- Secondary Actions (Right) -->
+      <div class="nav-right">
+        <form class="nav-search" id="global-search-form" action="#">
+          <input type="text" placeholder={t('nav.search')} aria-label={t('nav.search')} />
+          <button type="submit" aria-label="Search" class="nav-search-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </form>
+
+        <!-- Language Picker -->
+        <div class="nav-lang">
+          <LanguagePicker />
+        </div>
+
+        <!-- Auth Links -->
+        <div class="nav-auth" id="auth-nav">
+          <button id="login-btn" class="nav-link-btn hidden">{t('nav.login')}</button>
+          <button id="signup-btn" class="nav-auth-btn">{t('nav.signup')}</button>
+          <div id="user-nav" class="hidden flex items-center gap-4">
+            <button id="header-subscribe-btn" class="nav-auth-btn hidden">{t('nav.signup')}</button>
+            <a href={l("/account")} class:list={[ "nav-link-account", { 'active': activeNav === 'account' } ]}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              {t('nav.account')}
+            </a>
+            <button id="logout-btn" class="nav-logout-icon" title={t('nav.logout')}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>

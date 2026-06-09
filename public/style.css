@@ -94,20 +94,20 @@ body::before {
 .nav-link-btn:hover { color: #fff; }
 
 .nav-auth-btn {
-  background: var(--blue-3);
+  background: #f97316; /* Orange color matching the reference */
   color: #fff !important;
   font-weight: 700 !important;
-  padding: 8px 16px !important;
-  height: 34px !important;
+  padding: 8px 24px !important;
+  height: 38px !important;
   margin: auto 10px;
-  border-radius: 0;
+  border-radius: 20px; /* Pill shape */
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 .nav-auth-btn:hover {
-  background: var(--blue-2);
+  background: #ea580c;
   transform: translateY(-1px);
 }
 
@@ -333,27 +333,57 @@ nav {
   letter-spacing: 0.04em;
 }
 
+.nav-center {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .nav-search {
-  display: flex; align-items: center; padding: 0 14px; height: 34px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0;
-  margin-left: 16px;
+  display: flex; align-items: center; padding: 0 14px; height: 38px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   transition: border-color 0.25s, background 0.25s;
 }
 .nav-search:focus-within {
   border-color: rgba(96, 165, 250, 0.5);
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.06);
 }
-.nav-search svg { color: rgba(255, 255, 255, 0.35); margin-right: 8px; flex-shrink: 0; }
+.nav-search-btn {
+  background: none;
+  border: none;
+  color: var(--blue-3);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .nav-search input {
   background: transparent; border: none;
   color: #ffffff;
   font-family: var(--ff-body); font-size: 0.8rem;
-  outline: none; width: 110px; transition: width 0.3s;
+  outline: none; width: 140px; transition: width 0.3s;
 }
-.nav-search input:focus { width: 160px; }
+.nav-search input:focus { width: 200px; }
 .nav-search input::placeholder { color: rgba(255, 255, 255, 0.28); }
+
+.nav-lang {
+  display: flex;
+  align-items: center;
+}
+
+.nav-auth {
+  display: flex; align-items: center; gap: 8px;
+}
 
 /* ─── MENU MOBILE ──────────────────────────────────────────────── */
 .menu-toggle, .menu-close {
