@@ -1241,6 +1241,7 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
   .nav-center, .nav-right {
     flex-direction: column;
     width: 100%;
+    height: auto;
     align-items: flex-start;
     gap: 0;
   }
@@ -1254,11 +1255,13 @@ details[open] summary { border-bottom: 1px solid var(--border); color: var(--blu
     display: flex;
     flex-direction: column;
     gap: 20px;
+    height: auto;
   }
 
   .nav-lang, .nav-auth {
     padding-left: 32px;
     width: 100%;
+    height: auto;
   }
 
   .nav-auth {
