@@ -717,11 +717,9 @@ document.addEventListener('DOMContentLoaded', () => {
     feedbackForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      const email = document.getElementById('fb-email').value;
-      const type = document.getElementById('fb-type').value;
-      const message = document.getElementById('fb-message').value;
       const status = document.getElementById('fb-status');
       const submitBtn = document.getElementById('fb-submit');
+      const formData = new FormData(feedbackForm);
       
       const originalBtnText = submitBtn.textContent;
       submitBtn.disabled = true;
@@ -729,18 +727,12 @@ document.addEventListener('DOMContentLoaded', () => {
       status.textContent = "";
 
       try {
-        const response = await fetch('https://svodjiuypokuvubwfkom.supabase.co/functions/v1/send-feedback', {
+        const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
+          body: formData,
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-          },
-          body: JSON.stringify({
-            userEmail: email,
-            feedbackType: type,
-            message: message,
-            pageUrl: window.location.href
-          })
+            'Accept': 'application/json'
+          }
         });
 
         const data = await response.json();
@@ -759,7 +751,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 3000);
         } else {
           status.style.color = "var(--orange)";
-          status.textContent = "> Erreur : " + (data.error || "Impossible d'envoyer le feedback.");
+          status.textContent = "> Erreur : " + (data.message || "Impossible d'envoyer le feedback.");
         }
       } catch (err) {
         console.error("Feedback error:", err);
